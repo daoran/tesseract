@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['kdtreenodevector_0',['KdTreeNodeVector',['../d9/db6/namespacetesseract__collision_1_1FLOAT__MATH_1_1VERTEX__INDEX.html#aa377be2327c2992bb719dae52036991f',1,'tesseract_collision::FLOAT_MATH::VERTEX_INDEX']]],
-  ['kingroupikinputs_1',['KinGroupIKInputs',['../d8/d4e/namespacetesseract__kinematics.html#ae5941af5d420d5b756e9d3d1fcaa1c5d',1,'tesseract_kinematics']]]
+  ['jointgroup_0',['JointGroup',['../d9/d6a/namespacetesseract__srdf.html#a26dab32897f63eda9d83d9eb59f82cb7',1,'tesseract_srdf']]],
+  ['jointgroups_1',['JointGroups',['../d9/d6a/namespacetesseract__srdf.html#a1d5af46a82a66b3277963baa541a2f04',1,'tesseract_srdf']]]
 ];

@@ -39,7 +39,7 @@
 \DoxyCodeLine{38   \mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80c}{ContactTestType}} \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a62f821de26ebe03d11a6c7a19567583a}{contact\_test\_type\_}};}
 \DoxyCodeLine{39 \};}
 \DoxyCodeLine{40 }
-\DoxyCodeLine{42 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_af48672194fc2d99a82c319f635da12fb}{BM\_CLONE}}(benchmark::State\& state, \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info, std::size\_t num\_obj)}
+\DoxyCodeLine{42 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_af48672194fc2d99a82c319f635da12fb}{BM\_CLONE}}(benchmark::State\& state, \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info, std::size\_t num\_obj)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{43 \{}
 \DoxyCodeLine{44   std::vector<std::string> active\_obj(num\_obj);}
 \DoxyCodeLine{45   \textcolor{keywordflow}{for} (std::size\_t ind = 0; ind < num\_obj; ind++)}
@@ -52,13 +52,13 @@
 \DoxyCodeLine{52   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.5));}
 \DoxyCodeLine{53 }
 \DoxyCodeLine{54   \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a108295071670971e81fe3c34794db427}{DiscreteContactManager::Ptr}} clone;}
-\DoxyCodeLine{55   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{55   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{56   \{}
 \DoxyCodeLine{57     benchmark::DoNotOptimize(clone = info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>clone());}
 \DoxyCodeLine{58   \}}
 \DoxyCodeLine{59 \};}
 \DoxyCodeLine{60 }
-\DoxyCodeLine{62 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_aa65d3801997ee04e6126f1f39b167ddb}{BM\_CONTACT\_TEST}}(benchmark::State\& state, \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info)}
+\DoxyCodeLine{62 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_aa65d3801997ee04e6126f1f39b167ddb}{BM\_CONTACT\_TEST}}(benchmark::State\& state, \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{63 \{}
 \DoxyCodeLine{64   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>addCollisionObject(std::string(\textcolor{stringliteral}{"{}geom1"{}}), 0, info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a557a36d376e8f79328621bc5c2cf73e4}{geom1\_}}, info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_aa44dc939450d7ac721c9231ecfa36bf6}{obj1\_poses}});}
 \DoxyCodeLine{65   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>addCollisionObject(std::string(\textcolor{stringliteral}{"{}geom2"{}}), 0, info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a99afb0d6929a6414a33f3ed854806a3b}{geom2\_}}, info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a24871634e44357f53fc3604177a5fca9}{obj2\_poses}});}
@@ -67,7 +67,7 @@
 \DoxyCodeLine{68   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.5));}
 \DoxyCodeLine{69 }
 \DoxyCodeLine{70   \mbox{\hyperlink{namespacetesseract__collision_a1eeace4cc41027dbde8e7dbeb77ca7cf}{ContactResultMap}} result;}
-\DoxyCodeLine{71   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{71   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{72   \{}
 \DoxyCodeLine{73     result.clear();}
 \DoxyCodeLine{74     info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>contactTest(result, \mbox{\hyperlink{structtesseract__collision_1_1ContactRequest}{ContactRequest}}(info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a62f821de26ebe03d11a6c7a19567583a}{contact\_test\_type\_}}));}
@@ -76,10 +76,10 @@
 \DoxyCodeLine{77 }
 \DoxyCodeLine{80 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_a8399698725709484a86712f2bc20c3dc}{BM\_SELECT\_RANDOM\_OBJECT}}(benchmark::State\& state, \textcolor{keywordtype}{int} num\_obj)}
 \DoxyCodeLine{81 \{}
-\DoxyCodeLine{82   \textcolor{keywordtype}{int} selected\_link;}
-\DoxyCodeLine{83   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{82   \textcolor{keywordtype}{int} selected\_link\{ 0 \};}
+\DoxyCodeLine{83   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{84   \{}
-\DoxyCodeLine{85     benchmark::DoNotOptimize(selected\_link = rand() \% num\_obj);}
+\DoxyCodeLine{85     benchmark::DoNotOptimize(selected\_link = rand() \% num\_obj);  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{86   \}}
 \DoxyCodeLine{87 \};}
 \DoxyCodeLine{88 }
@@ -98,7 +98,7 @@
 \DoxyCodeLine{103   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setActiveCollisionObjects(active\_obj);}
 \DoxyCodeLine{104   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.5));}
 \DoxyCodeLine{105 }
-\DoxyCodeLine{106   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{106   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{107   \{}
 \DoxyCodeLine{108     \textcolor{comment}{// Including this seems necessary to insure that a distribution of links is used rather than always searching for}}
 \DoxyCodeLine{109     \textcolor{comment}{// the same one. Subtract off approximately BM\_SELECT\_RANDOM\_OBJECT if you need absolute numbers rather than}}
@@ -109,7 +109,7 @@
 \DoxyCodeLine{114 \};}
 \DoxyCodeLine{115 }
 \DoxyCodeLine{118 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_a0aafa9151158317b54aecd716aabd38d}{BM\_SET\_COLLISION\_OBJECTS\_TRANSFORM\_VECTOR}}(benchmark::State\& state,}
-\DoxyCodeLine{119                                                       \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info,}
+\DoxyCodeLine{119                                                       \mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo}{DiscreteBenchmarkInfo}} info,  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{120                                                       std::size\_t num\_obj)}
 \DoxyCodeLine{121 \{}
 \DoxyCodeLine{122   \textcolor{comment}{// Setting up collision objects}}
@@ -124,7 +124,7 @@
 \DoxyCodeLine{131   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.5));}
 \DoxyCodeLine{132 }
 \DoxyCodeLine{133   std::vector<std::string> selected\_links(1);}
-\DoxyCodeLine{134   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{134   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{135   \{}
 \DoxyCodeLine{136     \textcolor{comment}{// Including this seems necessary to insure that a distribution of links is used rather than always searching for}}
 \DoxyCodeLine{137     \textcolor{comment}{// the same one. Subtract off approximately BM\_SELECT\_RANDOM\_OBJECT if you need absolute numbers rather than}}
@@ -150,7 +150,7 @@
 \DoxyCodeLine{159   info.\mbox{\hyperlink{structtesseract__collision_1_1test__suite_1_1DiscreteBenchmarkInfo_a73f8f7d0c8ff57dd34623014d9de6ad5}{contact\_manager\_}}-\/>setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.5));}
 \DoxyCodeLine{160 }
 \DoxyCodeLine{161   \mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}} selected\_link;}
-\DoxyCodeLine{162   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{162   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{163   \{}
 \DoxyCodeLine{164     \textcolor{comment}{// Including this seems necessary to insure that a distribution of links is used rather than always searching for}}
 \DoxyCodeLine{165     \textcolor{comment}{// the same one. It might be worth it to manually time these as well if it's really important}}

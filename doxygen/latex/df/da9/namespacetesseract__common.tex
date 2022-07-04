@@ -12,7 +12,7 @@ class \mbox{\hyperlink{classtesseract__common_1_1AllowedCollisionMatrix}{Allowed
 \item 
 struct \mbox{\hyperlink{structtesseract__common_1_1ambiguate}{ambiguate}}
 \item 
-class \mbox{\hyperlink{classtesseract__common_1_1Any}{Any}}
+struct \mbox{\hyperlink{structtesseract__common_1_1Any}{Any}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1BytesResource}{Bytes\+Resource}}
 \item 
@@ -34,8 +34,10 @@ struct \mbox{\hyperlink{structtesseract__common_1_1got__type_3_01A_01_4}{got\+\_
 \item 
 struct \mbox{\hyperlink{structtesseract__common_1_1has__member}{has\+\_\+member}}
 \item 
-struct \mbox{\hyperlink{structtesseract__common_1_1JointState}{Joint\+State}}
+class \mbox{\hyperlink{classtesseract__common_1_1JointState}{Joint\+State}}
 \item 
+class \mbox{\hyperlink{classtesseract__common_1_1JointTrajectory}{Joint\+Trajectory}}
+\begin{DoxyCompactList}\small\item\em Represents a joint trajectory. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtesseract__common_1_1KinematicLimits}{Kinematic\+Limits}}
 \begin{DoxyCompactList}\small\item\em Store kinematic limits. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtesseract__common_1_1KinematicsPluginInfo}{Kinematics\+Plugin\+Info}}
@@ -54,31 +56,41 @@ class \mbox{\hyperlink{classtesseract__common_1_1Resource}{Resource}}
 \begin{DoxyCompactList}\small\item\em Represents resource data available from a file or url. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__common_1_1ResourceLocator}{Resource\+Locator}}
 \begin{DoxyCompactList}\small\item\em Abstract class for resource loaders. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1Serialization}{Serialization}}
+\item 
 struct \mbox{\hyperlink{structtesseract__common_1_1sig__check}{sig\+\_\+check}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1SimpleLocatedResource}{Simple\+Located\+Resource}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classtesseract__common_1_1Resource}{Resource}} implementation for a local file. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classtesseract__common_1_1SimpleResourceLocator}{Simple\+Resource\+Locator}}
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classtesseract__common_1_1Resource}{Resource}} locator implementation using a provided function to locate file resources. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__common_1_1StatusCategory}{Status\+Category}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1StatusCode}{Status\+Code}}
 \item 
+class \mbox{\hyperlink{classtesseract__common_1_1TesseractSupportResourceLocator}{Tesseract\+Support\+Resource\+Locator}}
+\begin{DoxyCompactList}\small\item\em Abstract class for resource loaders. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__common_1_1TestPluginBase}{Test\+Plugin\+Base}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1TestPluginMultiply}{Test\+Plugin\+Multiply}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1Timer}{Timer}}
-\begin{DoxyCompactList}\small\item\em A simple timer class leveraging chrono high resolution clock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A simple timer class leveraging chrono high resolution clock. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{Type\+Erasure\+Base}}
+\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInstance}{Type\+Erasure\+Instance}}
+\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInstanceWrapper}{Type\+Erasure\+Instance\+Wrapper}}
+\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}
+\begin{DoxyCompactList}\small\item\em This is the interface that all type erasures interfaces must inherit from. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, std\+::string, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}} $>$
 \item 
+using \mbox{\hyperlink{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}{Any\+Base}} = \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}} $>$
+\item 
 using \mbox{\hyperlink{namespacetesseract__common_a84cc21cc4b384291adbbddaa81fe6447}{Pairs\+Collision\+Margin\+Data}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, double, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}} $>$
 \item 
-using \mbox{\hyperlink{namespacetesseract__common_a57fa3336d4e5f8655281342a9c94aece}{Joint\+Trajectory}} = \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ \mbox{\hyperlink{structtesseract__common_1_1JointState}{Joint\+State}} $>$
-\begin{DoxyCompactList}\small\item\em Represents a joint trajectory. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{namespacetesseract__common_a2ef4ec89c4c07fc0a75c4bc24da9681c}{Simple\+Resource\+Locator\+Fn}} = std\+::function$<$ std\+::string(const std\+::string \&)$>$
 \item 
 {\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{namespacetesseract__common_a000d15c3ab8d8ba4ebdaae64153b053a}{Aligned\+Vector}} = \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T, Eigen\+::aligned\+\_\+allocator$<$ T $>$ $>$
@@ -121,6 +133,8 @@ enum class \mbox{\hyperlink{namespacetesseract__common_af06d85d024a36d63b58a6031
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+bool \mbox{\hyperlink{namespacetesseract__common_a0808e2d3c913c41e852ab3819eadd828}{operator==}} (const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&entries\+\_\+1, const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&entries\+\_\+2)
+\item 
 bool \mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits, double max\+\_\+diff=1e-\/6, double max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ double $>$\+::epsilon())
 \begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relativilty equal to a limit. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{enforce\+Position\+Limits}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits)
@@ -131,8 +145,16 @@ std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_a4d0
 \item 
 std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_a6649a8ac1b3dcd569656074bbcfce030}{get\+All\+Search\+Libraries}} (const std\+::string \&search\+\_\+libraries\+\_\+env, const std\+::set$<$ std\+::string $>$ \&existing\+\_\+search\+\_\+libraries)
 \item 
+std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_ad10d68b681f3d352a15736ffef688010}{extract\+Libraries\+With\+Full\+Path}} (std\+::set$<$ std\+::string $>$ \&library\+\_\+names)
+\begin{DoxyCompactList}\small\item\em This will remove libraries with full path in the provided library\+\_\+names and return them. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{Link\+Names\+Pair}} \mbox{\hyperlink{namespacetesseract__common_a11bc9620a27eede3300420410e0b4a7a}{make\+Ordered\+Link\+Pair}} (const std\+::string \&link\+\_\+name1, const std\+::string \&link\+\_\+name2)
 \begin{DoxyCompactList}\small\item\em Create a pair of strings, where the pair.\+first is always \texorpdfstring{$<$}{<}= pair.\+second. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Serializable\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__common_a5330a58c8c79cce5559a316e76118558}{test\+Serialization}} (const Serializable\+Type \&object, const std\+::string \&typename\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Tests Boost serialization for a serializable type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Serializable\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__common_a1b449b344d06caa397190a9a82dd507a}{test\+Serialization\+Ptr}} (const std\+::shared\+\_\+ptr$<$ Serializable\+Type $>$ \&object, const std\+::string \&typename\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Tests Boost serialization of shared pointer for a serializable type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Serializable\+Type\+Base , typename Serializable\+Type\+Derived $>$ }\\void \mbox{\hyperlink{namespacetesseract__common_aa8cf5fe962e9933b44d1f8248f0ab2fb}{test\+Serialization\+Derived\+Class}} (const std\+::shared\+\_\+ptr$<$ Serializable\+Type\+Base $>$ \&object, const std\+::string \&typename\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Tests Boost serialization for a serializable derived type. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\std\+::string \mbox{\hyperlink{namespacetesseract__common_a7f13ad2a741226ab5255302f6750ed4a}{str\+Format}} (const std\+::string \&format, Args... args)
 \item 
 void \mbox{\hyperlink{namespacetesseract__common_a4ed12ea384452e2d5d4f7a0854035384}{twist\+Change\+Ref\+Point}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ twist, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&ref\+\_\+point)
@@ -169,8 +191,18 @@ void \mbox{\hyperlink{namespacetesseract__common_aa86a4f0e5ca9d2b1f5abc3f34735d8
 \begin{DoxyCompactList}\small\item\em Right trim string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_aeacd629bcf585286917aafa7b8e603bb}{trim}} (std\+::string \&s)
 \begin{DoxyCompactList}\small\item\em Trim left and right of string. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}{is\+Identical}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec1, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec2, bool ordered=true)
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}{is\+Identical}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec1, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec2, bool ordered=true, const std\+::function$<$ bool(const T \&, const T \&)$>$ \&equal\+\_\+pred=\mbox{[}$\,$\mbox{]}(const T \&v1, const T \&v2) \{ return v1==v2;\}, const std\+::function$<$ bool(const T \&, const T \&)$>$ \&comp=\mbox{[}$\,$\mbox{]}(const T \&v1, const T \&v2) \{ return v1$<$ v2;\})
 \begin{DoxyCompactList}\small\item\em Check if two vector of strings are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Key\+Value\+Container\+Type , typename Value\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a4be902621fe3d33f5fe7d72116196f24}{is\+Identical\+Map}} (const Key\+Value\+Container\+Type \&map\+\_\+1, const Key\+Value\+Container\+Type \&map\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 maps are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Value\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a129feb5b5288a992d9fb72ba5dbb579d}{is\+Identical\+Set}} (const std\+::set$<$ Value\+Type $>$ \&set\+\_\+1, const std\+::set$<$ Value\+Type $>$ \&set\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 sets are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Value\+Type , std\+::size\+\_\+t Size$>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_aff7498ab87445e5c870e74a7d3cbc78f}{is\+Identical\+Array}} (const std\+::array$<$ Value\+Type, Size $>$ \&array\+\_\+1, const std\+::array$<$ Value\+Type, Size $>$ \&array\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 arrays are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a65966457329351239c51b09ec1a8d3a4}{pointers\+Equal}} (const std\+::shared\+\_\+ptr$<$ T $>$ \&p1, const std\+::shared\+\_\+ptr$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Checks if 2 pointers point to objects that are ==. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a5691a34b0a37453566326959831fb6df}{pointers\+Comparison}} (const std\+::shared\+\_\+ptr$<$ T $>$ \&p1, const std\+::shared\+\_\+ptr$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Comparison operator for the objects 2 points point to. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacetesseract__common_a1077809c98ad8bf5262e426cff6e63a3}{get\+Timestamp\+String}} ()
 \begin{DoxyCompactList}\small\item\em Get Timestamp string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a7da14d8e3b6c20175711209343aafe2f}{reorder}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ v, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ order)
@@ -199,6 +231,12 @@ bool \mbox{\hyperlink{namespacetesseract__common_a12eb899ec3967699e946431730eed9
 \begin{DoxyCompactList}\small\item\em Convert a string to a numeric value type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_aaca6ae7b6cbd8d28ad6e141239a0206f}{get\+Allowed\+Collisions}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&link\+\_\+names, const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&acm\+\_\+entries, bool remove\+\_\+duplicates=true)
 \begin{DoxyCompactList}\small\item\em Gets allowed collisions for a set of link names. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacetesseract__common_a83b13b4e33c343e723310e3b0e1c59e9}{to\+YAMLString}} (const YAML\+::\+Node \&node)
+\begin{DoxyCompactList}\small\item\em Converts a YAML\+::\+Node to a yaml string. \end{DoxyCompactList}\item 
+YAML\+::\+Node \mbox{\hyperlink{namespacetesseract__common_ac8f354484775381dd5c207ee0dfe21f2}{from\+YAMLString}} (const std\+::string \&string)
+\begin{DoxyCompactList}\small\item\em Converts yaml string to a YAML\+::\+Node. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetesseract__common_a5d68e5ef9a9f4317cd29a2539f47f0c3}{is\+Identical}} (const YAML\+::\+Node \&node1, const YAML\+::\+Node \&node2)
+\begin{DoxyCompactList}\small\item\em Checks if the YAML\+::\+Nodes are identical. \end{DoxyCompactList}\item 
 template bool \mbox{\hyperlink{namespacetesseract__common_af5ca1a2af32cf2aa20666fabebb01ae3}{to\+Numeric$<$ double $>$}} (const std\+::string \&, double \&)
 \item 
 template bool \mbox{\hyperlink{namespacetesseract__common_aa70232725f5f768795d33beb4d783754}{to\+Numeric$<$ float $>$}} (const std\+::string \&, float \&)
@@ -207,9 +245,9 @@ template bool \mbox{\hyperlink{namespacetesseract__common_a0b9e402f37e71867b8385
 \item 
 template bool \mbox{\hyperlink{namespacetesseract__common_a4b11049d2f1fe507189aedf890101ce7}{to\+Numeric$<$ long $>$}} (const std\+::string \&, long \&)
 \item 
-template bool \mbox{\hyperlink{namespacetesseract__common_ae409f9b0116e2e1d12fabe369960ff6d}{is\+Identical$<$ std\+::string $>$}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&, bool)
+template bool \mbox{\hyperlink{namespacetesseract__common_a81e6b461e723426fcfde3465ceb4b79d}{is\+Identical$<$ std\+::string $>$}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&, bool, const std\+::function$<$ bool(const std\+::string \&, const std\+::string \&)$>$ \&, const std\+::function$<$ bool(const std\+::string \&, const std\+::string \&)$>$ \&)
 \item 
-template bool \mbox{\hyperlink{namespacetesseract__common_a7cc0ecb230ef7a0129fe8f88b8dd19ba}{is\+Identical$<$ Eigen\+::\+Index $>$}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&, bool)
+template bool \mbox{\hyperlink{namespacetesseract__common_a14e39b554da010e8c36060d6d3683518}{is\+Identical$<$ Eigen\+::\+Index $>$}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&, bool, const std\+::function$<$ bool(const Eigen\+::\+Index \&, const Eigen\+::\+Index \&)$>$ \&, const std\+::function$<$ bool(const Eigen\+::\+Index \&, const Eigen\+::\+Index \&)$>$ \&)
 \item 
 {\footnotesize template$<$typename E $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$!std\+::is\+\_\+polymorphic$<$ E $>$\+::value $>$ \mbox{\hyperlink{namespacetesseract__common_a713dad4aa33bbdae5fb5aec8e83466e2}{my\+\_\+rethrow\+\_\+if\+\_\+nested}} (const E \&)
 \item 
@@ -254,15 +292,11 @@ Enable easy switching to std\+::filesystem when available.
 \doxysubsubsection{\texorpdfstring{AllowedCollisionEntries}{AllowedCollisionEntries}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{tesseract\+\_\+common\+::\+Allowed\+Collision\+Entries}} = typedef std\+::unordered\+\_\+map$<$\mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, std\+::string, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}}$>$}
 
-\mbox{\Hypertarget{namespacetesseract__common_a57fa3336d4e5f8655281342a9c94aece}\label{namespacetesseract__common_a57fa3336d4e5f8655281342a9c94aece}} 
-\index{tesseract\_common@{tesseract\_common}!JointTrajectory@{JointTrajectory}}
-\index{JointTrajectory@{JointTrajectory}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{JointTrajectory}{JointTrajectory}}
-{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_a57fa3336d4e5f8655281342a9c94aece}{tesseract\+\_\+common\+::\+Joint\+Trajectory}} = typedef \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$\mbox{\hyperlink{structtesseract__common_1_1JointState}{Joint\+State}}$>$}
-
-
-
-Represents a joint trajectory. 
+\mbox{\Hypertarget{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}\label{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}} 
+\index{tesseract\_common@{tesseract\_common}!AnyBase@{AnyBase}}
+\index{AnyBase@{AnyBase}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{AnyBase}{AnyBase}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}{tesseract\+\_\+common\+::\+Any\+Base}} = typedef \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$\mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}}$>$}
 
 \mbox{\Hypertarget{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}\label{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}} 
 \index{tesseract\_common@{tesseract\_common}!LinkNamesPair@{LinkNamesPair}}
@@ -524,6 +558,42 @@ Enforce position to be within the provided limits.
 {\em joint\+\_\+limits} & The limits to perform check \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__common_ad10d68b681f3d352a15736ffef688010}\label{namespacetesseract__common_ad10d68b681f3d352a15736ffef688010}} 
+\index{tesseract\_common@{tesseract\_common}!extractLibrariesWithFullPath@{extractLibrariesWithFullPath}}
+\index{extractLibrariesWithFullPath@{extractLibrariesWithFullPath}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{extractLibrariesWithFullPath()}{extractLibrariesWithFullPath()}}
+{\footnotesize\ttfamily std\+::set$<$ std\+::string $>$ tesseract\+\_\+common\+::extract\+Libraries\+With\+Full\+Path (\begin{DoxyParamCaption}\item[{std\+::set$<$ std\+::string $>$ \&}]{library\+\_\+names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This will remove libraries with full path in the provided library\+\_\+names and return them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+names} & The set to search and remove libraries with full paths \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A set of the libraries provided as full path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_ac8f354484775381dd5c207ee0dfe21f2}\label{namespacetesseract__common_ac8f354484775381dd5c207ee0dfe21f2}} 
+\index{tesseract\_common@{tesseract\_common}!fromYAMLString@{fromYAMLString}}
+\index{fromYAMLString@{fromYAMLString}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{fromYAMLString()}{fromYAMLString()}}
+{\footnotesize\ttfamily YAML\+::\+Node tesseract\+\_\+common\+::from\+YAMLString (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts yaml string to a YAML\+::\+Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Input string containing the yaml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting YAML\+::\+Node 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_aa14552337385ce1de42da699506f8b03}\label{namespacetesseract__common_aa14552337385ce1de42da699506f8b03}} 
 \index{tesseract\_common@{tesseract\_common}!generateRandomNumber@{generateRandomNumber}}
 \index{generateRandomNumber@{generateRandomNumber}!tesseract\_common@{tesseract\_common}}
@@ -602,12 +672,12 @@ Get Timestamp string.
 \begin{DoxyReturn}{Returns}
 Timestamp string 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}\label{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}} 
+\mbox{\Hypertarget{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}\label{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}} 
 \index{tesseract\_common@{tesseract\_common}!isIdentical@{isIdentical}}
 \index{isIdentical@{isIdentical}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{isIdentical()}{isIdentical()}}
+\doxysubsubsection{\texorpdfstring{isIdentical()}{isIdentical()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-bool tesseract\+\_\+common\+::is\+Identical (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&}]{vec1,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&}]{vec2,  }\item[{bool}]{ordered = {\ttfamily true} }\end{DoxyParamCaption})}
+bool tesseract\+\_\+common\+::is\+Identical (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&}]{vec1,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&}]{vec2,  }\item[{bool}]{ordered = {\ttfamily true},  }\item[{const std\+::function$<$ bool(const T \&, const T \&)$>$ \&}]{equal\+\_\+pred = {\ttfamily \mbox{[}\mbox{]}(const~T\&~v1,~const~T\&~v2)~\{~return~v1~==~v2;~\}},  }\item[{const std\+::function$<$ bool(const T \&, const T \&)$>$ \&}]{comp = {\ttfamily \mbox{[}\mbox{]}(const~T\&~v1,~const~T\&~v2)~\{~return~v1~$<$~v2;~\}} }\end{DoxyParamCaption})}
 
 
 
@@ -621,19 +691,103 @@ Check if two vector of strings are identical.
 \hline
 {\em ordered} & If true order is relavent, othwise if false order is not relavent \\
 \hline
+{\em equal\+\_\+pred} & Binary predicate passed into std\+::equals to determine if an element is equal. Useful for vectors of pointers \\
+\hline
+{\em comp} & Binary function passed into std\+::sort. Only used it ordered == false. Useful for vectors of pointers \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespacetesseract__common_a7cc0ecb230ef7a0129fe8f88b8dd19ba}\label{namespacetesseract__common_a7cc0ecb230ef7a0129fe8f88b8dd19ba}} 
+\mbox{\Hypertarget{namespacetesseract__common_a5d68e5ef9a9f4317cd29a2539f47f0c3}\label{namespacetesseract__common_a5d68e5ef9a9f4317cd29a2539f47f0c3}} 
+\index{tesseract\_common@{tesseract\_common}!isIdentical@{isIdentical}}
+\index{isIdentical@{isIdentical}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isIdentical()}{isIdentical()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool tesseract\+\_\+common\+::is\+Identical (\begin{DoxyParamCaption}\item[{const YAML\+::\+Node \&}]{node1,  }\item[{const YAML\+::\+Node \&}]{node2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the YAML\+::\+Nodes are identical. 
+
+The == operator checks if they reference the same memory. This checks if they contain the same information 
+\begin{DoxyParams}{Parameters}
+{\em node1} & Input YAML\+::\+Node \\
+\hline
+{\em node2} & Input YAML\+::\+Node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__common_a14e39b554da010e8c36060d6d3683518}\label{namespacetesseract__common_a14e39b554da010e8c36060d6d3683518}} 
 \index{tesseract\_common@{tesseract\_common}!isIdentical$<$ Eigen::Index $>$@{isIdentical$<$ Eigen::Index $>$}}
 \index{isIdentical$<$ Eigen::Index $>$@{isIdentical$<$ Eigen::Index $>$}!tesseract\_common@{tesseract\_common}}
 \doxysubsubsection{\texorpdfstring{isIdentical$<$ Eigen::Index $>$()}{isIdentical< Eigen::Index >()}}
-{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}{tesseract\+\_\+common\+::is\+Identical}}$<$ Eigen\+::\+Index $>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&}]{,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&}]{,  }\item[{bool}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}{tesseract\+\_\+common\+::is\+Identical}}$<$ Eigen\+::\+Index $>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&}]{,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&}]{,  }\item[{bool}]{,  }\item[{const std\+::function$<$ bool(const Eigen\+::\+Index \&, const Eigen\+::\+Index \&)$>$ \&}]{,  }\item[{const std\+::function$<$ bool(const Eigen\+::\+Index \&, const Eigen\+::\+Index \&)$>$ \&}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{namespacetesseract__common_ae409f9b0116e2e1d12fabe369960ff6d}\label{namespacetesseract__common_ae409f9b0116e2e1d12fabe369960ff6d}} 
+\mbox{\Hypertarget{namespacetesseract__common_a81e6b461e723426fcfde3465ceb4b79d}\label{namespacetesseract__common_a81e6b461e723426fcfde3465ceb4b79d}} 
 \index{tesseract\_common@{tesseract\_common}!isIdentical$<$ std::string $>$@{isIdentical$<$ std::string $>$}}
 \index{isIdentical$<$ std::string $>$@{isIdentical$<$ std::string $>$}!tesseract\_common@{tesseract\_common}}
 \doxysubsubsection{\texorpdfstring{isIdentical$<$ std::string $>$()}{isIdentical< std::string >()}}
-{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}{tesseract\+\_\+common\+::is\+Identical}}$<$ std\+::string $>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&}]{,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&}]{,  }\item[{bool}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}{tesseract\+\_\+common\+::is\+Identical}}$<$ std\+::string $>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&}]{,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&}]{,  }\item[{bool}]{,  }\item[{const std\+::function$<$ bool(const std\+::string \&, const std\+::string \&)$>$ \&}]{,  }\item[{const std\+::function$<$ bool(const std\+::string \&, const std\+::string \&)$>$ \&}]{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{namespacetesseract__common_aff7498ab87445e5c870e74a7d3cbc78f}\label{namespacetesseract__common_aff7498ab87445e5c870e74a7d3cbc78f}} 
+\index{tesseract\_common@{tesseract\_common}!isIdenticalArray@{isIdenticalArray}}
+\index{isIdenticalArray@{isIdenticalArray}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isIdenticalArray()}{isIdenticalArray()}}
+{\footnotesize\ttfamily template$<$typename Value\+Type , std\+::size\+\_\+t Size$>$ \\
+bool tesseract\+\_\+common\+::is\+Identical\+Array (\begin{DoxyParamCaption}\item[{const std\+::array$<$ Value\+Type, Size $>$ \&}]{array\+\_\+1,  }\item[{const std\+::array$<$ Value\+Type, Size $>$ \&}]{array\+\_\+2,  }\item[{const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&}]{value\+\_\+eq = {\ttfamily \mbox{[}\mbox{]}(const~ValueType\&~v1,~const~ValueType\&~v2)~\{~return~v1~==~v2;~\}} }\end{DoxyParamCaption})}
+
+
+
+Checks if 2 arrays are identical. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+\_\+1} & First array \\
+\hline
+{\em array\+\_\+2} & Second array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are identical 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_a4be902621fe3d33f5fe7d72116196f24}\label{namespacetesseract__common_a4be902621fe3d33f5fe7d72116196f24}} 
+\index{tesseract\_common@{tesseract\_common}!isIdenticalMap@{isIdenticalMap}}
+\index{isIdenticalMap@{isIdenticalMap}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isIdenticalMap()}{isIdenticalMap()}}
+{\footnotesize\ttfamily template$<$typename Key\+Value\+Container\+Type , typename Value\+Type $>$ \\
+bool tesseract\+\_\+common\+::is\+Identical\+Map (\begin{DoxyParamCaption}\item[{const Key\+Value\+Container\+Type \&}]{map\+\_\+1,  }\item[{const Key\+Value\+Container\+Type \&}]{map\+\_\+2,  }\item[{const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&}]{value\+\_\+eq = {\ttfamily \mbox{[}\mbox{]}(const~ValueType\&~v1,~const~ValueType\&~v2)~\{~return~v1~==~v2;~\}} }\end{DoxyParamCaption})}
+
+
+
+Checks if 2 maps are identical. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+\_\+1} & First map \\
+\hline
+{\em map\+\_\+2} & Second map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are identical 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_a129feb5b5288a992d9fb72ba5dbb579d}\label{namespacetesseract__common_a129feb5b5288a992d9fb72ba5dbb579d}} 
+\index{tesseract\_common@{tesseract\_common}!isIdenticalSet@{isIdenticalSet}}
+\index{isIdenticalSet@{isIdenticalSet}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isIdenticalSet()}{isIdenticalSet()}}
+{\footnotesize\ttfamily template$<$typename Value\+Type $>$ \\
+bool tesseract\+\_\+common\+::is\+Identical\+Set (\begin{DoxyParamCaption}\item[{const std\+::set$<$ Value\+Type $>$ \&}]{set\+\_\+1,  }\item[{const std\+::set$<$ Value\+Type $>$ \&}]{set\+\_\+2,  }\item[{const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&}]{value\+\_\+eq = {\ttfamily \mbox{[}\mbox{]}(const~ValueType\&~v1,~const~ValueType\&~v2)~\{~return~v1~==~v2;~\}} }\end{DoxyParamCaption})}
+
+
+
+Checks if 2 sets are identical. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+\_\+1} & First map \\
+\hline
+{\em map\+\_\+2} & Second map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are identical 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_a1dc3a9525efbe582991edd4eedc26079}\label{namespacetesseract__common_a1dc3a9525efbe582991edd4eedc26079}} 
 \index{tesseract\_common@{tesseract\_common}!isNumeric@{isNumeric}}
 \index{isNumeric@{isNumeric}!tesseract\_common@{tesseract\_common}}
@@ -753,12 +907,60 @@ std\+::enable\+\_\+if\+\_\+t$<$!std\+::is\+\_\+polymorphic$<$ E $>$\+::value $>$
 {\footnotesize\ttfamily template$<$typename E $>$ \\
 std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+polymorphic$<$ E $>$\+::value $>$ tesseract\+\_\+common\+::my\+\_\+rethrow\+\_\+if\+\_\+nested (\begin{DoxyParamCaption}\item[{const E \&}]{e }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{namespacetesseract__common_a0808e2d3c913c41e852ab3819eadd828}\label{namespacetesseract__common_a0808e2d3c913c41e852ab3819eadd828}} 
+\index{tesseract\_common@{tesseract\_common}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+common\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&}]{entries\+\_\+1,  }\item[{const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&}]{entries\+\_\+2 }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{namespacetesseract__common_af2c2ec207efac0e2080c6488163eb082}\label{namespacetesseract__common_af2c2ec207efac0e2080c6488163eb082}} 
 \index{tesseract\_common@{tesseract\_common}!parseEnvironmentVariableList@{parseEnvironmentVariableList}}
 \index{parseEnvironmentVariableList@{parseEnvironmentVariableList}!tesseract\_common@{tesseract\_common}}
 \doxysubsubsection{\texorpdfstring{parseEnvironmentVariableList()}{parseEnvironmentVariableList()}}
 {\footnotesize\ttfamily std\+::set$<$ std\+::string $>$ tesseract\+\_\+common\+::parse\+Environment\+Variable\+List (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{env\+\_\+variable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{namespacetesseract__common_a5691a34b0a37453566326959831fb6df}\label{namespacetesseract__common_a5691a34b0a37453566326959831fb6df}} 
+\index{tesseract\_common@{tesseract\_common}!pointersComparison@{pointersComparison}}
+\index{pointersComparison@{pointersComparison}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{pointersComparison()}{pointersComparison()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool tesseract\+\_\+common\+::pointers\+Comparison (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ T $>$ \&}]{p1,  }\item[{const std\+::shared\+\_\+ptr$<$ T $>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+Comparison operator for the objects 2 points point to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First pointer \\
+\hline
+{\em p2} & Second pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if $\ast$p1 \texorpdfstring{$<$}{<} $\ast$p2 and neither is nullptr. Non-\/nullptr is considered \texorpdfstring{$>$}{>} than nullptr 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_a65966457329351239c51b09ec1a8d3a4}\label{namespacetesseract__common_a65966457329351239c51b09ec1a8d3a4}} 
+\index{tesseract\_common@{tesseract\_common}!pointersEqual@{pointersEqual}}
+\index{pointersEqual@{pointersEqual}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{pointersEqual()}{pointersEqual()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool tesseract\+\_\+common\+::pointers\+Equal (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ T $>$ \&}]{p1,  }\item[{const std\+::shared\+\_\+ptr$<$ T $>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+
+
+Checks if 2 pointers point to objects that are ==. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & First pointer \\
+\hline
+{\em p2} & Second pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the objects are == or both pointers are nullptr 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_ac4e9558332430365cd69cb2eec1784c8}\label{namespacetesseract__common_ac4e9558332430365cd69cb2eec1784c8}} 
 \index{tesseract\_common@{tesseract\_common}!printNestedException@{printNestedException}}
 \index{printNestedException@{printNestedException}!tesseract\_common@{tesseract\_common}}
@@ -1015,6 +1217,60 @@ Get string attribute if exist. If it does not exist it returns the default value
 \begin{DoxyReturn}{Returns}
 Parsed string attribute or default value if attribute does not exist. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_a5330a58c8c79cce5559a316e76118558}\label{namespacetesseract__common_a5330a58c8c79cce5559a316e76118558}} 
+\index{tesseract\_common@{tesseract\_common}!testSerialization@{testSerialization}}
+\index{testSerialization@{testSerialization}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{testSerialization()}{testSerialization()}}
+{\footnotesize\ttfamily template$<$typename Serializable\+Type $>$ \\
+void tesseract\+\_\+common\+::test\+Serialization (\begin{DoxyParamCaption}\item[{const Serializable\+Type \&}]{object,  }\item[{const std\+::string \&}]{typename\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Tests Boost serialization for a serializable type. 
+
+Serializes the type to XML file, binary file, and XML string. It then deserializes it and calls the equality operator on the results 
+\begin{DoxyParams}{Parameters}
+{\em object} & Object to be serialized \\
+\hline
+{\em typename\+\_\+string} & Prefix used for filepaths. Serialized files are put in /tmp/$<$typename\+\_\+string$>$.$<$extension$>$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__common_aa8cf5fe962e9933b44d1f8248f0ab2fb}\label{namespacetesseract__common_aa8cf5fe962e9933b44d1f8248f0ab2fb}} 
+\index{tesseract\_common@{tesseract\_common}!testSerializationDerivedClass@{testSerializationDerivedClass}}
+\index{testSerializationDerivedClass@{testSerializationDerivedClass}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{testSerializationDerivedClass()}{testSerializationDerivedClass()}}
+{\footnotesize\ttfamily template$<$typename Serializable\+Type\+Base , typename Serializable\+Type\+Derived $>$ \\
+void tesseract\+\_\+common\+::test\+Serialization\+Derived\+Class (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ Serializable\+Type\+Base $>$ \&}]{object,  }\item[{const std\+::string \&}]{typename\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Tests Boost serialization for a serializable derived type. 
+
+Serializes the type to XML file, binary file, and XML string using the base type. It then deserializes it, casts it to the derived type, and calls the equality operator on the results 
+\begin{DoxyParams}{Parameters}
+{\em object} & Base class pointer to the object to be serialized \\
+\hline
+{\em typename\+\_\+string} & Prefix used for filepaths. Serialized files are put in /tmp/$<$typename\+\_\+string$>$.$<$extension$>$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__common_a1b449b344d06caa397190a9a82dd507a}\label{namespacetesseract__common_a1b449b344d06caa397190a9a82dd507a}} 
+\index{tesseract\_common@{tesseract\_common}!testSerializationPtr@{testSerializationPtr}}
+\index{testSerializationPtr@{testSerializationPtr}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{testSerializationPtr()}{testSerializationPtr()}}
+{\footnotesize\ttfamily template$<$typename Serializable\+Type $>$ \\
+void tesseract\+\_\+common\+::test\+Serialization\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ Serializable\+Type $>$ \&}]{object,  }\item[{const std\+::string \&}]{typename\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+Tests Boost serialization of shared pointer for a serializable type. 
+
+Serializes the type to XML file, binary file, and XML string. It then deserializes it and calls the equality operator on the results 
+\begin{DoxyParams}{Parameters}
+{\em object} & Object to be serialized \\
+\hline
+{\em typename\+\_\+string} & Prefix used for filepaths. Serialized files are put in /tmp/$<$typename\+\_\+string$>$.$<$extension$>$ \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}\label{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}} 
 \index{tesseract\_common@{tesseract\_common}!toNumeric@{toNumeric}}
 \index{toNumeric@{toNumeric}!tesseract\_common@{tesseract\_common}}
@@ -1060,6 +1316,24 @@ True if successful, otherwise false
 \doxysubsubsection{\texorpdfstring{toNumeric$<$ long $>$()}{toNumeric< long >()}}
 {\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}{tesseract\+\_\+common\+::to\+Numeric}}$<$ long $>$ (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{,  }\item[{long \&}]{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{namespacetesseract__common_a83b13b4e33c343e723310e3b0e1c59e9}\label{namespacetesseract__common_a83b13b4e33c343e723310e3b0e1c59e9}} 
+\index{tesseract\_common@{tesseract\_common}!toYAMLString@{toYAMLString}}
+\index{toYAMLString@{toYAMLString}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{toYAMLString()}{toYAMLString()}}
+{\footnotesize\ttfamily std\+::string tesseract\+\_\+common\+::to\+YAMLString (\begin{DoxyParamCaption}\item[{const YAML\+::\+Node \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a YAML\+::\+Node to a yaml string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Input node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String containing the yaml 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_aeacd629bcf585286917aafa7b8e603bb}\label{namespacetesseract__common_aeacd629bcf585286917aafa7b8e603bb}} 
 \index{tesseract\_common@{tesseract\_common}!trim@{trim}}
 \index{trim@{trim}!tesseract\_common@{tesseract\_common}}

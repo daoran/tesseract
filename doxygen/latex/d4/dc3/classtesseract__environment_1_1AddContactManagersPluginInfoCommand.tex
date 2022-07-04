@@ -34,16 +34,30 @@ using \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginIn
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a05f55f8846ed06acc8809148507ddc6f}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} ()
+\item 
 \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ad555ee4de1b61ec82311b38631224d7d}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} (\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}} contact\+\_\+managers\+\_\+plugin\+\_\+info)
 \begin{DoxyCompactList}\small\item\em Add contact manager plugins. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a9e6bb384b2ad8136e9e440a7b1419e37}{get\+Type}} () const final
-\item 
 const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}} \& \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a22ade255d7672bf5d02a494d33fe8dcb}{get\+Contact\+Managers\+Plugin\+Info}} () const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_aa0378e38767546431de8aaf82ab96384}{operator==}} (const \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a188dd776a38e842e9e8194b04def58ce}{operator!=}} (const \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ab70e97f8facabaa40d94cdea17575f63}{serialize}} (Archive \&ar, const unsigned int version)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}} \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a2385b43af6e9b321ccf499b1bcde5df1}{contact\+\_\+managers\+\_\+plugin\+\_\+info\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \end{DoxyCompactItemize}
 
 
@@ -63,10 +77,16 @@ const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tes
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a05f55f8846ed06acc8809148507ddc6f}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a05f55f8846ed06acc8809148507ddc6f}} 
+\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!AddContactManagersPluginInfoCommand@{AddContactManagersPluginInfoCommand}}
+\index{AddContactManagersPluginInfoCommand@{AddContactManagersPluginInfoCommand}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
+\doxysubsubsection{\texorpdfstring{AddContactManagersPluginInfoCommand()}{AddContactManagersPluginInfoCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ad555ee4de1b61ec82311b38631224d7d}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ad555ee4de1b61ec82311b38631224d7d}} 
 \index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!AddContactManagersPluginInfoCommand@{AddContactManagersPluginInfoCommand}}
 \index{AddContactManagersPluginInfoCommand@{AddContactManagersPluginInfoCommand}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
-\doxysubsubsection{\texorpdfstring{AddContactManagersPluginInfoCommand()}{AddContactManagersPluginInfoCommand()}}
+\doxysubsubsection{\texorpdfstring{AddContactManagersPluginInfoCommand()}{AddContactManagersPluginInfoCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}}}]{contact\+\_\+managers\+\_\+plugin\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -87,15 +107,33 @@ Add contact manager plugins.
 \doxysubsubsection{\texorpdfstring{getContactManagersPluginInfo()}{getContactManagersPluginInfo()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}} \& tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::get\+Contact\+Managers\+Plugin\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a9e6bb384b2ad8136e9e440a7b1419e37}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a9e6bb384b2ad8136e9e440a7b1419e37}} 
-\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!getType@{getType}}
-\index{getType@{getType}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
-\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a188dd776a38e842e9e8194b04def58ce}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_a188dd776a38e842e9e8194b04def58ce}} 
+\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_aa0378e38767546431de8aaf82ab96384}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_aa0378e38767546431de8aaf82ab96384}} 
+\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1AddContactManagersPluginInfoCommand}{Add\+Contact\+Managers\+Plugin\+Info\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ab70e97f8facabaa40d94cdea17575f63}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ab70e97f8facabaa40d94cdea17575f63}} 
+\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::\+Add\+Contact\+Managers\+Plugin\+Info\+Command\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e231a278dcd79c1ec16490f}{tesseract\+\_\+environment\+::\+Command}}.
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__environment_1_1AddContactManagersPluginInfoCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_environment::AddContactManagersPluginInfoCommand@{tesseract\_environment::AddContactManagersPluginInfoCommand}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -108,6 +146,7 @@ Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e23
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{add__contact__managers__plugin__info__command_8h}{add\+\_\+contact\+\_\+managers\+\_\+plugin\+\_\+info\+\_\+command.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{add__contact__managers__plugin__info__command_8h}{add\+\_\+contact\+\_\+managers\+\_\+plugin\+\_\+info\+\_\+command.\+h}}\item 
+tesseract\+\_\+environment/src/commands/\mbox{\hyperlink{add__contact__managers__plugin__info__command_8cpp}{add\+\_\+contact\+\_\+managers\+\_\+plugin\+\_\+info\+\_\+command.\+cpp}}\end{DoxyCompactItemize}

@@ -36,8 +36,19 @@ Collaboration diagram for tesseract\+\_\+common\+::Plugin\+Loader\+:
 \begin{DoxyCompactList}\small\item\em Instantiate a plugin with the provided name. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_ae73347144bf79b795ed17959370f0559}{is\+Plugin\+Available}} (const std\+::string \&plugin\+\_\+name) const
 \begin{DoxyCompactList}\small\item\em Check if plugin is available. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Plugin\+Base $>$ }\\\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_af2804966fad2fe792f75dd24cd593531}{get\+Available\+Plugins}} () const
+\begin{DoxyCompactList}\small\item\em Get the available plugins for the provided Plugin\+Base type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_ae7e1cc1e230d726d41595f0ad0699247}{get\+Available\+Plugins}} (const std\+::string \&section) const
+\begin{DoxyCompactList}\small\item\em Get the available plugins under the provided section. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_a6f7905ef925785966dfba57db217da85}{get\+Available\+Sections}} (bool include\+\_\+hidden=false) const
+\begin{DoxyCompactList}\small\item\em Get the available sections within the provided search libraries. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_a8f0b1bf448293e184888f791baba0341}{count}} () const
 \begin{DoxyCompactList}\small\item\em The number of plugins stored. The size of plugins variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classtesseract__common_1_1PluginLoader_a06b109e7bcab52ea618544b1e6695c9a}{add\+Symbol\+Library\+To\+Search\+Libraries\+Env}} (const void $\ast$symbol\+\_\+ptr, const std\+::string \&\mbox{\hyperlink{classtesseract__common_1_1PluginLoader_af3929c97ee7a2ca0865c616397c1caba}{search\+\_\+libraries\+\_\+env}})
+\begin{DoxyCompactList}\small\item\em Utility function to add library containing symbol to the search env variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -65,6 +76,25 @@ The plugin must be exported using the macro TESSERACT\+\_\+\+ADD\+\_\+\+PLUGIN. 
 \mbox{\hyperlink{classtesseract__common_1_1PluginLoader}{Plugin\+Loader}} loader; loader.\+search\+\_\+libraries.\+insert(\char`\"{}my\+\_\+plugin\char`\"{}); // libmy\+\_\+plugin.\+so std\+::shared\+\_\+ptr$<$\+Plugin\+Base$>$ p = loader.\+instantiate$<$\+Plugin\+Base$>$(\char`\"{}plugin\char`\"{}); 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_a06b109e7bcab52ea618544b1e6695c9a}\label{classtesseract__common_1_1PluginLoader_a06b109e7bcab52ea618544b1e6695c9a}} 
+\index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!addSymbolLibraryToSearchLibrariesEnv@{addSymbolLibraryToSearchLibrariesEnv}}
+\index{addSymbolLibraryToSearchLibrariesEnv@{addSymbolLibraryToSearchLibrariesEnv}!tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}}
+\doxysubsubsection{\texorpdfstring{addSymbolLibraryToSearchLibrariesEnv()}{addSymbolLibraryToSearchLibrariesEnv()}}
+{\footnotesize\ttfamily void tesseract\+\_\+common\+::\+Plugin\+Loader\+::add\+Symbol\+Library\+To\+Search\+Libraries\+Env (\begin{DoxyParamCaption}\item[{const void $\ast$}]{symbol\+\_\+ptr,  }\item[{const std\+::string \&}]{search\+\_\+libraries\+\_\+env }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Utility function to add library containing symbol to the search env variable. 
+
+In some cases the name and location of a library is unknown at runtime, but a symbol can be linked at compile time. This is true for Python auditwheel distributions. This utility function will determine the location of the library, and add it to the library search environment variable so it can be found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol\+\_\+ptr} & Pointer to the symbol to find \\
+\hline
+{\em search\+\_\+libraries\+\_\+env} & The environmental variable to modify \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_a8f0b1bf448293e184888f791baba0341}\label{classtesseract__common_1_1PluginLoader_a8f0b1bf448293e184888f791baba0341}} 
 \index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!count@{count}}
 \index{count@{count}!tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}}
@@ -77,6 +107,51 @@ The number of plugins stored. The size of plugins variable.
 
 \begin{DoxyReturn}{Returns}
 The number of plugins. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_af2804966fad2fe792f75dd24cd593531}\label{classtesseract__common_1_1PluginLoader_af2804966fad2fe792f75dd24cd593531}} 
+\index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!getAvailablePlugins@{getAvailablePlugins}}
+\index{getAvailablePlugins@{getAvailablePlugins}!tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}}
+\doxysubsubsection{\texorpdfstring{getAvailablePlugins()}{getAvailablePlugins()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Plugin\+Base $>$ \\
+\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ tesseract\+\_\+common\+::\+Plugin\+Loader\+::get\+Available\+Plugins}
+
+
+
+Get the available plugins for the provided Plugin\+Base type. 
+
+This expects the Plugin base to have a static std\+::string SECTION\+\_\+\+NAME which is used for looking up plugins \begin{DoxyReturn}{Returns}
+A list of available plugins for the provided Plugin\+Base type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_ae7e1cc1e230d726d41595f0ad0699247}\label{classtesseract__common_1_1PluginLoader_ae7e1cc1e230d726d41595f0ad0699247}} 
+\index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!getAvailablePlugins@{getAvailablePlugins}}
+\index{getAvailablePlugins@{getAvailablePlugins}!tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}}
+\doxysubsubsection{\texorpdfstring{getAvailablePlugins()}{getAvailablePlugins()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ tesseract\+\_\+common\+::\+Plugin\+Loader\+::get\+Available\+Plugins (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the available plugins under the provided section. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em section} & The section name to get all available plugins \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of available plugins under the provided section 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_a6f7905ef925785966dfba57db217da85}\label{classtesseract__common_1_1PluginLoader_a6f7905ef925785966dfba57db217da85}} 
+\index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!getAvailableSections@{getAvailableSections}}
+\index{getAvailableSections@{getAvailableSections}!tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}}
+\doxysubsubsection{\texorpdfstring{getAvailableSections()}{getAvailableSections()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ tesseract\+\_\+common\+::\+Plugin\+Loader\+::get\+Available\+Sections (\begin{DoxyParamCaption}\item[{bool}]{include\+\_\+hidden = {\ttfamily false} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the available sections within the provided search libraries. 
+
+\begin{DoxyReturn}{Returns}
+A list of available sections 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classtesseract__common_1_1PluginLoader_a453681a0572061cdfdefb561c9c084f2}\label{classtesseract__common_1_1PluginLoader_a453681a0572061cdfdefb561c9c084f2}} 
 \index{tesseract\_common::PluginLoader@{tesseract\_common::PluginLoader}!instantiate@{instantiate}}

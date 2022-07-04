@@ -34,16 +34,30 @@ using \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a6cd0fc
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_ad4ea220bfbea7cc72de63fea471ebd60}{Remove\+Joint\+Command}} ()
+\item 
 \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a60f8c1e7be3534ffb7b93c12f9e3d1c7}{Remove\+Joint\+Command}} (std\+::string joint\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Removes a joint from the environment. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a8249d1a967fd6f091bd829df86ce7d11}{get\+Type}} () const final
-\item 
 const std\+::string \& \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a7e0d71dcd72753d7de09e7e9f9fca62b}{get\+Joint\+Name}} () const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a640139fdacacd22a6def87acf7868e44}{operator==}} (const \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand}{Remove\+Joint\+Command}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a01f1c6952a649c2658ff4a8c26d777ea}{operator!=}} (const \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand}{Remove\+Joint\+Command}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_ac543e4b63419630acb738e1eecb8e037}{serialize}} (Archive \&ar, const unsigned int version)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_a015ca83b00510ecfc96925ba460fe765}{joint\+\_\+name\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \end{DoxyCompactItemize}
 
 
@@ -63,10 +77,16 @@ std\+::string \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_ad4ea220bfbea7cc72de63fea471ebd60}\label{classtesseract__environment_1_1RemoveJointCommand_ad4ea220bfbea7cc72de63fea471ebd60}} 
+\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!RemoveJointCommand@{RemoveJointCommand}}
+\index{RemoveJointCommand@{RemoveJointCommand}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
+\doxysubsubsection{\texorpdfstring{RemoveJointCommand()}{RemoveJointCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::\+Remove\+Joint\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_a60f8c1e7be3534ffb7b93c12f9e3d1c7}\label{classtesseract__environment_1_1RemoveJointCommand_a60f8c1e7be3534ffb7b93c12f9e3d1c7}} 
 \index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!RemoveJointCommand@{RemoveJointCommand}}
 \index{RemoveJointCommand@{RemoveJointCommand}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
-\doxysubsubsection{\texorpdfstring{RemoveJointCommand()}{RemoveJointCommand()}}
+\doxysubsubsection{\texorpdfstring{RemoveJointCommand()}{RemoveJointCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::\+Remove\+Joint\+Command (\begin{DoxyParamCaption}\item[{std\+::string}]{joint\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -89,15 +109,33 @@ Removes a joint from the environment.
 \doxysubsubsection{\texorpdfstring{getJointName()}{getJointName()}}
 {\footnotesize\ttfamily const std\+::string \& tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::get\+Joint\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_a8249d1a967fd6f091bd829df86ce7d11}\label{classtesseract__environment_1_1RemoveJointCommand_a8249d1a967fd6f091bd829df86ce7d11}} 
-\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!getType@{getType}}
-\index{getType@{getType}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
-\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_a01f1c6952a649c2658ff4a8c26d777ea}\label{classtesseract__environment_1_1RemoveJointCommand_a01f1c6952a649c2658ff4a8c26d777ea}} 
+\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand}{Remove\+Joint\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_a640139fdacacd22a6def87acf7868e44}\label{classtesseract__environment_1_1RemoveJointCommand_a640139fdacacd22a6def87acf7868e44}} 
+\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1RemoveJointCommand}{Remove\+Joint\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_ac543e4b63419630acb738e1eecb8e037}\label{classtesseract__environment_1_1RemoveJointCommand_ac543e4b63419630acb738e1eecb8e037}} 
+\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::\+Remove\+Joint\+Command\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e231a278dcd79c1ec16490f}{tesseract\+\_\+environment\+::\+Command}}.
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1RemoveJointCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__environment_1_1RemoveJointCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_environment::RemoveJointCommand@{tesseract\_environment::RemoveJointCommand}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -110,6 +148,7 @@ Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e23
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{remove__joint__command_8h}{remove\+\_\+joint\+\_\+command.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{remove__joint__command_8h}{remove\+\_\+joint\+\_\+command.\+h}}\item 
+tesseract\+\_\+environment/src/commands/\mbox{\hyperlink{remove__joint__command_8cpp}{remove\+\_\+joint\+\_\+command.\+cpp}}\end{DoxyCompactItemize}

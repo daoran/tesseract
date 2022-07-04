@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['edge_0',['Edge',['../d7/d5d/classtesseract__scene__graph_1_1SceneGraph.html#a672cca11486cfaff6c0ce0794eca7220',1,'tesseract_scene_graph::SceneGraph']]],
-  ['edgeproperty_1',['EdgeProperty',['../d9/d42/namespacetesseract__scene__graph.html#a9dc21bc544723df21ec27052717c4e1e',1,'tesseract_scene_graph']]],
-  ['entityid_2',['EntityID',['../d8/de5/namespacetesseract__visualization.html#a12376b06553445215c95f00b5fac42ea',1,'tesseract_visualization']]],
-  ['entitymap_3',['EntityMap',['../d8/de5/namespacetesseract__visualization.html#a62add283f33a3eda80b1ffdc98e34261',1,'tesseract_visualization']]]
+  ['difference_5ftype_0',['difference_type',['../da/d05/classtesseract__common_1_1JointTrajectory.html#aeee66a623c1af031fb4584a90473a204',1,'tesseract_common::JointTrajectory']]],
+  ['doublevector_1',['DoubleVector',['../d9/db6/namespacetesseract__collision_1_1FLOAT__MATH_1_1VERTEX__INDEX.html#a409d02969256fe0d62c5676b16d23d6b',1,'tesseract_collision::FLOAT_MATH::VERTEX_INDEX']]]
 ];

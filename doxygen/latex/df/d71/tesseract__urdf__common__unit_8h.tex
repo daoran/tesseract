@@ -6,10 +6,11 @@
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
 {\ttfamily \#include $<$console\+\_\+bridge/console.\+h$>$}\newline
+{\ttfamily \#include $<$tinyxml2.\+h$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+common/resource\+\_\+locator.\+h$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+common/utils.\+h$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+urdf/urdf\+\_\+parser.\+h$>$}\newline
-{\ttfamily \#include $<$tinyxml2.\+h$>$}\newline
+{\ttfamily \#include $<$tesseract\+\_\+support/tesseract\+\_\+support\+\_\+resource\+\_\+locator.\+h$>$}\newline
 Include dependency graph for tesseract\+\_\+urdf\+\_\+common\+\_\+unit.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -29,9 +30,7 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{macros_8h_a8cc0e3c6a3382c5c0b19eb9e676fc2db}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+PUSH}} \mbox{\hyperlink{macros_8h_a7af8561cf52519e9896b0697095c1b8b}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+POP}} std\+::string \mbox{\hyperlink{tesseract__urdf__common__unit_8h_a093896878775ab688c91d8ef6b92150d}{locate\+Resource}} (const std\+::string \&url)
-\item 
-{\footnotesize template$<$typename Element\+Type $>$ }\\bool \mbox{\hyperlink{tesseract__urdf__common__unit_8h_ad922a39e6c66bcc8db2c0da160185793}{run\+Test}} (Element\+Type \&type, std\+::function$<$ Element\+Type(const tinyxml2\+::\+XMLElement $\ast$, const int)$>$ func, const std\+::string \&xml\+\_\+string, const std\+::string \&element\+\_\+name, int version)
+{\footnotesize template$<$typename Element\+Type $>$ }\\\mbox{\hyperlink{macros_8h_a8cc0e3c6a3382c5c0b19eb9e676fc2db}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+PUSH}} \mbox{\hyperlink{macros_8h_a7af8561cf52519e9896b0697095c1b8b}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+POP}} bool \mbox{\hyperlink{tesseract__urdf__common__unit_8h_a1edb9b15c3b8f9f22165f2f6d1e77b34}{run\+Test}} (Element\+Type \&type, std\+::function$<$ Element\+Type(const tinyxml2\+::\+XMLElement $\ast$, const int)$>$ func, const std\+::string \&xml\+\_\+string, const std\+::string \&element\+\_\+name, int version)
 \item 
 {\footnotesize template$<$typename Element\+Type $>$ }\\bool \mbox{\hyperlink{tesseract__urdf__common__unit_8h_aa7d92530b9a47f4a88cc66a96a414400}{run\+Test}} (Element\+Type \&type, std\+::function$<$ Element\+Type(const tinyxml2\+::\+XMLElement $\ast$, const \mbox{\hyperlink{classtesseract__common_1_1ResourceLocator}{tesseract\+\_\+common\+::\+Resource\+Locator}} \&, bool, const int)$>$ func, const std\+::string \&xml\+\_\+string, const std\+::string \&element\+\_\+name, const \mbox{\hyperlink{classtesseract__common_1_1ResourceLocator}{tesseract\+\_\+common\+::\+Resource\+Locator}} \&locator, int version, bool visual)
 \item 
@@ -58,18 +57,12 @@ void \mbox{\hyperlink{tesseract__urdf__common__unit_8h_aec7a5ebd969d6c108a89cf52
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{tesseract__urdf__common__unit_8h_a093896878775ab688c91d8ef6b92150d}\label{tesseract__urdf__common__unit_8h_a093896878775ab688c91d8ef6b92150d}} 
-\index{tesseract\_urdf\_common\_unit.h@{tesseract\_urdf\_common\_unit.h}!locateResource@{locateResource}}
-\index{locateResource@{locateResource}!tesseract\_urdf\_common\_unit.h@{tesseract\_urdf\_common\_unit.h}}
-\doxysubsubsection{\texorpdfstring{locateResource()}{locateResource()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{macros_8h_a8cc0e3c6a3382c5c0b19eb9e676fc2db}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+PUSH}} \mbox{\hyperlink{macros_8h_a7af8561cf52519e9896b0697095c1b8b}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+POP}} std\+::string locate\+Resource (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{tesseract__urdf__common__unit_8h_ad922a39e6c66bcc8db2c0da160185793}\label{tesseract__urdf__common__unit_8h_ad922a39e6c66bcc8db2c0da160185793}} 
+\mbox{\Hypertarget{tesseract__urdf__common__unit_8h_a1edb9b15c3b8f9f22165f2f6d1e77b34}\label{tesseract__urdf__common__unit_8h_a1edb9b15c3b8f9f22165f2f6d1e77b34}} 
 \index{tesseract\_urdf\_common\_unit.h@{tesseract\_urdf\_common\_unit.h}!runTest@{runTest}}
 \index{runTest@{runTest}!tesseract\_urdf\_common\_unit.h@{tesseract\_urdf\_common\_unit.h}}
 \doxysubsubsection{\texorpdfstring{runTest()}{runTest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily template$<$typename Element\+Type $>$ \\
-bool run\+Test (\begin{DoxyParamCaption}\item[{Element\+Type \&}]{type,  }\item[{std\+::function$<$ Element\+Type(const tinyxml2\+::\+XMLElement $\ast$, const int)$>$}]{func,  }\item[{const std\+::string \&}]{xml\+\_\+string,  }\item[{const std\+::string \&}]{element\+\_\+name,  }\item[{int}]{version }\end{DoxyParamCaption})}
+\mbox{\hyperlink{macros_8h_a8cc0e3c6a3382c5c0b19eb9e676fc2db}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+PUSH}} \mbox{\hyperlink{macros_8h_a7af8561cf52519e9896b0697095c1b8b}{TESSERACT\+\_\+\+COMMON\+\_\+\+IGNORE\+\_\+\+WARNINGS\+\_\+\+POP}} bool run\+Test (\begin{DoxyParamCaption}\item[{Element\+Type \&}]{type,  }\item[{std\+::function$<$ Element\+Type(const tinyxml2\+::\+XMLElement $\ast$, const int)$>$}]{func,  }\item[{const std\+::string \&}]{xml\+\_\+string,  }\item[{const std\+::string \&}]{element\+\_\+name,  }\item[{int}]{version }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__urdf__common__unit_8h_aa7d92530b9a47f4a88cc66a96a414400}\label{tesseract__urdf__common__unit_8h_aa7d92530b9a47f4a88cc66a96a414400}} 
 \index{tesseract\_urdf\_common\_unit.h@{tesseract\_urdf\_common\_unit.h}!runTest@{runTest}}

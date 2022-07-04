@@ -22,7 +22,7 @@
 \DoxyCodeLine{42 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacetesseract__kinematics}{tesseract\_kinematics}}}
 \DoxyCodeLine{43 \{}
 \DoxyCodeLine{44 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{45 \textcolor{keyword}{using} \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}} = Eigen::Matrix<FloatType, Eigen::Dynamic, 1>;}
+\DoxyCodeLine{45 \textcolor{keyword}{using }\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}} = Eigen::Matrix<FloatType, Eigen::Dynamic, 1>;}
 \DoxyCodeLine{46 }
 \DoxyCodeLine{55 \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a43f562948ca86e1cd531b12a92191334}{numericalJacobian}}(Eigen::Ref<Eigen::MatrixXd> jacobian,}
 \DoxyCodeLine{56                                      \textcolor{keyword}{const} Eigen::Isometry3d\& change\_base,}
@@ -219,176 +219,191 @@
 \DoxyCodeLine{307 }
 \DoxyCodeLine{308   \textcolor{keyword}{auto} fn = [](\textcolor{keyword}{const} Eigen::MatrixXd\& m) \{}
 \DoxyCodeLine{309     \mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid}{ManipulabilityEllipsoid}} data;}
-\DoxyCodeLine{310     Eigen::EigenSolver<Eigen::MatrixXd> sm(m, \textcolor{keyword}{false});}
-\DoxyCodeLine{311 }
-\DoxyCodeLine{312     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}} = sm.eigenvalues().real();}
-\DoxyCodeLine{313     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_abc54d1240b184a6dc0eaf16bf6461fbe}{measure}} = std::sqrt(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.maxCoeff()) / std::sqrt(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.minCoeff());}
-\DoxyCodeLine{314     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a85fa8d934966c5522aad3d405fb1296b}{condition}} = data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.maxCoeff() / data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.minCoeff();}
-\DoxyCodeLine{315     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}} = 1;}
-\DoxyCodeLine{316     \textcolor{keywordflow}{for} (Eigen::Index i = 0; i < sm.eigenvalues().size(); ++i)}
-\DoxyCodeLine{317       data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}} = data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}} * data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}[i];}
-\DoxyCodeLine{318     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}} = std::sqrt(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}});}
-\DoxyCodeLine{319     \textcolor{keywordflow}{return} data;}
-\DoxyCodeLine{320   \};}
-\DoxyCodeLine{321 }
-\DoxyCodeLine{322   Eigen::MatrixXd a = jacobian * jacobian.transpose();}
-\DoxyCodeLine{323   Eigen::MatrixXd a\_linear = jacob\_linear * jacob\_linear.transpose();}
-\DoxyCodeLine{324   Eigen::MatrixXd a\_angular = jacob\_angular * jacob\_angular.transpose();}
-\DoxyCodeLine{325   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a278ada9b636b868767d17de4c696121c}{m}} = fn(a);}
-\DoxyCodeLine{326   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_afc236fe0a63f4050b89d58e6b69b1d81}{m\_linear}} = fn(a\_linear);}
-\DoxyCodeLine{327   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_af88c7eaa372421bbfb610ed8acc46b28}{m\_angular}} = fn(a\_angular);}
-\DoxyCodeLine{328 }
-\DoxyCodeLine{329   Eigen::MatrixXd a\_inv = a.inverse();}
-\DoxyCodeLine{330   Eigen::MatrixXd a\_linear\_inv = a\_linear.inverse();}
-\DoxyCodeLine{331   Eigen::MatrixXd a\_angular\_inv = a\_angular.inverse();}
-\DoxyCodeLine{332   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a3043ecfcb291c4dd9c3fde03244dcf5d}{f}} = fn(a\_inv);}
-\DoxyCodeLine{333   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a4969a53954a8b868771b281bba59dcc2}{f\_linear}} = fn(a\_linear\_inv);}
-\DoxyCodeLine{334   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a681c4751a7b40c0953c9420ad834a910}{f\_angular}} = fn(a\_angular\_inv);}
-\DoxyCodeLine{335 }
-\DoxyCodeLine{336   \textcolor{keywordflow}{return} manip;}
-\DoxyCodeLine{337 \}}
-\DoxyCodeLine{338 }
-\DoxyCodeLine{343 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{344 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a116ec2446a1d878c4be27231149a9896}{getRedundantSolutionsHelper}}(\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{std::vector}}<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}>\& redundant\_sols,}
-\DoxyCodeLine{345                                         \textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& sol,}
-\DoxyCodeLine{346                                         \textcolor{keyword}{const} Eigen::MatrixX2d\& limits,}
-\DoxyCodeLine{347                                         std::vector<Eigen::Index>::const\_iterator current\_index,}
-\DoxyCodeLine{348                                         std::vector<Eigen::Index>::const\_iterator end\_index)}
-\DoxyCodeLine{349 \{}
-\DoxyCodeLine{350   \textcolor{keywordtype}{double} val\{ 0 \};}
-\DoxyCodeLine{351   \textcolor{keywordflow}{for} (; current\_index != end\_index; ++current\_index)}
-\DoxyCodeLine{352   \{}
-\DoxyCodeLine{353     \textcolor{keywordflow}{if} (std::isinf(limits(*current\_index, 0)))}
-\DoxyCodeLine{354     \{}
-\DoxyCodeLine{355       std::stringstream ss;}
-\DoxyCodeLine{356       ss << \textcolor{stringliteral}{"{}Lower limit of joint "{}} << *current\_index << \textcolor{stringliteral}{"{} is infinite; no redundant solutions will be generated"{}}}
-\DoxyCodeLine{357          << std::endl;}
-\DoxyCodeLine{358       CONSOLE\_BRIDGE\_logWarn(ss.str().c\_str());}
-\DoxyCodeLine{359     \}}
-\DoxyCodeLine{360     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{361     \{}
-\DoxyCodeLine{362       val = sol[*current\_index];}
-\DoxyCodeLine{363       \textcolor{keywordflow}{while} ((val -\/= (2.0 * M\_PI)) > limits(*current\_index, 0) ||}
-\DoxyCodeLine{364              \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 0)))}
-\DoxyCodeLine{365       \{}
-\DoxyCodeLine{366         \textcolor{comment}{// It not guaranteed that the provided solution is within limits so this check is needed}}
-\DoxyCodeLine{367         \textcolor{keywordflow}{if} (val < limits(*current\_index, 1) ||}
-\DoxyCodeLine{368             \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 1)))}
-\DoxyCodeLine{369         \{}
-\DoxyCodeLine{370           Eigen::VectorXd new\_sol = sol;}
-\DoxyCodeLine{371           new\_sol[*current\_index] = val;}
-\DoxyCodeLine{372 }
-\DoxyCodeLine{373           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
-\DoxyCodeLine{374           \{}
-\DoxyCodeLine{375             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
-\DoxyCodeLine{376             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
-\DoxyCodeLine{377           \}}
-\DoxyCodeLine{378 }
-\DoxyCodeLine{379           getRedundantSolutionsHelper<FloatType>(redundant\_sols, new\_sol, limits, current\_index + 1, end\_index);}
-\DoxyCodeLine{380         \}}
-\DoxyCodeLine{381       \}}
-\DoxyCodeLine{382     \}}
-\DoxyCodeLine{383 }
-\DoxyCodeLine{384     \textcolor{keywordflow}{if} (std::isinf(limits(*current\_index, 1)))}
-\DoxyCodeLine{385     \{}
-\DoxyCodeLine{386       std::stringstream ss;}
-\DoxyCodeLine{387       ss << \textcolor{stringliteral}{"{}Upper limit of joint "{}} << *current\_index << \textcolor{stringliteral}{"{} is infinite; no redundant solutions will be generated"{}}}
-\DoxyCodeLine{388          << std::endl;}
-\DoxyCodeLine{389       CONSOLE\_BRIDGE\_logWarn(ss.str().c\_str());}
-\DoxyCodeLine{390     \}}
-\DoxyCodeLine{391     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{392     \{}
-\DoxyCodeLine{393       val = sol[*current\_index];}
-\DoxyCodeLine{394       \textcolor{keywordflow}{while} ((val += (2.0 * M\_PI)) < limits(*current\_index, 1) ||}
-\DoxyCodeLine{395              \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 1)))}
-\DoxyCodeLine{396       \{}
-\DoxyCodeLine{397         \textcolor{comment}{// It not guaranteed that the provided solution is within limits so this check is needed}}
-\DoxyCodeLine{398         \textcolor{keywordflow}{if} (val > limits(*current\_index, 0) ||}
-\DoxyCodeLine{399             \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 0)))}
-\DoxyCodeLine{400         \{}
-\DoxyCodeLine{401           Eigen::VectorXd new\_sol = sol;}
-\DoxyCodeLine{402           new\_sol[*current\_index] = val;}
-\DoxyCodeLine{403 }
-\DoxyCodeLine{404           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
-\DoxyCodeLine{405           \{}
-\DoxyCodeLine{406             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
-\DoxyCodeLine{407             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
-\DoxyCodeLine{408           \}}
-\DoxyCodeLine{409 }
-\DoxyCodeLine{410           getRedundantSolutionsHelper<FloatType>(redundant\_sols, new\_sol, limits, current\_index + 1, end\_index);}
-\DoxyCodeLine{411         \}}
-\DoxyCodeLine{412       \}}
-\DoxyCodeLine{413     \}}
-\DoxyCodeLine{414   \}}
-\DoxyCodeLine{415 \}}
-\DoxyCodeLine{416 }
-\DoxyCodeLine{424 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{425 \textcolor{keyword}{inline} std::vector<VectorX<FloatType>> \mbox{\hyperlink{namespacetesseract__kinematics_a325b511b4f36172c8814db524742aed9}{getRedundantSolutions}}(\textcolor{keyword}{const} Eigen::Ref<\textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}>\& sol,}
-\DoxyCodeLine{426                                                              \textcolor{keyword}{const} Eigen::MatrixX2d\& limits,}
-\DoxyCodeLine{427                                                              \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
-\DoxyCodeLine{428 \{}
-\DoxyCodeLine{429   \textcolor{keywordflow}{if} (redundancy\_capable\_joints.empty())}
-\DoxyCodeLine{430     \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{310     Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> sm(m, Eigen::DecompositionOptions::EigenvaluesOnly);}
+\DoxyCodeLine{311     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}} = sm.eigenvalues().real();}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     \textcolor{comment}{// Set eigenvalues near zero to zero. This also implies zero volume}}
+\DoxyCodeLine{314     \textcolor{keywordflow}{for} (Eigen::Index i = 0; i < data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.size(); ++i)}
+\DoxyCodeLine{315     \{}
+\DoxyCodeLine{316       \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}[i], 0))}
+\DoxyCodeLine{317         data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}[i] = +0;}
+\DoxyCodeLine{318     \}}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320     \textcolor{comment}{// If the minimum eigen value is approximately zero set measure and condition to max double}}
+\DoxyCodeLine{321     \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.minCoeff(), 0))}
+\DoxyCodeLine{322     \{}
+\DoxyCodeLine{323       data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_abc54d1240b184a6dc0eaf16bf6461fbe}{measure}} = std::numeric\_limits<double>::max();}
+\DoxyCodeLine{324       data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a85fa8d934966c5522aad3d405fb1296b}{condition}} = std::numeric\_limits<double>::max();}
+\DoxyCodeLine{325     \}}
+\DoxyCodeLine{326     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{327     \{}
+\DoxyCodeLine{328       data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a85fa8d934966c5522aad3d405fb1296b}{condition}} = data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.maxCoeff() / data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.minCoeff();}
+\DoxyCodeLine{329       data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_abc54d1240b184a6dc0eaf16bf6461fbe}{measure}} = std::sqrt(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a85fa8d934966c5522aad3d405fb1296b}{condition}});}
+\DoxyCodeLine{330     \}}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332     data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a3fb9e5490649a2f08866ddf2135e6662}{volume}} = std::sqrt(data.\mbox{\hyperlink{structtesseract__kinematics_1_1ManipulabilityEllipsoid_a435d10bf8202bacf9cb472b0ac2c0c36}{eigen\_values}}.prod());}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{334     \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{335   \};}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337   Eigen::MatrixXd a = jacobian * jacobian.transpose();}
+\DoxyCodeLine{338   Eigen::MatrixXd a\_linear = jacob\_linear * jacob\_linear.transpose();}
+\DoxyCodeLine{339   Eigen::MatrixXd a\_angular = jacob\_angular * jacob\_angular.transpose();}
+\DoxyCodeLine{340   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a278ada9b636b868767d17de4c696121c}{m}} = fn(a);}
+\DoxyCodeLine{341   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_afc236fe0a63f4050b89d58e6b69b1d81}{m\_linear}} = fn(a\_linear);}
+\DoxyCodeLine{342   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_af88c7eaa372421bbfb610ed8acc46b28}{m\_angular}} = fn(a\_angular);}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344   Eigen::MatrixXd a\_inv = a.inverse();}
+\DoxyCodeLine{345   Eigen::MatrixXd a\_linear\_inv = a\_linear.inverse();}
+\DoxyCodeLine{346   Eigen::MatrixXd a\_angular\_inv = a\_angular.inverse();}
+\DoxyCodeLine{347   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a3043ecfcb291c4dd9c3fde03244dcf5d}{f}} = fn(a\_inv);}
+\DoxyCodeLine{348   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a4969a53954a8b868771b281bba59dcc2}{f\_linear}} = fn(a\_linear\_inv);}
+\DoxyCodeLine{349   manip.\mbox{\hyperlink{structtesseract__kinematics_1_1Manipulability_a681c4751a7b40c0953c9420ad834a910}{f\_angular}} = fn(a\_angular\_inv);}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{351   \textcolor{keywordflow}{return} manip;}
+\DoxyCodeLine{352 \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{358 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
+\DoxyCodeLine{359 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a116ec2446a1d878c4be27231149a9896}{getRedundantSolutionsHelper}}(\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{std::vector}}<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}>\& redundant\_sols,}
+\DoxyCodeLine{360                                         \textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& sol,}
+\DoxyCodeLine{361                                         \textcolor{keyword}{const} Eigen::MatrixX2d\& limits,}
+\DoxyCodeLine{362                                         std::vector<Eigen::Index>::const\_iterator current\_index,}
+\DoxyCodeLine{363                                         std::vector<Eigen::Index>::const\_iterator end\_index)}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365   \textcolor{keywordtype}{double} val\{ 0 \};}
+\DoxyCodeLine{366   \textcolor{keywordflow}{for} (; current\_index != end\_index; ++current\_index)}
+\DoxyCodeLine{367   \{}
+\DoxyCodeLine{368     \textcolor{keywordflow}{if} (std::isinf(limits(*current\_index, 0)))}
+\DoxyCodeLine{369     \{}
+\DoxyCodeLine{370       std::stringstream ss;}
+\DoxyCodeLine{371       ss << \textcolor{stringliteral}{"{}Lower limit of joint "{}} << *current\_index << \textcolor{stringliteral}{"{} is infinite; no redundant solutions will be generated"{}}}
+\DoxyCodeLine{372          << std::endl;}
+\DoxyCodeLine{373       CONSOLE\_BRIDGE\_logWarn(ss.str().c\_str());}
+\DoxyCodeLine{374     \}}
+\DoxyCodeLine{375     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{376     \{}
+\DoxyCodeLine{377       val = sol[*current\_index];}
+\DoxyCodeLine{378       \textcolor{keywordflow}{while} ((val -\/= (2.0 * M\_PI)) > limits(*current\_index, 0) ||}
+\DoxyCodeLine{379              \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 0)))}
+\DoxyCodeLine{380       \{}
+\DoxyCodeLine{381         \textcolor{comment}{// It not guaranteed that the provided solution is within limits so this check is needed}}
+\DoxyCodeLine{382         \textcolor{keywordflow}{if} (val < limits(*current\_index, 1) ||}
+\DoxyCodeLine{383             \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 1)))}
+\DoxyCodeLine{384         \{}
+\DoxyCodeLine{385           Eigen::VectorXd new\_sol = sol;}
+\DoxyCodeLine{386           new\_sol[*current\_index] = val;}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{388           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
+\DoxyCodeLine{389           \{}
+\DoxyCodeLine{390             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
+\DoxyCodeLine{391             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
+\DoxyCodeLine{392           \}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394           getRedundantSolutionsHelper<FloatType>(redundant\_sols, new\_sol, limits, current\_index + 1, end\_index);}
+\DoxyCodeLine{395         \}}
+\DoxyCodeLine{396       \}}
+\DoxyCodeLine{397     \}}
+\DoxyCodeLine{398 }
+\DoxyCodeLine{399     \textcolor{keywordflow}{if} (std::isinf(limits(*current\_index, 1)))}
+\DoxyCodeLine{400     \{}
+\DoxyCodeLine{401       std::stringstream ss;}
+\DoxyCodeLine{402       ss << \textcolor{stringliteral}{"{}Upper limit of joint "{}} << *current\_index << \textcolor{stringliteral}{"{} is infinite; no redundant solutions will be generated"{}}}
+\DoxyCodeLine{403          << std::endl;}
+\DoxyCodeLine{404       CONSOLE\_BRIDGE\_logWarn(ss.str().c\_str());}
+\DoxyCodeLine{405     \}}
+\DoxyCodeLine{406     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{407     \{}
+\DoxyCodeLine{408       val = sol[*current\_index];}
+\DoxyCodeLine{409       \textcolor{keywordflow}{while} ((val += (2.0 * M\_PI)) < limits(*current\_index, 1) ||}
+\DoxyCodeLine{410              \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 1)))}
+\DoxyCodeLine{411       \{}
+\DoxyCodeLine{412         \textcolor{comment}{// It not guaranteed that the provided solution is within limits so this check is needed}}
+\DoxyCodeLine{413         \textcolor{keywordflow}{if} (val > limits(*current\_index, 0) ||}
+\DoxyCodeLine{414             \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{tesseract\_common::almostEqualRelativeAndAbs}}(val, limits(*current\_index, 0)))}
+\DoxyCodeLine{415         \{}
+\DoxyCodeLine{416           Eigen::VectorXd new\_sol = sol;}
+\DoxyCodeLine{417           new\_sol[*current\_index] = val;}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
+\DoxyCodeLine{420           \{}
+\DoxyCodeLine{421             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
+\DoxyCodeLine{422             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
+\DoxyCodeLine{423           \}}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425           getRedundantSolutionsHelper<FloatType>(redundant\_sols, new\_sol, limits, current\_index + 1, end\_index);}
+\DoxyCodeLine{426         \}}
+\DoxyCodeLine{427       \}}
+\DoxyCodeLine{428     \}}
+\DoxyCodeLine{429   \}}
+\DoxyCodeLine{430 \}}
 \DoxyCodeLine{431 }
-\DoxyCodeLine{432   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} Eigen::Index\& idx : redundancy\_capable\_joints)}
-\DoxyCodeLine{433   \{}
-\DoxyCodeLine{434     \textcolor{keywordflow}{if} (idx >= sol.size())}
-\DoxyCodeLine{435     \{}
-\DoxyCodeLine{436       std::stringstream ss;}
-\DoxyCodeLine{437       ss << \textcolor{stringliteral}{"{}Redundant joint index "{}} << idx << \textcolor{stringliteral}{"{} is greater than or equal to the joint state size ("{}} << sol.size()}
-\DoxyCodeLine{438          << \textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{439       \textcolor{keywordflow}{throw} std::runtime\_error(ss.str());}
-\DoxyCodeLine{440     \}}
-\DoxyCodeLine{441   \}}
-\DoxyCodeLine{442 }
-\DoxyCodeLine{443   std::vector<VectorX<FloatType>> redundant\_sols;}
-\DoxyCodeLine{444   getRedundantSolutionsHelper<FloatType>(redundant\_sols,}
-\DoxyCodeLine{445                                          sol.template cast<double>(),}
-\DoxyCodeLine{446                                          limits,}
-\DoxyCodeLine{447                                          redundancy\_capable\_joints.begin(),}
-\DoxyCodeLine{448                                          redundancy\_capable\_joints.end());}
-\DoxyCodeLine{449   \textcolor{keywordflow}{return} redundant\_sols;}
-\DoxyCodeLine{450 \}}
-\DoxyCodeLine{451 }
-\DoxyCodeLine{461 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{462 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacetesseract__kinematics_a2f74af65eeb166856e00a64254da7ee8}{isValid}}(\textcolor{keyword}{const} std::array<FloatType, 6>\& qs)}
-\DoxyCodeLine{463 \{}
-\DoxyCodeLine{464   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& q : qs)}
-\DoxyCodeLine{465     \textcolor{keywordflow}{if} (!std::isfinite(q))}
-\DoxyCodeLine{466       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{467 }
-\DoxyCodeLine{468   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{469 \}}
-\DoxyCodeLine{470 }
+\DoxyCodeLine{439 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
+\DoxyCodeLine{440 \textcolor{keyword}{inline} std::vector<VectorX<FloatType>> \mbox{\hyperlink{namespacetesseract__kinematics_a325b511b4f36172c8814db524742aed9}{getRedundantSolutions}}(\textcolor{keyword}{const} Eigen::Ref<\textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}>\& sol,}
+\DoxyCodeLine{441                                                              \textcolor{keyword}{const} Eigen::MatrixX2d\& limits,}
+\DoxyCodeLine{442                                                              \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
+\DoxyCodeLine{443 \{}
+\DoxyCodeLine{444   \textcolor{keywordflow}{if} (redundancy\_capable\_joints.empty())}
+\DoxyCodeLine{445     \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{446 }
+\DoxyCodeLine{447   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} Eigen::Index\& idx : redundancy\_capable\_joints)}
+\DoxyCodeLine{448   \{}
+\DoxyCodeLine{449     \textcolor{keywordflow}{if} (idx >= sol.size())}
+\DoxyCodeLine{450     \{}
+\DoxyCodeLine{451       std::stringstream ss;}
+\DoxyCodeLine{452       ss << \textcolor{stringliteral}{"{}Redundant joint index "{}} << idx << \textcolor{stringliteral}{"{} is greater than or equal to the joint state size ("{}} << sol.size()}
+\DoxyCodeLine{453          << \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{454       \textcolor{keywordflow}{throw} std::runtime\_error(ss.str());}
+\DoxyCodeLine{455     \}}
+\DoxyCodeLine{456   \}}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{458   std::vector<VectorX<FloatType>> redundant\_sols;}
+\DoxyCodeLine{459   getRedundantSolutionsHelper<FloatType>(redundant\_sols,}
+\DoxyCodeLine{460                                          sol.template cast<double>(),}
+\DoxyCodeLine{461                                          limits,}
+\DoxyCodeLine{462                                          redundancy\_capable\_joints.begin(),}
+\DoxyCodeLine{463                                          redundancy\_capable\_joints.end());}
+\DoxyCodeLine{464   \textcolor{keywordflow}{return} redundant\_sols;}
+\DoxyCodeLine{465 \}}
+\DoxyCodeLine{466 }
 \DoxyCodeLine{476 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{477 \mbox{\hyperlink{macros_8h_af67a6ff1a54b41b2a6e4bd36bc47b118}{DEPRECATED}}(\textcolor{stringliteral}{"{}Use redundancy version"{}})}
-\DoxyCodeLine{478 inline \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}<FloatType>> qs)}
-\DoxyCodeLine{479 \{}
-\DoxyCodeLine{480   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
-\DoxyCodeLine{481   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
+\DoxyCodeLine{477 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacetesseract__kinematics_a2f74af65eeb166856e00a64254da7ee8}{isValid}}(\textcolor{keyword}{const} std::array<FloatType, 6>\& qs)}
+\DoxyCodeLine{478 \{}
+\DoxyCodeLine{479   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& q : qs)}
+\DoxyCodeLine{480     \textcolor{keywordflow}{if} (!std::isfinite(q))}
+\DoxyCodeLine{481       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
 \DoxyCodeLine{482 }
-\DoxyCodeLine{483   \textcolor{keywordflow}{for} (Eigen::Index i = 0; i < qs.rows(); ++i)}
-\DoxyCodeLine{484   \{}
-\DoxyCodeLine{485     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
-\DoxyCodeLine{486     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
-\DoxyCodeLine{487   \}}
-\DoxyCodeLine{488 \}}
-\DoxyCodeLine{489 }
-\DoxyCodeLine{495 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{496 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}> qs,}
-\DoxyCodeLine{497                                 \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
-\DoxyCodeLine{498 \{}
-\DoxyCodeLine{499   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
-\DoxyCodeLine{500   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
-\DoxyCodeLine{501 }
-\DoxyCodeLine{502   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& i : redundancy\_capable\_joints)}
-\DoxyCodeLine{503   \{}
-\DoxyCodeLine{504     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
-\DoxyCodeLine{505     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
-\DoxyCodeLine{506   \}}
-\DoxyCodeLine{507 \}}
-\DoxyCodeLine{508 }
-\DoxyCodeLine{509 \}  \textcolor{comment}{// namespace tesseract\_kinematics}}
-\DoxyCodeLine{510 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_KINEMATICS\_UTILS\_H}}
+\DoxyCodeLine{483   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{484 \}}
+\DoxyCodeLine{485 }
+\DoxyCodeLine{491 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
+\DoxyCodeLine{492 \mbox{\hyperlink{macros_8h_af67a6ff1a54b41b2a6e4bd36bc47b118}{DEPRECATED}}(\textcolor{stringliteral}{"{}Use redundancy version"{}})}
+\DoxyCodeLine{493 inline \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}<FloatType>> qs)}
+\DoxyCodeLine{494 \{}
+\DoxyCodeLine{495   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
+\DoxyCodeLine{496   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
+\DoxyCodeLine{497 }
+\DoxyCodeLine{498   \textcolor{keywordflow}{for} (Eigen::Index i = 0; i < qs.rows(); ++i)}
+\DoxyCodeLine{499   \{}
+\DoxyCodeLine{500     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
+\DoxyCodeLine{501     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
+\DoxyCodeLine{502   \}}
+\DoxyCodeLine{503 \}}
+\DoxyCodeLine{504 }
+\DoxyCodeLine{510 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
+\DoxyCodeLine{511 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}> qs,}
+\DoxyCodeLine{512                                 \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
+\DoxyCodeLine{513 \{}
+\DoxyCodeLine{514   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
+\DoxyCodeLine{515   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
+\DoxyCodeLine{516 }
+\DoxyCodeLine{517   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& i : redundancy\_capable\_joints)}
+\DoxyCodeLine{518   \{}
+\DoxyCodeLine{519     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
+\DoxyCodeLine{520     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
+\DoxyCodeLine{521   \}}
+\DoxyCodeLine{522 \}}
+\DoxyCodeLine{523 }
+\DoxyCodeLine{524 \}  \textcolor{comment}{// namespace tesseract\_kinematics}}
+\DoxyCodeLine{525 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_KINEMATICS\_UTILS\_H}}
 
 \end{DoxyCode}

@@ -31,8 +31,16 @@ class \mbox{\hyperlink{classtesseract__environment_1_1ChangeLinkVisibilityComman
 \item 
 class \mbox{\hyperlink{classtesseract__environment_1_1Command}{Command}}
 \item 
+struct \mbox{\hyperlink{structtesseract__environment_1_1CommandAppliedEvent}{Command\+Applied\+Event}}
+\begin{DoxyCompactList}\small\item\em The command applied event. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__environment_1_1Environment}{Environment}}
 \item 
+class \mbox{\hyperlink{classtesseract__environment_1_1EnvironmentMonitor}{Environment\+Monitor}}
+\begin{DoxyCompactList}\small\item\em Tesseract \mbox{\hyperlink{classtesseract__environment_1_1Environment}{Environment}} Monitor Interface Class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtesseract__environment_1_1EnvironmentMonitorInterface}{Environment\+Monitor\+Interface}}
+\item 
+struct \mbox{\hyperlink{structtesseract__environment_1_1Event}{Event}}
+\begin{DoxyCompactList}\small\item\em The event base class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__environment_1_1MoveJointCommand}{Move\+Joint\+Command}}
 \item 
 class \mbox{\hyperlink{classtesseract__environment_1_1MoveLinkCommand}{Move\+Link\+Command}}
@@ -47,6 +55,8 @@ class \mbox{\hyperlink{classtesseract__environment_1_1RemoveLinkCommand}{Remove\
 \item 
 class \mbox{\hyperlink{classtesseract__environment_1_1ReplaceJointCommand}{Replace\+Joint\+Command}}
 \item 
+struct \mbox{\hyperlink{structtesseract__environment_1_1SceneStateChangedEvent}{Scene\+State\+Changed\+Event}}
+\begin{DoxyCompactList}\small\item\em The scene state changed event. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__environment_1_1SetActiveContinuousContactManagerCommand}{Set\+Active\+Continuous\+Contact\+Manager\+Command}}
 \item 
 class \mbox{\hyperlink{classtesseract__environment_1_1SetActiveDiscreteContactManagerCommand}{Set\+Active\+Discrete\+Contact\+Manager\+Command}}
@@ -63,42 +73,59 @@ using \mbox{\hyperlink{namespacetesseract__environment_a092a71ec5e39e4f931e4390d
 using \mbox{\hyperlink{namespacetesseract__environment_a39c42a79a3d6ac4b3ce641daf5e421d7}{Pairs\+Collision\+Margin\+Data}} = \mbox{\hyperlink{namespacetesseract__common_a84cc21cc4b384291adbbddaa81fe6447}{tesseract\+\_\+common\+::\+Pairs\+Collision\+Margin\+Data}}
 \item 
 using \mbox{\hyperlink{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}{Find\+TCPOffset\+Callback\+Fn}} = std\+::function$<$ Eigen\+::\+Isometry3d(const \mbox{\hyperlink{structtesseract__common_1_1ManipulatorInfo}{tesseract\+\_\+common\+::\+Manipulator\+Info}} \&)$>$
-\begin{DoxyCompactList}\small\item\em Function signature for adding additional callbacks for looking up TCP information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function signature for adding additional callbacks for looking up TCP information. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{Event\+Callback\+Fn}} = std\+::function$<$ void(const \mbox{\hyperlink{structtesseract__environment_1_1Event}{Event}} \&event)$>$
+\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum class \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \{ \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a83bca506d8f37c1e0d096e2683d691e4}{ADD\+\_\+\+LINK}} = 0
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029add652546039b18970b8dcf2cff824268}{UNINITIALIZED}} = -\/1
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a83bca506d8f37c1e0d096e2683d691e4}{ADD\+\_\+\+LINK}} = 0
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a0c4617d6ea17eb456b514b9bc9ddaaec}{MOVE\+\_\+\+LINK}} = 1
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a4ca2d320bdf40df7e6f465d21e268ec4}{MOVE\+\_\+\+JOINT}} = 2
-, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029afff7bebecead86441476e38b94b3bc05}{REMOVE\+\_\+\+LINK}} = 3
 , \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a6721b27017cd21a598f1740481167224}{REMOVE\+\_\+\+JOINT}} = 4
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029afff7bebecead86441476e38b94b3bc05}{REMOVE\+\_\+\+LINK}} = 3
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a6721b27017cd21a598f1740481167224}{REMOVE\+\_\+\+JOINT}} = 4
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a5556c1986a9b58c054c0038a8c73cab9}{CHANGE\+\_\+\+LINK\+\_\+\+ORIGIN}} = 5
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a9e520d728925baf2b87146d99a20d8ba}{CHANGE\+\_\+\+JOINT\+\_\+\+ORIGIN}} = 6
-, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a12a8518522948e345cab8fefd0235008}{CHANGE\+\_\+\+LINK\+\_\+\+COLLISION\+\_\+\+ENABLED}} = 7
 , \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029aaa5732dcc51c06b4e9af6373e937e4a1}{CHANGE\+\_\+\+LINK\+\_\+\+VISIBILITY}} = 8
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a12a8518522948e345cab8fefd0235008}{CHANGE\+\_\+\+LINK\+\_\+\+COLLISION\+\_\+\+ENABLED}} = 7
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029aaa5732dcc51c06b4e9af6373e937e4a1}{CHANGE\+\_\+\+LINK\+\_\+\+VISIBILITY}} = 8
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029ab2889e5decae30347cb29cdeb282d664}{ADD\+\_\+\+ALLOWED\+\_\+\+COLLISION}} = 9
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a6944181c71015e5537d5271cb1c432f3}{REMOVE\+\_\+\+ALLOWED\+\_\+\+COLLISION}} = 10
-, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029ac40ca000ef4f65a27cf7998ef4f020a0}{REMOVE\+\_\+\+ALLOWED\+\_\+\+COLLISION\+\_\+\+LINK}} = 11
 , \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029abad512ee301f85596f24ccb211411856}{ADD\+\_\+\+SCENE\+\_\+\+GRAPH}} = 12
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029ac40ca000ef4f65a27cf7998ef4f020a0}{REMOVE\+\_\+\+ALLOWED\+\_\+\+COLLISION\+\_\+\+LINK}} = 11
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029abad512ee301f85596f24ccb211411856}{ADD\+\_\+\+SCENE\+\_\+\+GRAPH}} = 12
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a45b7ca4cbdf3997ccbb8e81e45c25c0f}{CHANGE\+\_\+\+JOINT\+\_\+\+POSITION\+\_\+\+LIMITS}} = 13
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029aea4ee03591d62742fc798bd6d07914dd}{CHANGE\+\_\+\+JOINT\+\_\+\+VELOCITY\+\_\+\+LIMITS}} = 14
-, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a0e622edebb918e58a2e50f37f48ec6be}{CHANGE\+\_\+\+JOINT\+\_\+\+ACCELERATION\+\_\+\+LIMITS}} = 15
 , \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a6f820e76663d877e0103c6aea1616b1b}{ADD\+\_\+\+KINEMATICS\+\_\+\+INFORMATION}} = 16
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a0e622edebb918e58a2e50f37f48ec6be}{CHANGE\+\_\+\+JOINT\+\_\+\+ACCELERATION\+\_\+\+LIMITS}} = 15
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a6f820e76663d877e0103c6aea1616b1b}{ADD\+\_\+\+KINEMATICS\+\_\+\+INFORMATION}} = 16
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029ae487d29b5345ebdfa13433bc11a99e7c}{REPLACE\+\_\+\+JOINT}} = 17
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029af0867a1a81a0112b16ae983214515c28}{CHANGE\+\_\+\+COLLISION\+\_\+\+MARGINS}} = 18
-, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a888e6375965550fe9f245043026d8490}{ADD\+\_\+\+CONTACT\+\_\+\+MANAGERS\+\_\+\+PLUGIN\+\_\+\+INFO}} = 19
 , \newline
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a2fdc8f6309f2bdd8cd403be451510841}{SET\+\_\+\+ACTIVE\+\_\+\+DISCRETE\+\_\+\+CONTACT\+\_\+\+MANAGER}} = 20
+\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a888e6375965550fe9f245043026d8490}{ADD\+\_\+\+CONTACT\+\_\+\+MANAGERS\+\_\+\+PLUGIN\+\_\+\+INFO}} = 19
+, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a2fdc8f6309f2bdd8cd403be451510841}{SET\+\_\+\+ACTIVE\+\_\+\+DISCRETE\+\_\+\+CONTACT\+\_\+\+MANAGER}} = 20
 , \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029af02976086409570e5906a7339e95a026}{SET\+\_\+\+ACTIVE\+\_\+\+CONTINUOUS\+\_\+\+CONTACT\+\_\+\+MANAGER}} = 21
+ \}
+\item 
+enum class \mbox{\hyperlink{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769d}{Monitored\+Environment\+Mode}} \+: int \{ \mbox{\hyperlink{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da5b39c8b553c821e7cddc6da64b5bd2ee}{DEFAULT}} = 0
+, \mbox{\hyperlink{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da35c25b3993876576ae1222f9ebb04f63}{SYNCHRONIZED}} = 1
+ \}
+\item 
+enum class \mbox{\hyperlink{namespacetesseract__environment_aed7a9146b435502090a922144486578d}{Events}} \{ \mbox{\hyperlink{namespacetesseract__environment_aed7a9146b435502090a922144486578da4708fbfa940a1361e29903d30d9c2c7a}{COMMAND\+\_\+\+APPLIED}} = 0
+, \mbox{\hyperlink{namespacetesseract__environment_aed7a9146b435502090a922144486578da5fba6bb654fe79357954dbcbb88a3f6c}{SCENE\+\_\+\+STATE\+\_\+\+CHANGED}} = 1
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{namespacetesseract__environment_a1819f1cc367734bc71df537ac9a34035}{save}} (Archive \&ar, const \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&g, const unsigned int version)
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{namespacetesseract__environment_ae63659e18dd6e60700378ff689c1778d}{load}} (Archive \&ar, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&g, const unsigned int version)
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{namespacetesseract__environment_ab1656df70f5d4e2213365591079ea8c3}{serialize}} (Archive \&ar, \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&g, const unsigned int version)
 \item 
 void \mbox{\hyperlink{namespacetesseract__environment_a7fe3fcca505faa7a06d9159be7d1217b}{get\+Active\+Link\+Names\+Recursive}} (\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&active\+\_\+links, const \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph}} \&scene\+\_\+graph, const std\+::string \&current\+\_\+link, bool active)
 \begin{DoxyCompactList}\small\item\em Get the active Link Names Recursively. \end{DoxyCompactList}\item 
@@ -141,6 +168,12 @@ bool \mbox{\hyperlink{namespacetesseract__environment_ae7728a013d325011165747edd
 \doxysubsubsection{\texorpdfstring{Commands}{Commands}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__environment_acb95740502ec41d80a94a7631d4b7a3c}{tesseract\+\_\+environment\+::\+Commands}} = typedef \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$\mbox{\hyperlink{classtesseract__environment_1_1Command_a71f41840ff091003233e7ddaff1c4081}{Command\+::\+Const\+Ptr}}$>$}
 
+\mbox{\Hypertarget{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}\label{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}} 
+\index{tesseract\_environment@{tesseract\_environment}!EventCallbackFn@{EventCallbackFn}}
+\index{EventCallbackFn@{EventCallbackFn}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{EventCallbackFn}{EventCallbackFn}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{tesseract\+\_\+environment\+::\+Event\+Callback\+Fn}} = typedef std\+::function$<$void(const \mbox{\hyperlink{structtesseract__environment_1_1Event}{Event}}\& event)$>$}
+
 \mbox{\Hypertarget{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}\label{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}} 
 \index{tesseract\_environment@{tesseract\_environment}!FindTCPOffsetCallbackFn@{FindTCPOffsetCallbackFn}}
 \index{FindTCPOffsetCallbackFn@{FindTCPOffsetCallbackFn}!tesseract\_environment@{tesseract\_environment}}
@@ -167,6 +200,10 @@ The function should throw and exception if not located \mbox{\Hypertarget{namesp
 {\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{tesseract\+\_\+environment\+::\+Command\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNINITIALIZED@{UNINITIALIZED}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!UNINITIALIZED@{UNINITIALIZED}}}\mbox{\Hypertarget{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029add652546039b18970b8dcf2cff824268}\label{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029add652546039b18970b8dcf2cff824268}} 
+UNINITIALIZED&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ADD\_LINK@{ADD\_LINK}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!ADD\_LINK@{ADD\_LINK}}}\mbox{\Hypertarget{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a83bca506d8f37c1e0d096e2683d691e4}\label{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029a83bca506d8f37c1e0d096e2683d691e4}} 
 ADD\+\_\+\+LINK&\\
 \hline
@@ -253,6 +290,41 @@ SET\+\_\+\+ACTIVE\+\_\+\+DISCRETE\+\_\+\+CONTACT\+\_\+\+MANAGER&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SET\_ACTIVE\_CONTINUOUS\_CONTACT\_MANAGER@{SET\_ACTIVE\_CONTINUOUS\_CONTACT\_MANAGER}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!SET\_ACTIVE\_CONTINUOUS\_CONTACT\_MANAGER@{SET\_ACTIVE\_CONTINUOUS\_CONTACT\_MANAGER}}}\mbox{\Hypertarget{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029af02976086409570e5906a7339e95a026}\label{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029af02976086409570e5906a7339e95a026}} 
 SET\+\_\+\+ACTIVE\+\_\+\+CONTINUOUS\+\_\+\+CONTACT\+\_\+\+MANAGER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacetesseract__environment_aed7a9146b435502090a922144486578d}\label{namespacetesseract__environment_aed7a9146b435502090a922144486578d}} 
+\index{tesseract\_environment@{tesseract\_environment}!Events@{Events}}
+\index{Events@{Events}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{Events}{Events}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacetesseract__environment_aed7a9146b435502090a922144486578d}{tesseract\+\_\+environment\+::\+Events}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMMAND\_APPLIED@{COMMAND\_APPLIED}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!COMMAND\_APPLIED@{COMMAND\_APPLIED}}}\mbox{\Hypertarget{namespacetesseract__environment_aed7a9146b435502090a922144486578da4708fbfa940a1361e29903d30d9c2c7a}\label{namespacetesseract__environment_aed7a9146b435502090a922144486578da4708fbfa940a1361e29903d30d9c2c7a}} 
+COMMAND\+\_\+\+APPLIED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCENE\_STATE\_CHANGED@{SCENE\_STATE\_CHANGED}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!SCENE\_STATE\_CHANGED@{SCENE\_STATE\_CHANGED}}}\mbox{\Hypertarget{namespacetesseract__environment_aed7a9146b435502090a922144486578da5fba6bb654fe79357954dbcbb88a3f6c}\label{namespacetesseract__environment_aed7a9146b435502090a922144486578da5fba6bb654fe79357954dbcbb88a3f6c}} 
+SCENE\+\_\+\+STATE\+\_\+\+CHANGED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769d}\label{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769d}} 
+\index{tesseract\_environment@{tesseract\_environment}!MonitoredEnvironmentMode@{MonitoredEnvironmentMode}}
+\index{MonitoredEnvironmentMode@{MonitoredEnvironmentMode}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{MonitoredEnvironmentMode}{MonitoredEnvironmentMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769d}{tesseract\+\_\+environment\+::\+Monitored\+Environment\+Mode}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEFAULT@{DEFAULT}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!DEFAULT@{DEFAULT}}}\mbox{\Hypertarget{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da5b39c8b553c821e7cddc6da64b5bd2ee}\label{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da5b39c8b553c821e7cddc6da64b5bd2ee}} 
+DEFAULT&The default behavior when monitoring another environment is the following. Case1\+: If the revision is greater than, it will call a service of the monitored environment to get the changes and apply them. Case2\+: If the revision is less than, it will reinitialize the environment and request the remaining changes and apply them. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SYNCHRONIZED@{SYNCHRONIZED}!tesseract\_environment@{tesseract\_environment}}\index{tesseract\_environment@{tesseract\_environment}!SYNCHRONIZED@{SYNCHRONIZED}}}\mbox{\Hypertarget{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da35c25b3993876576ae1222f9ebb04f63}\label{namespacetesseract__environment_ad69281c5429c1e008229dbe5c5c4769da35c25b3993876576ae1222f9ebb04f63}} 
+SYNCHRONIZED&The synchronized behavior when monitoring another environment is the following. \begin{DoxyWarning}{Warning}
+Currently this works best if there is only one monitor which is synchronized because currently if two environment monitors are synchronized, it currently does not have a way to reason about which ones should get applied. Need to research approach for this type of system.
+\end{DoxyWarning}
+Case1\+: If the revision is greater than, it will call a service of the monitored environment to get the changes and apply them. Case2\+: If the revision is less than, it will call a service of the monitored environment to apply the new changes. \\
 \hline
 
 \end{DoxyEnumFields}
@@ -483,6 +555,13 @@ Get the active Link Names Recursively.
 {\em active} & \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__environment_ae63659e18dd6e60700378ff689c1778d}\label{namespacetesseract__environment_ae63659e18dd6e60700378ff689c1778d}} 
+\index{tesseract\_environment@{tesseract\_environment}!load@{load}}
+\index{load@{load}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::load (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&}]{g,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{namespacetesseract__environment_ab35fc5d595ce8b99b67c4e58d91171a6}\label{namespacetesseract__environment_ab35fc5d595ce8b99b67c4e58d91171a6}} 
 \index{tesseract\_environment@{tesseract\_environment}!processInterpolatedSubSegmentCollisionResults@{processInterpolatedSubSegmentCollisionResults}}
 \index{processInterpolatedSubSegmentCollisionResults@{processInterpolatedSubSegmentCollisionResults}!tesseract\_environment@{tesseract\_environment}}
@@ -522,3 +601,17 @@ This is copied from the trajopt utility process\+Interpolated\+Collision\+Result
 {\em discrete} & \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__environment_a1819f1cc367734bc71df537ac9a34035}\label{namespacetesseract__environment_a1819f1cc367734bc71df537ac9a34035}} 
+\index{tesseract\_environment@{tesseract\_environment}!save@{save}}
+\index{save@{save}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::save (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&}]{g,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__environment_ab1656df70f5d4e2213365591079ea8c3}\label{namespacetesseract__environment_ab1656df70f5d4e2213365591079ea8c3}} 
+\index{tesseract\_environment@{tesseract\_environment}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_environment@{tesseract\_environment}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \&}]{g,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})}
+

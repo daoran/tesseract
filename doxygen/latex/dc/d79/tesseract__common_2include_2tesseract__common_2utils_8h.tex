@@ -6,6 +6,7 @@ Common Tesseract Utility Functions.
 
 
 {\ttfamily \#include $<$tesseract\+\_\+common/macros.\+h$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$sstream$>$}\newline
@@ -69,8 +70,18 @@ void \mbox{\hyperlink{namespacetesseract__common_aa86a4f0e5ca9d2b1f5abc3f34735d8
 \begin{DoxyCompactList}\small\item\em Right trim string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_aeacd629bcf585286917aafa7b8e603bb}{tesseract\+\_\+common\+::trim}} (std\+::string \&s)
 \begin{DoxyCompactList}\small\item\em Trim left and right of string. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a988d90ea1a18bb1b94cf257a78bc5bc2}{tesseract\+\_\+common\+::is\+Identical}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec1, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec2, bool ordered=true)
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a34d98b9f0df320e12b9f9686761f5b1e}{tesseract\+\_\+common\+::is\+Identical}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec1, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ T $>$ \&vec2, bool ordered=true, const std\+::function$<$ bool(const T \&, const T \&)$>$ \&equal\+\_\+pred=\mbox{[}$\,$\mbox{]}(const T \&v1, const T \&v2) \{ return v1==v2;\}, const std\+::function$<$ bool(const T \&, const T \&)$>$ \&comp=\mbox{[}$\,$\mbox{]}(const T \&v1, const T \&v2) \{ return v1$<$ v2;\})
 \begin{DoxyCompactList}\small\item\em Check if two vector of strings are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Key\+Value\+Container\+Type , typename Value\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a4be902621fe3d33f5fe7d72116196f24}{tesseract\+\_\+common\+::is\+Identical\+Map}} (const Key\+Value\+Container\+Type \&map\+\_\+1, const Key\+Value\+Container\+Type \&map\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 maps are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Value\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a129feb5b5288a992d9fb72ba5dbb579d}{tesseract\+\_\+common\+::is\+Identical\+Set}} (const std\+::set$<$ Value\+Type $>$ \&set\+\_\+1, const std\+::set$<$ Value\+Type $>$ \&set\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 sets are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Value\+Type , std\+::size\+\_\+t Size$>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_aff7498ab87445e5c870e74a7d3cbc78f}{tesseract\+\_\+common\+::is\+Identical\+Array}} (const std\+::array$<$ Value\+Type, Size $>$ \&array\+\_\+1, const std\+::array$<$ Value\+Type, Size $>$ \&array\+\_\+2, const std\+::function$<$ bool(const Value\+Type \&, const Value\+Type \&)$>$ \&value\+\_\+eq=\mbox{[}$\,$\mbox{]}(const Value\+Type \&v1, const Value\+Type \&v2) \{ return v1==v2;\})
+\begin{DoxyCompactList}\small\item\em Checks if 2 arrays are identical. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a65966457329351239c51b09ec1a8d3a4}{tesseract\+\_\+common\+::pointers\+Equal}} (const std\+::shared\+\_\+ptr$<$ T $>$ \&p1, const std\+::shared\+\_\+ptr$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Checks if 2 pointers point to objects that are ==. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a5691a34b0a37453566326959831fb6df}{tesseract\+\_\+common\+::pointers\+Comparison}} (const std\+::shared\+\_\+ptr$<$ T $>$ \&p1, const std\+::shared\+\_\+ptr$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Comparison operator for the objects 2 points point to. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespacetesseract__common_a1077809c98ad8bf5262e426cff6e63a3}{tesseract\+\_\+common\+::get\+Timestamp\+String}} ()
 \begin{DoxyCompactList}\small\item\em Get Timestamp string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a7da14d8e3b6c20175711209343aafe2f}{tesseract\+\_\+common\+::reorder}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ v, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ order)
@@ -119,7 +130,7 @@ January 18, 2018
 TODO 
 \end{DoxyVersion}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000058}{Bug}}]No known bugs\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000063}{Bug}}]No known bugs\end{DoxyRefDesc}
 
 
 \begin{DoxyCopyright}{Copyright}

@@ -57,7 +57,11 @@ void \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a6a6c9f0ee9
 void \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a39bf72b04fe623d0c9162080b187a9a4}{remove\+Group\+TCP}} (const std\+::string \&group\+\_\+name, const std\+::string \&tcp\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Remove group tool center point. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a397c245b0fa90993fc16d8bfe71ba072}{has\+Group\+TCP}} (const std\+::string \&group\+\_\+name, const std\+::string \&tcp\+\_\+name) const
-\begin{DoxyCompactList}\small\item\em Check if group tool center point exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if group tool center point exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a01c585cf7e69817aadcbd5239d04e253}{operator==}} (const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a89ca369e6ad83b7faf5ba8add7c1a5cd}{operator!=}} (const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}} \&rhs) const
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -75,6 +79,16 @@ EIGEN\+\_\+\+MAKE\+\_\+\+ALIGNED\+\_\+\+OPERATOR\+\_\+\+NEW \mbox{\hyperlink{nam
 \begin{DoxyCompactList}\small\item\em A map of group tool center points. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structtesseract__common_1_1KinematicsPluginInfo}{tesseract\+\_\+common\+::\+Kinematics\+Plugin\+Info}} \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a518682844dc987ec8166f8f2fb9c6244}{kinematics\+\_\+plugin\+\_\+info}}
 \begin{DoxyCompactList}\small\item\em The kinematics plugin information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a9125ae76eab4aed953611f35a6cb4656}{serialize}} (Archive \&ar, const unsigned int version)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -211,6 +225,20 @@ Check if link group exists.
 
 Insert the content of an other \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}}. 
 
+\mbox{\Hypertarget{structtesseract__srdf_1_1KinematicsInformation_a89ca369e6ad83b7faf5ba8add7c1a5cd}\label{structtesseract__srdf_1_1KinematicsInformation_a89ca369e6ad83b7faf5ba8add7c1a5cd}} 
+\index{tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+srdf\+::\+Kinematics\+Information\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structtesseract__srdf_1_1KinematicsInformation_a01c585cf7e69817aadcbd5239d04e253}\label{structtesseract__srdf_1_1KinematicsInformation_a01c585cf7e69817aadcbd5239d04e253}} 
+\index{tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+srdf\+::\+Kinematics\+Information\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000025}{Todo}}]Write this \end{DoxyRefDesc}
 \mbox{\Hypertarget{structtesseract__srdf_1_1KinematicsInformation_a86537725d81f4c6e00c212fd2443db0d}\label{structtesseract__srdf_1_1KinematicsInformation_a86537725d81f4c6e00c212fd2443db0d}} 
 \index{tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}!removeChainGroup@{removeChainGroup}}
 \index{removeChainGroup@{removeChainGroup}!tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}}
@@ -260,6 +288,22 @@ Remove joint group.
 
 
 Remove link group. 
+
+\mbox{\Hypertarget{structtesseract__srdf_1_1KinematicsInformation_a9125ae76eab4aed953611f35a6cb4656}\label{structtesseract__srdf_1_1KinematicsInformation_a9125ae76eab4aed953611f35a6cb4656}} 
+\index{tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+srdf\+::\+Kinematics\+Information\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structtesseract__srdf_1_1KinematicsInformation_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{structtesseract__srdf_1_1KinematicsInformation_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_srdf::KinematicsInformation@{tesseract\_srdf::KinematicsInformation}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 

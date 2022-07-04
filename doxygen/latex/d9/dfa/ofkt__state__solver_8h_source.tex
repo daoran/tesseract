@@ -30,10 +30,10 @@
 \DoxyCodeLine{62   EIGEN\_MAKE\_ALIGNED\_OPERATOR\_NEW}
 \DoxyCodeLine{63   \textcolor{comment}{// LCOV\_EXCL\_STOP}}
 \DoxyCodeLine{64 }
-\DoxyCodeLine{65   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_acf888642a2ee3dc24dde3d540ce892ce}{Ptr}} = std::shared\_ptr<OFKTStateSolver>;}
-\DoxyCodeLine{66   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a7a2e431c2bf879fb1afe690418f4cab7}{ConstPtr}} = std::shared\_ptr<const OFKTStateSolver>;}
-\DoxyCodeLine{67   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} = std::unique\_ptr<OFKTStateSolver>;}
-\DoxyCodeLine{68   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a17336128deaa72d4a506495b80a5de35}{ConstUPtr}} = std::unique\_ptr<const OFKTStateSolver>;}
+\DoxyCodeLine{65   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_acf888642a2ee3dc24dde3d540ce892ce}{Ptr}} = std::shared\_ptr<OFKTStateSolver>;}
+\DoxyCodeLine{66   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a7a2e431c2bf879fb1afe690418f4cab7}{ConstPtr}} = std::shared\_ptr<const OFKTStateSolver>;}
+\DoxyCodeLine{67   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} = std::unique\_ptr<OFKTStateSolver>;}
+\DoxyCodeLine{68   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a17336128deaa72d4a506495b80a5de35}{ConstUPtr}} = std::unique\_ptr<const OFKTStateSolver>;}
 \DoxyCodeLine{69 }
 \DoxyCodeLine{70   \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a6574a3ff501312e26a5c4c493eb0bed8}{OFKTStateSolver}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{tesseract\_scene\_graph::SceneGraph}}\& scene\_graph, \textcolor{keyword}{const} std::string\& prefix = \textcolor{stringliteral}{"{}"{}});}
 \DoxyCodeLine{71   \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a6574a3ff501312e26a5c4c493eb0bed8}{OFKTStateSolver}}(\textcolor{keyword}{const} std::string\& root\_name);}
@@ -86,92 +86,99 @@
 \DoxyCodeLine{118 }
 \DoxyCodeLine{119   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a002f51c7fb4fe4107f0a4c15ca551d55}{hasLinkName}}(const std::\textcolor{keywordtype}{string}\& link\_name) const override final;}
 \DoxyCodeLine{120 }
-\DoxyCodeLine{121   \mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::KinematicLimits \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a68cfe8c605215348546a2b67f7f69c0c}{getLimits}}() const override final;}
+\DoxyCodeLine{121   \mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::\mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{VectorIsometry3d}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7c191ea2aaf1b66d4352e3e1a6d69c4d}{getLinkTransforms}}() const override final;}
 \DoxyCodeLine{122 }
-\DoxyCodeLine{123   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ac3ef786331721e642c695c9749bfff9a}{addLink}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Link}{Link}}\& link, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
+\DoxyCodeLine{123   Eigen::Isometry3d \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab499161a0bc0b09fecee62ec5c349b8d}{getLinkTransform}}(const std::\textcolor{keywordtype}{string}\& link\_name) const override final;}
 \DoxyCodeLine{124 }
-\DoxyCodeLine{125   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a45a95b8ee0a71d0727d0a3d5f19a72d6}{moveLink}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ae01b945659e38e9368cbfabed370a309}{removeLink}}(const std::\textcolor{keywordtype}{string}\& name) override final;}
-\DoxyCodeLine{128 }
-\DoxyCodeLine{129   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a9bf70be378f138e97cbc5735f3701754}{replaceJoint}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aa553b5d7c69564cbc428ae43293dd23a}{removeJoint}}(const std::\textcolor{keywordtype}{string}\& name) override final;}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{133   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a2ce786f5c9931049dc646b8c367ecbd5}{moveJoint}}(const std::\textcolor{keywordtype}{string}\& name, const std::\textcolor{keywordtype}{string}\& parent\_link) override final;}
-\DoxyCodeLine{134 }
-\DoxyCodeLine{135   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aec35e56064d89983c6f85b72cc412d80}{changeJointOrigin}}(const std::\textcolor{keywordtype}{string}\& name, const Eigen::Isometry3d\& new\_origin) override final;}
-\DoxyCodeLine{136 }
-\DoxyCodeLine{137   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aad0dd38c09d3fb22efe2e3fe6c7df382}{changeJointPositionLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} lower, \textcolor{keywordtype}{double} upper) override final;}
-\DoxyCodeLine{138 }
-\DoxyCodeLine{139   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad5ac41ceeb316c58874aa68f257144ea}{changeJointVelocityLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} limit) override final;}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{141   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a439631c13339288be33a41476007fe7b}{changeJointAccelerationLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} limit) override final;}
-\DoxyCodeLine{142 }
-\DoxyCodeLine{143   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab8c1b3ac2ff8c470f20cb9b159ae83a4}{insertSceneGraph}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{SceneGraph}}\& scene\_graph,}
-\DoxyCodeLine{144                         const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint,}
-\DoxyCodeLine{145                         const std::\textcolor{keywordtype}{string}\& prefix = "{}"{}) override final;}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147   \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver}{StateSolver}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a5734b842aca63380614f60f9092079de}{clone}}() const override final;}
-\DoxyCodeLine{148 }
-\DoxyCodeLine{149 private:}
-\DoxyCodeLine{150   \mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{SceneState}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ac8e79ab61d299aa51a292180d12625a1}{current\_state\_}};                              }
-\DoxyCodeLine{151   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a0165077bc3db7f4faba78da3a6bfe89c}{joint\_names\_}};                  }
-\DoxyCodeLine{152   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aed37a10c9786f00127bed6aedcc8189d}{active\_joint\_names\_}};           }
-\DoxyCodeLine{153   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a21557e14491a0c547f8f190d4f045ed6}{link\_names\_}};                   }
-\DoxyCodeLine{154   std::unordered\_map<std::\textcolor{keywordtype}{string}, \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a6a4c3d0cac9c413fa3c61fc7a33fde20}{nodes\_}}; }
-\DoxyCodeLine{155   std::unordered\_map<std::\textcolor{keywordtype}{string}, \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}*> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af8d638ce58c58ddeb9f1df1e828f3501}{link\_map\_}};   }
-\DoxyCodeLine{156   \mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::KinematicLimits \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a36e99fabb0e0c153685e61c17d0bb099}{limits\_}};              }
-\DoxyCodeLine{157   \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a125fca1ab57900028e33cb2ce60e5160}{root\_}};                                   }
-\DoxyCodeLine{158   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a4221a8b4c2dba8c30bb53fbbc6da960b}{revision\_}}\{ 0 \};                                     }
-\DoxyCodeLine{161   \textcolor{keyword}{mutable} std::shared\_mutex \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af8872168f97e7d3b93ffd523de8c5e5b}{mutex\_}};}
-\DoxyCodeLine{162 }
-\DoxyCodeLine{163   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab61c01c09888cb61224b0fcf7686f10c}{initHelper}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{tesseract\_scene\_graph::SceneGraph}}\& scene\_graph, \textcolor{keyword}{const} std::string\& prefix);}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af4297ba3267ae0017b5e87dcaa4acf21}{clear}}();}
-\DoxyCodeLine{166 }
-\DoxyCodeLine{168   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a619b8263a9d1ff7c5dec3d27191525e4}{loadActiveLinkNamesRecursive}}(std::vector<std::string>\& active\_link\_names,}
-\DoxyCodeLine{169                                     \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node,}
-\DoxyCodeLine{170                                     \textcolor{keywordtype}{bool} active) \textcolor{keyword}{const};}
+\DoxyCodeLine{125   Eigen::Isometry3d \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a5439bd042e472bc072109ae837c0a740}{getRelativeLinkTransform}}(const std::\textcolor{keywordtype}{string}\& from\_link\_name,}
+\DoxyCodeLine{126                                              const std::\textcolor{keywordtype}{string}\& to\_link\_name) const override final;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128   \mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::KinematicLimits \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a68cfe8c605215348546a2b67f7f69c0c}{getLimits}}() const override final;}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ac3ef786331721e642c695c9749bfff9a}{addLink}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Link}{Link}}\& link, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a45a95b8ee0a71d0727d0a3d5f19a72d6}{moveLink}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ae01b945659e38e9368cbfabed370a309}{removeLink}}(const std::\textcolor{keywordtype}{string}\& name) override final;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a9bf70be378f138e97cbc5735f3701754}{replaceJoint}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint) override final;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aa553b5d7c69564cbc428ae43293dd23a}{removeJoint}}(const std::\textcolor{keywordtype}{string}\& name) override final;}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a2ce786f5c9931049dc646b8c367ecbd5}{moveJoint}}(const std::\textcolor{keywordtype}{string}\& name, const std::\textcolor{keywordtype}{string}\& parent\_link) override final;}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aec35e56064d89983c6f85b72cc412d80}{changeJointOrigin}}(const std::\textcolor{keywordtype}{string}\& name, const Eigen::Isometry3d\& new\_origin) override final;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aad0dd38c09d3fb22efe2e3fe6c7df382}{changeJointPositionLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} lower, \textcolor{keywordtype}{double} upper) override final;}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad5ac41ceeb316c58874aa68f257144ea}{changeJointVelocityLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} limit) override final;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a439631c13339288be33a41476007fe7b}{changeJointAccelerationLimits}}(const std::\textcolor{keywordtype}{string}\& name, \textcolor{keywordtype}{double} limit) override final;}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab8c1b3ac2ff8c470f20cb9b159ae83a4}{insertSceneGraph}}(const \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{SceneGraph}}\& scene\_graph,}
+\DoxyCodeLine{151                         const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint,}
+\DoxyCodeLine{152                         const std::\textcolor{keywordtype}{string}\& prefix = "{}"{}) override final;}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154   \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver}{StateSolver}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a5734b842aca63380614f60f9092079de}{clone}}() const override final;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 private:}
+\DoxyCodeLine{157   \mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{SceneState}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ac8e79ab61d299aa51a292180d12625a1}{current\_state\_}};                              }
+\DoxyCodeLine{158   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a0165077bc3db7f4faba78da3a6bfe89c}{joint\_names\_}};                  }
+\DoxyCodeLine{159   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_aed37a10c9786f00127bed6aedcc8189d}{active\_joint\_names\_}};           }
+\DoxyCodeLine{160   std::\mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{vector}}<std::\textcolor{keywordtype}{string}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a21557e14491a0c547f8f190d4f045ed6}{link\_names\_}};                   }
+\DoxyCodeLine{161   std::unordered\_map<std::\textcolor{keywordtype}{string}, \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}}> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a6a4c3d0cac9c413fa3c61fc7a33fde20}{nodes\_}}; }
+\DoxyCodeLine{162   std::unordered\_map<std::\textcolor{keywordtype}{string}, \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}*> \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af8d638ce58c58ddeb9f1df1e828f3501}{link\_map\_}};   }
+\DoxyCodeLine{163   \mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::KinematicLimits \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a36e99fabb0e0c153685e61c17d0bb099}{limits\_}};              }
+\DoxyCodeLine{164   \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}::\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{UPtr}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a125fca1ab57900028e33cb2ce60e5160}{root\_}};                                   }
+\DoxyCodeLine{165   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a4221a8b4c2dba8c30bb53fbbc6da960b}{revision\_}}\{ 0 \};                                     }
+\DoxyCodeLine{168   \textcolor{keyword}{mutable} std::shared\_mutex \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af8872168f97e7d3b93ffd523de8c5e5b}{mutex\_}};}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab61c01c09888cb61224b0fcf7686f10c}{initHelper}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{tesseract\_scene\_graph::SceneGraph}}\& scene\_graph, \textcolor{keyword}{const} std::string\& prefix);}
 \DoxyCodeLine{171 }
-\DoxyCodeLine{173   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a39d133dfafa6d8a3faf24bbd5e57c8b1}{loadStaticLinkNamesRecursive}}(std::vector<std::string>\& static\_link\_names, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node) \textcolor{keyword}{const};}
-\DoxyCodeLine{174 }
-\DoxyCodeLine{180   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a879cc7aa8da89043d2f1d290ae9cafbe}{update}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node, \textcolor{keywordtype}{bool} update\_required);}
+\DoxyCodeLine{172   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_af4297ba3267ae0017b5e87dcaa4acf21}{clear}}();}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{175   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a619b8263a9d1ff7c5dec3d27191525e4}{loadActiveLinkNamesRecursive}}(std::vector<std::string>\& active\_link\_names,}
+\DoxyCodeLine{176                                     \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node,}
+\DoxyCodeLine{177                                     \textcolor{keywordtype}{bool} active) \textcolor{keyword}{const};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{180   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a39d133dfafa6d8a3faf24bbd5e57c8b1}{loadStaticLinkNamesRecursive}}(std::vector<std::string>\& static\_link\_names, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node) \textcolor{keyword}{const};}
 \DoxyCodeLine{181 }
-\DoxyCodeLine{188   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a879cc7aa8da89043d2f1d290ae9cafbe}{update}}(\mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{SceneState}}\& state, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node, Eigen::Isometry3d parent\_world\_tf, \textcolor{keywordtype}{bool} update\_required) \textcolor{keyword}{const};}
-\DoxyCodeLine{189 }
-\DoxyCodeLine{196   Eigen::MatrixXd \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7734863002452adc512c221b1403e5a5}{calcJacobianHelper}}(\textcolor{keyword}{const} std::unordered\_map<std::string, double>\& joints,}
-\DoxyCodeLine{197                                      \textcolor{keyword}{const} std::string\& link\_name) \textcolor{keyword}{const};}
-\DoxyCodeLine{198 }
-\DoxyCodeLine{204   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a4be22ce749c6f1edac2b8ad2797054df}{cloneHelper}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver}{OFKTStateSolver}}\& cloned, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node) \textcolor{keyword}{const};}
+\DoxyCodeLine{187   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a879cc7aa8da89043d2f1d290ae9cafbe}{update}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node, \textcolor{keywordtype}{bool} update\_required);}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{195   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a879cc7aa8da89043d2f1d290ae9cafbe}{update}}(\mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{SceneState}}\& state, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node, Eigen::Isometry3d parent\_world\_tf, \textcolor{keywordtype}{bool} update\_required) \textcolor{keyword}{const};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{203   Eigen::MatrixXd \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7734863002452adc512c221b1403e5a5}{calcJacobianHelper}}(\textcolor{keyword}{const} std::unordered\_map<std::string, double>\& joints,}
+\DoxyCodeLine{204                                      \textcolor{keyword}{const} std::string\& link\_name) \textcolor{keyword}{const};}
 \DoxyCodeLine{205 }
-\DoxyCodeLine{218   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad3029c80872bc2084edb4c2f803f5075}{addNode}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint,}
-\DoxyCodeLine{219                \textcolor{keyword}{const} std::string\& joint\_name,}
-\DoxyCodeLine{220                \textcolor{keyword}{const} std::string\& parent\_link\_name,}
-\DoxyCodeLine{221                \textcolor{keyword}{const} std::string\& child\_link\_name,}
-\DoxyCodeLine{222                std::vector<JointLimits::ConstPtr>\& new\_joint\_limits);}
-\DoxyCodeLine{223 }
-\DoxyCodeLine{232   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7adb6c740765b24a9dc31a3dfba47c52}{removeNode}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node,}
-\DoxyCodeLine{233                   std::vector<std::string>\& removed\_links,}
-\DoxyCodeLine{234                   std::vector<std::string>\& removed\_joints,}
-\DoxyCodeLine{235                   std::vector<std::string>\& removed\_active\_joints,}
-\DoxyCodeLine{236                   std::vector<long>\& removed\_active\_joints\_indices);}
-\DoxyCodeLine{237 }
-\DoxyCodeLine{243   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ada7df058b56fd82f7178a173fd0eba09}{moveLinkHelper}}(std::vector<JointLimits::ConstPtr>\& new\_joint\_limits, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint);}
+\DoxyCodeLine{211   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a4be22ce749c6f1edac2b8ad2797054df}{cloneHelper}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver}{OFKTStateSolver}}\& cloned, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node) \textcolor{keyword}{const};}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{225   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad3029c80872bc2084edb4c2f803f5075}{addNode}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint,}
+\DoxyCodeLine{226                \textcolor{keyword}{const} std::string\& joint\_name,}
+\DoxyCodeLine{227                \textcolor{keyword}{const} std::string\& parent\_link\_name,}
+\DoxyCodeLine{228                \textcolor{keyword}{const} std::string\& child\_link\_name,}
+\DoxyCodeLine{229                std::vector<JointLimits::ConstPtr>\& new\_joint\_limits);}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{239   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7adb6c740765b24a9dc31a3dfba47c52}{removeNode}}(\mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTNode}{OFKTNode}}* node,}
+\DoxyCodeLine{240                   std::vector<std::string>\& removed\_links,}
+\DoxyCodeLine{241                   std::vector<std::string>\& removed\_joints,}
+\DoxyCodeLine{242                   std::vector<std::string>\& removed\_active\_joints,}
+\DoxyCodeLine{243                   std::vector<long>\& removed\_active\_joints\_indices);}
 \DoxyCodeLine{244 }
-\DoxyCodeLine{250   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a864c6d2052077c4858203835447d01f1}{replaceJointHelper}}(std::vector<JointLimits::ConstPtr>\& new\_joint\_limits, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint);}
+\DoxyCodeLine{250   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ada7df058b56fd82f7178a173fd0eba09}{moveLinkHelper}}(std::vector<JointLimits::ConstPtr>\& new\_joint\_limits, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint);}
 \DoxyCodeLine{251 }
-\DoxyCodeLine{259   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a1ee811e857087efa5d68bd12fdaeffaa}{removeJointHelper}}(\textcolor{keyword}{const} std::vector<std::string>\& removed\_links,}
-\DoxyCodeLine{260                          \textcolor{keyword}{const} std::vector<std::string>\& removed\_joints,}
-\DoxyCodeLine{261                          \textcolor{keyword}{const} std::vector<std::string>\& removed\_active\_joints,}
-\DoxyCodeLine{262                          \textcolor{keyword}{const} std::vector<long>\& removed\_active\_joints\_indices);}
-\DoxyCodeLine{263 }
-\DoxyCodeLine{268   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad9557f1c6f3ce0d53c4ef4ede3790539}{addNewJointLimits}}(\textcolor{keyword}{const} std::vector<JointLimits::ConstPtr>\& new\_joint\_limits);}
-\DoxyCodeLine{269   \textcolor{keyword}{friend} \textcolor{keyword}{struct }\mbox{\hyperlink{structtesseract__scene__graph_1_1ofkt__builder}{ofkt\_builder}};}
-\DoxyCodeLine{270 \};}
-\DoxyCodeLine{271 }
-\DoxyCodeLine{272 \}  \textcolor{comment}{// namespace tesseract\_scene\_graph}}
-\DoxyCodeLine{273 }
-\DoxyCodeLine{274 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_STATE\_SOLVER\_OFKT\_STATE\_SOLVER\_H}}
+\DoxyCodeLine{257   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a864c6d2052077c4858203835447d01f1}{replaceJointHelper}}(std::vector<JointLimits::ConstPtr>\& new\_joint\_limits, \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}\& joint);}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{266   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a1ee811e857087efa5d68bd12fdaeffaa}{removeJointHelper}}(\textcolor{keyword}{const} std::vector<std::string>\& removed\_links,}
+\DoxyCodeLine{267                          \textcolor{keyword}{const} std::vector<std::string>\& removed\_joints,}
+\DoxyCodeLine{268                          \textcolor{keyword}{const} std::vector<std::string>\& removed\_active\_joints,}
+\DoxyCodeLine{269                          \textcolor{keyword}{const} std::vector<long>\& removed\_active\_joints\_indices);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{275   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ad9557f1c6f3ce0d53c4ef4ede3790539}{addNewJointLimits}}(\textcolor{keyword}{const} std::vector<JointLimits::ConstPtr>\& new\_joint\_limits);}
+\DoxyCodeLine{276   \textcolor{keyword}{friend} \textcolor{keyword}{struct }\mbox{\hyperlink{structtesseract__scene__graph_1_1ofkt__builder}{ofkt\_builder}};}
+\DoxyCodeLine{277 \};}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 \}  \textcolor{comment}{// namespace tesseract\_scene\_graph}}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_STATE\_SOLVER\_OFKT\_STATE\_SOLVER\_H}}
 
 \end{DoxyCode}

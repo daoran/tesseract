@@ -6,11 +6,14 @@ This holds a state of the scene.
 
 
 {\ttfamily \#include $<$tesseract\+\_\+common/macros.\+h$>$}\newline
+{\ttfamily \#include $<$boost/serialization/access.\+hpp$>$}\newline
 {\ttfamily \#include $<$Eigen/\+Core$>$}\newline
 {\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+common/types.\+h$>$}\newline
+{\ttfamily \#include $<$boost/serialization/export.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/serialization/tracking.\+hpp$>$}\newline
 Include dependency graph for scene\+\_\+state.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -42,7 +45,7 @@ namespace \mbox{\hyperlink{namespacetesseract__scene__graph}{tesseract\+\_\+scen
 \doxysubsection{Detailed Description}
 This holds a state of the scene. 
 
-It provides a way to look up the location of a link/joint in world coordinates system by link/joint name. It is possible to get the joint transform using the child link transfrom of the joint, but they are both provided for convience. Also the joint values used to calculated the link/joint transfroms is provided.
+It provides a way to look up the location of a link/joint in world coordinates system by link/joint name. It is possible to get the joint transform using the child link transform of the joint, but they are both provided for convenience. Also the joint values used to calculated the link/joint transforms is provided.
 
 \begin{DoxyAuthor}{Author}
 Levi Armstrong 
@@ -54,7 +57,7 @@ April 15, 2018
 TODO 
 \end{DoxyVersion}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000160}{Bug}}]No known bugs\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000208}{Bug}}]No known bugs\end{DoxyRefDesc}
 
 
 \begin{DoxyCopyright}{Copyright}

@@ -99,6 +99,12 @@ bool \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a8aee35dbb
 \begin{DoxyCompactList}\small\item\em Check if link is an active link. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a002f51c7fb4fe4107f0a4c15ca551d55}{has\+Link\+Name}} (const std\+::string \&link\+\_\+name) const override final
 \begin{DoxyCompactList}\small\item\em Check if link name exists. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a7c191ea2aaf1b66d4352e3e1a6d69c4d}{get\+Link\+Transforms}} () const override final
+\begin{DoxyCompactList}\small\item\em Get all of the links transforms. \end{DoxyCompactList}\item 
+Eigen\+::\+Isometry3d \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ab499161a0bc0b09fecee62ec5c349b8d}{get\+Link\+Transform}} (const std\+::string \&link\+\_\+name) const override final
+\begin{DoxyCompactList}\small\item\em Get the transform corresponding to the link. \end{DoxyCompactList}\item 
+Eigen\+::\+Isometry3d \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a5439bd042e472bc072109ae837c0a740}{get\+Relative\+Link\+Transform}} (const std\+::string \&from\+\_\+link\+\_\+name, const std\+::string \&to\+\_\+link\+\_\+name) const override final
+\begin{DoxyCompactList}\small\item\em Get transform between two links using the current state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structtesseract__common_1_1KinematicLimits}{tesseract\+\_\+common\+::\+Kinematic\+Limits}} \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a68cfe8c605215348546a2b67f7f69c0c}{get\+Limits}} () const override final
 \begin{DoxyCompactList}\small\item\em Getter for kinematic limits. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_ac3ef786331721e642c695c9749bfff9a}{add\+Link}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1Link}{Link}} \&link, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&joint) override final
@@ -633,6 +639,40 @@ A vector of link names
 
 Implements \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver_aa3352d3b6b37bc7af41f087771770b7e}{tesseract\+\_\+scene\+\_\+graph\+::\+State\+Solver}}.
 
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1OFKTStateSolver_ab499161a0bc0b09fecee62ec5c349b8d}\label{classtesseract__scene__graph_1_1OFKTStateSolver_ab499161a0bc0b09fecee62ec5c349b8d}} 
+\index{tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}!getLinkTransform@{getLinkTransform}}
+\index{getLinkTransform@{getLinkTransform}!tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}}
+\doxysubsubsection{\texorpdfstring{getLinkTransform()}{getLinkTransform()}}
+{\footnotesize\ttfamily Eigen\+::\+Isometry3d tesseract\+\_\+scene\+\_\+graph\+::\+OFKTState\+Solver\+::get\+Link\+Transform (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{link\+\_\+name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the transform corresponding to the link. 
+
+\begin{DoxyReturn}{Returns}
+Transform and is identity when no transform is available. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver_a9ac88af6307dfbb281cda21970e96a94}{tesseract\+\_\+scene\+\_\+graph\+::\+State\+Solver}}.
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1OFKTStateSolver_a7c191ea2aaf1b66d4352e3e1a6d69c4d}\label{classtesseract__scene__graph_1_1OFKTStateSolver_a7c191ea2aaf1b66d4352e3e1a6d69c4d}} 
+\index{tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}!getLinkTransforms@{getLinkTransforms}}
+\index{getLinkTransforms@{getLinkTransforms}!tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}}
+\doxysubsubsection{\texorpdfstring{getLinkTransforms()}{getLinkTransforms()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} tesseract\+\_\+scene\+\_\+graph\+::\+OFKTState\+Solver\+::get\+Link\+Transforms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all of the links transforms. 
+
+Order should be the same as \mbox{\hyperlink{classtesseract__scene__graph_1_1OFKTStateSolver_a71e753e43764b6e6f6f1729716b929b5}{get\+Link\+Names()}} \begin{DoxyReturn}{Returns}
+Get a vector of transforms for all links. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver_ac3991a6844bef5d336ddda10ad8e0fe8}{tesseract\+\_\+scene\+\_\+graph\+::\+State\+Solver}}.
+
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1OFKTStateSolver_a66a5121e1603ad876974e204ae0a14d9}\label{classtesseract__scene__graph_1_1OFKTStateSolver_a66a5121e1603ad876974e204ae0a14d9}} 
 \index{tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}!getRandomState@{getRandomState}}
 \index{getRandomState@{getRandomState}!tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}}
@@ -649,6 +689,30 @@ Environment state
 
 
 Implements \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver_a15567db8542f473c54b1bfe0a5cb360a}{tesseract\+\_\+scene\+\_\+graph\+::\+State\+Solver}}.
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1OFKTStateSolver_a5439bd042e472bc072109ae837c0a740}\label{classtesseract__scene__graph_1_1OFKTStateSolver_a5439bd042e472bc072109ae837c0a740}} 
+\index{tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}!getRelativeLinkTransform@{getRelativeLinkTransform}}
+\index{getRelativeLinkTransform@{getRelativeLinkTransform}!tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}}
+\doxysubsubsection{\texorpdfstring{getRelativeLinkTransform()}{getRelativeLinkTransform()}}
+{\footnotesize\ttfamily Eigen\+::\+Isometry3d tesseract\+\_\+scene\+\_\+graph\+::\+OFKTState\+Solver\+::get\+Relative\+Link\+Transform (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{from\+\_\+link\+\_\+name,  }\item[{const std\+::string \&}]{to\+\_\+link\+\_\+name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get transform between two links using the current state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+\_\+link\+\_\+name} & The link name the transform should be relative to \\
+\hline
+{\em to\+\_\+link\+\_\+name} & The link name to get transform \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The relative transform = inv(\+Transform(from\+\_\+link\+\_\+name)) $\ast$ Transform(to\+\_\+link\+\_\+name) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver_aaec713a1c063d905f8c66b011e2884d6}{tesseract\+\_\+scene\+\_\+graph\+::\+State\+Solver}}.
 
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1OFKTStateSolver_aaebf658a50f9efd75bae693531e3f71b}\label{classtesseract__scene__graph_1_1OFKTStateSolver_aaebf658a50f9efd75bae693531e3f71b}} 
 \index{tesseract\_scene\_graph::OFKTStateSolver@{tesseract\_scene\_graph::OFKTStateSolver}!getRevision@{getRevision}}

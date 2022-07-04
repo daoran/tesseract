@@ -26,6 +26,8 @@ using \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a705d1f0a0668334445
 \item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a3853006ca2bbd00444a07ca4d3680f22}{Joint}} (std\+::string name)
 \item 
+\mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a0e737369821927fd582863a58d06dfd0}{Joint}} ()=default
+\item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_abd8942d1442147900e1c5159019a6dd1}{$\sim$\+Joint}} ()=default
 \item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a9b0cac201b6322193b8475f57b203f0f}{Joint}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&other)=delete
@@ -43,6 +45,10 @@ void \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a9163c57c91f4a19161b
 \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a97f37f38d2827c7edfcc083cc6dfe5d9}{clone}} () const
 \begin{DoxyCompactList}\small\item\em Clone the joint keeping the name. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a6352a8bf4e972768c9fd3226edf8498e}{clone}} (const std\+::string \&name) const
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_ae814efe56edff3bd965f84c618166ca1}{operator==}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_abb8095642c83c46ebafc4a9144627586}{operator!=}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&rhs) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -67,10 +73,20 @@ Eigen\+::\+Isometry3d \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a94
 \begin{DoxyCompactList}\small\item\em Unsupported Hidden Feature. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1JointMimic_ad08bd9a09f4b395bc46ed84446a95f0e}{Joint\+Mimic\+::\+Ptr}} \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a73a481648fa74000599d194408fdf7bc}{mimic}}
 \begin{DoxyCompactList}\small\item\em Option to Mimic another \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a9f1aa9772a9ec0bbf8120e10d55979d7}{serialize}} (Archive \&ar, const unsigned int version)
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a8cfde2b003101b56c0e424f716b9d5ee}{name\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \end{DoxyCompactItemize}
 
 
@@ -93,8 +109,14 @@ std\+::string \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a8cfde2b003
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_a3853006ca2bbd00444a07ca4d3680f22}\label{classtesseract__scene__graph_1_1Joint_a3853006ca2bbd00444a07ca4d3680f22}} 
 \index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!Joint@{Joint}}
 \index{Joint@{Joint}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
-\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::\+Joint (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_a0e737369821927fd582863a58d06dfd0}\label{classtesseract__scene__graph_1_1Joint_a0e737369821927fd582863a58d06dfd0}} 
+\index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!Joint@{Joint}}
+\index{Joint@{Joint}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
+\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::\+Joint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_abd8942d1442147900e1c5159019a6dd1}\label{classtesseract__scene__graph_1_1Joint_abd8942d1442147900e1c5159019a6dd1}} 
 \index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!````~Joint@{$\sim$Joint}}
@@ -105,13 +127,13 @@ std\+::string \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint_a8cfde2b003
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_a9b0cac201b6322193b8475f57b203f0f}\label{classtesseract__scene__graph_1_1Joint_a9b0cac201b6322193b8475f57b203f0f}} 
 \index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!Joint@{Joint}}
 \index{Joint@{Joint}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
-\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::\+Joint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_a681733364ff7288289c9ab68314b138b}\label{classtesseract__scene__graph_1_1Joint_a681733364ff7288289c9ab68314b138b}} 
 \index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!Joint@{Joint}}
 \index{Joint@{Joint}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
-\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{Joint()}{Joint()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::\+Joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 
@@ -148,6 +170,12 @@ Cloned joint
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
 {\footnotesize\ttfamily const std\+::string \& tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_abb8095642c83c46ebafc4a9144627586}\label{classtesseract__scene__graph_1_1Joint_abb8095642c83c46ebafc4a9144627586}} 
+\index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_af36105a6e87717a3df4636ce53ee0551}\label{classtesseract__scene__graph_1_1Joint_af36105a6e87717a3df4636ce53ee0551}} 
 \index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!operator=@{operator=}}
 \index{operator=@{operator=}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
@@ -159,6 +187,28 @@ Cloned joint
 \index{operator=@{operator=}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \& tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_ae814efe56edff3bd965f84c618166ca1}\label{classtesseract__scene__graph_1_1Joint_ae814efe56edff3bd965f84c618166ca1}} 
+\index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1Joint}{Joint}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_a9f1aa9772a9ec0bbf8120e10d55979d7}\label{classtesseract__scene__graph_1_1Joint_a9f1aa9772a9ec0bbf8120e10d55979d7}} 
+\index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1Joint_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__scene__graph_1_1Joint_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_scene\_graph::Joint@{tesseract\_scene\_graph::Joint}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -260,6 +310,7 @@ The type of joint.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\item 
+tesseract\+\_\+scene\+\_\+graph/src/\mbox{\hyperlink{tesseract__scene__graph_2src_2joint_8cpp}{joint.\+cpp}}\end{DoxyCompactItemize}

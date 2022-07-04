@@ -34,16 +34,30 @@ using \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCo
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_aaaed752f507d9a667ffb535b69fdaa34}{Add\+Kinematics\+Information\+Command}} ()
+\item 
 \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_a94910b3645b2550fe1642ffd54d2607a}{Add\+Kinematics\+Information\+Command}} (\mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}} kinematics\+\_\+information)
 \begin{DoxyCompactList}\small\item\em Add kinematics information to the environment. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_a5038adf4b92b548a06ced9e02f81e569}{get\+Type}} () const final
-\item 
 const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}} \& \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_a86f578032f00647c95dc196f37105c7b}{get\+Kinematics\+Information}} () const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_ad4d3115f667eb878402d8bf297380d56}{operator==}} (const \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand}{Add\+Kinematics\+Information\+Command}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_a340c02773f89f0958343d6483aa09548}{operator!=}} (const \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand}{Add\+Kinematics\+Information\+Command}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_aae149c16c216b608cc232f3f931eade5}{serialize}} (Archive \&ar, const unsigned int version)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}} \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_a9b09ac06b80966f0c826b3f615b2a27b}{kinematics\+\_\+information\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \end{DoxyCompactItemize}
 
 
@@ -63,10 +77,16 @@ const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_aaaed752f507d9a667ffb535b69fdaa34}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_aaaed752f507d9a667ffb535b69fdaa34}} 
+\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!AddKinematicsInformationCommand@{AddKinematicsInformationCommand}}
+\index{AddKinematicsInformationCommand@{AddKinematicsInformationCommand}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
+\doxysubsubsection{\texorpdfstring{AddKinematicsInformationCommand()}{AddKinematicsInformationCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::\+Add\+Kinematics\+Information\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_a94910b3645b2550fe1642ffd54d2607a}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_a94910b3645b2550fe1642ffd54d2607a}} 
 \index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!AddKinematicsInformationCommand@{AddKinematicsInformationCommand}}
 \index{AddKinematicsInformationCommand@{AddKinematicsInformationCommand}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
-\doxysubsubsection{\texorpdfstring{AddKinematicsInformationCommand()}{AddKinematicsInformationCommand()}}
+\doxysubsubsection{\texorpdfstring{AddKinematicsInformationCommand()}{AddKinematicsInformationCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::\+Add\+Kinematics\+Information\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}}}]{kinematics\+\_\+information }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -87,15 +107,33 @@ Add kinematics information to the environment.
 \doxysubsubsection{\texorpdfstring{getKinematicsInformation()}{getKinematicsInformation()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}} \& tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::get\+Kinematics\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_a5038adf4b92b548a06ced9e02f81e569}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_a5038adf4b92b548a06ced9e02f81e569}} 
-\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!getType@{getType}}
-\index{getType@{getType}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
-\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__environment_afc00c1aecb519acba3afc24dbd367029}{Command\+Type}} tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_a340c02773f89f0958343d6483aa09548}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_a340c02773f89f0958343d6483aa09548}} 
+\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand}{Add\+Kinematics\+Information\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_ad4d3115f667eb878402d8bf297380d56}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_ad4d3115f667eb878402d8bf297380d56}} 
+\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1AddKinematicsInformationCommand}{Add\+Kinematics\+Information\+Command}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_aae149c16c216b608cc232f3f931eade5}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_aae149c16c216b608cc232f3f931eade5}} 
+\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+environment\+::\+Add\+Kinematics\+Information\+Command\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e231a278dcd79c1ec16490f}{tesseract\+\_\+environment\+::\+Command}}.
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__environment_1_1AddKinematicsInformationCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__environment_1_1AddKinematicsInformationCommand_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_environment::AddKinematicsInformationCommand@{tesseract\_environment::AddKinematicsInformationCommand}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -108,6 +146,7 @@ Implements \mbox{\hyperlink{classtesseract__environment_1_1Command_ae76293ca1e23
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{add__kinematics__information__command_8h}{add\+\_\+kinematics\+\_\+information\+\_\+command.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+environment/include/tesseract\+\_\+environment/commands/\mbox{\hyperlink{add__kinematics__information__command_8h}{add\+\_\+kinematics\+\_\+information\+\_\+command.\+h}}\item 
+tesseract\+\_\+environment/src/commands/\mbox{\hyperlink{add__kinematics__information__command_8cpp}{add\+\_\+kinematics\+\_\+information\+\_\+command.\+cpp}}\end{DoxyCompactItemize}

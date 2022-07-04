@@ -39,12 +39,18 @@ void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_
 \begin{DoxyCompactList}\small\item\em Add location for the plugin loader to search. \end{DoxyCompactList}\item 
 std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_abba279cdeb75c502c70b6b31af3d993b}{get\+Search\+Paths}} () const
 \begin{DoxyCompactList}\small\item\em Get the plugin search paths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_a80035ba3dcd3d2fe34a71c7459bc302b}{clear\+Search\+Paths}} ()
+\begin{DoxyCompactList}\small\item\em Clear the search paths. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_ab465759ee4c5838e7be164958c5f163e}{add\+Search\+Library}} (const std\+::string \&library\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Add a library to search for plugin name. \end{DoxyCompactList}\item 
 std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_ad3d350dd95449f85bbe57c7ddd07d234}{get\+Search\+Libraries}} () const
 \begin{DoxyCompactList}\small\item\em Get the plugin search libraries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_a77596799af7ea33dc2486351e8f230d5}{clear\+Search\+Libraries}} ()
+\begin{DoxyCompactList}\small\item\em Clean the search libraries. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_a401c5843b914e25d663d7c682ae7dc80}{add\+Discrete\+Contact\+Manager\+Plugin}} (const std\+::string \&name, \mbox{\hyperlink{structtesseract__common_1_1PluginInfo}{tesseract\+\_\+common\+::\+Plugin\+Info}} plugin\+\_\+info)
 \begin{DoxyCompactList}\small\item\em Add a discrete contact manager plugin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_a61b8caba5438c15abd7d472822efcd0c}{has\+Discrete\+Contact\+Manager\+Plugins}} () const
+\begin{DoxyCompactList}\small\item\em Check if it has discrete contact manager plugins. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacetesseract__common_a43d1f6e0418164a6db0e1c447150340e}{tesseract\+\_\+common\+::\+Plugin\+Info\+Map}} \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_af54063011c3e109131fe5f4916874ffe}{get\+Discrete\+Contact\+Manager\+Plugins}} () const
 \begin{DoxyCompactList}\small\item\em Get the map of discrete contact manager plugin. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_adc04de4a93adb8c77db6ae22956b762d}{remove\+Discrete\+Contact\+Manager\+Plugin}} (const std\+::string \&name)
@@ -55,6 +61,8 @@ std\+::string \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPlugi
 \begin{DoxyCompactList}\small\item\em Get the default discrete contact manager. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_ae35befbfd8ff14780aafa81a15dbad82}{add\+Continuous\+Contact\+Manager\+Plugin}} (const std\+::string \&name, \mbox{\hyperlink{structtesseract__common_1_1PluginInfo}{tesseract\+\_\+common\+::\+Plugin\+Info}} plugin\+\_\+info)
 \begin{DoxyCompactList}\small\item\em Add a continuous contact manager plugin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_a28dabdd5ddda589a68b6eeb0894340de}{has\+Continuous\+Contact\+Manager\+Plugins}} () const
+\begin{DoxyCompactList}\small\item\em Check if it has continuous contact manager plugins. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacetesseract__common_a43d1f6e0418164a6db0e1c447150340e}{tesseract\+\_\+common\+::\+Plugin\+Info\+Map}} \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_ac4f2179464877cd56e2b6824731d5afb}{get\+Continuous\+Contact\+Manager\+Plugins}} () const
 \begin{DoxyCompactList}\small\item\em Get the map of continuous contact manager plugin. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtesseract__collision_1_1ContactManagersPluginFactory_ae9526f34186dd6ae87808d16d194c069}{remove\+Continuous\+Contact\+Manager\+Plugin}} (const std\+::string \&name)
@@ -227,6 +235,26 @@ Add location for the plugin loader to search.
 {\em path} & The full path to the directory \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_a77596799af7ea33dc2486351e8f230d5}\label{classtesseract__collision_1_1ContactManagersPluginFactory_a77596799af7ea33dc2486351e8f230d5}} 
+\index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!clearSearchLibraries@{clearSearchLibraries}}
+\index{clearSearchLibraries@{clearSearchLibraries}!tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}}
+\doxysubsubsection{\texorpdfstring{clearSearchLibraries()}{clearSearchLibraries()}}
+{\footnotesize\ttfamily void tesseract\+\_\+collision\+::\+Contact\+Managers\+Plugin\+Factory\+::clear\+Search\+Libraries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clean the search libraries. 
+
+\mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_a80035ba3dcd3d2fe34a71c7459bc302b}\label{classtesseract__collision_1_1ContactManagersPluginFactory_a80035ba3dcd3d2fe34a71c7459bc302b}} 
+\index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!clearSearchPaths@{clearSearchPaths}}
+\index{clearSearchPaths@{clearSearchPaths}!tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}}
+\doxysubsubsection{\texorpdfstring{clearSearchPaths()}{clearSearchPaths()}}
+{\footnotesize\ttfamily void tesseract\+\_\+collision\+::\+Contact\+Managers\+Plugin\+Factory\+::clear\+Search\+Paths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear the search paths. 
+
 \mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_aff83c1c5fd091d2a2efb281af2401c9d}\label{classtesseract__collision_1_1ContactManagersPluginFactory_aff83c1c5fd091d2a2efb281af2401c9d}} 
 \index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!createContinuousContactManager@{createContinuousContactManager}}
 \index{createContinuousContactManager@{createContinuousContactManager}!tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}}
@@ -381,6 +409,32 @@ Get the plugin search paths.
 
 \begin{DoxyReturn}{Returns}
 The search paths 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_a28dabdd5ddda589a68b6eeb0894340de}\label{classtesseract__collision_1_1ContactManagersPluginFactory_a28dabdd5ddda589a68b6eeb0894340de}} 
+\index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!hasContinuousContactManagerPlugins@{hasContinuousContactManagerPlugins}}
+\index{hasContinuousContactManagerPlugins@{hasContinuousContactManagerPlugins}!tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}}
+\doxysubsubsection{\texorpdfstring{hasContinuousContactManagerPlugins()}{hasContinuousContactManagerPlugins()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::\+Contact\+Managers\+Plugin\+Factory\+::has\+Continuous\+Contact\+Manager\+Plugins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if it has continuous contact manager plugins. 
+
+\begin{DoxyReturn}{Returns}
+True if continuous Plugin\+Info\+Map is not empty, otherwise fale 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_a61b8caba5438c15abd7d472822efcd0c}\label{classtesseract__collision_1_1ContactManagersPluginFactory_a61b8caba5438c15abd7d472822efcd0c}} 
+\index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!hasDiscreteContactManagerPlugins@{hasDiscreteContactManagerPlugins}}
+\index{hasDiscreteContactManagerPlugins@{hasDiscreteContactManagerPlugins}!tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}}
+\doxysubsubsection{\texorpdfstring{hasDiscreteContactManagerPlugins()}{hasDiscreteContactManagerPlugins()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::\+Contact\+Managers\+Plugin\+Factory\+::has\+Discrete\+Contact\+Manager\+Plugins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if it has discrete contact manager plugins. 
+
+\begin{DoxyReturn}{Returns}
+True if discrete Plugin\+Info\+Map is not empty, otherwise fale 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classtesseract__collision_1_1ContactManagersPluginFactory_a4d11868e5b8fbdc5467a9229dd8901d4}\label{classtesseract__collision_1_1ContactManagersPluginFactory_a4d11868e5b8fbdc5467a9229dd8901d4}} 
 \index{tesseract\_collision::ContactManagersPluginFactory@{tesseract\_collision::ContactManagersPluginFactory}!operator=@{operator=}}

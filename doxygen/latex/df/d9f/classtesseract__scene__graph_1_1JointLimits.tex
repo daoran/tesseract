@@ -19,6 +19,10 @@ using \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_abbdeeb05eed0
 \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a7b7b7159da63aa5c2b0c5249f1820ce7}{Joint\+Limits}} (double l, double u, double e, double v, double a)
 \item 
 void \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a8e51a38509be7d0b8e06130d58bb693f}{clear}} ()
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_ab32c24bb96f8fbda11849c1d40dcbaf3}{operator==}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits}{Joint\+Limits}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a8482767e35ff82ec717cd44d3d7f3621}{operator!=}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits}{Joint\+Limits}} \&rhs) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -33,8 +37,15 @@ double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_ac7732a61897
 \item 
 double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a94cf26fbd1d5804d50c114e899b64536}{acceleration}} \{ 0 \}
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_adc5cd67ba8fb418ae63c1cc80b2064f4}{serialize}} (Archive \&ar, const unsigned int version)
+\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \item 
 std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_ae919cadd4185c328b9dbcc0c88fe1666}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits}{Joint\+Limits}} \&limits)
 \end{DoxyCompactItemize}
@@ -77,9 +88,34 @@ std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a
 \doxysubsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily void tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Limits\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointLimits_a8482767e35ff82ec717cd44d3d7f3621}\label{classtesseract__scene__graph_1_1JointLimits_a8482767e35ff82ec717cd44d3d7f3621}} 
+\index{tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Limits\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits}{Joint\+Limits}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointLimits_ab32c24bb96f8fbda11849c1d40dcbaf3}\label{classtesseract__scene__graph_1_1JointLimits_ab32c24bb96f8fbda11849c1d40dcbaf3}} 
+\index{tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Limits\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits}{Joint\+Limits}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointLimits_adc5cd67ba8fb418ae63c1cc80b2064f4}\label{classtesseract__scene__graph_1_1JointLimits_adc5cd67ba8fb418ae63c1cc80b2064f4}} 
+\index{tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Limits\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 \doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointLimits_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__scene__graph_1_1JointLimits_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
+
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1JointLimits_ae919cadd4185c328b9dbcc0c88fe1666}\label{classtesseract__scene__graph_1_1JointLimits_ae919cadd4185c328b9dbcc0c88fe1666}} 
 \index{tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tesseract\_scene\_graph::JointLimits@{tesseract\_scene\_graph::JointLimits}}
@@ -121,6 +157,7 @@ std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointLimits_a
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\item 
+tesseract\+\_\+scene\+\_\+graph/src/\mbox{\hyperlink{tesseract__scene__graph_2src_2joint_8cpp}{joint.\+cpp}}\end{DoxyCompactItemize}

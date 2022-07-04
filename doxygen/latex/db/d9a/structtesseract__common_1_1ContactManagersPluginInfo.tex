@@ -27,7 +27,11 @@ void \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ae977
 void \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_a266c8f02153a88e56d9fc5d79bbb757e}{clear}} ()
 \begin{DoxyCompactList}\small\item\em Clear the contents. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_a06fae270dff2e103a58c9ab0ff51410e}{empty}} () const
-\begin{DoxyCompactList}\small\item\em Check if structure is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if structure is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ab78e5cc39e5f60943e7eaf9098b50324}{operator==}} (const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_af7468c947e0722f043643eb15a2cad04}{operator!=}} (const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}} \&rhs) const
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,6 +47,16 @@ std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{structtesseract__common_1_1Cont
 \begin{DoxyCompactItemize}
 \item 
 static const std\+::string \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_a79ebab783c331df144500b098cc2e7aa}{CONFIG\+\_\+\+KEY}} \{ \char`\"{}contact\+\_\+manager\+\_\+plugins\char`\"{} \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_a239de44e3cd4c3ba1e07c1ca8d33e65d}{serialize}} (Archive \&ar, const unsigned int version)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \end{DoxyCompactItemize}
 
 
@@ -79,6 +93,34 @@ Check if structure is empty.
 
 
 Insert the content of an other \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}}. 
+
+\mbox{\Hypertarget{structtesseract__common_1_1ContactManagersPluginInfo_af7468c947e0722f043643eb15a2cad04}\label{structtesseract__common_1_1ContactManagersPluginInfo_af7468c947e0722f043643eb15a2cad04}} 
+\index{tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structtesseract__common_1_1ContactManagersPluginInfo_ab78e5cc39e5f60943e7eaf9098b50324}\label{structtesseract__common_1_1ContactManagersPluginInfo_ab78e5cc39e5f60943e7eaf9098b50324}} 
+\index{tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structtesseract__common_1_1ContactManagersPluginInfo_a239de44e3cd4c3ba1e07c1ca8d33e65d}\label{structtesseract__common_1_1ContactManagersPluginInfo_a239de44e3cd4c3ba1e07c1ca8d33e65d}} 
+\index{tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structtesseract__common_1_1ContactManagersPluginInfo_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{structtesseract__common_1_1ContactManagersPluginInfo_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_common::ContactManagersPluginInfo@{tesseract\_common::ContactManagersPluginInfo}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 

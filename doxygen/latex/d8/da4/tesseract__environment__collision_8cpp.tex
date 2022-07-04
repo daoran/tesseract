@@ -10,6 +10,7 @@
 {\ttfamily \#include $<$tesseract\+\_\+common/utils.\+h$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+environment/commands.\+h$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+environment/environment.\+h$>$}\newline
+{\ttfamily \#include $<$tesseract\+\_\+support/tesseract\+\_\+support\+\_\+resource\+\_\+locator.\+h$>$}\newline
 Include dependency graph for tesseract\+\_\+environment\+\_\+collision.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -21,19 +22,31 @@ Include dependency graph for tesseract\+\_\+environment\+\_\+collision.\+cpp\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \mbox{\hyperlink{tesseract__environment__collision_8cpp_ad43b67aac2fb3de014c67c88f9dc4db9}{locate\+Resource}} (const std\+::string \&url)
-\item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_aacd7acf57071e94cd87fbae62dbaafba}{Scene\+Graph\+::\+UPtr}} \mbox{\hyperlink{tesseract__environment__collision_8cpp_ab1f646b73e8b8753f65d82b9f26e3510}{get\+Scene\+Graph}} ()
 \item 
 \mbox{\hyperlink{classtesseract__srdf_1_1SRDFModel_aa774b8f688b3521f25ea1a6d4e16839c}{SRDFModel\+::\+Ptr}} \mbox{\hyperlink{tesseract__environment__collision_8cpp_aab3daf3bc58287c24ac4be5b9caa8ab8}{get\+SRDFModel}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{Scene\+Graph}} \&scene\+\_\+graph)
 \item 
-\mbox{\hyperlink{tesseract__environment__collision_8cpp_a0413499a0ecec36ee71c28de5df729ed}{TEST}} (Tesseract\+Environment\+Collision\+Unit, run\+Environment\+Collision\+Test)
+\mbox{\hyperlink{classtesseract__environment_1_1Environment_a182513d107a55c729afb5e6482e2ac87}{tesseract\+\_\+environment\+::\+Environment\+::\+UPtr}} \mbox{\hyperlink{tesseract__environment__collision_8cpp_a79516d434a0e791183e3e9420357f837}{get\+Environment}} ()
+\item 
+\mbox{\hyperlink{tesseract__environment__collision_8cpp_ab4cdd17c59dadfa25dc6d134c180a1da}{TEST}} (Tesseract\+Environment\+Collision\+Unit, run\+Environment\+Discrete\+Collision\+Test)
+\item 
+\mbox{\hyperlink{tesseract__environment__collision_8cpp_a49ed28f2d1b25a9bf0d0df2d5da17e4a}{TEST}} (Tesseract\+Environment\+Collision\+Unit, run\+Environment\+Continuous\+Collision\+Test)
+\item 
+\mbox{\hyperlink{tesseract__environment__collision_8cpp_a86f2e6beb7cf4c9ca27550c96a8a236e}{TEST}} (Tesseract\+Environment\+Collision\+Unit, run\+Environment\+Clear\+Discrete\+Collision\+Test)
+\item 
+\mbox{\hyperlink{tesseract__environment__collision_8cpp_a45777ad4676c2b31034106a5b77e5226}{TEST}} (Tesseract\+Environment\+Collision\+Unit, run\+Environment\+Clear\+Continuous\+Collision\+Test)
 \item 
 int \mbox{\hyperlink{tesseract__environment__collision_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tesseract__environment__collision_8cpp_a79516d434a0e791183e3e9420357f837}\label{tesseract__environment__collision_8cpp_a79516d434a0e791183e3e9420357f837}} 
+\index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!getEnvironment@{getEnvironment}}
+\index{getEnvironment@{getEnvironment}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
+\doxysubsubsection{\texorpdfstring{getEnvironment()}{getEnvironment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__environment_1_1Environment_a182513d107a55c729afb5e6482e2ac87}{tesseract\+\_\+environment\+::\+Environment\+::\+UPtr}} get\+Environment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{tesseract__environment__collision_8cpp_ab1f646b73e8b8753f65d82b9f26e3510}\label{tesseract__environment__collision_8cpp_ab1f646b73e8b8753f65d82b9f26e3510}} 
 \index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!getSceneGraph@{getSceneGraph}}
 \index{getSceneGraph@{getSceneGraph}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
@@ -46,21 +59,33 @@ int \mbox{\hyperlink{tesseract__environment__collision_8cpp_a3c04138a5bfe5d72780
 \doxysubsubsection{\texorpdfstring{getSRDFModel()}{getSRDFModel()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__srdf_1_1SRDFModel_aa774b8f688b3521f25ea1a6d4e16839c}{SRDFModel\+::\+Ptr}} get\+SRDFModel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph}{Scene\+Graph}} \&}]{scene\+\_\+graph }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{tesseract__environment__collision_8cpp_ad43b67aac2fb3de014c67c88f9dc4db9}\label{tesseract__environment__collision_8cpp_ad43b67aac2fb3de014c67c88f9dc4db9}} 
-\index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!locateResource@{locateResource}}
-\index{locateResource@{locateResource}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
-\doxysubsubsection{\texorpdfstring{locateResource()}{locateResource()}}
-{\footnotesize\ttfamily std\+::string locate\+Resource (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{tesseract__environment__collision_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{tesseract__environment__collision_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
 \index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!main@{main}}
 \index{main@{main}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{tesseract__environment__collision_8cpp_a0413499a0ecec36ee71c28de5df729ed}\label{tesseract__environment__collision_8cpp_a0413499a0ecec36ee71c28de5df729ed}} 
+\mbox{\Hypertarget{tesseract__environment__collision_8cpp_a45777ad4676c2b31034106a5b77e5226}\label{tesseract__environment__collision_8cpp_a45777ad4676c2b31034106a5b77e5226}} 
 \index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}}
-{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Environment\+Collision\+Unit}]{,  }\item[{run\+Environment\+Collision\+Test}]{ }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Environment\+Collision\+Unit}]{,  }\item[{run\+Environment\+Clear\+Continuous\+Collision\+Test}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tesseract__environment__collision_8cpp_a86f2e6beb7cf4c9ca27550c96a8a236e}\label{tesseract__environment__collision_8cpp_a86f2e6beb7cf4c9ca27550c96a8a236e}} 
+\index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Environment\+Collision\+Unit}]{,  }\item[{run\+Environment\+Clear\+Discrete\+Collision\+Test}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tesseract__environment__collision_8cpp_a49ed28f2d1b25a9bf0d0df2d5da17e4a}\label{tesseract__environment__collision_8cpp_a49ed28f2d1b25a9bf0d0df2d5da17e4a}} 
+\index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Environment\+Collision\+Unit}]{,  }\item[{run\+Environment\+Continuous\+Collision\+Test}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tesseract__environment__collision_8cpp_ab4cdd17c59dadfa25dc6d134c180a1da}\label{tesseract__environment__collision_8cpp_ab4cdd17c59dadfa25dc6d134c180a1da}} 
+\index{tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!tesseract\_environment\_collision.cpp@{tesseract\_environment\_collision.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Environment\+Collision\+Unit}]{,  }\item[{run\+Environment\+Discrete\+Collision\+Test}]{ }\end{DoxyParamCaption})}
 

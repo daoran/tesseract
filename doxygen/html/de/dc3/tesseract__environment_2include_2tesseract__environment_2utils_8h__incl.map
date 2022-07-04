@@ -1,52 +1,52 @@
 <map id="tesseract_environment/include/tesseract_environment/utils.h" name="tesseract_environment/include/tesseract_environment/utils.h">
-<area shape="rect" id="node1" title="Tesseract Environment Utility Functions." alt="" coords="2817,5,3019,61"/>
-<area shape="rect" id="node2" href="$d6/df3/graph_8h.html" title="A basic scene graph using boost." alt="" coords="1059,600,1217,641"/>
-<area shape="rect" id="node26" href="$d7/dea/scene__state_8h.html" title="This holds a state of the scene." alt="" coords="3463,689,3621,731"/>
-<area shape="rect" id="node27" href="$d6/d0f/continuous__contact__manager_8h.html" title="This is the continuous contact manager base class." alt="" coords="2927,303,3095,359"/>
-<area shape="rect" id="node28" href="$d3/db3/tesseract__collision_2core_2include_2tesseract__collision_2core_2types_8h.html" title="Tesseracts Collision Common Types." alt="" coords="2603,407,2734,448"/>
-<area shape="rect" id="node36" href="$db/d35/discrete__contact__manager_8h.html" title="This is the discrete contact manager base class." alt="" coords="3439,303,3589,359"/>
-<area shape="rect" id="node37" href="$de/d26/environment_8h.html" title=" " alt="" coords="3327,109,3482,151"/>
-<area shape="rect" id="node3" href="$de/d3c/macros_8h.html" title="Common Tesseract Macros." alt="" coords="2764,957,2955,984"/>
-<area shape="rect" id="node4" title=" " alt="" coords="421,689,573,731"/>
-<area shape="rect" id="node5" title=" " alt="" coords="597,689,737,731"/>
-<area shape="rect" id="node6" title=" " alt="" coords="761,697,936,723"/>
-<area shape="rect" id="node7" title=" " alt="" coords="961,689,1115,731"/>
-<area shape="rect" id="node8" title=" " alt="" coords="196,689,333,731"/>
-<area shape="rect" id="node9" title=" " alt="" coords="1237,875,1292,902"/>
-<area shape="rect" id="node10" title=" " alt="" coords="357,697,396,723"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1977,875,2088,902"/>
-<area shape="rect" id="node12" href="$d2/d5c/tesseract__scene__graph_2include_2tesseract__scene__graph_2link_8h.html" title=" " alt="" coords="1733,689,1890,731"/>
-<area shape="rect" id="node17" href="$d4/d6d/tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h.html" title=" " alt="" coords="1530,779,1687,820"/>
-<area shape="rect" id="node19" href="$d2/d01/allowed__collision__matrix_8h.html" title=" " alt="" coords="2066,689,2247,731"/>
-<area shape="rect" id="node13" title=" " alt="" coords="2473,875,2531,902"/>
-<area shape="rect" id="node14" title=" " alt="" coords="4148,875,4195,902"/>
-<area shape="rect" id="node15" title=" " alt="" coords="3193,875,3261,902"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1679,875,1770,902"/>
-<area shape="rect" id="node18" href="$d0/da6/tesseract__geometry_2include_2tesseract__geometry_2geometry_8h.html" title="Tesseract Geometries." alt="" coords="2725,779,2861,820"/>
-<area shape="rect" id="node20" href="$dd/ddb/tesseract__common_2include_2tesseract__common_2types_8h.html" title="Common Tesseract Types." alt="" coords="3847,786,4026,813"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1399,957,1485,984"/>
-<area shape="rect" id="node22" title=" " alt="" coords="4555,957,4670,984"/>
-<area shape="rect" id="node23" title=" " alt="" coords="3664,875,3804,902"/>
-<area shape="rect" id="node24" title=" " alt="" coords="4219,875,4334,902"/>
-<area shape="rect" id="node25" href="$d9/dc2/kinematic__limits_8h.html" title="Common Tesseract Kinematic Limits and Related Utility Functions." alt="" coords="3828,868,4021,909"/>
-<area shape="rect" id="node29" title=" " alt="" coords="2338,511,2389,537"/>
-<area shape="rect" id="node30" title=" " alt="" coords="3071,607,3149,634"/>
-<area shape="rect" id="node31" href="$d4/ddb/geometries_8h.html" title="Tesseract Geometries." alt="" coords="2670,600,2806,641"/>
-<area shape="rect" id="node34" href="$d4/da8/collision__margin__data_8h.html" title="This is used to store collision margin information." alt="" coords="1807,503,1991,545"/>
-<area shape="rect" id="node32" href="$df/d9e/tesseract__geometry_2include_2tesseract__geometry_2impl_2box_8h.html" title="Tesseract Box Geometry." alt="" coords="2830,689,2966,731"/>
-<area shape="rect" id="node33" href="$d8/d2b/tesseract__geometry_2include_2tesseract__geometry_2impl_2capsule_8h.html" title="Tesseract Capsule Geometry." alt="" coords="2670,689,2806,731"/>
-<area shape="rect" id="node35" href="$dc/d79/tesseract__common_2include_2tesseract__common_2utils_8h.html" title="Common Tesseract Utility Functions." alt="" coords="2117,607,2287,634"/>
-<area shape="rect" id="node38" title=" " alt="" coords="3108,213,3211,240"/>
-<area shape="rect" id="node39" title=" " alt="" coords="3235,213,3297,240"/>
-<area shape="rect" id="node40" title=" " alt="" coords="3321,213,3489,240"/>
-<area shape="rect" id="node41" href="$d5/d90/commands_8h.html" title="This contains classes for recording operations applied to the environment for tracking changes...." alt="" coords="3766,206,3921,247"/>
-<area shape="rect" id="node42" href="$da/d56/contact__managers__plugin__factory_8h.html" title="Factory for loading contact managers as plugins." alt="" coords="4230,199,4393,255"/>
-<area shape="rect" id="node43" href="$d3/d54/mutable__state__solver_8h.html" title="Tesseract Scene Graph Mutable State Solver Interface ." alt="" coords="3945,206,4105,247"/>
-<area shape="rect" id="node44" href="$d8/dec/urdf__parser_8h.html" title="A urdf parser for tesseract." alt="" coords="2338,407,2469,448"/>
-<area shape="rect" id="node45" href="$d3/d95/resource__locator_8h.html" title="Locate and retrieve resource data." alt="" coords="3065,503,3251,545"/>
-<area shape="rect" id="node46" href="$d0/d42/srdf__model_8h.html" title="Parse srdf xml." alt="" coords="1613,407,1743,448"/>
-<area shape="rect" id="node47" href="$d5/df5/manipulator__info_8h.html" title=" " alt="" coords="4511,779,4715,820"/>
-<area shape="rect" id="node48" href="$db/d8d/joint__group_8h.html" title="A joint group with forward kinematics, Jacobian, limits methods." alt="" coords="3681,600,3827,641"/>
-<area shape="rect" id="node49" href="$d4/d3a/kinematic__group_8h.html" title="A kinematic group with forward and inverse kinematics methods." alt="" coords="4115,503,4275,545"/>
-<area shape="rect" id="node50" href="$d0/d3c/kinematics__plugin__factory_8h.html" title="Kinematics Plugin Factory." alt="" coords="3881,496,4040,552"/>
+<area shape="rect" id="node1" title="Tesseract Environment Utility Functions." alt="" coords="3595,5,3797,61"/>
+<area shape="rect" id="node2" href="$d6/df3/graph_8h.html" title="A basic scene graph using boost." alt="" coords="1109,600,1267,641"/>
+<area shape="rect" id="node27" href="$d7/dea/scene__state_8h.html" title="This holds a state of the scene." alt="" coords="2843,689,3000,731"/>
+<area shape="rect" id="node28" href="$d6/d0f/continuous__contact__manager_8h.html" title="This is the continuous contact manager base class." alt="" coords="4131,303,4299,359"/>
+<area shape="rect" id="node29" href="$d3/db3/tesseract__collision_2core_2include_2tesseract__collision_2core_2types_8h.html" title="Tesseracts Collision Common Types." alt="" coords="4040,407,4171,448"/>
+<area shape="rect" id="node35" href="$db/d35/discrete__contact__manager_8h.html" title="This is the discrete contact manager base class." alt="" coords="3955,303,4106,359"/>
+<area shape="rect" id="node36" href="$de/d26/environment_8h.html" title=" " alt="" coords="3132,109,3287,151"/>
+<area shape="rect" id="node3" href="$de/d3c/macros_8h.html" title="Common Tesseract Macros." alt="" coords="3801,875,3991,902"/>
+<area shape="rect" id="node4" title=" " alt="" coords="471,689,623,731"/>
+<area shape="rect" id="node5" title=" " alt="" coords="647,689,787,731"/>
+<area shape="rect" id="node6" title=" " alt="" coords="811,697,986,723"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1011,689,1165,731"/>
+<area shape="rect" id="node8" title=" " alt="" coords="246,689,383,731"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1254,868,1381,909"/>
+<area shape="rect" id="node10" title=" " alt="" coords="581,875,635,902"/>
+<area shape="rect" id="node11" title=" " alt="" coords="407,697,446,723"/>
+<area shape="rect" id="node12" title=" " alt="" coords="3195,875,3306,902"/>
+<area shape="rect" id="node13" href="$d2/d5c/tesseract__scene__graph_2include_2tesseract__scene__graph_2link_8h.html" title=" " alt="" coords="1645,689,1803,731"/>
+<area shape="rect" id="node18" href="$d4/d6d/tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h.html" title=" " alt="" coords="1405,779,1563,820"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1478,868,1605,909"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2131,868,2258,909"/>
+<area shape="rect" id="node22" href="$d2/d01/allowed__collision__matrix_8h.html" title=" " alt="" coords="2128,689,2309,731"/>
+<area shape="rect" id="node14" title=" " alt="" coords="2524,875,2583,902"/>
+<area shape="rect" id="node15" title=" " alt="" coords="5014,875,5061,902"/>
+<area shape="rect" id="node16" title=" " alt="" coords="3001,875,3069,902"/>
+<area shape="rect" id="node17" title=" " alt="" coords="968,875,1059,902"/>
+<area shape="rect" id="node21" href="$d0/da6/tesseract__geometry_2include_2tesseract__geometry_2geometry_8h.html" title="Tesseract Geometries." alt="" coords="1637,779,1773,820"/>
+<area shape="rect" id="node23" href="$dd/ddb/tesseract__common_2include_2tesseract__common_2types_8h.html" title="Common Tesseract Types." alt="" coords="3173,786,3352,813"/>
+<area shape="rect" id="node24" title=" " alt="" coords="4399,875,4484,902"/>
+<area shape="rect" id="node25" title=" " alt="" coords="4764,875,4879,902"/>
+<area shape="rect" id="node26" title=" " alt="" coords="3330,875,3470,902"/>
+<area shape="rect" id="node30" title=" " alt="" coords="2667,697,2717,723"/>
+<area shape="rect" id="node31" title=" " alt="" coords="3093,875,3171,902"/>
+<area shape="rect" id="node32" href="$d4/ddb/geometries_8h.html" title="Tesseract Geometries." alt="" coords="4219,503,4355,545"/>
+<area shape="rect" id="node33" href="$d4/da8/collision__margin__data_8h.html" title="This is used to store collision margin information." alt="" coords="2491,503,2675,545"/>
+<area shape="rect" id="node34" href="$dc/d79/tesseract__common_2include_2tesseract__common_2utils_8h.html" title="Common Tesseract Utility Functions." alt="" coords="2453,607,2624,634"/>
+<area shape="rect" id="node37" title=" " alt="" coords="3273,213,3375,240"/>
+<area shape="rect" id="node38" title=" " alt="" coords="3501,213,3563,240"/>
+<area shape="rect" id="node39" title=" " alt="" coords="3587,213,3755,240"/>
+<area shape="rect" id="node40" href="$d5/d90/commands_8h.html" title="This contains classes for recording operations applied to the environment for tracking changes...." alt="" coords="3779,206,3933,247"/>
+<area shape="rect" id="node41" href="$db/dd2/events_8h.html" title="Tesseract Events." alt="" coords="2707,310,2861,351"/>
+<area shape="rect" id="node42" href="$da/d56/contact__managers__plugin__factory_8h.html" title="Factory for loading contact managers as plugins." alt="" coords="3957,199,4120,255"/>
+<area shape="rect" id="node43" href="$d3/d54/mutable__state__solver_8h.html" title="Tesseract Scene Graph Mutable State Solver Interface ." alt="" coords="1980,206,2140,247"/>
+<area shape="rect" id="node44" href="$d8/dec/urdf__parser_8h.html" title="A urdf parser for tesseract." alt="" coords="1257,503,1388,545"/>
+<area shape="rect" id="node45" href="$d3/d95/resource__locator_8h.html" title="Locate and retrieve resource data." alt="" coords="2101,779,2288,820"/>
+<area shape="rect" id="node46" href="$d0/d42/srdf__model_8h.html" title="Parse srdf xml." alt="" coords="2047,407,2177,448"/>
+<area shape="rect" id="node47" href="$d5/df5/manipulator__info_8h.html" title=" " alt="" coords="4441,779,4645,820"/>
+<area shape="rect" id="node48" href="$db/d8d/joint__group_8h.html" title="A joint group with forward kinematics, Jacobian, limits methods." alt="" coords="3256,600,3403,641"/>
+<area shape="rect" id="node49" href="$d4/d3a/kinematic__group_8h.html" title="A kinematic group with forward and inverse kinematics methods." alt="" coords="3781,503,3941,545"/>
+<area shape="rect" id="node50" href="$d0/d3c/kinematics__plugin__factory_8h.html" title="Kinematics Plugin Factory." alt="" coords="2987,496,3146,552"/>
 </map>

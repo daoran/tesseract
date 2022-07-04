@@ -22,8 +22,8 @@
 \DoxyCodeLine{43 \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization}{TesseractIgnitionVisualization}} : \textcolor{keyword}{public} \mbox{\hyperlink{classtesseract__visualization_1_1Visualization}{tesseract\_visualization::Visualization}}}
 \DoxyCodeLine{44 \{}
 \DoxyCodeLine{45 \textcolor{keyword}{public}:}
-\DoxyCodeLine{46   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_a571795754b5fb9509a8aa9a377d24261}{Ptr}} = std::shared\_ptr<TesseractIgnitionVisualization>;}
-\DoxyCodeLine{47   \textcolor{keyword}{using} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_ae70538a30fa300f9c35dcac9776e6f79}{ConstPtr}} = std::shared\_ptr<const TesseractIgnitionVisualization>;}
+\DoxyCodeLine{46   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_a571795754b5fb9509a8aa9a377d24261}{Ptr}} = std::shared\_ptr<TesseractIgnitionVisualization>;}
+\DoxyCodeLine{47   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_ae70538a30fa300f9c35dcac9776e6f79}{ConstPtr}} = std::shared\_ptr<const TesseractIgnitionVisualization>;}
 \DoxyCodeLine{48 }
 \DoxyCodeLine{49   \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_ad0e7462acca275ad08e248416dcc7ce6}{TesseractIgnitionVisualization}}();}
 \DoxyCodeLine{50 }
@@ -35,7 +35,7 @@
 \DoxyCodeLine{56 }
 \DoxyCodeLine{57   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_aa52d42a803d4889a56ad3ac2204db85d}{plotEnvironmentState}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{tesseract\_scene\_graph::SceneState}}\& state, std::string ns = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{override};}
 \DoxyCodeLine{58 }
-\DoxyCodeLine{59   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_a5e9f0af4a2827683be270592a09548e7}{plotTrajectory}}(\textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__common_a57fa3336d4e5f8655281342a9c94aece}{tesseract\_common::JointTrajectory}}\& traj,}
+\DoxyCodeLine{59   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_a5e9f0af4a2827683be270592a09548e7}{plotTrajectory}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__common_1_1JointTrajectory}{tesseract\_common::JointTrajectory}}\& traj,}
 \DoxyCodeLine{60                       \textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__scene__graph_1_1StateSolver}{tesseract\_scene\_graph::StateSolver}}\& state\_solver,}
 \DoxyCodeLine{61                       std::string ns = \textcolor{stringliteral}{"{}"{}}) \textcolor{keyword}{override};}
 \DoxyCodeLine{62 }
@@ -57,8 +57,10 @@
 \DoxyCodeLine{82   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__visualization_1_1TesseractIgnitionVisualization_a607da96fc69edd4f105953a97e2d9dda}{sendSceneState}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtesseract__scene__graph_1_1SceneState}{tesseract\_scene\_graph::SceneState}}\& scene\_state);}
 \DoxyCodeLine{83 \};}
 \DoxyCodeLine{84 }
-\DoxyCodeLine{85 \}  \textcolor{comment}{// namespace tesseract\_visualization}}
+\DoxyCodeLine{85 \mbox{\hyperlink{class__loader_8h_a3639a114268949edc9f877acfd1c6a3c}{TESSERACT\_PLUGIN\_ANCHOR\_DECL}}(IgnitionVisualizationAnchor)}
 \DoxyCodeLine{86 }
-\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_VISUALIZATION\_IGNITION\_TESSERACT\_IGNITION\_VISUALIZATION\_H}}
+\DoxyCodeLine{87 \}  \textcolor{comment}{// namespace tesseract\_visualization}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_VISUALIZATION\_IGNITION\_TESSERACT\_IGNITION\_VISUALIZATION\_H}}
 
 \end{DoxyCode}

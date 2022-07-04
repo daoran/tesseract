@@ -20,7 +20,7 @@
 \DoxyCodeLine{16 \textcolor{keyword}{namespace }test\_suite}
 \DoxyCodeLine{17 \{}
 \DoxyCodeLine{20 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_ae31509e0483f6538a77dd1ab719e9551}{BM\_LARGE\_DATASET\_MULTILINK}}(benchmark::State\& state,}
-\DoxyCodeLine{21                                        \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a108295071670971e81fe3c34794db427}{DiscreteContactManager::Ptr}} checker,}
+\DoxyCodeLine{21                                        \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a108295071670971e81fe3c34794db427}{DiscreteContactManager::Ptr}} checker,  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{22                                        \textcolor{keywordtype}{int} edge\_size,}
 \DoxyCodeLine{23                                        \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feb}{tesseract\_geometry::GeometryType}} type)}
 \DoxyCodeLine{24 \{}
@@ -87,7 +87,7 @@
 \DoxyCodeLine{85 }
 \DoxyCodeLine{86   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} result\_vector;}
 \DoxyCodeLine{87 }
-\DoxyCodeLine{88   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{88   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{89   \{}
 \DoxyCodeLine{90     \mbox{\hyperlink{namespacetesseract__collision_a1eeace4cc41027dbde8e7dbeb77ca7cf}{ContactResultMap}} result;}
 \DoxyCodeLine{91     result\_vector.clear();}
@@ -97,7 +97,7 @@
 \DoxyCodeLine{95 \};}
 \DoxyCodeLine{96 }
 \DoxyCodeLine{99 \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__collision_1_1test__suite_af0e19e5969df586db37845dc1a735ad8}{BM\_LARGE\_DATASET\_SINGLELINK}}(benchmark::State\& state,}
-\DoxyCodeLine{100                                         \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a108295071670971e81fe3c34794db427}{DiscreteContactManager::Ptr}} checker,}
+\DoxyCodeLine{100                                         \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a108295071670971e81fe3c34794db427}{DiscreteContactManager::Ptr}} checker,  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{101                                         \textcolor{keywordtype}{int} edge\_size,}
 \DoxyCodeLine{102                                         \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feb}{tesseract\_geometry::GeometryType}} type)}
 \DoxyCodeLine{103 \{}
@@ -152,7 +152,7 @@
 \DoxyCodeLine{152       \}}
 \DoxyCodeLine{153     \}}
 \DoxyCodeLine{154   \}}
-\DoxyCodeLine{155   link\_names.push\_back(\textcolor{stringliteral}{"{}grid\_link"{}});}
+\DoxyCodeLine{155   link\_names.emplace\_back(\textcolor{stringliteral}{"{}grid\_link"{}});}
 \DoxyCodeLine{156   checker-\/>addCollisionObject(link\_names.back(), 0, obj3\_shapes, obj3\_poses);}
 \DoxyCodeLine{157 }
 \DoxyCodeLine{158   \textcolor{comment}{// Add Single Sphere Link}}
@@ -165,7 +165,7 @@
 \DoxyCodeLine{165   \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\_common::VectorIsometry3d}} single\_poses;}
 \DoxyCodeLine{166   single\_shapes.push\_back(\mbox{\hyperlink{namespacetesseract__collision_a0aa5b9a264467e92cd1b9f0cd0c38ee8}{CollisionShapePtr}}(sphere-\/>clone()));}
 \DoxyCodeLine{167   single\_poses.push\_back(sphere\_pose);}
-\DoxyCodeLine{168   link\_names.push\_back(\textcolor{stringliteral}{"{}single\_link"{}});}
+\DoxyCodeLine{168   link\_names.emplace\_back(\textcolor{stringliteral}{"{}single\_link"{}});}
 \DoxyCodeLine{169   checker-\/>addCollisionObject(link\_names.back(), 0, single\_shapes, single\_poses);}
 \DoxyCodeLine{170 }
 \DoxyCodeLine{171   \textcolor{comment}{// Check if they are in collision}}
@@ -175,7 +175,7 @@
 \DoxyCodeLine{175 }
 \DoxyCodeLine{176   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} result\_vector;}
 \DoxyCodeLine{177 }
-\DoxyCodeLine{178   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)}
+\DoxyCodeLine{178   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \_ : state)  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{179   \{}
 \DoxyCodeLine{180     \mbox{\hyperlink{namespacetesseract__collision_a1eeace4cc41027dbde8e7dbeb77ca7cf}{ContactResultMap}} result;}
 \DoxyCodeLine{181     result\_vector.clear();}

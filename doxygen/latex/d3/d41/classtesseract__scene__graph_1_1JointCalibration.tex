@@ -16,7 +16,13 @@ using \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a815e6bb
 \item 
 \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a638a3217b5101b47f01a10e1fa8d2c8d}{Joint\+Calibration}} ()=default
 \item 
+\mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a274e2a894ad05baeefd5083724b96c20}{Joint\+Calibration}} (double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_acfd0196b0ba07ca2b6cb52bef065e9c4}{reference\+\_\+position}}, double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a8fa49e71bf98165094ea98411477a7a2}{rising}}, double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_ac3e60e594a02c6dfea39446132d31ff7}{falling}})
+\item 
 void \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a0443d7f59ef3c1f50f6087d4fdf5b555}{clear}} ()
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a6ecf1c4c5b3a180e5805005985da7af4}{operator==}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration}{Joint\+Calibration}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a58c4ae4435f46d48b04fa653864b5942}{operator!=}} (const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration}{Joint\+Calibration}} \&rhs) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -27,8 +33,15 @@ double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a8fa49e
 \item 
 double \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_ac3e60e594a02c6dfea39446132d31ff7}{falling}} \{ 0 \}
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a55d2cc27d5db6368d5fdc7ec67bb9b11}{serialize}} (Archive \&ar, const unsigned int version)
+\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}}
 \item 
 std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration_a491565a36ed562b261fe6b46ceae7a83}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration}{Joint\+Calibration}} \&calibration)
 \end{DoxyCompactItemize}
@@ -53,8 +66,14 @@ std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibrat
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a638a3217b5101b47f01a10e1fa8d2c8d}\label{classtesseract__scene__graph_1_1JointCalibration_a638a3217b5101b47f01a10e1fa8d2c8d}} 
 \index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!JointCalibration@{JointCalibration}}
 \index{JointCalibration@{JointCalibration}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
-\doxysubsubsection{\texorpdfstring{JointCalibration()}{JointCalibration()}}
+\doxysubsubsection{\texorpdfstring{JointCalibration()}{JointCalibration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::\+Joint\+Calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a274e2a894ad05baeefd5083724b96c20}\label{classtesseract__scene__graph_1_1JointCalibration_a274e2a894ad05baeefd5083724b96c20}} 
+\index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!JointCalibration@{JointCalibration}}
+\index{JointCalibration@{JointCalibration}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
+\doxysubsubsection{\texorpdfstring{JointCalibration()}{JointCalibration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::\+Joint\+Calibration (\begin{DoxyParamCaption}\item[{double}]{reference\+\_\+position,  }\item[{double}]{rising,  }\item[{double}]{falling }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -65,9 +84,34 @@ std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibrat
 \doxysubsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily void tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a58c4ae4435f46d48b04fa653864b5942}\label{classtesseract__scene__graph_1_1JointCalibration_a58c4ae4435f46d48b04fa653864b5942}} 
+\index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration}{Joint\+Calibration}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a6ecf1c4c5b3a180e5805005985da7af4}\label{classtesseract__scene__graph_1_1JointCalibration_a6ecf1c4c5b3a180e5805005985da7af4}} 
+\index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!operator==@{operator==}}
+\index{operator==@{operator==}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibration}{Joint\+Calibration}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a55d2cc27d5db6368d5fdc7ec67bb9b11}\label{classtesseract__scene__graph_1_1JointCalibration_a55d2cc27d5db6368d5fdc7ec67bb9b11}} 
+\index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!serialize@{serialize}}
+\index{serialize@{serialize}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily template$<$class Archive $>$ \\
+void tesseract\+\_\+scene\+\_\+graph\+::\+Joint\+Calibration\+::serialize (\begin{DoxyParamCaption}\item[{Archive \&}]{ar,  }\item[{const unsigned int}]{version }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 \doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_ac98d07dd8f7b70e16ccb9a01abf56b9c}\label{classtesseract__scene__graph_1_1JointCalibration_ac98d07dd8f7b70e16ccb9a01abf56b9c}} 
+\index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!boost::serialization::access@{boost::serialization::access}}
+\index{boost::serialization::access@{boost::serialization::access}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
+\doxysubsubsection{\texorpdfstring{boost::serialization::access}{boost::serialization::access}}
+{\footnotesize\ttfamily friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}
+
 \mbox{\Hypertarget{classtesseract__scene__graph_1_1JointCalibration_a491565a36ed562b261fe6b46ceae7a83}\label{classtesseract__scene__graph_1_1JointCalibration_a491565a36ed562b261fe6b46ceae7a83}} 
 \index{tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tesseract\_scene\_graph::JointCalibration@{tesseract\_scene\_graph::JointCalibration}}
@@ -97,6 +141,7 @@ std\+::ostream \& \mbox{\hyperlink{classtesseract__scene__graph_1_1JointCalibrat
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+scene\+\_\+graph/include/tesseract\+\_\+scene\+\_\+graph/\mbox{\hyperlink{tesseract__scene__graph_2include_2tesseract__scene__graph_2joint_8h}{joint.\+h}}\item 
+tesseract\+\_\+scene\+\_\+graph/src/\mbox{\hyperlink{tesseract__scene__graph_2src_2joint_8cpp}{joint.\+cpp}}\end{DoxyCompactItemize}

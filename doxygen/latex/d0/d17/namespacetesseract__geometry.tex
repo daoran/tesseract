@@ -42,17 +42,18 @@ using \mbox{\hyperlink{namespacetesseract__geometry_ae9f8615eaa9a2c7ac430e54ab5e
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feb}{Geometry\+Type}} \{ \newline
-\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febafb20b649d5d1c5441b986a717b632ee3}{SPHERE}}
+\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba27abecfdcf6362628e119db9b4878341}{UNINITIALIZED}}
+, \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febafb20b649d5d1c5441b986a717b632ee3}{SPHERE}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba7981168389c1e2bece204752fb30023d}{CYLINDER}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba0d9f34b1d722a71a18f611f7b63cc37b}{CAPSULE}}
-, \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba27c4f4ab45a9be529e93017bb9b29bed}{CONE}}
 , \newline
-\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba0d73a200cb122841ab0db4cf1e22be90}{BOX}}
+\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba27c4f4ab45a9be529e93017bb9b29bed}{CONE}}
+, \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba0d73a200cb122841ab0db4cf1e22be90}{BOX}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba67f39b6bb359d38675adb7dfab65fdb6}{PLANE}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febad452813d26ea6530df4492e3ad9f230c}{MESH}}
-, \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febae0e321886bf5c6aa4c17eafccecf8ac5}{CONVEX\+\_\+\+MESH}}
 , \newline
-\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febaa9adc2ee7a511e5eb8ce7e2ad63ae3d3}{SDF\+\_\+\+MESH}}
+\mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febae0e321886bf5c6aa4c17eafccecf8ac5}{CONVEX\+\_\+\+MESH}}
+, \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febaa9adc2ee7a511e5eb8ce7e2ad63ae3d3}{SDF\+\_\+\+MESH}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febaa7b8033ed9f31f599bdc33da2b5b8d83}{OCTREE}}
 , \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba3f087d1218ad0aba3609d438a6612b0e}{POLYGON\+\_\+\+MESH}}
  \}
@@ -102,6 +103,10 @@ static const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac79
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feb}{tesseract\+\_\+geometry\+::\+Geometry\+Type}}}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNINITIALIZED@{UNINITIALIZED}!tesseract\_geometry@{tesseract\_geometry}}\index{tesseract\_geometry@{tesseract\_geometry}!UNINITIALIZED@{UNINITIALIZED}}}\mbox{\Hypertarget{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba27abecfdcf6362628e119db9b4878341}\label{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56feba27abecfdcf6362628e119db9b4878341}} 
+UNINITIALIZED&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{SPHERE@{SPHERE}!tesseract\_geometry@{tesseract\_geometry}}\index{tesseract\_geometry@{tesseract\_geometry}!SPHERE@{SPHERE}}}\mbox{\Hypertarget{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febafb20b649d5d1c5441b986a717b632ee3}\label{namespacetesseract__geometry_a7543d6c1dc8947a3274abdd21fb56febafb20b649d5d1c5441b986a717b632ee3}} 
 SPHERE&\\
 \hline
@@ -314,8 +319,8 @@ True if identical, otherwise false
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \{ \textcolor{stringliteral}{"{}SPHERE"{}},   \textcolor{stringliteral}{"{}CYLINDER"{}}, \textcolor{stringliteral}{"{}CAPSULE"{}},     \textcolor{stringliteral}{"{}CONE"{}},}
-\DoxyCodeLine{                                                              \textcolor{stringliteral}{"{}BOX"{}},      \textcolor{stringliteral}{"{}PLANE"{}},    \textcolor{stringliteral}{"{}MESH"{}},        \textcolor{stringliteral}{"{}CONVEX\_MESH"{}},}
-\DoxyCodeLine{                                                              \textcolor{stringliteral}{"{}SDF\_MESH"{}}, \textcolor{stringliteral}{"{}OCTREE"{}},   \textcolor{stringliteral}{"{}POLYGON\_MESH"{}} \}}
+\DoxyCodeLine{= \{ \textcolor{stringliteral}{"{}UNINITIALIZED"{}}, \textcolor{stringliteral}{"{}SPHERE"{}},   \textcolor{stringliteral}{"{}CYLINDER"{}}, \textcolor{stringliteral}{"{}CAPSULE"{}},}
+\DoxyCodeLine{                                                              \textcolor{stringliteral}{"{}CONE"{}},          \textcolor{stringliteral}{"{}BOX"{}},      \textcolor{stringliteral}{"{}PLANE"{}},    \textcolor{stringliteral}{"{}MESH"{}},}
+\DoxyCodeLine{                                                              \textcolor{stringliteral}{"{}CONVEX\_MESH"{}},   \textcolor{stringliteral}{"{}SDF\_MESH"{}}, \textcolor{stringliteral}{"{}OCTREE"{}},   \textcolor{stringliteral}{"{}POLYGON\_MESH"{}} \}}
 
 \end{DoxyCode}
