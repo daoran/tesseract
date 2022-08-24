@@ -151,6 +151,12 @@ Functions</h2></td></tr>
 <tr class="separator:a55aa23c44eca2d6d1f66ba18f4f1cf1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac81c2fdd4e4336e6b2ae994381bddfe5"><td class="memItemLeft" align="right" valign="top">ignition::msgs::Material&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/de5/namespacetesseract__visualization.html#ac81c2fdd4e4336e6b2ae994381bddfe5">convert</a> (const Eigen::Vector4d &amp;rgba)</td></tr>
 <tr class="separator:ac81c2fdd4e4336e6b2ae994381bddfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866daf066fbcef29d97f5ece453ab4a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/de5/namespacetesseract__visualization.html#a866daf066fbcef29d97f5ece453ab4a0">addArrow</a> (<a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;entity_manager, ignition::msgs::Link &amp;link, long &amp;sub_index, const <a class="el" href="../../d4/dfa/classtesseract__visualization_1_1ArrowMarker.html">ArrowMarker</a> &amp;marker)</td></tr>
+<tr class="separator:a866daf066fbcef29d97f5ece453ab4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88be2799de33d5369c59ee9eafb62e41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/de5/namespacetesseract__visualization.html#a88be2799de33d5369c59ee9eafb62e41">addCylinder</a> (<a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;entity_manager, ignition::msgs::Link &amp;link, long &amp;sub_index, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt1, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt2, const <a class="el" href="../../d9/d0f/classtesseract__scene__graph_1_1Material.html">tesseract_scene_graph::Material</a> &amp;material, const Eigen::Vector3d &amp;)</td></tr>
+<tr class="separator:a88be2799de33d5369c59ee9eafb62e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab132fa21c6ff7370cdf573294965e10c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/de5/namespacetesseract__visualization.html#ab132fa21c6ff7370cdf573294965e10c">addAxis</a> (<a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;entity_manager, ignition::msgs::Link &amp;link, long &amp;sub_index, const <a class="el" href="../../d0/de9/classtesseract__visualization_1_1AxisMarker.html">AxisMarker</a> &amp;m)</td></tr>
+<tr class="separator:ab132fa21c6ff7370cdf573294965e10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -239,6 +245,145 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a866daf066fbcef29d97f5ece453ab4a0" name="a866daf066fbcef29d97f5ece453ab4a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866daf066fbcef29d97f5ece453ab4a0">&#9670;&nbsp;</a></span>addArrow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tesseract_visualization::addArrow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>entity_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ignition::msgs::Link &amp;&#160;</td>
+          <td class="paramname"><em>link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long &amp;&#160;</td>
+          <td class="paramname"><em>sub_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d4/dfa/classtesseract__visualization_1_1ArrowMarker.html">ArrowMarker</a> &amp;&#160;</td>
+          <td class="paramname"><em>marker</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab132fa21c6ff7370cdf573294965e10c" name="ab132fa21c6ff7370cdf573294965e10c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab132fa21c6ff7370cdf573294965e10c">&#9670;&nbsp;</a></span>addAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tesseract_visualization::addAxis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>entity_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ignition::msgs::Link &amp;&#160;</td>
+          <td class="paramname"><em>link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long &amp;&#160;</td>
+          <td class="paramname"><em>sub_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d0/de9/classtesseract__visualization_1_1AxisMarker.html">AxisMarker</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88be2799de33d5369c59ee9eafb62e41" name="a88be2799de33d5369c59ee9eafb62e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88be2799de33d5369c59ee9eafb62e41">&#9670;&nbsp;</a></span>addCylinder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tesseract_visualization::addCylinder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>entity_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ignition::msgs::Link &amp;&#160;</td>
+          <td class="paramname"><em>link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long &amp;&#160;</td>
+          <td class="paramname"><em>sub_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pt1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pt2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d9/d0f/classtesseract__scene__graph_1_1Material.html">tesseract_scene_graph::Material</a> &amp;&#160;</td>
+          <td class="paramname"><em>material</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000026">Todo:</a></b></dt><dd>LEVI fix </dd></dl>
+
+</div>
+</div>
 <a id="ac81c2fdd4e4336e6b2ae994381bddfe5" name="ac81c2fdd4e4336e6b2ae994381bddfe5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac81c2fdd4e4336e6b2ae994381bddfe5">&#9670;&nbsp;</a></span>convert()</h2>
 
@@ -341,7 +486,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:14 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:43 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

@@ -77,11 +77,11 @@ std\+::string \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision
 \begin{DoxyCompactList}\small\item\em The name of the collision object. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a249d6761da873592d805ad27a8f77d59}{m\+\_\+type\+\_\+id}} \{ -\/1 \}
 \begin{DoxyCompactList}\small\item\em A user defined type id. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a70781c8761f29a7ae7b3d5d79a931ef1}{m\+\_\+shapes}}
-\begin{DoxyCompactList}\small\item\em The shapes that define the collison object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_ac370a5639754b135ddc65cab3a3d2cb7}{m\+\_\+shape\+\_\+poses}}
-\begin{DoxyCompactList}\small\item\em The shpaes poses information. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$ $>$ \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a3057d15c3ea807f0226ece57a376e879}{m\+\_\+data}}
+\mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a70781c8761f29a7ae7b3d5d79a931ef1}{m\+\_\+shapes}} \{\}
+\begin{DoxyCompactList}\small\item\em The shapes poses information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_ac370a5639754b135ddc65cab3a3d2cb7}{m\+\_\+shape\+\_\+poses}} \{\}
+\item 
+\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$ $>$ \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a3057d15c3ea807f0226ece57a376e879}{m\+\_\+data}} \{\}
 \begin{DoxyCompactList}\small\item\em This manages the collision shape pointer so they get destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -125,7 +125,7 @@ It is a wrapper around bullet\textquotesingle{}s collision object which contains
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!clone@{clone}}
 \index{clone@{clone}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{clone()}{clone()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper}{Collision\+Object\+Wrapper}} $>$ tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper}{Collision\+Object\+Wrapper}} $>$ tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -138,7 +138,7 @@ Shared Pointer to the cloned collision object
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!getAABB@{getAABB}}
 \index{getAABB@{getAABB}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{getAABB()}{getAABB()}}
-{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+AABB (\begin{DoxyParamCaption}\item[{bt\+Vector3 \&}]{aabb\+\_\+min,  }\item[{bt\+Vector3 \&}]{aabb\+\_\+max }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+AABB (\begin{DoxyParamCaption}\item[{bt\+Vector3 \&}]{aabb\+\_\+min,  }\item[{bt\+Vector3 \&}]{aabb\+\_\+max }\end{DoxyParamCaption}) const}
 
 
 
@@ -155,19 +155,19 @@ Get the collision objects axis aligned bounding box.
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!getCollisionGeometries@{getCollisionGeometries}}
 \index{getCollisionGeometries@{getCollisionGeometries}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{getCollisionGeometries()}{getCollisionGeometries()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Collision\+Geometries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Collision\+Geometries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a51ad1846d5937f6e1d654ca9e3f4fa8f}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a51ad1846d5937f6e1d654ca9e3f4fa8f}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!getCollisionGeometriesTransforms@{getCollisionGeometriesTransforms}}
 \index{getCollisionGeometriesTransforms@{getCollisionGeometriesTransforms}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{getCollisionGeometriesTransforms()}{getCollisionGeometriesTransforms()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Collision\+Geometries\+Transforms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Collision\+Geometries\+Transforms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a2ab5a07ecba0440840e78fbfa5916185}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a2ab5a07ecba0440840e78fbfa5916185}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!getName@{getName}}
 \index{getName@{getName}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily const std\+::string \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const std\+::string \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -177,7 +177,7 @@ Get the collision object name.
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!getTypeID@{getTypeID}}
 \index{getTypeID@{getTypeID}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{getTypeID()}{getTypeID()}}
-{\footnotesize\ttfamily const int \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Type\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const int \& tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::get\+Type\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -187,19 +187,19 @@ Get a user defined type.
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!manage@{manage}}
 \index{manage@{manage}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{manage()}{manage()}}
-{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::manage (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$ \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::manage (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$ \&}]{t }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a25002f2bf6c863ddf552491a7bea67fc}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a25002f2bf6c863ddf552491a7bea67fc}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!manageReserve@{manageReserve}}
 \index{manageReserve@{manageReserve}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{manageReserve()}{manageReserve()}}
-{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::manage\+Reserve (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::manage\+Reserve (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{s }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a495bcb97d5bf803e9d0376ad96873d3d}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a495bcb97d5bf803e9d0376ad96873d3d}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!sameObject@{sameObject}}
 \index{sameObject@{sameObject}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{sameObject()}{sameObject()}}
-{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::same\+Object (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper}{Collision\+Object\+Wrapper}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::same\+Object (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper}{Collision\+Object\+Wrapper}} \&}]{other }\end{DoxyParamCaption}) const}
 
 
 
@@ -224,7 +224,7 @@ Check if two \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision_
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!m\_data@{m\_data}}
 \index{m\_data@{m\_data}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{m\_data}{m\_data}}
-{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$std\+::shared\+\_\+ptr$<$bt\+Collision\+Shape$>$ $>$ tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+data\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$std\+::shared\+\_\+ptr$<$bt\+Collision\+Shape$>$ $>$ tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+data \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -250,21 +250,17 @@ The name of the collision object.
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!m\_shape\_poses@{m\_shape\_poses}}
 \index{m\_shape\_poses@{m\_shape\_poses}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{m\_shape\_poses}{m\_shape\_poses}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+shape\+\_\+poses\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-The shpaes poses information. 
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\+\_\+common\+::\+Vector\+Isometry3d}} tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+shape\+\_\+poses \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a70781c8761f29a7ae7b3d5d79a931ef1}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a70781c8761f29a7ae7b3d5d79a931ef1}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!m\_shapes@{m\_shapes}}
 \index{m\_shapes@{m\_shapes}!tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}}
 \doxysubsubsection{\texorpdfstring{m\_shapes}{m\_shapes}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+shapes\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__collision_a2472107aae8174a30873bb0a955c3cb4}{Collision\+Shapes\+Const}} tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Collision\+Object\+Wrapper\+::m\+\_\+shapes \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-The shapes that define the collison object. 
+The shapes poses information. 
 
 \mbox{\Hypertarget{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a249d6761da873592d805ad27a8f77d59}\label{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a249d6761da873592d805ad27a8f77d59}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper@{tesseract\_collision::tesseract\_collision\_bullet::CollisionObjectWrapper}!m\_type\_id@{m\_type\_id}}

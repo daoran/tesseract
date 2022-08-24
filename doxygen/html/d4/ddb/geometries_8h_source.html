@@ -89,52 +89,7 @@ $(function() {
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;<a class="code" href="../../d2/d17/tesseract__geometry_2include_2tesseract__geometry_2impl_2sdf__mesh_8h.html">tesseract_geometry/impl/sdf_mesh.h</a>&gt;</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;<a class="code" href="../../d8/db6/tesseract__geometry_2include_2tesseract__geometry_2impl_2sphere_8h.html">tesseract_geometry/impl/sphere.h</a>&gt;</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#ifdef SWIG</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>%shared_factory(</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="../../df/d1a/classtesseract__geometry_1_1Geometry.html">tesseract_geometry::Geometry</a>,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="../../d2/d71/classtesseract__geometry_1_1Box.html">tesseract_geometry::Box</a>,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="../../de/d7b/classtesseract__geometry_1_1Capsule.html">tesseract_geometry::Capsule</a>,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="../../db/d3e/classtesseract__geometry_1_1Cone.html">tesseract_geometry::Cone</a>,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="../../d9/d63/classtesseract__geometry_1_1ConvexMesh.html">tesseract_geometry::ConvexMesh</a>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_class" href="../../d6/db5/classtesseract__geometry_1_1Cylinder.html">tesseract_geometry::Cylinder</a>,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="../../d3/d4b/classtesseract__geometry_1_1Octree.html">tesseract_geometry::Octree</a>,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="../../d5/df0/classtesseract__geometry_1_1Plane.html">tesseract_geometry::Plane</a>,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="../../d8/dc9/classtesseract__geometry_1_1PolygonMesh.html">tesseract_geometry::PolygonMesh</a>,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="../../d4/d98/classtesseract__geometry_1_1Mesh.html">tesseract_geometry::Mesh</a>,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_class" href="../../d8/d3b/classtesseract__geometry_1_1SDFMesh.html">tesseract_geometry::SDFMesh</a>,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_class" href="../../de/dcb/classtesseract__geometry_1_1Sphere.html">tesseract_geometry::Sphere</a></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/box.h&gt;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/capsule.h&gt;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/polygon_mesh.h&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/cone.h&gt;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/convex_mesh.h&gt;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/cylinder.h&gt;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/mesh.h&gt;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/mesh_material.h&gt;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/octree.h&gt;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/plane.h&gt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/sdf_mesh.h&gt;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>%include &lt;<a class="code hl_namespace" href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a>/impl/sphere.h&gt;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif  </span><span class="comment">// SWIG</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Box_html"><div class="ttname"><a href="../../d2/d71/classtesseract__geometry_1_1Box.html">tesseract_geometry::Box</a></div><div class="ttdef"><b>Definition:</b> box.h:45</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Capsule_html"><div class="ttname"><a href="../../de/d7b/classtesseract__geometry_1_1Capsule.html">tesseract_geometry::Capsule</a></div><div class="ttdef"><b>Definition:</b> capsule.h:45</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Cone_html"><div class="ttname"><a href="../../db/d3e/classtesseract__geometry_1_1Cone.html">tesseract_geometry::Cone</a></div><div class="ttdef"><b>Definition:</b> cone.h:45</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1ConvexMesh_html"><div class="ttname"><a href="../../d9/d63/classtesseract__geometry_1_1ConvexMesh.html">tesseract_geometry::ConvexMesh</a></div><div class="ttdef"><b>Definition:</b> convex_mesh.h:49</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Cylinder_html"><div class="ttname"><a href="../../d6/db5/classtesseract__geometry_1_1Cylinder.html">tesseract_geometry::Cylinder</a></div><div class="ttdef"><b>Definition:</b> cylinder.h:45</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Geometry_html"><div class="ttname"><a href="../../df/d1a/classtesseract__geometry_1_1Geometry.html">tesseract_geometry::Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:68</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Mesh_html"><div class="ttname"><a href="../../d4/d98/classtesseract__geometry_1_1Mesh.html">tesseract_geometry::Mesh</a></div><div class="ttdef"><b>Definition:</b> mesh.h:51</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Octree_html"><div class="ttname"><a href="../../d3/d4b/classtesseract__geometry_1_1Octree.html">tesseract_geometry::Octree</a></div><div class="ttdef"><b>Definition:</b> octree.h:50</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Plane_html"><div class="ttname"><a href="../../d5/df0/classtesseract__geometry_1_1Plane.html">tesseract_geometry::Plane</a></div><div class="ttdef"><b>Definition:</b> plane.h:45</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1PolygonMesh_html"><div class="ttname"><a href="../../d8/dc9/classtesseract__geometry_1_1PolygonMesh.html">tesseract_geometry::PolygonMesh</a></div><div class="ttdef"><b>Definition:</b> polygon_mesh.h:51</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1SDFMesh_html"><div class="ttname"><a href="../../d8/d3b/classtesseract__geometry_1_1SDFMesh.html">tesseract_geometry::SDFMesh</a></div><div class="ttdef"><b>Definition:</b> sdf_mesh.h:49</div></div>
-<div class="ttc" id="aclasstesseract__geometry_1_1Sphere_html"><div class="ttname"><a href="../../de/dcb/classtesseract__geometry_1_1Sphere.html">tesseract_geometry::Sphere</a></div><div class="ttdef"><b>Definition:</b> sphere.h:45</div></div>
-<div class="ttc" id="anamespacetesseract__geometry_html"><div class="ttname"><a href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:43</div></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aplane_8h_html"><div class="ttname"><a href="../../db/d8b/plane_8h.html">plane.h</a></div><div class="ttdoc">Tesseract Plane Geometry.</div></div>
 <div class="ttc" id="apolygon__mesh_8h_html"><div class="ttname"><a href="../../d2/deb/polygon__mesh_8h.html">polygon_mesh.h</a></div><div class="ttdoc">Tesseract Polygon Mesh Geometry.</div></div>
 <div class="ttc" id="atesseract__geometry_2include_2tesseract__geometry_2impl_2box_8h_html"><div class="ttname"><a href="../../df/d9e/tesseract__geometry_2include_2tesseract__geometry_2impl_2box_8h.html">box.h</a></div><div class="ttdoc">Tesseract Box Geometry.</div></div>
@@ -149,7 +104,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:10 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:39 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

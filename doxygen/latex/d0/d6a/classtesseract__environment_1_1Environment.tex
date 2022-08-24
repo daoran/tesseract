@@ -204,11 +204,11 @@ int \mbox{\hyperlink{classtesseract__environment_1_1Environment_a0b3238ab92d9083
 \begin{DoxyCompactList}\small\item\em This increments when the scene graph is modified. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classtesseract__environment_1_1Environment_ad8893d73b2310f67657460392cbb9395}{init\+\_\+revision\+\_\+}} \{ 0 \}
 \begin{DoxyCompactList}\small\item\em This is the revision number after initialization used when reset is called. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacetesseract__environment_acb95740502ec41d80a94a7631d4b7a3c}{Commands}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a8d698e80df3673fe5aa59528edbfc5ba}{commands\+\_\+}}
+\mbox{\hyperlink{namespacetesseract__environment_acb95740502ec41d80a94a7631d4b7a3c}{Commands}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a8d698e80df3673fe5aa59528edbfc5ba}{commands\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em The history of commands applied to the environment after initialization. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a4421b8568bd664cf203613a054e1847b}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a77778ecf8c6e808f19f617fc7ef599ee}{scene\+\_\+graph\+\_\+}}
+\mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a4421b8568bd664cf203613a054e1847b}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a77778ecf8c6e808f19f617fc7ef599ee}{scene\+\_\+graph\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em Tesseract Scene Graph. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a9ee303b2514bfedd8c914d09551b00ff}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Const\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a82614f86932dff5e559a29e23af72df5}{scene\+\_\+graph\+\_\+const\+\_\+}}
+\mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a9ee303b2514bfedd8c914d09551b00ff}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Const\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a82614f86932dff5e559a29e23af72df5}{scene\+\_\+graph\+\_\+const\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em Tesseract Scene Graph Const. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{tesseract\+\_\+srdf\+::\+Kinematics\+Information}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_aeda1f76d988737752894a95081f40119}{kinematics\+\_\+information\+\_\+}}
 \begin{DoxyCompactList}\small\item\em The kinematics information. \end{DoxyCompactList}\item 
@@ -220,15 +220,15 @@ std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classtess
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classtesseract__environment_1_1Environment}{Environment}} timestamp. \end{DoxyCompactList}\item 
 std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classtesseract__environment_1_1Environment_ad73e4685735c23b90cdd7d76256645c2}{current\+\_\+state\+\_\+timestamp\+\_\+}} \{ std\+::chrono\+::system\+\_\+clock\+::now() \}
 \begin{DoxyCompactList}\small\item\em Current state timestamp. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{tesseract\+\_\+scene\+\_\+graph\+::\+Mutable\+State\+Solver\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_acf779958589fad0a093858527229c9c8}{state\+\_\+solver\+\_\+}}
+\mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{tesseract\+\_\+scene\+\_\+graph\+::\+Mutable\+State\+Solver\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_acf779958589fad0a093858527229c9c8}{state\+\_\+solver\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em Tesseract State Solver. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacetesseract__collision_abe7752ce161fbd1139533ac566fec1cb}{tesseract\+\_\+collision\+::\+Is\+Contact\+Allowed\+Fn}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a7176424d42ff21299f0d4a226f34037f}{is\+\_\+contact\+\_\+allowed\+\_\+fn\+\_\+}}
 \begin{DoxyCompactList}\small\item\em The function used to determine if two objects are allowed in collision. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ \mbox{\hyperlink{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}{Find\+TCPOffset\+Callback\+Fn}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_ae9a92e802b4924edfd5292874beb8c20}{find\+\_\+tcp\+\_\+cb\+\_\+}}
+\mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ \mbox{\hyperlink{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}{Find\+TCPOffset\+Callback\+Fn}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_ae9a92e802b4924edfd5292874beb8c20}{find\+\_\+tcp\+\_\+cb\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em A vector of user defined callbacks for locating tool center point. \end{DoxyCompactList}\item 
-std\+::map$<$ std\+::size\+\_\+t, \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{Event\+Callback\+Fn}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_a5fac827baa7afd75a1159e1621fa19db}{event\+\_\+cb\+\_\+}}
+std\+::map$<$ std\+::size\+\_\+t, \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{Event\+Callback\+Fn}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_a5fac827baa7afd75a1159e1621fa19db}{event\+\_\+cb\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em A map of user defined event callback functions. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtesseract__common_1_1ResourceLocator_a61a53e45948c47a9612096d8e7b90252}{tesseract\+\_\+common\+::\+Resource\+Locator\+::\+Const\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a84cabfb4d751d01d53838dd8545b1c14}{resource\+\_\+locator\+\_\+}}
+\mbox{\hyperlink{classtesseract__common_1_1ResourceLocator_a61a53e45948c47a9612096d8e7b90252}{tesseract\+\_\+common\+::\+Resource\+Locator\+::\+Const\+Ptr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a84cabfb4d751d01d53838dd8545b1c14}{resource\+\_\+locator\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em Used when initialized by URDF\+\_\+\+STRING, URDF\+\_\+\+STRING\+\_\+\+SRDF\+\_\+\+STRING, URDF\+\_\+\+PATH, and URDF\+\_\+\+PATH\+\_\+\+SRDF\+\_\+\+PATH. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{tesseract\+\_\+common\+::\+Contact\+Managers\+Plugin\+Info}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_ab66f1c154e58076c091231ffc4862d95}{contact\+\_\+managers\+\_\+plugin\+\_\+info\+\_\+}}
 \begin{DoxyCompactList}\small\item\em The contact manager information. \end{DoxyCompactList}\item 
@@ -236,23 +236,23 @@ std\+::map$<$ std\+::size\+\_\+t, \mbox{\hyperlink{namespacetesseract__environme
 \begin{DoxyCompactList}\small\item\em The contact managers factory. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{tesseract\+\_\+collision\+::\+Collision\+Margin\+Data}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a62a6ba1faafd93812a6bfe995d5ea8bb}{collision\+\_\+margin\+\_\+data\+\_\+}}
 \begin{DoxyCompactList}\small\item\em The collision margin data. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a52a7b770e7b6cec875254d7cdea3c314}{tesseract\+\_\+collision\+::\+Discrete\+Contact\+Manager\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_ab255547fd3edef8112f36567d904576d}{discrete\+\_\+manager\+\_\+}}
+\mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a52a7b770e7b6cec875254d7cdea3c314}{tesseract\+\_\+collision\+::\+Discrete\+Contact\+Manager\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_ab255547fd3edef8112f36567d904576d}{discrete\+\_\+manager\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em The discrete contact manager object. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+mutex \mbox{\hyperlink{classtesseract__environment_1_1Environment_af5a041cff1dccd76ac9a0fe7aa2fe0ba}{discrete\+\_\+manager\+\_\+mutex\+\_\+}}
 \item 
-\mbox{\hyperlink{classtesseract__collision_1_1ContinuousContactManager_af3e8b59ffc319924eb2a7e3925bb6e56}{tesseract\+\_\+collision\+::\+Continuous\+Contact\+Manager\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a5510e7991d8c6a1daea9e212614201fe}{continuous\+\_\+manager\+\_\+}}
+\mbox{\hyperlink{classtesseract__collision_1_1ContinuousContactManager_af3e8b59ffc319924eb2a7e3925bb6e56}{tesseract\+\_\+collision\+::\+Continuous\+Contact\+Manager\+::\+UPtr}} \mbox{\hyperlink{classtesseract__environment_1_1Environment_a5510e7991d8c6a1daea9e212614201fe}{continuous\+\_\+manager\+\_\+}} \{ nullptr \}
 \begin{DoxyCompactList}\small\item\em The continuous contact manager object. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+mutex \mbox{\hyperlink{classtesseract__environment_1_1Environment_aba2a3db91d100620247ca2ad652a1a6f}{continuous\+\_\+manager\+\_\+mutex\+\_\+}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_ae8aa86cda448600843289e11876674b8}{group\+\_\+joint\+\_\+names\+\_\+cache\+\_\+}}
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_ae8aa86cda448600843289e11876674b8}{group\+\_\+joint\+\_\+names\+\_\+cache\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em A cache of group joint names to provide faster access. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+mutex \mbox{\hyperlink{classtesseract__environment_1_1Environment_aea256f1e8b66716f97214cd9dbc500dd}{group\+\_\+joint\+\_\+names\+\_\+cache\+\_\+mutex\+\_\+}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classtesseract__kinematics_1_1JointGroup_ae671cb8eec7305576666282365c2e011}{tesseract\+\_\+kinematics\+::\+Joint\+Group\+::\+UPtr}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_a0f9255a3d71c501813c9a12ece0e1c11}{joint\+\_\+group\+\_\+cache\+\_\+}}
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classtesseract__kinematics_1_1JointGroup_ae671cb8eec7305576666282365c2e011}{tesseract\+\_\+kinematics\+::\+Joint\+Group\+::\+UPtr}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_a0f9255a3d71c501813c9a12ece0e1c11}{joint\+\_\+group\+\_\+cache\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em A cache of joint groups to provide faster access. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+mutex \mbox{\hyperlink{classtesseract__environment_1_1Environment_a0c23446c1c7b5983505acfe0bacdf9f7}{joint\+\_\+group\+\_\+cache\+\_\+mutex\+\_\+}}
 \item 
-std\+::map$<$ std\+::pair$<$ std\+::string, std\+::string $>$, \mbox{\hyperlink{classtesseract__kinematics_1_1KinematicGroup_a039a701cf2b2749effa2d0400d45aeec}{tesseract\+\_\+kinematics\+::\+Kinematic\+Group\+::\+UPtr}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_abe939641e3429b26419c5266b7a73994}{kinematic\+\_\+group\+\_\+cache\+\_\+}}
+std\+::map$<$ std\+::pair$<$ std\+::string, std\+::string $>$, \mbox{\hyperlink{classtesseract__kinematics_1_1KinematicGroup_a039a701cf2b2749effa2d0400d45aeec}{tesseract\+\_\+kinematics\+::\+Kinematic\+Group\+::\+UPtr}} $>$ \mbox{\hyperlink{classtesseract__environment_1_1Environment_abe939641e3429b26419c5266b7a73994}{kinematic\+\_\+group\+\_\+cache\+\_\+}} \{\}
 \begin{DoxyCompactList}\small\item\em A cache of kinematic groups to provide faster access. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+mutex \mbox{\hyperlink{classtesseract__environment_1_1Environment_a857fe314931f5dd986856772a52f5b5d}{kinematic\+\_\+group\+\_\+cache\+\_\+mutex\+\_\+}}
 \item 
@@ -1663,7 +1663,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!commands\_@{commands\_}}
 \index{commands\_@{commands\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{commands\_}{commands\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__environment_acb95740502ec41d80a94a7631d4b7a3c}{Commands}} tesseract\+\_\+environment\+::\+Environment\+::commands\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetesseract__environment_acb95740502ec41d80a94a7631d4b7a3c}{Commands}} tesseract\+\_\+environment\+::\+Environment\+::commands\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1699,7 +1699,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!continuous\_manager\_@{continuous\_manager\_}}
 \index{continuous\_manager\_@{continuous\_manager\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{continuous\_manager\_}{continuous\_manager\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__collision_1_1ContinuousContactManager_af3e8b59ffc319924eb2a7e3925bb6e56}{tesseract\+\_\+collision\+::\+Continuous\+Contact\+Manager\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::continuous\+\_\+manager\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__collision_1_1ContinuousContactManager_af3e8b59ffc319924eb2a7e3925bb6e56}{tesseract\+\_\+collision\+::\+Continuous\+Contact\+Manager\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::continuous\+\_\+manager\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 
 
@@ -1738,7 +1738,7 @@ Current state timestamp.
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!discrete\_manager\_@{discrete\_manager\_}}
 \index{discrete\_manager\_@{discrete\_manager\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{discrete\_manager\_}{discrete\_manager\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a52a7b770e7b6cec875254d7cdea3c314}{tesseract\+\_\+collision\+::\+Discrete\+Contact\+Manager\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::discrete\+\_\+manager\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a52a7b770e7b6cec875254d7cdea3c314}{tesseract\+\_\+collision\+::\+Discrete\+Contact\+Manager\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::discrete\+\_\+manager\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 
 
@@ -1757,7 +1757,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!event\_cb\_@{event\_cb\_}}
 \index{event\_cb\_@{event\_cb\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{event\_cb\_}{event\_cb\_}}
-{\footnotesize\ttfamily std\+::map$<$std\+::size\+\_\+t, \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{Event\+Callback\+Fn}}$>$ tesseract\+\_\+environment\+::\+Environment\+::event\+\_\+cb\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::map$<$std\+::size\+\_\+t, \mbox{\hyperlink{namespacetesseract__environment_a842b4038cfb894a0b9cc45e6aea1e8c5}{Event\+Callback\+Fn}}$>$ tesseract\+\_\+environment\+::\+Environment\+::event\+\_\+cb\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1767,7 +1767,7 @@ This should not be cloned or serialized \mbox{\Hypertarget{classtesseract__envir
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!find\_tcp\_cb\_@{find\_tcp\_cb\_}}
 \index{find\_tcp\_cb\_@{find\_tcp\_cb\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{find\_tcp\_cb\_}{find\_tcp\_cb\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$\mbox{\hyperlink{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}{Find\+TCPOffset\+Callback\+Fn}}$>$ tesseract\+\_\+environment\+::\+Environment\+::find\+\_\+tcp\+\_\+cb\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$\mbox{\hyperlink{namespacetesseract__environment_a197ae00a2f4f5630ff6d044e2e6d7384}{Find\+TCPOffset\+Callback\+Fn}}$>$ tesseract\+\_\+environment\+::\+Environment\+::find\+\_\+tcp\+\_\+cb\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1779,7 +1779,7 @@ A vector of user defined callbacks for locating tool center point.
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!group\_joint\_names\_cache\_@{group\_joint\_names\_cache\_}}
 \index{group\_joint\_names\_cache\_@{group\_joint\_names\_cache\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{group\_joint\_names\_cache\_}{group\_joint\_names\_cache\_}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$std\+::string$>$ $>$ tesseract\+\_\+environment\+::\+Environment\+::group\+\_\+joint\+\_\+names\+\_\+cache\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$std\+::string$>$ $>$ tesseract\+\_\+environment\+::\+Environment\+::group\+\_\+joint\+\_\+names\+\_\+cache\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 
 
@@ -1833,7 +1833,7 @@ The function used to determine if two objects are allowed in collision.
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!joint\_group\_cache\_@{joint\_group\_cache\_}}
 \index{joint\_group\_cache\_@{joint\_group\_cache\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{joint\_group\_cache\_}{joint\_group\_cache\_}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{classtesseract__kinematics_1_1JointGroup_ae671cb8eec7305576666282365c2e011}{tesseract\+\_\+kinematics\+::\+Joint\+Group\+::\+UPtr}}$>$ tesseract\+\_\+environment\+::\+Environment\+::joint\+\_\+group\+\_\+cache\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{classtesseract__kinematics_1_1JointGroup_ae671cb8eec7305576666282365c2e011}{tesseract\+\_\+kinematics\+::\+Joint\+Group\+::\+UPtr}}$>$ tesseract\+\_\+environment\+::\+Environment\+::joint\+\_\+group\+\_\+cache\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 
 
@@ -1852,7 +1852,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!kinematic\_group\_cache\_@{kinematic\_group\_cache\_}}
 \index{kinematic\_group\_cache\_@{kinematic\_group\_cache\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{kinematic\_group\_cache\_}{kinematic\_group\_cache\_}}
-{\footnotesize\ttfamily std\+::map$<$std\+::pair$<$std\+::string, std\+::string$>$, \mbox{\hyperlink{classtesseract__kinematics_1_1KinematicGroup_a039a701cf2b2749effa2d0400d45aeec}{tesseract\+\_\+kinematics\+::\+Kinematic\+Group\+::\+UPtr}}$>$ tesseract\+\_\+environment\+::\+Environment\+::kinematic\+\_\+group\+\_\+cache\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::map$<$std\+::pair$<$std\+::string, std\+::string$>$, \mbox{\hyperlink{classtesseract__kinematics_1_1KinematicGroup_a039a701cf2b2749effa2d0400d45aeec}{tesseract\+\_\+kinematics\+::\+Kinematic\+Group\+::\+UPtr}}$>$ tesseract\+\_\+environment\+::\+Environment\+::kinematic\+\_\+group\+\_\+cache\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
 
 
 
@@ -1907,7 +1907,7 @@ The environment can be accessed from multiple threads, need use mutex throughout
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!resource\_locator\_@{resource\_locator\_}}
 \index{resource\_locator\_@{resource\_locator\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{resource\_locator\_}{resource\_locator\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__common_1_1ResourceLocator_a61a53e45948c47a9612096d8e7b90252}{tesseract\+\_\+common\+::\+Resource\+Locator\+::\+Const\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::resource\+\_\+locator\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__common_1_1ResourceLocator_a61a53e45948c47a9612096d8e7b90252}{tesseract\+\_\+common\+::\+Resource\+Locator\+::\+Const\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::resource\+\_\+locator\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1930,7 +1930,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!scene\_graph\_@{scene\_graph\_}}
 \index{scene\_graph\_@{scene\_graph\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{scene\_graph\_}{scene\_graph\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a4421b8568bd664cf203613a054e1847b}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::scene\+\_\+graph\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a4421b8568bd664cf203613a054e1847b}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::scene\+\_\+graph\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1943,7 +1943,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!scene\_graph\_const\_@{scene\_graph\_const\_}}
 \index{scene\_graph\_const\_@{scene\_graph\_const\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{scene\_graph\_const\_}{scene\_graph\_const\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a9ee303b2514bfedd8c914d09551b00ff}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Const\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::scene\+\_\+graph\+\_\+const\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1SceneGraph_a9ee303b2514bfedd8c914d09551b00ff}{tesseract\+\_\+scene\+\_\+graph\+::\+Scene\+Graph\+::\+Const\+Ptr}} tesseract\+\_\+environment\+::\+Environment\+::scene\+\_\+graph\+\_\+const\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -1956,7 +1956,7 @@ This is intentionally not serialized it will auto updated
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!state\_solver\_@{state\_solver\_}}
 \index{state\_solver\_@{state\_solver\_}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{state\_solver\_}{state\_solver\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{tesseract\+\_\+scene\+\_\+graph\+::\+Mutable\+State\+Solver\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::state\+\_\+solver\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtesseract__scene__graph_1_1MutableStateSolver_a1d061821b17d0e3a5bb9b0c3dc21a062}{tesseract\+\_\+scene\+\_\+graph\+::\+Mutable\+State\+Solver\+::\+UPtr}} tesseract\+\_\+environment\+::\+Environment\+::state\+\_\+solver\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

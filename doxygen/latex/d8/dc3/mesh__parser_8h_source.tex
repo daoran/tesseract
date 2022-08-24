@@ -438,14 +438,14 @@
 \DoxyCodeLine{476   \textcolor{comment}{// And have it read the given file with some post-\/processing}}
 \DoxyCodeLine{477   \textcolor{keyword}{const} aiScene* scene = \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{478   \textcolor{keywordflow}{if} (triangulate)}
-\DoxyCodeLine{479     scene = importer.ReadFileFromMemory(\&data[0],}
+\DoxyCodeLine{479     scene = importer.ReadFileFromMemory(data.data(),}
 \DoxyCodeLine{480                                         data.size(),}
 \DoxyCodeLine{481                                         aiProcess\_Triangulate | aiProcess\_JoinIdenticalVertices |}
 \DoxyCodeLine{482                                             aiProcess\_SortByPType | aiProcess\_RemoveComponent,}
 \DoxyCodeLine{483                                         hint);}
 \DoxyCodeLine{484   \textcolor{keywordflow}{else}}
 \DoxyCodeLine{485     scene =}
-\DoxyCodeLine{486         importer.ReadFileFromMemory(\&data[0],}
+\DoxyCodeLine{486         importer.ReadFileFromMemory(data.data(),}
 \DoxyCodeLine{487                                     data.size(),}
 \DoxyCodeLine{488                                     aiProcess\_JoinIdenticalVertices | aiProcess\_SortByPType | aiProcess\_RemoveComponent,}
 \DoxyCodeLine{489                                     hint);}
@@ -497,19 +497,6 @@
 \DoxyCodeLine{550 }
 \DoxyCodeLine{551 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
 \DoxyCodeLine{552 }
-\DoxyCodeLine{553 \textcolor{preprocessor}{\#ifdef SWIG}}
-\DoxyCodeLine{554 \%pybuffer\_binary(\textcolor{keyword}{const} uint8\_t* bytes, \textcolor{keywordtype}{size\_t} bytes\_len);}
-\DoxyCodeLine{555 \%\textcolor{keyword}{template}(\mbox{\hyperlink{namespacetesseract__geometry_ac1c4aaf2f6dc8a3872ea2af8b905948c}{createMeshFromResource}}) tesseract\_geometry::createMeshFromResource<tesseract\_geometry::Mesh>;}
-\DoxyCodeLine{556 \%\textcolor{keyword}{template}(createSDFMeshFromResource) tesseract\_geometry::createMeshFromResource<tesseract\_geometry::SDFMesh>;}
-\DoxyCodeLine{557 \%\textcolor{keyword}{template}(createConvexMeshFromResource) tesseract\_geometry::createMeshFromResource<tesseract\_geometry::ConvexMesh>;}
-\DoxyCodeLine{558 \%\textcolor{keyword}{template}(\mbox{\hyperlink{namespacetesseract__geometry_a1b4cdf1aee6142e3870f87d2d9a9c931}{createMeshFromPath}}) tesseract\_geometry::createMeshFromPath<tesseract\_geometry::Mesh>;}
-\DoxyCodeLine{559 \%\textcolor{keyword}{template}(createSDFMeshFromPath) tesseract\_geometry::createMeshFromPath<tesseract\_geometry::SDFMesh>;}
-\DoxyCodeLine{560 \%\textcolor{keyword}{template}(createConvexMeshFromPath) tesseract\_geometry::createMeshFromPath<tesseract\_geometry::ConvexMesh>;}
-\DoxyCodeLine{561 \%\textcolor{keyword}{template}(\mbox{\hyperlink{namespacetesseract__geometry_a776ece4c5a30cc153042c0f13976f4f8}{createMeshFromBytes}}) tesseract\_geometry::createMeshFromBytes<tesseract\_geometry::Mesh>;}
-\DoxyCodeLine{562 \%\textcolor{keyword}{template}(createSDFMeshFromBytes) tesseract\_geometry::createMeshFromBytes<tesseract\_geometry::SDFMesh>;}
-\DoxyCodeLine{563 \%\textcolor{keyword}{template}(createConvexMeshFromBytes) tesseract\_geometry::createMeshFromBytes<tesseract\_geometry::ConvexMesh>;}
-\DoxyCodeLine{564 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{565 }
-\DoxyCodeLine{566 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{553 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

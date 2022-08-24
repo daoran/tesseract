@@ -38,9 +38,13 @@ namespace \mbox{\hyperlink{namespacetesseract__common}{tesseract\+\_\+common}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits, double max\+\_\+diff=1e-\/6, double max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ double $>$\+::epsilon())
-\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relativilty equal to a limit. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\+\_\+common\+::enforce\+Position\+Limits}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits)
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}{tesseract\+\_\+common\+::is\+Within\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\begin{DoxyCompactList}\small\item\em Check if within position limits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+diff, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+rel\+\_\+diff)
+\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relatively equal to a limit. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_ad966f78ba21ac22b33b036d94958ff82}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, Float\+Type max\+\_\+diff=static\+\_\+cast$<$ Float\+Type $>$(1e-\/6), Float\+Type max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ Float\+Type $>$\+::epsilon())
+\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relatively equal to a limit. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}{tesseract\+\_\+common\+::enforce\+Position\+Limits}} (Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
 \begin{DoxyCompactList}\small\item\em Enforce position to be within the provided limits. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -82,7 +86,7 @@ March 25, 2021
 TODO 
 \end{DoxyVersion}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000070}{Bug}}]No known bugs\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000071}{Bug}}]No known bugs\end{DoxyRefDesc}
 
 
 \begin{DoxyCopyright}{Copyright}

@@ -29,7 +29,7 @@ Collaboration diagram for tesseract\+\_\+collision\+::tesseract\+\_\+collision\+
 \item 
 \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_a606fc82b2b2449e8f8134568ba61f44d}{Discrete\+Broadphase\+Contact\+Result\+Callback}} (\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&collisions, double contact\+\_\+distance, bool verbose=false)
 \item 
-bt\+Scalar \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_a79667327bc5afbf074fe7cc459869982}{add\+Single\+Result}} (bt\+Manifold\+Point \&cp, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj0\+Wrap, int, int, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj1\+Wrap, int, int) override
+bt\+Scalar \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_ac47f519646c298a347d579ff5cf88a19}{add\+Single\+Result}} (bt\+Manifold\+Point \&cp, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj0\+Wrap, int part\+Id0, int index0, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj1\+Wrap, int part\+Id1, int index1) override
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -39,16 +39,16 @@ bt\+Scalar \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__
 \index{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback}!DiscreteBroadphaseContactResultCallback@{DiscreteBroadphaseContactResultCallback}}
 \index{DiscreteBroadphaseContactResultCallback@{DiscreteBroadphaseContactResultCallback}!tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback}}
 \doxysubsubsection{\texorpdfstring{DiscreteBroadphaseContactResultCallback()}{DiscreteBroadphaseContactResultCallback()}}
-{\footnotesize\ttfamily tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&}]{collisions,  }\item[{double}]{contact\+\_\+distance,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&}]{collisions,  }\item[{double}]{contact\+\_\+distance,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_a79667327bc5afbf074fe7cc459869982}\label{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_a79667327bc5afbf074fe7cc459869982}} 
+\mbox{\Hypertarget{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_ac47f519646c298a347d579ff5cf88a19}\label{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteBroadphaseContactResultCallback_ac47f519646c298a347d579ff5cf88a19}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback}!addSingleResult@{addSingleResult}}
 \index{addSingleResult@{addSingleResult}!tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteBroadphaseContactResultCallback}}
 \doxysubsubsection{\texorpdfstring{addSingleResult()}{addSingleResult()}}
-{\footnotesize\ttfamily bt\+Scalar tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback\+::add\+Single\+Result (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj0\+Wrap,  }\item[{int}]{,  }\item[{int}]{,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj1\+Wrap,  }\item[{int}]{,  }\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bt\+Scalar tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Broadphase\+Contact\+Result\+Callback\+::add\+Single\+Result (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj0\+Wrap,  }\item[{int}]{part\+Id0,  }\item[{int}]{index0,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj1\+Wrap,  }\item[{int}]{part\+Id1,  }\item[{int}]{index1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -56,6 +56,7 @@ Implements \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__
 
 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+collision/bullet/include/tesseract\+\_\+collision/bullet/\mbox{\hyperlink{bullet__utils_8h}{bullet\+\_\+utils.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+collision/bullet/include/tesseract\+\_\+collision/bullet/\mbox{\hyperlink{bullet__utils_8h}{bullet\+\_\+utils.\+h}}\item 
+tesseract\+\_\+collision/bullet/src/\mbox{\hyperlink{bullet__utils_8cpp}{bullet\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}

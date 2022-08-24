@@ -42,7 +42,7 @@
 \DoxyCodeLine{64   \textcolor{keyword}{auto} size = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(size\_s);}
 \DoxyCodeLine{65   \textcolor{keyword}{auto} buf = std::make\_unique<char[]>(size);  \textcolor{comment}{// NOLINT}}
 \DoxyCodeLine{66   std::snprintf(buf.get(), size, format.c\_str(), args...);}
-\DoxyCodeLine{67   \textcolor{keywordflow}{return} std::string(buf.get(), buf.get() + size -\/ 1);  \textcolor{comment}{// We don't want the '\(\backslash\)0' inside}}
+\DoxyCodeLine{67   \textcolor{keywordflow}{return} std::string\{ buf.get(), buf.get() + size -\/ 1 \};  \textcolor{comment}{// We don't want the '\(\backslash\)0' inside}}
 \DoxyCodeLine{68 \}}
 \DoxyCodeLine{69 }
 \DoxyCodeLine{76 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__common_a4ed12ea384452e2d5d4f7a0854035384}{twistChangeRefPoint}}(Eigen::Ref<Eigen::VectorXd> twist, \textcolor{keyword}{const} Eigen::Ref<const Eigen::Vector3d>\& ref\_point);}
@@ -211,32 +211,37 @@
 \DoxyCodeLine{468                                \textcolor{keywordtype}{double} max\_diff = 1e-\/6,}
 \DoxyCodeLine{469                                \textcolor{keywordtype}{double} max\_rel\_diff = std::numeric\_limits<double>::epsilon());}
 \DoxyCodeLine{470 }
-\DoxyCodeLine{477 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{478 \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}{toNumeric}}(\textcolor{keyword}{const} std::string\& s, FloatType\& value)}
-\DoxyCodeLine{479 \{}
-\DoxyCodeLine{480   \textcolor{keywordflow}{if} (s.empty())}
-\DoxyCodeLine{481     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{482 }
-\DoxyCodeLine{483   std::stringstream ss;}
-\DoxyCodeLine{484   ss.imbue(std::locale::classic());}
-\DoxyCodeLine{485 }
-\DoxyCodeLine{486   ss << s;}
+\DoxyCodeLine{483 \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}{almostEqualRelativeAndAbs}}(\textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& v1,}
+\DoxyCodeLine{484                                \textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& v2,}
+\DoxyCodeLine{485                                \textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& max\_diff,}
+\DoxyCodeLine{486                                \textcolor{keyword}{const} Eigen::Ref<const Eigen::VectorXd>\& max\_rel\_diff);}
 \DoxyCodeLine{487 }
-\DoxyCodeLine{488   FloatType out;}
-\DoxyCodeLine{489   ss >> out;}
-\DoxyCodeLine{490 }
-\DoxyCodeLine{491   \textcolor{keywordflow}{if} (ss.fail() || !ss.eof())}
-\DoxyCodeLine{492     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{493 }
-\DoxyCodeLine{494   value = out;}
-\DoxyCodeLine{495   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{496 \}}
-\DoxyCodeLine{497 }
-\DoxyCodeLine{505 std::vector<std::string> \mbox{\hyperlink{namespacetesseract__common_aaca6ae7b6cbd8d28ad6e141239a0206f}{getAllowedCollisions}}(\textcolor{keyword}{const} std::vector<std::string>\& link\_names,}
-\DoxyCodeLine{506                                               \textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{AllowedCollisionEntries}}\& acm\_entries,}
-\DoxyCodeLine{507                                               \textcolor{keywordtype}{bool} remove\_duplicates = \textcolor{keyword}{true});}
-\DoxyCodeLine{508 }
-\DoxyCodeLine{509 \}  \textcolor{comment}{// namespace tesseract\_common}}
-\DoxyCodeLine{510 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_COMMON\_UTILS\_H}}
+\DoxyCodeLine{494 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
+\DoxyCodeLine{495 \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}{toNumeric}}(\textcolor{keyword}{const} std::string\& s, FloatType\& value)}
+\DoxyCodeLine{496 \{}
+\DoxyCodeLine{497   \textcolor{keywordflow}{if} (s.empty())}
+\DoxyCodeLine{498     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{499 }
+\DoxyCodeLine{500   std::stringstream ss;}
+\DoxyCodeLine{501   ss.imbue(std::locale::classic());}
+\DoxyCodeLine{502 }
+\DoxyCodeLine{503   ss << s;}
+\DoxyCodeLine{504 }
+\DoxyCodeLine{505   FloatType out;}
+\DoxyCodeLine{506   ss >> out;}
+\DoxyCodeLine{507 }
+\DoxyCodeLine{508   \textcolor{keywordflow}{if} (ss.fail() || !ss.eof())}
+\DoxyCodeLine{509     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511   value = out;}
+\DoxyCodeLine{512   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{513 \}}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{522 std::vector<std::string> \mbox{\hyperlink{namespacetesseract__common_aaca6ae7b6cbd8d28ad6e141239a0206f}{getAllowedCollisions}}(\textcolor{keyword}{const} std::vector<std::string>\& link\_names,}
+\DoxyCodeLine{523                                               \textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{AllowedCollisionEntries}}\& acm\_entries,}
+\DoxyCodeLine{524                                               \textcolor{keywordtype}{bool} remove\_duplicates = \textcolor{keyword}{true});}
+\DoxyCodeLine{525 }
+\DoxyCodeLine{526 \}  \textcolor{comment}{// namespace tesseract\_common}}
+\DoxyCodeLine{527 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_COMMON\_UTILS\_H}}
 
 \end{DoxyCode}

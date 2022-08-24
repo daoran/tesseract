@@ -70,8 +70,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="../../d6/dbe/tesseract__ignition__visualization_8cpp.html#a010c518967207c53ba30ab4b7cdd26fa">addCylinder</a>  (EntityManager &amp;entity_manager, ignition::msgs::Link &amp;link, long &amp;sub_index, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt1, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt2, const <a class="el" href="../../d9/d0f/classtesseract__scene__graph_1_1Material.html">tesseract_scene_graph::Material</a> &amp;material, const Eigen::Vector3d &amp;)</dt>
-<dd><a class="anchor" id="_todo000026"></a>LEVI fix  </dd>
 <dt>Member <a class="el" href="../../d4/d79/namespacetesseract__collision.html#ac37834bbb711cf5148c4b3a00faf6162">tesseract_collision::getCollisionObjectPairs</a>  (const std::vector&lt; std::string &gt; &amp;active_links, const std::vector&lt; std::string &gt; &amp;static_links, const IsContactAllowedFn &amp;acm=nullptr)</dt>
 <dd><a class="anchor" id="_todo000001"></a>Should this also filter out links without geometry?  </dd>
 <dt>Member <a class="el" href="../../d7/d3b/structtesseract__common_1_1ClassLoader.html#af2749622fe3be804a464ce5d5ea62ca9">tesseract_common::ClassLoader::decorate</a>  (const std::string &amp;library_name, const std::string &amp;library_directory="")</dt>
@@ -98,14 +96,13 @@ $(function() {
 <dd><a class="anchor" id="_todo000022"></a>Make utility to check derived type  </dd>
 <dt>Member <a class="el" href="../../df/d53/structtesseract__srdf_1_1KinematicsInformation.html#a01c585cf7e69817aadcbd5239d04e253">tesseract_srdf::KinematicsInformation::operator==</a>  (const <a class="el" href="../../df/d53/structtesseract__srdf_1_1KinematicsInformation.html" title="This hold the kinematics information used to create the SRDF and is the data container for the manipu...">KinematicsInformation</a> &amp;rhs) const</dt>
 <dd><a class="anchor" id="_todo000025"></a>Write this  </dd>
+<dt>Member <a class="el" href="../../d8/de5/namespacetesseract__visualization.html#a88be2799de33d5369c59ee9eafb62e41">tesseract_visualization::addCylinder</a>  (<a class="el" href="../../d8/d9c/classtesseract__visualization_1_1EntityManager.html">EntityManager</a> &amp;entity_manager, ignition::msgs::Link &amp;link, long &amp;sub_index, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt1, const Eigen::Ref&lt; const Eigen::Vector3d &gt; &amp;pt2, const <a class="el" href="../../d9/d0f/classtesseract__scene__graph_1_1Material.html">tesseract_scene_graph::Material</a> &amp;material, const Eigen::Vector3d &amp;)</dt>
+<dd><a class="anchor" id="_todo000026"></a>LEVI fix  </dd>
 <dt>Member <a class="el" href="../../d0/d5b/tesseract__environment__unit_8cpp.html#a0d0135e86e53fd517ae04252a6fd398c">TEST</a>  (TesseractEnvironmentUnit, checkTrajectoryUnit)</dt>
-<dd><a class="anchor" id="_todo000017"></a>we are getting 9 instead of 6 because duplicate contacts at states  </dd>
-<dt>Member <a class="el" href="../../d3/d30/tesseract__scene__graph__unit_8cpp.html#a07e5d7fb0413d0780df4b637bcd35845">TEST</a>  (TesseractSceneGraphUnit, TesseractSceneGraphRemoveLinkUnit)</dt>
-<dd><a class="anchor" id="_todo000024"></a>Doing this causes the test to fail but assign to new object works. Need to look into why  </dd>
-<dt>Member <a class="el" href="../../d0/d5b/tesseract__environment__unit_8cpp.html#a0d0135e86e53fd517ae04252a6fd398c">TEST</a>  (TesseractEnvironmentUnit, checkTrajectoryUnit)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000018"></a>we are getting 288 instead of 285 because duplicate contacts at states </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000015"></a>we are getting 288 instead of 285 because duplicate contacts at states </p>
 <p class="interdd"><a class="anchor" id="_todo000016"></a>we are getting 9 instead of 6 because duplicate contacts at states </p>
-<p class="interdd"><a class="anchor" id="_todo000015"></a>we are getting 288 instead of 285 because duplicate contacts at states </p>
+<p class="interdd"><a class="anchor" id="_todo000017"></a>we are getting 9 instead of 6 because duplicate contacts at states </p>
+<p class="interdd"><a class="anchor" id="_todo000018"></a>we are getting 288 instead of 285 because duplicate contacts at states </p>
 <p class="interdd"><a class="anchor" id="_todo000014"></a>we are getting 9 instead of 6 because duplicate contacts at states </p>
 <p class="interdd"><a class="anchor" id="_todo000013"></a>we are getting 9 instead of 6 because duplicate contacts at states </p>
 <p class="enddd"><a class="anchor" id="_todo000012"></a>we are getting 9 instead of 6 because duplicate contacts at states  </p>
@@ -114,6 +111,8 @@ $(function() {
 <dd><a class="anchor" id="_todo000011"></a>update contact manager to have function to check collision object enabled state  </dd>
 <dt>Member <a class="el" href="../../d0/d5b/tesseract__environment__unit_8cpp.html#a48e8ba4aff90b6492e3905dc3d9a2686">TEST</a>  (TesseractEnvironmentUnit, EnvSetActiveContinuousContactManagerCommandUnit)</dt>
 <dd><a class="anchor" id="_todo000010"></a>update contact manager to have function to check collision object enabled state  </dd>
+<dt>Member <a class="el" href="../../d3/d30/tesseract__scene__graph__unit_8cpp.html#a07e5d7fb0413d0780df4b637bcd35845">TEST</a>  (TesseractSceneGraphUnit, TesseractSceneGraphRemoveLinkUnit)</dt>
+<dd><a class="anchor" id="_todo000024"></a>Doing this causes the test to fail but assign to new object works. Need to look into why  </dd>
 <dt>Member <a class="el" href="../../d0/d5b/tesseract__environment__unit_8cpp.html#aa8be7c5729a18846a93f15be668f8d93">TEST</a>  (TesseractEnvironmentUnit, EnvChangeLinkVisibilityCommandUnit)</dt>
 <dd><a class="anchor" id="_todo000009"></a>update contact manager to have function to check collision object enabled state  </dd>
 <dt>Member <a class="el" href="../../d0/d5b/tesseract__environment__unit_8cpp.html#a0885de2a8da955b4bb9b9be73de49350">TEST</a>  (TesseractEnvironmentUnit, EnvChangeLinkCollisionEnabledCommandUnit)</dt>
@@ -123,7 +122,7 @@ $(function() {
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:12 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:41 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

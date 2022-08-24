@@ -16,72 +16,66 @@
 \DoxyCodeLine{36 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{tesseract__geometry_2include_2tesseract__geometry_2geometry_8h}{tesseract\_geometry/geometry.h}}>}}
 \DoxyCodeLine{37 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{tesseract__common_2include_2tesseract__common_2types_8h}{tesseract\_common/types.h}}>}}
 \DoxyCodeLine{38 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifdef SWIG}}
-\DoxyCodeLine{40 \%shared\_ptr(\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial}{tesseract\_geometry::MeshMaterial}})}
-\DoxyCodeLine{41 \%shared\_ptr(\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture}{tesseract\_geometry::MeshTexture}})}
-\DoxyCodeLine{42 \%\textcolor{keyword}{template}(VectorMeshTexture) \mbox{\hyperlink{FloatMath_8inl_adcf134d50025cc52907d0c8ac798d89d}{std::vector}}<std::shared\_ptr<tesseract\_geometry::MeshTexture>>;}
-\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// SWIG}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacetesseract__geometry}{tesseract\_geometry}}}
-\DoxyCodeLine{46 \{}
-\DoxyCodeLine{66 \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial}{MeshMaterial}}}
-\DoxyCodeLine{67 \{}
-\DoxyCodeLine{68 \textcolor{keyword}{public}:}
-\DoxyCodeLine{69   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ad67358c38f5044f5759070974ec73e54}{Ptr}} = std::shared\_ptr<MeshMaterial>;}
-\DoxyCodeLine{70   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a40e28bff7129cc427bee736136b13e72}{ConstPtr}} = std::shared\_ptr<const MeshMaterial>;}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{80   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a9b85bb3a9fd4d7f389363a0168c0648c}{MeshMaterial}}(Eigen::Vector4d baseColorFactor,}
-\DoxyCodeLine{81                \textcolor{keywordtype}{double} metallicFactor,}
-\DoxyCodeLine{82                \textcolor{keywordtype}{double} roughnessFactor,}
-\DoxyCodeLine{83                Eigen::Vector4d emissiveFactor)}
-\DoxyCodeLine{84     : base\_color\_factor\_(std::move(baseColorFactor))}
-\DoxyCodeLine{85     , metallic\_factor\_(metallicFactor)}
-\DoxyCodeLine{86     , roughness\_factor\_(roughnessFactor)}
-\DoxyCodeLine{87     , emissive\_factor\_(std::move(emissiveFactor))}
-\DoxyCodeLine{88   \{}
-\DoxyCodeLine{89   \}}
-\DoxyCodeLine{90   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_af43f2f67f60fc8c461904d96019f7419}{MeshMaterial}}() = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{91 }
-\DoxyCodeLine{97   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a61235b03fa1e0c15e779b07f532e14ef}{getBaseColorFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} base\_color\_factor\_; \}}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{104   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_abb187c0e82382354171e44a4d1fdfc6b}{getMetallicFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} metallic\_factor\_; \}}
-\DoxyCodeLine{105 }
-\DoxyCodeLine{111   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a737f31dab85d6a222f54035719ce6923}{getRoughnessFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} roughness\_factor\_; \}}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{121   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_aba4bcd1f12b66557a0ef20f4b2fd6120}{getEmissiveFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} emissive\_factor\_; \}}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123 \textcolor{keyword}{private}:}
-\DoxyCodeLine{124   \textcolor{comment}{// Mesh material based on simplified glTF 2.0 pbrMetallicRoughness parameters}}
-\DoxyCodeLine{125   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a8bbf7e891f27d68a9ad338fa7d36e7d3}{base\_color\_factor\_}};}
-\DoxyCodeLine{126   \textcolor{keywordtype}{double} metallic\_factor\_ = 0;}
-\DoxyCodeLine{127   \textcolor{keywordtype}{double} roughness\_factor\_ = 0.5;}
-\DoxyCodeLine{128   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ade218b7f81a004f58315f4c84dcd932d}{emissive\_factor\_}};}
-\DoxyCodeLine{129 \};}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{144 \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture}{MeshTexture}}}
-\DoxyCodeLine{145 \{}
-\DoxyCodeLine{146 \textcolor{keyword}{public}:}
-\DoxyCodeLine{147   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a75fe5ca7baf1177876dc64818340beff}{Ptr}} = std::shared\_ptr<MeshTexture>;}
-\DoxyCodeLine{148   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_aee88fe21c35c2abd661086aa83ddf22e}{ConstPtr}} = std::shared\_ptr<const MeshTexture>;}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{156   \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a39602e8e65f697427582cd179ff8fc1c}{MeshTexture}}(\mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} texture\_image,}
-\DoxyCodeLine{157               std::shared\_ptr<const tesseract\_common::VectorVector2d> uvs)}
-\DoxyCodeLine{158     : uvs\_(std::move(uvs)), texture\_image\_(std::move(texture\_image))}
-\DoxyCodeLine{159   \{}
-\DoxyCodeLine{160   \}}
-\DoxyCodeLine{161 }
-\DoxyCodeLine{169   \mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a430ed5e5199f5391daac77eaf2dcfc4a}{getTextureImage}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} texture\_image\_; \}}
-\DoxyCodeLine{170 }
-\DoxyCodeLine{176   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector2d>\& \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a13f3d4d32fbcc79105e220365162aa74}{getUVs}}() \{ \textcolor{keywordflow}{return} uvs\_; \}}
-\DoxyCodeLine{177 }
-\DoxyCodeLine{178 \textcolor{keyword}{private}:}
-\DoxyCodeLine{179   std::shared\_ptr<const tesseract\_common::VectorVector2d> \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_ac487d953226d834e56ef912e81245b3f}{uvs\_}};}
-\DoxyCodeLine{180 }
-\DoxyCodeLine{181   \textcolor{comment}{// texture\_image shall be jpg or png}}
-\DoxyCodeLine{182   \mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_abbf2065d9cebc48e765ff8686d32c44d}{texture\_image\_}};}
-\DoxyCodeLine{183 \};}
-\DoxyCodeLine{184 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
-\DoxyCodeLine{185 }
-\DoxyCodeLine{186 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{39 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacetesseract__geometry}{tesseract\_geometry}}}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{60 \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial}{MeshMaterial}}}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 \textcolor{keyword}{public}:}
+\DoxyCodeLine{63   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ad67358c38f5044f5759070974ec73e54}{Ptr}} = std::shared\_ptr<MeshMaterial>;}
+\DoxyCodeLine{64   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a40e28bff7129cc427bee736136b13e72}{ConstPtr}} = std::shared\_ptr<const MeshMaterial>;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{74   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a9b85bb3a9fd4d7f389363a0168c0648c}{MeshMaterial}}(Eigen::Vector4d baseColorFactor,}
+\DoxyCodeLine{75                \textcolor{keywordtype}{double} metallicFactor,}
+\DoxyCodeLine{76                \textcolor{keywordtype}{double} roughnessFactor,}
+\DoxyCodeLine{77                Eigen::Vector4d emissiveFactor)}
+\DoxyCodeLine{78     : \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a8bbf7e891f27d68a9ad338fa7d36e7d3}{base\_color\_factor\_}}(std::move(baseColorFactor))}
+\DoxyCodeLine{79     , \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a7950576acdaa2cca592ed38a1a8f5c9c}{metallic\_factor\_}}(metallicFactor)}
+\DoxyCodeLine{80     , \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a34a564c8851d1293f1b7a3ed68836a1d}{roughness\_factor\_}}(roughnessFactor)}
+\DoxyCodeLine{81     , \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ade218b7f81a004f58315f4c84dcd932d}{emissive\_factor\_}}(std::move(emissiveFactor))}
+\DoxyCodeLine{82   \{}
+\DoxyCodeLine{83   \}}
+\DoxyCodeLine{84   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_af43f2f67f60fc8c461904d96019f7419}{MeshMaterial}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{91   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a61235b03fa1e0c15e779b07f532e14ef}{getBaseColorFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a8bbf7e891f27d68a9ad338fa7d36e7d3}{base\_color\_factor\_}}; \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{98   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_abb187c0e82382354171e44a4d1fdfc6b}{getMetallicFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a7950576acdaa2cca592ed38a1a8f5c9c}{metallic\_factor\_}}; \}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{105   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a737f31dab85d6a222f54035719ce6923}{getRoughnessFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a34a564c8851d1293f1b7a3ed68836a1d}{roughness\_factor\_}}; \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{115   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_aba4bcd1f12b66557a0ef20f4b2fd6120}{getEmissiveFactor}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ade218b7f81a004f58315f4c84dcd932d}{emissive\_factor\_}}; \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{keyword}{private}:}
+\DoxyCodeLine{118   \textcolor{comment}{// Mesh material based on simplified glTF 2.0 pbrMetallicRoughness parameters}}
+\DoxyCodeLine{119   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a8bbf7e891f27d68a9ad338fa7d36e7d3}{base\_color\_factor\_}};}
+\DoxyCodeLine{120   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a7950576acdaa2cca592ed38a1a8f5c9c}{metallic\_factor\_}} = 0;}
+\DoxyCodeLine{121   \textcolor{keywordtype}{double} \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a34a564c8851d1293f1b7a3ed68836a1d}{roughness\_factor\_}} = 0.5;}
+\DoxyCodeLine{122   Eigen::Vector4d \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ade218b7f81a004f58315f4c84dcd932d}{emissive\_factor\_}};}
+\DoxyCodeLine{123 \};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{138 \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture}{MeshTexture}}}
+\DoxyCodeLine{139 \{}
+\DoxyCodeLine{140 \textcolor{keyword}{public}:}
+\DoxyCodeLine{141   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a75fe5ca7baf1177876dc64818340beff}{Ptr}} = std::shared\_ptr<MeshTexture>;}
+\DoxyCodeLine{142   \textcolor{keyword}{using }\mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_aee88fe21c35c2abd661086aa83ddf22e}{ConstPtr}} = std::shared\_ptr<const MeshTexture>;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{150   \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a39602e8e65f697427582cd179ff8fc1c}{MeshTexture}}(\mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} texture\_image,}
+\DoxyCodeLine{151               std::shared\_ptr<const tesseract\_common::VectorVector2d> uvs)}
+\DoxyCodeLine{152     : \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_ac487d953226d834e56ef912e81245b3f}{uvs\_}}(std::move(uvs)), \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_abbf2065d9cebc48e765ff8686d32c44d}{texture\_image\_}}(std::move(texture\_image))}
+\DoxyCodeLine{153   \{}
+\DoxyCodeLine{154   \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{163   \mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a430ed5e5199f5391daac77eaf2dcfc4a}{getTextureImage}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_abbf2065d9cebc48e765ff8686d32c44d}{texture\_image\_}}; \}}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{170   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector2d>\& \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_a13f3d4d32fbcc79105e220365162aa74}{getUVs}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_ac487d953226d834e56ef912e81245b3f}{uvs\_}}; \}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172 \textcolor{keyword}{private}:}
+\DoxyCodeLine{173   std::shared\_ptr<const tesseract\_common::VectorVector2d> \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_ac487d953226d834e56ef912e81245b3f}{uvs\_}};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175   \textcolor{comment}{// texture\_image shall be jpg or png}}
+\DoxyCodeLine{176   \mbox{\hyperlink{classtesseract__common_1_1Resource_acdba916fa227bef4391c469581844dc6}{tesseract\_common::Resource::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1MeshTexture_abbf2065d9cebc48e765ff8686d32c44d}{texture\_image\_}};}
+\DoxyCodeLine{177 \};}
+\DoxyCodeLine{178 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

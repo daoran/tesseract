@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/dce/namespacetinyxml2.html">tinyxml2</a></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">class </span>XMLElement;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">class </span>XMLElement;  <span class="comment">// NOLINT</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">class </span>XMLDocument;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}  <span class="comment">// namespace tinyxml2</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
@@ -114,12 +114,12 @@ $(function() {
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}  <span class="comment">// namespace tesseract_urdf</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif  </span><span class="comment">// TESSERACT_URDF_GEOMETRY_H</span></div>
-<div class="ttc" id="aclasstesseract__common_1_1ResourceLocator_html"><div class="ttname"><a href="../../d0/de6/classtesseract__common_1_1ResourceLocator.html">tesseract_common::ResourceLocator</a></div><div class="ttdoc">Abstract class for resource loaders.</div><div class="ttdef"><b>Definition:</b> resource_locator.h:55</div></div>
+<div class="ttc" id="aclasstesseract__common_1_1ResourceLocator_html"><div class="ttname"><a href="../../d0/de6/classtesseract__common_1_1ResourceLocator.html">tesseract_common::ResourceLocator</a></div><div class="ttdoc">Abstract class for resource loaders.</div><div class="ttdef"><b>Definition:</b> resource_locator.h:43</div></div>
 <div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="../../de/d3c/macros_8h.html">macros.h</a></div><div class="ttdoc">Common Tesseract Macros.</div></div>
 <div class="ttc" id="amacros_8h_html_a8cc0e3c6a3382c5c0b19eb9e676fc2db"><div class="ttname"><a href="../../de/d3c/macros_8h.html#a8cc0e3c6a3382c5c0b19eb9e676fc2db">TESSERACT_COMMON_IGNORE_WARNINGS_PUSH</a></div><div class="ttdeci">#define TESSERACT_COMMON_IGNORE_WARNINGS_PUSH</div><div class="ttdef"><b>Definition:</b> macros.h:71</div></div>
 <div class="ttc" id="anamespaceTESSERACT__COMMON__IGNORE__WARNINGS__POP_html"><div class="ttname"><a href="../../df/d21/namespaceTESSERACT__COMMON__IGNORE__WARNINGS__POP.html">TESSERACT_COMMON_IGNORE_WARNINGS_POP</a></div><div class="ttdef"><b>Definition:</b> create_convex_hull.cpp:36</div></div>
-<div class="ttc" id="anamespacetesseract__common_html"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html">tesseract_common</a></div><div class="ttdef"><b>Definition:</b> allowed_collision_matrix.h:23</div></div>
-<div class="ttc" id="anamespacetesseract__geometry_html"><div class="ttname"><a href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:43</div></div>
+<div class="ttc" id="anamespacetesseract__common_html"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html">tesseract_common</a></div><div class="ttdef"><b>Definition:</b> allowed_collision_matrix.h:16</div></div>
+<div class="ttc" id="anamespacetesseract__geometry_html"><div class="ttname"><a href="../../d0/d17/namespacetesseract__geometry.html">tesseract_geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:39</div></div>
 <div class="ttc" id="anamespacetesseract__urdf_html"><div class="ttname"><a href="../../d5/d8c/namespacetesseract__urdf.html">tesseract_urdf</a></div><div class="ttdef"><b>Definition:</b> box.h:45</div></div>
 <div class="ttc" id="anamespacetesseract__urdf_html_a753537db4fae5b9ea0675133228968ec"><div class="ttname"><a href="../../d5/d8c/namespacetesseract__urdf.html#a753537db4fae5b9ea0675133228968ec">tesseract_urdf::writeGeometry</a></div><div class="ttdeci">tinyxml2::XMLElement * writeGeometry(const std::shared_ptr&lt; const tesseract_geometry::Geometry &gt; &amp;geometry, tinyxml2::XMLDocument &amp;doc, const std::string &amp;package_path, const std::string &amp;filename)</div><div class="ttdoc">writeGeometry Write geometry to URDF XML</div><div class="ttdef"><b>Definition:</b> geometry.cpp:209</div></div>
 <div class="ttc" id="anamespacetesseract__urdf_html_a8fa8aaf76fc69d746368b4b8b7cf7b90"><div class="ttname"><a href="../../d5/d8c/namespacetesseract__urdf.html#a8fa8aaf76fc69d746368b4b8b7cf7b90">tesseract_urdf::parseGeometry</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; tesseract_geometry::Geometry &gt; &gt; parseGeometry(const tinyxml2::XMLElement *xml_element, const tesseract_common::ResourceLocator &amp;locator, bool visual, int version)</div><div class="ttdoc">Parse xml element geometry.</div><div class="ttdef"><b>Definition:</b> geometry.cpp:51</div></div>
@@ -127,7 +127,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:10 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:40 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

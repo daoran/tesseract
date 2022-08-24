@@ -1,23 +1,36 @@
 <map id="tesseract_geometry/src/geometry.cpp" name="tesseract_geometry/src/geometry.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="589,5,725,47"/>
-<area shape="rect" id="node2" href="$de/d3c/macros_8h.html" title="Common Tesseract Macros." alt="" coords="561,191,752,218"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,184,132,225"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1299,95,1425,136"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1449,95,1576,136"/>
-<area shape="rect" id="node6" title=" " alt="" coords="469,191,537,218"/>
-<area shape="rect" id="node7" href="$d0/da6/tesseract__geometry_2include_2tesseract__geometry_2geometry_8h.html" title="Tesseract Geometries." alt="" coords="350,95,486,136"/>
-<area shape="rect" id="node11" href="$dd/d50/serialization_8h.html" title="Additional Boost serialization wrappers." alt="" coords="1060,102,1275,129"/>
-<area shape="rect" id="node8" title=" " alt="" coords="240,184,367,225"/>
-<area shape="rect" id="node9" title=" " alt="" coords="391,191,445,218"/>
-<area shape="rect" id="node10" title=" " alt="" coords="157,191,215,218"/>
-<area shape="rect" id="node12" title=" " alt="" coords="1086,191,1147,218"/>
-<area shape="rect" id="node13" title=" " alt="" coords="1172,191,1267,218"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1291,191,1358,218"/>
-<area shape="rect" id="node15" title=" " alt="" coords="1382,191,1451,218"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1476,191,1680,218"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1705,191,1905,218"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1929,184,2067,225"/>
-<area shape="rect" id="node19" title=" " alt="" coords="2091,184,2230,225"/>
-<area shape="rect" id="node20" title=" " alt="" coords="776,184,903,225"/>
-<area shape="rect" id="node21" title=" " alt="" coords="927,184,1061,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="223,5,359,47"/>
+<area shape="rect" id="node2" href="$de/d3c/macros_8h.html" title="Common Tesseract Macros." alt="" coords="1850,370,2041,397"/>
+<area shape="rect" id="node3" title=" " alt="" coords="195,273,322,315"/>
+<area shape="rect" id="node4" title=" " alt="" coords="167,363,294,404"/>
+<area shape="rect" id="node5" title=" " alt="" coords="227,95,354,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="25,281,93,307"/>
+<area shape="rect" id="node7" href="$d0/da6/tesseract__geometry_2include_2tesseract__geometry_2geometry_8h.html" title="Tesseract Geometries." alt="" coords="276,184,412,225"/>
+<area shape="rect" id="node11" href="$dd/d50/serialization_8h.html" title="Additional Boost serialization wrappers." alt="" coords="1261,102,1475,129"/>
+<area shape="rect" id="node8" title=" " alt="" coords="430,273,557,315"/>
+<area shape="rect" id="node9" title=" " alt="" coords="117,281,171,307"/>
+<area shape="rect" id="node10" title=" " alt="" coords="347,281,405,307"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1983,191,2044,218"/>
+<area shape="rect" id="node13" title=" " alt="" coords="639,191,734,218"/>
+<area shape="rect" id="node14" title=" " alt="" coords="759,191,825,218"/>
+<area shape="rect" id="node15" title=" " alt="" coords="849,191,919,218"/>
+<area shape="rect" id="node16" title=" " alt="" coords="943,191,1147,218"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1172,191,1372,218"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1396,184,1535,225"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1559,184,1697,225"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1575,273,1702,315"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1773,184,1907,225"/>
+<area shape="rect" id="node22" href="$dd/ddb/tesseract__common_2include_2tesseract__common_2types_8h.html" title="Common Tesseract Types." alt="" coords="436,191,615,218"/>
+<area shape="rect" id="node30" href="$d5/d03/serialization__extensions_8h.html" title="Boost serialization class extension macros and helpers." alt="" coords="2068,184,2273,225"/>
+<area shape="rect" id="node23" title=" " alt="" coords="557,370,643,397"/>
+<area shape="rect" id="node24" title=" " alt="" coords="764,370,879,397"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1442,281,1489,307"/>
+<area shape="rect" id="node26" title=" " alt="" coords="953,281,1063,307"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1087,281,1227,307"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1252,281,1367,307"/>
+<area shape="rect" id="node29" href="$d9/dc2/kinematic__limits_8h.html" title="Common Tesseract Kinematic Limits and Related Utility Functions." alt="" coords="633,273,826,315"/>
+<area shape="rect" id="node31" title=" " alt="" coords="2101,281,2240,307"/>
+<area shape="rect" id="node32" href="$d3/d03/sfinae__utils_8h.html" title=" " alt="" coords="2348,273,2519,315"/>
+<area shape="rect" id="node33" title=" " alt="" coords="2347,370,2429,397"/>
+<area shape="rect" id="node34" title=" " alt="" coords="2453,370,2504,397"/>
 </map>

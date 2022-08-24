@@ -50,6 +50,8 @@ using \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_aedd81ad4bfe24
 \item 
 std\+::type\+\_\+index \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_abb765ee3e63f4ece1103d92cff8e3239}{get\+Type}} () const
 \item 
+bool \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_a204ce738d8b077f97c4f50548f7f4c09}{is\+Null}} () const
+\item 
 bool \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_aa4d8e17201546cca4cd7f411bee17401}{operator==}} (const \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{Type\+Erasure\+Base}} \&rhs) const
 \item 
 bool \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_ab3bf9f9a4ff2f0f87abfc1430d11b754}{operator!=}} (const \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{Type\+Erasure\+Base}} \&rhs) const
@@ -77,7 +79,7 @@ const \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_aedd81ad4bfe24
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}} $>$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_a8e7c2618f744c424e83c64ca6a31f047}{value\+\_\+}}
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}} $>$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_a8e7c2618f744c424e83c64ca6a31f047}{value\+\_\+}} \{ nullptr \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -191,6 +193,13 @@ const \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase_aedd81ad4bfe24
 {\footnotesize\ttfamily template$<$typename Concept\+Interface , template$<$ typename $>$ class Concept\+Instance$>$ \\
 std\+::type\+\_\+index \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ Concept\+Interface, Concept\+Instance $>$\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{structtesseract__common_1_1TypeErasureBase_a204ce738d8b077f97c4f50548f7f4c09}\label{structtesseract__common_1_1TypeErasureBase_a204ce738d8b077f97c4f50548f7f4c09}} 
+\index{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$@{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$}!isNull@{isNull}}
+\index{isNull@{isNull}!tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$@{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$}}
+\doxysubsubsection{\texorpdfstring{isNull()}{isNull()}}
+{\footnotesize\ttfamily template$<$typename Concept\+Interface , template$<$ typename $>$ class Concept\+Instance$>$ \\
+bool \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ Concept\+Interface, Concept\+Instance $>$\+::is\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{structtesseract__common_1_1TypeErasureBase_ab3bf9f9a4ff2f0f87abfc1430d11b754}\label{structtesseract__common_1_1TypeErasureBase_ab3bf9f9a4ff2f0f87abfc1430d11b754}} 
 \index{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$@{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$}!operator"!=@{operator"!=}}
 \index{operator"!=@{operator"!=}!tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$@{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$}}
@@ -260,7 +269,7 @@ friend struct \mbox{\hyperlink{structtesseract__common_1_1Serialization}{tessera
 \index{value\_@{value\_}!tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$@{tesseract\_common::TypeErasureBase$<$ ConceptInterface, ConceptInstance $>$}}
 \doxysubsubsection{\texorpdfstring{value\_}{value\_}}
 {\footnotesize\ttfamily template$<$typename Concept\+Interface , template$<$ typename $>$ class Concept\+Instance$>$ \\
-std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}$>$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ Concept\+Interface, Concept\+Instance $>$\+::value\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}$>$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ Concept\+Interface, Concept\+Instance $>$\+::value\+\_\+ \{ nullptr \}\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

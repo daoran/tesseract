@@ -29,7 +29,7 @@ Collaboration diagram for tesseract\+\_\+collision\+::tesseract\+\_\+collision\+
 \item 
 \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a87e37ed6abffb5995484e4cee855615b}{Discrete\+Collision\+Collector}} (\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&collisions, \mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a3d926f2c776673c5e9719e010936600a}{COW\+::\+Ptr}} cow, bt\+Scalar contact\+\_\+distance, bool verbose=false)
 \item 
-bt\+Scalar \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a2b48e1a5743cd3e9c0b1d161c434d6a3}{add\+Single\+Result}} (bt\+Manifold\+Point \&cp, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj0\+Wrap, int, int, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj1\+Wrap, int, int) override
+bt\+Scalar \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a230b50fec6c882b7444a16a2eafac84b}{add\+Single\+Result}} (bt\+Manifold\+Point \&cp, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj0\+Wrap, int part\+Id0, int index0, const bt\+Collision\+Object\+Wrapper $\ast$col\+Obj1\+Wrap, int part\+Id1, int index1) override
 \item 
 bool \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a1ceab4e4aa526f4a2b6cd09a1d50f825}{needs\+Collision}} (bt\+Broadphase\+Proxy $\ast$proxy0) const override
 \end{DoxyCompactItemize}
@@ -51,22 +51,22 @@ bool \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet
 \index{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}!DiscreteCollisionCollector@{DiscreteCollisionCollector}}
 \index{DiscreteCollisionCollector@{DiscreteCollisionCollector}!tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}}
 \doxysubsubsection{\texorpdfstring{DiscreteCollisionCollector()}{DiscreteCollisionCollector()}}
-{\footnotesize\ttfamily tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::\+Discrete\+Collision\+Collector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&}]{collisions,  }\item[{\mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a3d926f2c776673c5e9719e010936600a}{COW\+::\+Ptr}}}]{cow,  }\item[{bt\+Scalar}]{contact\+\_\+distance,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::\+Discrete\+Collision\+Collector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtesseract__collision_1_1ContactTestData}{Contact\+Test\+Data}} \&}]{collisions,  }\item[{\mbox{\hyperlink{classtesseract__collision_1_1tesseract__collision__bullet_1_1CollisionObjectWrapper_a3d926f2c776673c5e9719e010936600a}{COW\+::\+Ptr}}}]{cow,  }\item[{bt\+Scalar}]{contact\+\_\+distance,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a2b48e1a5743cd3e9c0b1d161c434d6a3}\label{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a2b48e1a5743cd3e9c0b1d161c434d6a3}} 
+\mbox{\Hypertarget{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a230b50fec6c882b7444a16a2eafac84b}\label{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a230b50fec6c882b7444a16a2eafac84b}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}!addSingleResult@{addSingleResult}}
 \index{addSingleResult@{addSingleResult}!tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}}
 \doxysubsubsection{\texorpdfstring{addSingleResult()}{addSingleResult()}}
-{\footnotesize\ttfamily bt\+Scalar tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::add\+Single\+Result (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj0\+Wrap,  }\item[{int}]{,  }\item[{int}]{,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj1\+Wrap,  }\item[{int}]{,  }\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+{\footnotesize\ttfamily bt\+Scalar tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::add\+Single\+Result (\begin{DoxyParamCaption}\item[{bt\+Manifold\+Point \&}]{cp,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj0\+Wrap,  }\item[{int}]{part\+Id0,  }\item[{int}]{index0,  }\item[{const bt\+Collision\+Object\+Wrapper $\ast$}]{col\+Obj1\+Wrap,  }\item[{int}]{part\+Id1,  }\item[{int}]{index1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
 
 \mbox{\Hypertarget{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a1ceab4e4aa526f4a2b6cd09a1d50f825}\label{structtesseract__collision_1_1tesseract__collision__bullet_1_1DiscreteCollisionCollector_a1ceab4e4aa526f4a2b6cd09a1d50f825}} 
 \index{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}!needsCollision@{needsCollision}}
 \index{needsCollision@{needsCollision}!tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector@{tesseract\_collision::tesseract\_collision\_bullet::DiscreteCollisionCollector}}
 \doxysubsubsection{\texorpdfstring{needsCollision()}{needsCollision()}}
-{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::needs\+Collision (\begin{DoxyParamCaption}\item[{bt\+Broadphase\+Proxy $\ast$}]{proxy0 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+{\footnotesize\ttfamily bool tesseract\+\_\+collision\+::tesseract\+\_\+collision\+\_\+bullet\+::\+Discrete\+Collision\+Collector\+::needs\+Collision (\begin{DoxyParamCaption}\item[{bt\+Broadphase\+Proxy $\ast$}]{proxy0 }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
 
 
 
@@ -97,6 +97,7 @@ bool \mbox{\hyperlink{structtesseract__collision_1_1tesseract__collision__bullet
 
 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-tesseract\+\_\+collision/bullet/include/tesseract\+\_\+collision/bullet/\mbox{\hyperlink{bullet__utils_8h}{bullet\+\_\+utils.\+h}}\end{DoxyCompactItemize}
+tesseract\+\_\+collision/bullet/include/tesseract\+\_\+collision/bullet/\mbox{\hyperlink{bullet__utils_8h}{bullet\+\_\+utils.\+h}}\item 
+tesseract\+\_\+collision/bullet/src/\mbox{\hyperlink{bullet__utils_8cpp}{bullet\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}

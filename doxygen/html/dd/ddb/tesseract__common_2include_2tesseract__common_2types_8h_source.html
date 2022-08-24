@@ -251,24 +251,20 @@ $(function() {
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>};</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}  <span class="comment">// namespace tesseract_common</span></div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#ifdef SWIG</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>%<span class="keyword">template</span>(<a class="code hl_typedef" href="../../df/da9/namespacetesseract__common.html#a43d1f6e0418164a6db0e1c447150340e">PluginInfoMap</a>) std::map&lt;std::string, tesseract_common::PluginInfo&gt;;</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="preprocessor">#endif  </span><span class="comment">// SWIG</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">#include &lt;boost/serialization/export.hpp&gt;</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="preprocessor">#include &lt;boost/serialization/tracking.hpp&gt;</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_struct" href="../../d8/d88/structtesseract__common_1_1PluginInfo.html">tesseract_common::PluginInfo</a>, <span class="stringliteral">&quot;PluginInfo&quot;</span>)</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::PluginInfoContainer, &quot;PluginInfoContainer&quot;)</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::KinematicsPluginInfo, &quot;KinematicsPluginInfo&quot;)</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::ContactManagersPluginInfo, &quot;ContactManagersPluginInfo&quot;)</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::CalibrationInfo, &quot;CalibrationInfo&quot;)</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#endif  </span><span class="comment">// TESSERACT_COMMON_TYPES_H</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">#include &lt;boost/serialization/export.hpp&gt;</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">#include &lt;boost/serialization/tracking.hpp&gt;</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_struct" href="../../d8/d88/structtesseract__common_1_1PluginInfo.html">tesseract_common::PluginInfo</a>, <span class="stringliteral">&quot;PluginInfo&quot;</span>)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::PluginInfoContainer, &quot;PluginInfoContainer&quot;)</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::KinematicsPluginInfo, &quot;KinematicsPluginInfo&quot;)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::ContactManagersPluginInfo, &quot;ContactManagersPluginInfo&quot;)</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>BOOST_CLASS_EXPORT_KEY2(<a class="code hl_namespace" href="../../df/da9/namespacetesseract__common.html">tesseract_common</a>::CalibrationInfo, &quot;CalibrationInfo&quot;)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#endif  </span><span class="comment">// TESSERACT_COMMON_TYPES_H</span></div>
 <div class="ttc" id="akinematic__limits_8h_html"><div class="ttname"><a href="../../d9/dc2/kinematic__limits_8h.html">kinematic_limits.h</a></div><div class="ttdoc">Common Tesseract Kinematic Limits and Related Utility Functions.</div></div>
 <div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="../../de/d3c/macros_8h.html">macros.h</a></div><div class="ttdoc">Common Tesseract Macros.</div></div>
 <div class="ttc" id="amacros_8h_html_a8cc0e3c6a3382c5c0b19eb9e676fc2db"><div class="ttname"><a href="../../de/d3c/macros_8h.html#a8cc0e3c6a3382c5c0b19eb9e676fc2db">TESSERACT_COMMON_IGNORE_WARNINGS_PUSH</a></div><div class="ttdeci">#define TESSERACT_COMMON_IGNORE_WARNINGS_PUSH</div><div class="ttdef"><b>Definition:</b> macros.h:71</div></div>
 <div class="ttc" id="anamespaceTESSERACT__COMMON__IGNORE__WARNINGS__POP_html"><div class="ttname"><a href="../../df/d21/namespaceTESSERACT__COMMON__IGNORE__WARNINGS__POP.html">TESSERACT_COMMON_IGNORE_WARNINGS_POP</a></div><div class="ttdef"><b>Definition:</b> create_convex_hull.cpp:36</div></div>
-<div class="ttc" id="anamespacetesseract__common_html"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html">tesseract_common</a></div><div class="ttdef"><b>Definition:</b> allowed_collision_matrix.h:23</div></div>
+<div class="ttc" id="anamespacetesseract__common_html"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html">tesseract_common</a></div><div class="ttdef"><b>Definition:</b> allowed_collision_matrix.h:16</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_a000d15c3ab8d8ba4ebdaae64153b053a"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a000d15c3ab8d8ba4ebdaae64153b053a">tesseract_common::AlignedVector</a></div><div class="ttdeci">std::vector&lt; T, Eigen::aligned_allocator&lt; T &gt; &gt; AlignedVector</div><div class="ttdoc">Enable easy switching to std::filesystem when available.</div><div class="ttdef"><b>Definition:</b> types.h:50</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_a11bc9620a27eede3300420410e0b4a7a"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a11bc9620a27eede3300420410e0b4a7a">tesseract_common::makeOrderedLinkPair</a></div><div class="ttdeci">LinkNamesPair makeOrderedLinkPair(const std::string &amp;link_name1, const std::string &amp;link_name2)</div><div class="ttdoc">Create a pair of strings, where the pair.first is always &lt;= pair.second.</div><div class="ttdef"><b>Definition:</b> types.cpp:52</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_a2c5a4b6149060671cf8c3f9d15ef58c4"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a2c5a4b6149060671cf8c3f9d15ef58c4">tesseract_common::AlignedMap</a></div><div class="ttdeci">std::map&lt; Key, Value, std::less&lt; Key &gt;, Eigen::aligned_allocator&lt; std::pair&lt; const Key, Value &gt; &gt; &gt; AlignedMap</div><div class="ttdef"><b>Definition:</b> types.h:53</div></div>
@@ -342,7 +338,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:10 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:39 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

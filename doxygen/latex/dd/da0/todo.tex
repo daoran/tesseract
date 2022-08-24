@@ -1,8 +1,5 @@
 
 \begin{DoxyRefList}
-\item[Member \mbox{\hyperlink{tesseract__ignition__visualization_8cpp_a010c518967207c53ba30ab4b7cdd26fa}{add\+Cylinder}} (Entity\+Manager \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt2, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Material}{tesseract\+\_\+scene\+\_\+graph\+::\+Material}} \&material, const Eigen\+::\+Vector3d \&)]\label{todo__todo000026}%
-\Hypertarget{todo__todo000026}%
-LEVI fix  
 \item[Member \mbox{\hyperlink{namespacetesseract__collision_ac37834bbb711cf5148c4b3a00faf6162}{tesseract\+\_\+collision\+::get\+Collision\+Object\+Pairs}} (const std\+::vector$<$ std\+::string $>$ \&active\+\_\+links, const std\+::vector$<$ std\+::string $>$ \&static\+\_\+links, const Is\+Contact\+Allowed\+Fn \&acm=nullptr)]\label{todo__todo000001}%
 \Hypertarget{todo__todo000001}%
 Should this also filter out links without geometry?  
@@ -42,22 +39,23 @@ Make utility to check derived type
 \item[Member \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation_a01c585cf7e69817aadcbd5239d04e253}{tesseract\+\_\+srdf\+::Kinematics\+Information\+::operator==}} (const \mbox{\hyperlink{structtesseract__srdf_1_1KinematicsInformation}{Kinematics\+Information}} \&rhs) const]\label{todo__todo000025}%
 \Hypertarget{todo__todo000025}%
 Write this  
-\item[Member \mbox{\hyperlink{tesseract__environment__unit_8cpp_a0d0135e86e53fd517ae04252a6fd398c}{TEST}} (Tesseract\+Environment\+Unit, check\+Trajectory\+Unit)]\label{todo__todo000017}%
-\Hypertarget{todo__todo000017}%
-we are getting 9 instead of 6 because duplicate contacts at states  
-\item[Member \mbox{\hyperlink{tesseract__scene__graph__unit_8cpp_a07e5d7fb0413d0780df4b637bcd35845}{TEST}} (Tesseract\+Scene\+Graph\+Unit, Tesseract\+Scene\+Graph\+Remove\+Link\+Unit)]\label{todo__todo000024}%
-\Hypertarget{todo__todo000024}%
-Doing this causes the test to fail but assign to new object works. Need to look into why  
-\item[Member \mbox{\hyperlink{tesseract__environment__unit_8cpp_a0d0135e86e53fd517ae04252a6fd398c}{TEST}} (Tesseract\+Environment\+Unit, check\+Trajectory\+Unit)]\label{todo__todo000018}%
-\Hypertarget{todo__todo000018}%
+\item[Member \mbox{\hyperlink{namespacetesseract__visualization_a88be2799de33d5369c59ee9eafb62e41}{tesseract\+\_\+visualization\+::add\+Cylinder}} (\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt2, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Material}{tesseract\+\_\+scene\+\_\+graph\+::\+Material}} \&material, const Eigen\+::\+Vector3d \&)]\label{todo__todo000026}%
+\Hypertarget{todo__todo000026}%
+LEVI fix  
+\item[Member \mbox{\hyperlink{tesseract__environment__unit_8cpp_a0d0135e86e53fd517ae04252a6fd398c}{TEST}} (Tesseract\+Environment\+Unit, check\+Trajectory\+Unit)]\label{todo__todo000015}%
+\Hypertarget{todo__todo000015}%
 we are getting 288 instead of 285 because duplicate contacts at states 
 
 \label{todo__todo000016}%
 \Hypertarget{todo__todo000016}%
 we are getting 9 instead of 6 because duplicate contacts at states 
 
-\label{todo__todo000015}%
-\Hypertarget{todo__todo000015}%
+\label{todo__todo000017}%
+\Hypertarget{todo__todo000017}%
+we are getting 9 instead of 6 because duplicate contacts at states 
+
+\label{todo__todo000018}%
+\Hypertarget{todo__todo000018}%
 we are getting 288 instead of 285 because duplicate contacts at states 
 
 \label{todo__todo000014}%
@@ -77,6 +75,9 @@ update contact manager to have function to check collision object enabled state
 \item[Member \mbox{\hyperlink{tesseract__environment__unit_8cpp_a48e8ba4aff90b6492e3905dc3d9a2686}{TEST}} (Tesseract\+Environment\+Unit, Env\+Set\+Active\+Continuous\+Contact\+Manager\+Command\+Unit)]\label{todo__todo000010}%
 \Hypertarget{todo__todo000010}%
 update contact manager to have function to check collision object enabled state  
+\item[Member \mbox{\hyperlink{tesseract__scene__graph__unit_8cpp_a07e5d7fb0413d0780df4b637bcd35845}{TEST}} (Tesseract\+Scene\+Graph\+Unit, Tesseract\+Scene\+Graph\+Remove\+Link\+Unit)]\label{todo__todo000024}%
+\Hypertarget{todo__todo000024}%
+Doing this causes the test to fail but assign to new object works. Need to look into why  
 \item[Member \mbox{\hyperlink{tesseract__environment__unit_8cpp_aa8be7c5729a18846a93f15be668f8d93}{TEST}} (Tesseract\+Environment\+Unit, Env\+Change\+Link\+Visibility\+Command\+Unit)]\label{todo__todo000009}%
 \Hypertarget{todo__todo000009}%
 update contact manager to have function to check collision object enabled state  

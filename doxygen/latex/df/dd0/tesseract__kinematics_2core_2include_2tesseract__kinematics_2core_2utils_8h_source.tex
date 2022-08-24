@@ -293,9 +293,9 @@
 \DoxyCodeLine{385           Eigen::VectorXd new\_sol = sol;}
 \DoxyCodeLine{386           new\_sol[*current\_index] = val;}
 \DoxyCodeLine{387 }
-\DoxyCodeLine{388           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
+\DoxyCodeLine{388           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2357c2476cbb1427a259d1dc1b8c20b6}{tesseract\_common::satisfiesPositionLimits<double>}}(new\_sol, limits))}
 \DoxyCodeLine{389           \{}
-\DoxyCodeLine{390             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
+\DoxyCodeLine{390             \mbox{\hyperlink{namespacetesseract__common_a1f8d20fecfeb1e99cc55d316977c3f3d}{tesseract\_common::enforcePositionLimits<double>}}(new\_sol, limits);}
 \DoxyCodeLine{391             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
 \DoxyCodeLine{392           \}}
 \DoxyCodeLine{393 }
@@ -324,9 +324,9 @@
 \DoxyCodeLine{416           Eigen::VectorXd new\_sol = sol;}
 \DoxyCodeLine{417           new\_sol[*current\_index] = val;}
 \DoxyCodeLine{418 }
-\DoxyCodeLine{419           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{tesseract\_common::satisfiesPositionLimits}}(new\_sol, limits))}
+\DoxyCodeLine{419           \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacetesseract__common_a2357c2476cbb1427a259d1dc1b8c20b6}{tesseract\_common::satisfiesPositionLimits<double>}}(new\_sol, limits))}
 \DoxyCodeLine{420           \{}
-\DoxyCodeLine{421             \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{tesseract\_common::enforcePositionLimits}}(new\_sol, limits);}
+\DoxyCodeLine{421             \mbox{\hyperlink{namespacetesseract__common_a1f8d20fecfeb1e99cc55d316977c3f3d}{tesseract\_common::enforcePositionLimits<double>}}(new\_sol, limits);}
 \DoxyCodeLine{422             redundant\_sols.push\_back(new\_sol.template cast<FloatType>());}
 \DoxyCodeLine{423           \}}
 \DoxyCodeLine{424 }

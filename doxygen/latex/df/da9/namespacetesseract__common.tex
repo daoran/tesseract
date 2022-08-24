@@ -4,6 +4,8 @@
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacetesseract__common_1_1detail__any}{detail\+\_\+any}}
+\item 
+namespace \mbox{\hyperlink{namespacetesseract__common_1_1serialization}{serialization}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
@@ -135,9 +137,13 @@ enum class \mbox{\hyperlink{namespacetesseract__common_af06d85d024a36d63b58a6031
 \item 
 bool \mbox{\hyperlink{namespacetesseract__common_a0808e2d3c913c41e852ab3819eadd828}{operator==}} (const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&entries\+\_\+1, const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&entries\+\_\+2)
 \item 
-bool \mbox{\hyperlink{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}{satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits, double max\+\_\+diff=1e-\/6, double max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ double $>$\+::epsilon())
-\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relativilty equal to a limit. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}{enforce\+Position\+Limits}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&position\+\_\+limits)
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}{is\+Within\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\begin{DoxyCompactList}\small\item\em Check if within position limits. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+diff, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+rel\+\_\+diff)
+\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relatively equal to a limit. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_ad966f78ba21ac22b33b036d94958ff82}{satisfies\+Position\+Limits}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, Float\+Type max\+\_\+diff=static\+\_\+cast$<$ Float\+Type $>$(1e-\/6), Float\+Type max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ Float\+Type $>$\+::epsilon())
+\begin{DoxyCompactList}\small\item\em Check if joint position is within bounds or relatively equal to a limit. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}{enforce\+Position\+Limits}} (Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
 \begin{DoxyCompactList}\small\item\em Enforce position to be within the provided limits. \end{DoxyCompactList}\item 
 std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_af2c2ec207efac0e2080c6488163eb082}{parse\+Environment\+Variable\+List}} (const std\+::string \&env\+\_\+variable)
 \item 
@@ -227,6 +233,8 @@ bool \mbox{\hyperlink{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f
 \begin{DoxyCompactList}\small\item\em Check if two double are relatively equal. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacetesseract__common_a12eb899ec3967699e946431730eed959}{almost\+Equal\+Relative\+And\+Abs}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&v1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&v2, double max\+\_\+diff=1e-\/6, double max\+\_\+rel\+\_\+diff=std\+::numeric\+\_\+limits$<$ double $>$\+::epsilon())
 \begin{DoxyCompactList}\small\item\em Check if two Eigen Vector\+Xd are relatively and absolute equal. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetesseract__common_a8eb8b43bdac2751a9a899e4552537cda}{almost\+Equal\+Relative\+And\+Abs}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&v1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&v2, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&max\+\_\+diff, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&max\+\_\+rel\+\_\+diff)
+\begin{DoxyCompactList}\small\item\em Check if two Eigen Vector\+Xd are relatively and absolute equal. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__common_a00bc131acfeba0eba8fe7ff7cd944860}{to\+Numeric}} (const std\+::string \&s, Float\+Type \&value)
 \begin{DoxyCompactList}\small\item\em Convert a string to a numeric value type. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_aaca6ae7b6cbd8d28ad6e141239a0206f}{get\+Allowed\+Collisions}} (const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ std\+::string $>$ \&link\+\_\+names, const \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} \&acm\+\_\+entries, bool remove\+\_\+duplicates=true)
@@ -237,6 +245,22 @@ YAML\+::\+Node \mbox{\hyperlink{namespacetesseract__common_ac8f354484775381dd5c2
 \begin{DoxyCompactList}\small\item\em Converts yaml string to a YAML\+::\+Node. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacetesseract__common_a5d68e5ef9a9f4317cd29a2539f47f0c3}{is\+Identical}} (const YAML\+::\+Node \&node1, const YAML\+::\+Node \&node2)
 \begin{DoxyCompactList}\small\item\em Checks if the YAML\+::\+Nodes are identical. \end{DoxyCompactList}\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_a14ebb17906855938c53c073603e40143}{is\+Within\+Position\+Limits$<$ float $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_ad39ab29a90ad257cf5418b8eeb77e4af}{is\+Within\+Position\+Limits$<$ double $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_a70b4f11e829b5fba3c3d80d5a1f4b6e2}{satisfies\+Position\+Limits$<$ float $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, float max\+\_\+diff, float max\+\_\+rel\+\_\+diff)
+\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_a2357c2476cbb1427a259d1dc1b8c20b6}{satisfies\+Position\+Limits$<$ double $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, double max\+\_\+diff, double max\+\_\+rel\+\_\+diff)
+\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_abacf44e7b4b89c7b47c11eaae1296428}{satisfies\+Position\+Limits$<$ float $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+diff, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+rel\+\_\+diff)
+\item 
+template bool \mbox{\hyperlink{namespacetesseract__common_aecbdd93583ff717604b4fc32b1015b39}{satisfies\+Position\+Limits$<$ double $>$}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+diff, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&max\+\_\+rel\+\_\+diff)
+\item 
+template void \mbox{\hyperlink{namespacetesseract__common_a2df6f30957cf5c867be9ca71aa24e1ab}{enforce\+Position\+Limits$<$ float $>$}} (Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\item 
+template void \mbox{\hyperlink{namespacetesseract__common_a1f8d20fecfeb1e99cc55d316977c3f3d}{enforce\+Position\+Limits$<$ double $>$}} (Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ joint\+\_\+positions, const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&position\+\_\+limits)
+\item 
 template bool \mbox{\hyperlink{namespacetesseract__common_af5ca1a2af32cf2aa20666fabebb01ae3}{to\+Numeric$<$ double $>$}} (const std\+::string \&, double \&)
 \item 
 template bool \mbox{\hyperlink{namespacetesseract__common_aa70232725f5f768795d33beb4d783754}{to\+Numeric$<$ float $>$}} (const std\+::string \&, float \&)
@@ -410,10 +434,34 @@ MODIFY\+\_\+\+PAIR\+\_\+\+MARGIN&Modify the contact managers pair margin only. T
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetesseract__common_a8eb8b43bdac2751a9a899e4552537cda}\label{namespacetesseract__common_a8eb8b43bdac2751a9a899e4552537cda}} 
+\index{tesseract\_common@{tesseract\_common}!almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}}
+\index{almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{almostEqualRelativeAndAbs()}{almostEqualRelativeAndAbs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool tesseract\+\_\+common\+::almost\+Equal\+Relative\+And\+Abs (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{v1,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{v2,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{max\+\_\+diff,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
+
+
+
+Check if two Eigen Vector\+Xd are relatively and absolute equal. 
+
+This is a vectorized implementation of the function above. The max\+\_\+diff is for handling when comparing numbers near zero 
+\begin{DoxyParams}{Parameters}
+{\em a} & A vector of double \\
+\hline
+{\em b} & A vector of double \\
+\hline
+{\em max\+\_\+diff} & The max diff when comparing max(abs(a -\/ b)) \texorpdfstring{$<$}{<}= max\+\_\+diff, if true they are considered equal \\
+\hline
+{\em max\+\_\+rel\+\_\+diff} & The max relative diff abs(a -\/ b) \texorpdfstring{$<$}{<}= largest $\ast$ max\+\_\+rel\+\_\+diff, if true considered equal. The largest is the largest of the absolute values of a and b. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if they are relatively equal, otherwise false. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_a12eb899ec3967699e946431730eed959}\label{namespacetesseract__common_a12eb899ec3967699e946431730eed959}} 
 \index{tesseract\_common@{tesseract\_common}!almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}}
 \index{almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{almostEqualRelativeAndAbs()}{almostEqualRelativeAndAbs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{almostEqualRelativeAndAbs()}{almostEqualRelativeAndAbs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily bool tesseract\+\_\+common\+::almost\+Equal\+Relative\+And\+Abs (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{v1,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{v2,  }\item[{double}]{max\+\_\+diff = {\ttfamily 1e-\/6},  }\item[{double}]{max\+\_\+rel\+\_\+diff = {\ttfamily std\+:\+:numeric\+\_\+limits$<$double$>$\+:\+:epsilon()} }\end{DoxyParamCaption})}
 
 
@@ -432,12 +480,12 @@ This is a vectorized implementation of the function above. The max\+\_\+diff is 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if they are relativily equal, otherwise false. 
+True if they are relatively equal, otherwise false. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}\label{namespacetesseract__common_ac9961ff2a5d322165a817241b7746f64}} 
 \index{tesseract\_common@{tesseract\_common}!almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}}
 \index{almostEqualRelativeAndAbs@{almostEqualRelativeAndAbs}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{almostEqualRelativeAndAbs()}{almostEqualRelativeAndAbs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{almostEqualRelativeAndAbs()}{almostEqualRelativeAndAbs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily bool tesseract\+\_\+common\+::almost\+Equal\+Relative\+And\+Abs (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{max\+\_\+diff = {\ttfamily 1e-\/6},  }\item[{double}]{max\+\_\+rel\+\_\+diff = {\ttfamily std\+:\+:numeric\+\_\+limits$<$double$>$\+:\+:epsilon()} }\end{DoxyParamCaption})}
 
 
@@ -456,7 +504,7 @@ The max\+\_\+diff is for handling when comparing numbers near zero
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if they are relativily equal, otherwise false. 
+True if they are relatively equal, otherwise false. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_a715e8a56239e73ccfa00e82cda79a28c}\label{namespacetesseract__common_a715e8a56239e73ccfa00e82cda79a28c}} 
 \index{tesseract\_common@{tesseract\_common}!calcRotationalError@{calcRotationalError}}
@@ -541,11 +589,12 @@ A random RGBA color
 
 Concatenate two vector. 
 
-\mbox{\Hypertarget{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}\label{namespacetesseract__common_aaea55ba44081a4d90868727a7106f933}} 
+\mbox{\Hypertarget{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}\label{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}} 
 \index{tesseract\_common@{tesseract\_common}!enforcePositionLimits@{enforcePositionLimits}}
 \index{enforcePositionLimits@{enforcePositionLimits}!tesseract\_common@{tesseract\_common}}
 \doxysubsubsection{\texorpdfstring{enforcePositionLimits()}{enforcePositionLimits()}}
-{\footnotesize\ttfamily void tesseract\+\_\+common\+::enforce\+Position\+Limits (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+void tesseract\+\_\+common\+::enforce\+Position\+Limits (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
 
 
 
@@ -558,6 +607,18 @@ Enforce position to be within the provided limits.
 {\em joint\+\_\+limits} & The limits to perform check \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespacetesseract__common_a1f8d20fecfeb1e99cc55d316977c3f3d}\label{namespacetesseract__common_a1f8d20fecfeb1e99cc55d316977c3f3d}} 
+\index{tesseract\_common@{tesseract\_common}!enforcePositionLimits$<$ double $>$@{enforcePositionLimits$<$ double $>$}}
+\index{enforcePositionLimits$<$ double $>$@{enforcePositionLimits$<$ double $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{enforcePositionLimits$<$ double $>$()}{enforcePositionLimits< double >()}}
+{\footnotesize\ttfamily template void \mbox{\hyperlink{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}{tesseract\+\_\+common\+::enforce\+Position\+Limits}}$<$ double $>$ (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__common_a2df6f30957cf5c867be9ca71aa24e1ab}\label{namespacetesseract__common_a2df6f30957cf5c867be9ca71aa24e1ab}} 
+\index{tesseract\_common@{tesseract\_common}!enforcePositionLimits$<$ float $>$@{enforcePositionLimits$<$ float $>$}}
+\index{enforcePositionLimits$<$ float $>$@{enforcePositionLimits$<$ float $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{enforcePositionLimits$<$ float $>$()}{enforcePositionLimits< float >()}}
+{\footnotesize\ttfamily template void \mbox{\hyperlink{namespacetesseract__common_a1b11bad846aa502a484a8586f78c2a09}{tesseract\+\_\+common\+::enforce\+Position\+Limits}}$<$ float $>$ (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{namespacetesseract__common_ad10d68b681f3d352a15736ffef688010}\label{namespacetesseract__common_ad10d68b681f3d352a15736ffef688010}} 
 \index{tesseract\_common@{tesseract\_common}!extractLibrariesWithFullPath@{extractLibrariesWithFullPath}}
 \index{extractLibrariesWithFullPath@{extractLibrariesWithFullPath}!tesseract\_common@{tesseract\_common}}
@@ -824,6 +885,39 @@ Determine if each string in vector is a number.
 \begin{DoxyReturn}{Returns}
 True if all strings are numeric, otherwise false. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}\label{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}} 
+\index{tesseract\_common@{tesseract\_common}!isWithinPositionLimits@{isWithinPositionLimits}}
+\index{isWithinPositionLimits@{isWithinPositionLimits}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isWithinPositionLimits()}{isWithinPositionLimits()}}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+bool tesseract\+\_\+common\+::is\+Within\+Position\+Limits (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+
+
+
+Check if within position limits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joint\+\_\+positions} & The joint position to check \\
+\hline
+{\em position\+\_\+limits} & The joint limits to perform check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_ad39ab29a90ad257cf5418b8eeb77e4af}\label{namespacetesseract__common_ad39ab29a90ad257cf5418b8eeb77e4af}} 
+\index{tesseract\_common@{tesseract\_common}!isWithinPositionLimits$<$ double $>$@{isWithinPositionLimits$<$ double $>$}}
+\index{isWithinPositionLimits$<$ double $>$@{isWithinPositionLimits$<$ double $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isWithinPositionLimits$<$ double $>$()}{isWithinPositionLimits< double >()}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}{tesseract\+\_\+common\+::is\+Within\+Position\+Limits}}$<$ double $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__common_a14ebb17906855938c53c073603e40143}\label{namespacetesseract__common_a14ebb17906855938c53c073603e40143}} 
+\index{tesseract\_common@{tesseract\_common}!isWithinPositionLimits$<$ float $>$@{isWithinPositionLimits$<$ float $>$}}
+\index{isWithinPositionLimits$<$ float $>$@{isWithinPositionLimits$<$ float $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{isWithinPositionLimits$<$ float $>$()}{isWithinPositionLimits< float >()}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a6cc465537e94a07d22996dd2708f6084}{tesseract\+\_\+common\+::is\+Within\+Position\+Limits}}$<$ float $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{namespacetesseract__common_a9b00920e39050a4b9df5e3100aac7e55}\label{namespacetesseract__common_a9b00920e39050a4b9df5e3100aac7e55}} 
 \index{tesseract\_common@{tesseract\_common}!jacobianChangeBase@{jacobianChangeBase}}
 \index{jacobianChangeBase@{jacobianChangeBase}!tesseract\_common@{tesseract\_common}}
@@ -1164,15 +1258,16 @@ Right trim string.
 {\em s} & The string to right trim \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}\label{namespacetesseract__common_a2eab6bf31cc0eb0089298c5e3e377fe9}} 
+\mbox{\Hypertarget{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}\label{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}} 
 \index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits@{satisfiesPositionLimits}}
 \index{satisfiesPositionLimits@{satisfiesPositionLimits}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits()}{satisfiesPositionLimits()}}
-{\footnotesize\ttfamily bool tesseract\+\_\+common\+::satisfies\+Position\+Limits (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+X2d $>$ \&}]{position\+\_\+limits,  }\item[{double}]{max\+\_\+diff = {\ttfamily 1e-\/6},  }\item[{double}]{max\+\_\+rel\+\_\+diff = {\ttfamily std\+:\+:numeric\+\_\+limits$<$double$>$\+:\+:epsilon()} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits()}{satisfiesPositionLimits()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+bool tesseract\+\_\+common\+::satisfies\+Position\+Limits (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+diff,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
 
 
 
-Check if joint position is within bounds or relativilty equal to a limit. 
+Check if joint position is within bounds or relatively equal to a limit. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -1186,8 +1281,57 @@ Check if joint position is within bounds or relativilty equal to a limit.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the all position are within the limits or relativily equal to the limit, otherwise false. 
+True if the all position are within the limits or relatively equal to the limit, otherwise false. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_ad966f78ba21ac22b33b036d94958ff82}\label{namespacetesseract__common_ad966f78ba21ac22b33b036d94958ff82}} 
+\index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits@{satisfiesPositionLimits}}
+\index{satisfiesPositionLimits@{satisfiesPositionLimits}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits()}{satisfiesPositionLimits()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+bool tesseract\+\_\+common\+::satisfies\+Position\+Limits (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ Float\+Type, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{Float\+Type}]{max\+\_\+diff = {\ttfamily static\+\_\+cast$<$FloatType$>$(1e-\/6)},  }\item[{Float\+Type}]{max\+\_\+rel\+\_\+diff = {\ttfamily std\+:\+:numeric\+\_\+limits$<$FloatType$>$\+:\+:epsilon()} }\end{DoxyParamCaption})}
+
+
+
+Check if joint position is within bounds or relatively equal to a limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joint\+\_\+positions} & The joint position to check \\
+\hline
+{\em joint\+\_\+limits} & The joint limits to perform check \\
+\hline
+{\em max\+\_\+diff} & The max diff when comparing position to limit value max(abs(position -\/ limit)) \texorpdfstring{$<$}{<}= max\+\_\+diff, if true they are considered equal \\
+\hline
+{\em max\+\_\+rel\+\_\+diff} & The max relative diff between position and limit abs(position -\/ limit) \texorpdfstring{$<$}{<}= largest $\ast$ max\+\_\+rel\+\_\+diff, if true considered equal. The largest is the largest of the absolute values of position and limit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the all position are within the limits or relatively equal to the limit, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_aecbdd93583ff717604b4fc32b1015b39}\label{namespacetesseract__common_aecbdd93583ff717604b4fc32b1015b39}} 
+\index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits$<$ double $>$@{satisfiesPositionLimits$<$ double $>$}}
+\index{satisfiesPositionLimits$<$ double $>$@{satisfiesPositionLimits$<$ double $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits$<$ double $>$()}{satisfiesPositionLimits< double >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}}$<$ double $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+diff,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__common_a2357c2476cbb1427a259d1dc1b8c20b6}\label{namespacetesseract__common_a2357c2476cbb1427a259d1dc1b8c20b6}} 
+\index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits$<$ double $>$@{satisfiesPositionLimits$<$ double $>$}}
+\index{satisfiesPositionLimits$<$ double $>$@{satisfiesPositionLimits$<$ double $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits$<$ double $>$()}{satisfiesPositionLimits< double >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}}$<$ double $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ double, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{double}]{max\+\_\+diff,  }\item[{double}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__common_abacf44e7b4b89c7b47c11eaae1296428}\label{namespacetesseract__common_abacf44e7b4b89c7b47c11eaae1296428}} 
+\index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits$<$ float $>$@{satisfiesPositionLimits$<$ float $>$}}
+\index{satisfiesPositionLimits$<$ float $>$@{satisfiesPositionLimits$<$ float $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits$<$ float $>$()}{satisfiesPositionLimits< float >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}}$<$ float $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+diff,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetesseract__common_a70b4f11e829b5fba3c3d80d5a1f4b6e2}\label{namespacetesseract__common_a70b4f11e829b5fba3c3d80d5a1f4b6e2}} 
+\index{tesseract\_common@{tesseract\_common}!satisfiesPositionLimits$<$ float $>$@{satisfiesPositionLimits$<$ float $>$}}
+\index{satisfiesPositionLimits$<$ float $>$@{satisfiesPositionLimits$<$ float $>$}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{satisfiesPositionLimits$<$ float $>$()}{satisfiesPositionLimits< float >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template bool \mbox{\hyperlink{namespacetesseract__common_a538003ce5c67e13e56fd7decc0fd7585}{tesseract\+\_\+common\+::satisfies\+Position\+Limits}}$<$ float $>$ (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 1 $>$ $>$ \&}]{joint\+\_\+positions,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix$<$ float, Eigen\+::\+Dynamic, 2 $>$ $>$ \&}]{position\+\_\+limits,  }\item[{float}]{max\+\_\+diff,  }\item[{float}]{max\+\_\+rel\+\_\+diff }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{namespacetesseract__common_a7f13ad2a741226ab5255302f6750ed4a}\label{namespacetesseract__common_a7f13ad2a741226ab5255302f6750ed4a}} 
 \index{tesseract\_common@{tesseract\_common}!strFormat@{strFormat}}
 \index{strFormat@{strFormat}!tesseract\_common@{tesseract\_common}}
@@ -1286,7 +1430,7 @@ Convert a string to a numeric value type.
 \begin{DoxyParams}{Parameters}
 {\em s} & The string to be converted \\
 \hline
-{\em value} & The value to be loaded with coverted string \\
+{\em value} & The value to be loaded with converted string \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

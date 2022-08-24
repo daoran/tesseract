@@ -30,7 +30,11 @@ Include dependency graph for tesseract\+\_\+common\+\_\+serialization\+\_\+unit.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structTestAtomic}{Test\+Atomic}}
-\begin{DoxyCompactList}\small\item\em Atomic do not have a copy constructor so must have implement one for your class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Atomic do not have a copy constructor so must have implement one for your class. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structExtensionMacroTestA}{Extension\+Macro\+TestA}}
+\item 
+struct \mbox{\hyperlink{structExtensionMacroTestB}{Extension\+Macro\+TestB}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,6 +68,10 @@ struct \mbox{\hyperlink{structTestAtomic}{Test\+Atomic}}
 \item 
 \mbox{\hyperlink{tesseract__common__serialization__unit_8cpp_ac21bda1760f247f0b182d9e823fe1a7c}{TEST}} (Tesseract\+Common\+Serialize\+Unit, Std\+Atomic)
 \item 
+\mbox{\hyperlink{tesseract__common__serialization__unit_8cpp_a3b1b8993a74468ff99899f012f09d7ac}{TEST}} (Tesseract\+Common\+Serialize\+Unit, Extension\+Xml\+Macro)
+\item 
+\mbox{\hyperlink{tesseract__common__serialization__unit_8cpp_a881c4df7c58a8238fcdbe6e5308ed536}{TEST}} (Tesseract\+Common\+Serialize\+Unit, Extension\+Binary\+Macro)
+\item 
 int \mbox{\hyperlink{tesseract__common__serialization__unit_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
 \end{DoxyCompactItemize}
 
@@ -83,7 +91,7 @@ March 16, 2022
 TODO 
 \end{DoxyVersion}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000076}{Bug}}]No known bugs\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000077}{Bug}}]No known bugs\end{DoxyRefDesc}
 
 
 \begin{DoxyParagraph}{License}
@@ -107,90 +115,102 @@ Unless required by applicable law or agreed to in writing, software distributed 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a5594547fd45cf22c7eeaa803aec58180}\label{tesseract__common__serialization__unit_8cpp_a5594547fd45cf22c7eeaa803aec58180}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{classtesseract__common_1_1AllowedCollisionMatrix}{Allowed\+Collision\+Matrix}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a5d81a89792931d4654102e1c491ad795}\label{tesseract__common__serialization__unit_8cpp_a5d81a89792931d4654102e1c491ad795}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo}{Calibration\+Info}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_ad66c4f8439e89af14ec43e41dde19a4e}\label{tesseract__common__serialization__unit_8cpp_ad66c4f8439e89af14ec43e41dde19a4e}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{classtesseract__common_1_1CollisionMarginData}{Collision\+Margin\+Data}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a1897d3badae45e11cfbc18867ca363c4}\label{tesseract__common__serialization__unit_8cpp_a1897d3badae45e11cfbc18867ca363c4}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a881c4df7c58a8238fcdbe6e5308ed536}\label{tesseract__common__serialization__unit_8cpp_a881c4df7c58a8238fcdbe6e5308ed536}} 
+\index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/17]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Extension\+Binary\+Macro}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a3b1b8993a74468ff99899f012f09d7ac}\label{tesseract__common__serialization__unit_8cpp_a3b1b8993a74468ff99899f012f09d7ac}} 
+\index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [6/17]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Extension\+Xml\+Macro}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a72c60343b9ab761e80f4c0116d4fa26b}\label{tesseract__common__serialization__unit_8cpp_a72c60343b9ab761e80f4c0116d4fa26b}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [7/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Isometry3d}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a3339cf8857c0ce6d6b55496a03ec0fe4}\label{tesseract__common__serialization__unit_8cpp_a3339cf8857c0ce6d6b55496a03ec0fe4}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [6/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{classtesseract__common_1_1JointState}{Joint\+State}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a1163e92c2678a953652bf0d971991661}\label{tesseract__common__serialization__unit_8cpp_a1163e92c2678a953652bf0d971991661}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [7/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{classtesseract__common_1_1JointTrajectory}{Joint\+Trajectory}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a1a750e03b5794be558e9fcaf910cf550}\label{tesseract__common__serialization__unit_8cpp_a1a750e03b5794be558e9fcaf910cf550}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1KinematicLimits}{Kinematic\+Limits}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a145b4fead1bd1d019b2a19770a7e194f}\label{tesseract__common__serialization__unit_8cpp_a145b4fead1bd1d019b2a19770a7e194f}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1KinematicsPluginInfo}{Kinematics\+Plugin\+Info}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_aaac1ba7b235d8f6638219882e109060a}\label{tesseract__common__serialization__unit_8cpp_aaac1ba7b235d8f6638219882e109060a}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1ManipulatorInfo}{Manipulator\+Info}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a78790e9779696496339074c1c9a56861}\label{tesseract__common__serialization__unit_8cpp_a78790e9779696496339074c1c9a56861}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Matrix\+X2d}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a78451459e2ae0c6803bb227430d30136}\label{tesseract__common__serialization__unit_8cpp_a78451459e2ae0c6803bb227430d30136}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1PluginInfo}{Plugin\+Info}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a51a295975bb6f72b43e81098e4ee9da9}\label{tesseract__common__serialization__unit_8cpp_a51a295975bb6f72b43e81098e4ee9da9}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer}{Plugin\+Info\+Container}}}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_ac21bda1760f247f0b182d9e823fe1a7c}\label{tesseract__common__serialization__unit_8cpp_ac21bda1760f247f0b182d9e823fe1a7c}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [16/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Std\+Atomic}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{tesseract__common__serialization__unit_8cpp_a33a3c3fd86f8e058071e6b328737a9d6}\label{tesseract__common__serialization__unit_8cpp_a33a3c3fd86f8e058071e6b328737a9d6}} 
 \index{tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!tesseract\_common\_serialization\_unit.cpp@{tesseract\_common\_serialization\_unit.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/15]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [17/17]}}
 {\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{Tesseract\+Common\+Serialize\+Unit}]{,  }\item[{Vector\+Xd}]{ }\end{DoxyParamCaption})}
 

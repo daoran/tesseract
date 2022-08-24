@@ -81,6 +81,8 @@ $(function() {
 Namespaces</h2></td></tr>
 <tr class="memitem:d0/def/namespacetesseract__common_1_1detail__any"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/namespacetesseract__common_1_1detail__any.html">detail_any</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d1/d92/namespacetesseract__common_1_1serialization"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d92/namespacetesseract__common_1_1serialization.html">serialization</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -235,12 +237,22 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a0808e2d3c913c41e852ab3819eadd828"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a0808e2d3c913c41e852ab3819eadd828">operator==</a> (const <a class="el" href="../../df/da9/namespacetesseract__common.html#a79d2a34647d0da5e574629878c142086">AllowedCollisionEntries</a> &amp;entries_1, const <a class="el" href="../../df/da9/namespacetesseract__common.html#a79d2a34647d0da5e574629878c142086">AllowedCollisionEntries</a> &amp;entries_2)</td></tr>
 <tr class="separator:a0808e2d3c913c41e852ab3819eadd828"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eab6bf31cc0eb0089298c5e3e377fe9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a2eab6bf31cc0eb0089298c5e3e377fe9">satisfiesPositionLimits</a> (const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::MatrixX2d &gt; &amp;position_limits, double max_diff=1e-6, double max_rel_diff=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
-<tr class="memdesc:a2eab6bf31cc0eb0089298c5e3e377fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if joint position is within bounds or relativilty equal to a limit.  <a href="../../df/da9/namespacetesseract__common.html#a2eab6bf31cc0eb0089298c5e3e377fe9">More...</a><br /></td></tr>
-<tr class="separator:a2eab6bf31cc0eb0089298c5e3e377fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaea55ba44081a4d90868727a7106f933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#aaea55ba44081a4d90868727a7106f933">enforcePositionLimits</a> (Eigen::Ref&lt; Eigen::VectorXd &gt; joint_positions, const Eigen::Ref&lt; const Eigen::MatrixX2d &gt; &amp;position_limits)</td></tr>
-<tr class="memdesc:aaea55ba44081a4d90868727a7106f933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforce position to be within the provided limits.  <a href="../../df/da9/namespacetesseract__common.html#aaea55ba44081a4d90868727a7106f933">More...</a><br /></td></tr>
-<tr class="separator:aaea55ba44081a4d90868727a7106f933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cc465537e94a07d22996dd2708f6084"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
+<tr class="memitem:a6cc465537e94a07d22996dd2708f6084"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a6cc465537e94a07d22996dd2708f6084">isWithinPositionLimits</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="memdesc:a6cc465537e94a07d22996dd2708f6084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if within position limits.  <a href="../../df/da9/namespacetesseract__common.html#a6cc465537e94a07d22996dd2708f6084">More...</a><br /></td></tr>
+<tr class="separator:a6cc465537e94a07d22996dd2708f6084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538003ce5c67e13e56fd7decc0fd7585"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
+<tr class="memitem:a538003ce5c67e13e56fd7decc0fd7585"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">satisfiesPositionLimits</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;max_diff, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;max_rel_diff)</td></tr>
+<tr class="memdesc:a538003ce5c67e13e56fd7decc0fd7585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if joint position is within bounds or relatively equal to a limit.  <a href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">More...</a><br /></td></tr>
+<tr class="separator:a538003ce5c67e13e56fd7decc0fd7585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad966f78ba21ac22b33b036d94958ff82"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
+<tr class="memitem:ad966f78ba21ac22b33b036d94958ff82"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#ad966f78ba21ac22b33b036d94958ff82">satisfiesPositionLimits</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, FloatType max_diff=static_cast&lt; FloatType &gt;(1e-6), FloatType max_rel_diff=std::numeric_limits&lt; FloatType &gt;::epsilon())</td></tr>
+<tr class="memdesc:ad966f78ba21ac22b33b036d94958ff82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if joint position is within bounds or relatively equal to a limit.  <a href="../../df/da9/namespacetesseract__common.html#ad966f78ba21ac22b33b036d94958ff82">More...</a><br /></td></tr>
+<tr class="separator:ad966f78ba21ac22b33b036d94958ff82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b11bad846aa502a484a8586f78c2a09"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
+<tr class="memitem:a1b11bad846aa502a484a8586f78c2a09"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a1b11bad846aa502a484a8586f78c2a09">enforcePositionLimits</a> (Eigen::Ref&lt; Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="memdesc:a1b11bad846aa502a484a8586f78c2a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforce position to be within the provided limits.  <a href="../../df/da9/namespacetesseract__common.html#a1b11bad846aa502a484a8586f78c2a09">More...</a><br /></td></tr>
+<tr class="separator:a1b11bad846aa502a484a8586f78c2a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2c2ec207efac0e2080c6488163eb082"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#af2c2ec207efac0e2080c6488163eb082">parseEnvironmentVariableList</a> (const std::string &amp;env_variable)</td></tr>
 <tr class="separator:af2c2ec207efac0e2080c6488163eb082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d07851ebdfbd06448599d1c188a2a50"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a4d07851ebdfbd06448599d1c188a2a50">getAllSearchPaths</a> (const std::string &amp;search_paths_env, const std::set&lt; std::string &gt; &amp;existing_search_paths)</td></tr>
@@ -379,6 +391,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a12eb899ec3967699e946431730eed959"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a12eb899ec3967699e946431730eed959">almostEqualRelativeAndAbs</a> (const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;v1, const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;v2, double max_diff=1e-6, double max_rel_diff=std::numeric_limits&lt; double &gt;::epsilon())</td></tr>
 <tr class="memdesc:a12eb899ec3967699e946431730eed959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two Eigen VectorXd are relatively and absolute equal.  <a href="../../df/da9/namespacetesseract__common.html#a12eb899ec3967699e946431730eed959">More...</a><br /></td></tr>
 <tr class="separator:a12eb899ec3967699e946431730eed959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eb8b43bdac2751a9a899e4552537cda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a8eb8b43bdac2751a9a899e4552537cda">almostEqualRelativeAndAbs</a> (const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;v1, const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;v2, const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;max_diff, const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;max_rel_diff)</td></tr>
+<tr class="memdesc:a8eb8b43bdac2751a9a899e4552537cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two Eigen VectorXd are relatively and absolute equal.  <a href="../../df/da9/namespacetesseract__common.html#a8eb8b43bdac2751a9a899e4552537cda">More...</a><br /></td></tr>
+<tr class="separator:a8eb8b43bdac2751a9a899e4552537cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00bc131acfeba0eba8fe7ff7cd944860"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
 <tr class="memitem:a00bc131acfeba0eba8fe7ff7cd944860"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a00bc131acfeba0eba8fe7ff7cd944860">toNumeric</a> (const std::string &amp;s, FloatType &amp;value)</td></tr>
 <tr class="memdesc:a00bc131acfeba0eba8fe7ff7cd944860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to a numeric value type.  <a href="../../df/da9/namespacetesseract__common.html#a00bc131acfeba0eba8fe7ff7cd944860">More...</a><br /></td></tr>
@@ -395,6 +410,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a5d68e5ef9a9f4317cd29a2539f47f0c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a5d68e5ef9a9f4317cd29a2539f47f0c3">isIdentical</a> (const YAML::Node &amp;node1, const YAML::Node &amp;node2)</td></tr>
 <tr class="memdesc:a5d68e5ef9a9f4317cd29a2539f47f0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the YAML::Nodes are identical.  <a href="../../df/da9/namespacetesseract__common.html#a5d68e5ef9a9f4317cd29a2539f47f0c3">More...</a><br /></td></tr>
 <tr class="separator:a5d68e5ef9a9f4317cd29a2539f47f0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ebb17906855938c53c073603e40143"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a14ebb17906855938c53c073603e40143">isWithinPositionLimits&lt; float &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="separator:a14ebb17906855938c53c073603e40143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39ab29a90ad257cf5418b8eeb77e4af"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#ad39ab29a90ad257cf5418b8eeb77e4af">isWithinPositionLimits&lt; double &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="separator:ad39ab29a90ad257cf5418b8eeb77e4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70b4f11e829b5fba3c3d80d5a1f4b6e2"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a70b4f11e829b5fba3c3d80d5a1f4b6e2">satisfiesPositionLimits&lt; float &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, float max_diff, float max_rel_diff)</td></tr>
+<tr class="separator:a70b4f11e829b5fba3c3d80d5a1f4b6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2357c2476cbb1427a259d1dc1b8c20b6"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a2357c2476cbb1427a259d1dc1b8c20b6">satisfiesPositionLimits&lt; double &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, double max_diff, double max_rel_diff)</td></tr>
+<tr class="separator:a2357c2476cbb1427a259d1dc1b8c20b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abacf44e7b4b89c7b47c11eaae1296428"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#abacf44e7b4b89c7b47c11eaae1296428">satisfiesPositionLimits&lt; float &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;max_diff, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;max_rel_diff)</td></tr>
+<tr class="separator:abacf44e7b4b89c7b47c11eaae1296428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecbdd93583ff717604b4fc32b1015b39"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#aecbdd93583ff717604b4fc32b1015b39">satisfiesPositionLimits&lt; double &gt;</a> (const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;max_diff, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;max_rel_diff)</td></tr>
+<tr class="separator:aecbdd93583ff717604b4fc32b1015b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2df6f30957cf5c867be9ca71aa24e1ab"><td class="memItemLeft" align="right" valign="top">template void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a2df6f30957cf5c867be9ca71aa24e1ab">enforcePositionLimits&lt; float &gt;</a> (Eigen::Ref&lt; Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="separator:a2df6f30957cf5c867be9ca71aa24e1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8d20fecfeb1e99cc55d316977c3f3d"><td class="memItemLeft" align="right" valign="top">template void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#a1f8d20fecfeb1e99cc55d316977c3f3d">enforcePositionLimits&lt; double &gt;</a> (Eigen::Ref&lt; Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; joint_positions, const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;position_limits)</td></tr>
+<tr class="separator:a1f8d20fecfeb1e99cc55d316977c3f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5ca1a2af32cf2aa20666fabebb01ae3"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#af5ca1a2af32cf2aa20666fabebb01ae3">toNumeric&lt; double &gt;</a> (const std::string &amp;, double &amp;)</td></tr>
 <tr class="separator:af5ca1a2af32cf2aa20666fabebb01ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa70232725f5f768795d33beb4d783754"><td class="memItemLeft" align="right" valign="top">template bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da9/namespacetesseract__common.html#aa70232725f5f768795d33beb4d783754">toNumeric&lt; float &gt;</a> (const std::string &amp;, float &amp;)</td></tr>
@@ -697,8 +728,60 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a8eb8b43bdac2751a9a899e4552537cda" name="a8eb8b43bdac2751a9a899e4552537cda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eb8b43bdac2751a9a899e4552537cda">&#9670;&nbsp;</a></span>almostEqualRelativeAndAbs() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tesseract_common::almostEqualRelativeAndAbs </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if two Eigen VectorXd are relatively and absolute equal. </p>
+<p >This is a vectorized implementation of the function above. The max_diff is for handling when comparing numbers near zero </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>A vector of double </td></tr>
+    <tr><td class="paramname">b</td><td>A vector of double </td></tr>
+    <tr><td class="paramname">max_diff</td><td>The max diff when comparing max(abs(a - b)) &lt;= max_diff, if true they are considered equal </td></tr>
+    <tr><td class="paramname">max_rel_diff</td><td>The max relative diff abs(a - b) &lt;= largest * max_rel_diff, if true considered equal. The largest is the largest of the absolute values of a and b. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if they are relatively equal, otherwise false. </dd></dl>
+
+</div>
+</div>
 <a id="a12eb899ec3967699e946431730eed959" name="a12eb899ec3967699e946431730eed959"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12eb899ec3967699e946431730eed959">&#9670;&nbsp;</a></span>almostEqualRelativeAndAbs() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a12eb899ec3967699e946431730eed959">&#9670;&nbsp;</a></span>almostEqualRelativeAndAbs() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -745,12 +828,12 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if they are relativily equal, otherwise false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if they are relatively equal, otherwise false. </dd></dl>
 
 </div>
 </div>
 <a id="ac9961ff2a5d322165a817241b7746f64" name="ac9961ff2a5d322165a817241b7746f64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9961ff2a5d322165a817241b7746f64">&#9670;&nbsp;</a></span>almostEqualRelativeAndAbs() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9961ff2a5d322165a817241b7746f64">&#9670;&nbsp;</a></span>almostEqualRelativeAndAbs() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -797,7 +880,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if they are relativily equal, otherwise false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if they are relatively equal, otherwise false. </dd></dl>
 
 </div>
 </div>
@@ -945,22 +1028,24 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="aaea55ba44081a4d90868727a7106f933" name="aaea55ba44081a4d90868727a7106f933"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaea55ba44081a4d90868727a7106f933">&#9670;&nbsp;</a></span>enforcePositionLimits()</h2>
+<a id="a1b11bad846aa502a484a8586f78c2a09" name="a1b11bad846aa502a484a8586f78c2a09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b11bad846aa502a484a8586f78c2a09">&#9670;&nbsp;</a></span>enforcePositionLimits()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename FloatType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void tesseract_common::enforcePositionLimits </td>
           <td>(</td>
-          <td class="paramtype">Eigen::Ref&lt; Eigen::VectorXd &gt;&#160;</td>
+          <td class="paramtype">Eigen::Ref&lt; Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt;&#160;</td>
           <td class="paramname"><em>joint_positions</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Eigen::Ref&lt; const Eigen::MatrixX2d &gt; &amp;&#160;</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
           <td class="paramname"><em>position_limits</em>&#160;</td>
         </tr>
         <tr>
@@ -979,6 +1064,62 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a1f8d20fecfeb1e99cc55d316977c3f3d" name="a1f8d20fecfeb1e99cc55d316977c3f3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8d20fecfeb1e99cc55d316977c3f3d">&#9670;&nbsp;</a></span>enforcePositionLimits&lt; double &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template void <a class="el" href="../../df/da9/namespacetesseract__common.html#a1b11bad846aa502a484a8586f78c2a09">tesseract_common::enforcePositionLimits</a>&lt; double &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Eigen::Ref&lt; Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2df6f30957cf5c867be9ca71aa24e1ab" name="a2df6f30957cf5c867be9ca71aa24e1ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2df6f30957cf5c867be9ca71aa24e1ab">&#9670;&nbsp;</a></span>enforcePositionLimits&lt; float &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template void <a class="el" href="../../df/da9/namespacetesseract__common.html#a1b11bad846aa502a484a8586f78c2a09">tesseract_common::enforcePositionLimits</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Eigen::Ref&lt; Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1622,6 +1763,102 @@ template&lt;typename ValueType &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if all strings are numeric, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a6cc465537e94a07d22996dd2708f6084" name="a6cc465537e94a07d22996dd2708f6084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cc465537e94a07d22996dd2708f6084">&#9670;&nbsp;</a></span>isWithinPositionLimits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FloatType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tesseract_common::isWithinPositionLimits </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if within position limits. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joint_positions</td><td>The joint position to check </td></tr>
+    <tr><td class="paramname">position_limits</td><td>The joint limits to perform check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ad39ab29a90ad257cf5418b8eeb77e4af" name="ad39ab29a90ad257cf5418b8eeb77e4af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad39ab29a90ad257cf5418b8eeb77e4af">&#9670;&nbsp;</a></span>isWithinPositionLimits&lt; double &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a6cc465537e94a07d22996dd2708f6084">tesseract_common::isWithinPositionLimits</a>&lt; double &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14ebb17906855938c53c073603e40143" name="a14ebb17906855938c53c073603e40143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ebb17906855938c53c073603e40143">&#9670;&nbsp;</a></span>isWithinPositionLimits&lt; float &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a6cc465537e94a07d22996dd2708f6084">tesseract_common::isWithinPositionLimits</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -2334,35 +2571,37 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a2eab6bf31cc0eb0089298c5e3e377fe9" name="a2eab6bf31cc0eb0089298c5e3e377fe9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2eab6bf31cc0eb0089298c5e3e377fe9">&#9670;&nbsp;</a></span>satisfiesPositionLimits()</h2>
+<a id="a538003ce5c67e13e56fd7decc0fd7585" name="a538003ce5c67e13e56fd7decc0fd7585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538003ce5c67e13e56fd7decc0fd7585">&#9670;&nbsp;</a></span>satisfiesPositionLimits() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename FloatType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool tesseract_common::satisfiesPositionLimits </td>
           <td>(</td>
-          <td class="paramtype">const Eigen::Ref&lt; const Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
           <td class="paramname"><em>joint_positions</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Eigen::Ref&lt; const Eigen::MatrixX2d &gt; &amp;&#160;</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
           <td class="paramname"><em>position_limits</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_diff</em> = <code>1e-6</code>, </td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_rel_diff</em> = <code>std::numeric_limits&lt;double&gt;::epsilon()</code>&#160;</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -2372,7 +2611,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Check if joint position is within bounds or relativilty equal to a limit. </p>
+<p>Check if joint position is within bounds or relatively equal to a limit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">joint_positions</td><td>The joint position to check </td></tr>
@@ -2382,7 +2621,221 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the all position are within the limits or relativily equal to the limit, otherwise false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the all position are within the limits or relatively equal to the limit, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="ad966f78ba21ac22b33b036d94958ff82" name="ad966f78ba21ac22b33b036d94958ff82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad966f78ba21ac22b33b036d94958ff82">&#9670;&nbsp;</a></span>satisfiesPositionLimits() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FloatType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tesseract_common::satisfiesPositionLimits </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; FloatType, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FloatType&#160;</td>
+          <td class="paramname"><em>max_diff</em> = <code>static_cast&lt;FloatType&gt;(1e-6)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FloatType&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em> = <code>std::numeric_limits&lt;FloatType&gt;::epsilon()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if joint position is within bounds or relatively equal to a limit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joint_positions</td><td>The joint position to check </td></tr>
+    <tr><td class="paramname">joint_limits</td><td>The joint limits to perform check </td></tr>
+    <tr><td class="paramname">max_diff</td><td>The max diff when comparing position to limit value max(abs(position - limit)) &lt;= max_diff, if true they are considered equal </td></tr>
+    <tr><td class="paramname">max_rel_diff</td><td>The max relative diff between position and limit abs(position - limit) &lt;= largest * max_rel_diff, if true considered equal. The largest is the largest of the absolute values of position and limit. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the all position are within the limits or relatively equal to the limit, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="aecbdd93583ff717604b4fc32b1015b39" name="aecbdd93583ff717604b4fc32b1015b39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecbdd93583ff717604b4fc32b1015b39">&#9670;&nbsp;</a></span>satisfiesPositionLimits&lt; double &gt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">tesseract_common::satisfiesPositionLimits</a>&lt; double &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2357c2476cbb1427a259d1dc1b8c20b6" name="a2357c2476cbb1427a259d1dc1b8c20b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2357c2476cbb1427a259d1dc1b8c20b6">&#9670;&nbsp;</a></span>satisfiesPositionLimits&lt; double &gt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">tesseract_common::satisfiesPositionLimits</a>&lt; double &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; double, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abacf44e7b4b89c7b47c11eaae1296428" name="abacf44e7b4b89c7b47c11eaae1296428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abacf44e7b4b89c7b47c11eaae1296428">&#9670;&nbsp;</a></span>satisfiesPositionLimits&lt; float &gt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">tesseract_common::satisfiesPositionLimits</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70b4f11e829b5fba3c3d80d5a1f4b6e2" name="a70b4f11e829b5fba3c3d80d5a1f4b6e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70b4f11e829b5fba3c3d80d5a1f4b6e2">&#9670;&nbsp;</a></span>satisfiesPositionLimits&lt; float &gt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template bool <a class="el" href="../../df/da9/namespacetesseract__common.html#a538003ce5c67e13e56fd7decc0fd7585">tesseract_common::satisfiesPositionLimits</a>&lt; float &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 1 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>joint_positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Ref&lt; const Eigen::Matrix&lt; float, Eigen::Dynamic, 2 &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>position_limits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_diff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max_rel_diff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -2610,7 +3063,7 @@ template&lt;typename FloatType &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>The string to be converted </td></tr>
-    <tr><td class="paramname">value</td><td>The value to be loaded with coverted string </td></tr>
+    <tr><td class="paramname">value</td><td>The value to be loaded with converted string </td></tr>
   </table>
   </dd>
 </dl>
@@ -2893,7 +3346,7 @@ template&lt;typename FloatType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 4 2022 06:25:13 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Aug 24 2022 21:10:42 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

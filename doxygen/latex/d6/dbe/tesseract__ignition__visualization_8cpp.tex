@@ -22,14 +22,19 @@ Include dependency graph for tesseract\+\_\+ignition\+\_\+visualization.\+cpp\+:
 \includegraphics[width=350pt]{d6/dc9/tesseract__ignition__visualization_8cpp__incl}
 \end{center}
 \end{figure}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetesseract__visualization}{tesseract\+\_\+visualization}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{tesseract__ignition__visualization_8cpp_acb95e0d34054c9197bb49ded9b62e5d9}{add\+Arrow}} (\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const \mbox{\hyperlink{classtesseract__visualization_1_1ArrowMarker}{Arrow\+Marker}} \&marker)
+void \mbox{\hyperlink{namespacetesseract__visualization_a866daf066fbcef29d97f5ece453ab4a0}{tesseract\+\_\+visualization\+::add\+Arrow}} (Entity\+Manager \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Arrow\+Marker \&marker)
 \item 
-void \mbox{\hyperlink{tesseract__ignition__visualization_8cpp_a010c518967207c53ba30ab4b7cdd26fa}{add\+Cylinder}} (\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt2, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Material}{tesseract\+\_\+scene\+\_\+graph\+::\+Material}} \&material, const Eigen\+::\+Vector3d \&)
+void \mbox{\hyperlink{namespacetesseract__visualization_a88be2799de33d5369c59ee9eafb62e41}{tesseract\+\_\+visualization\+::add\+Cylinder}} (Entity\+Manager \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt1, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&pt2, const \mbox{\hyperlink{classtesseract__scene__graph_1_1Material}{tesseract\+\_\+scene\+\_\+graph\+::\+Material}} \&material, const Eigen\+::\+Vector3d \&)
 \item 
-void \mbox{\hyperlink{tesseract__ignition__visualization_8cpp_aadbf2b105b9286bca64f27b4378d42a9}{add\+Axis}} (\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const \mbox{\hyperlink{classtesseract__visualization_1_1AxisMarker}{Axis\+Marker}} \&m)
+void \mbox{\hyperlink{namespacetesseract__visualization_ab132fa21c6ff7370cdf573294965e10c}{tesseract\+\_\+visualization\+::add\+Axis}} (Entity\+Manager \&entity\+\_\+manager, ignition\+::msgs\+::\+Link \&link, long \&sub\+\_\+index, const Axis\+Marker \&m)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -48,29 +53,6 @@ static const std\+::string \mbox{\hyperlink{tesseract__ignition__visualization_8
 \item 
 static const std\+::string \mbox{\hyperlink{tesseract__ignition__visualization_8cpp_a2946b948eb3e63d49a749b8fd5408c1b}{TOOL\+\_\+\+PATH\+\_\+\+MODEL\+\_\+\+NAME}} = \char`\"{}tesseract\+\_\+tool\+\_\+path\+\_\+model\char`\"{}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{tesseract__ignition__visualization_8cpp_acb95e0d34054c9197bb49ded9b62e5d9}\label{tesseract__ignition__visualization_8cpp_acb95e0d34054c9197bb49ded9b62e5d9}} 
-\index{tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}!addArrow@{addArrow}}
-\index{addArrow@{addArrow}!tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}}
-\doxysubsubsection{\texorpdfstring{addArrow()}{addArrow()}}
-{\footnotesize\ttfamily void add\+Arrow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&}]{entity\+\_\+manager,  }\item[{ignition\+::msgs\+::\+Link \&}]{link,  }\item[{long \&}]{sub\+\_\+index,  }\item[{const \mbox{\hyperlink{classtesseract__visualization_1_1ArrowMarker}{Arrow\+Marker}} \&}]{marker }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{tesseract__ignition__visualization_8cpp_aadbf2b105b9286bca64f27b4378d42a9}\label{tesseract__ignition__visualization_8cpp_aadbf2b105b9286bca64f27b4378d42a9}} 
-\index{tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}!addAxis@{addAxis}}
-\index{addAxis@{addAxis}!tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}}
-\doxysubsubsection{\texorpdfstring{addAxis()}{addAxis()}}
-{\footnotesize\ttfamily void add\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&}]{entity\+\_\+manager,  }\item[{ignition\+::msgs\+::\+Link \&}]{link,  }\item[{long \&}]{sub\+\_\+index,  }\item[{const \mbox{\hyperlink{classtesseract__visualization_1_1AxisMarker}{Axis\+Marker}} \&}]{m }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{tesseract__ignition__visualization_8cpp_a010c518967207c53ba30ab4b7cdd26fa}\label{tesseract__ignition__visualization_8cpp_a010c518967207c53ba30ab4b7cdd26fa}} 
-\index{tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}!addCylinder@{addCylinder}}
-\index{addCylinder@{addCylinder}!tesseract\_ignition\_visualization.cpp@{tesseract\_ignition\_visualization.cpp}}
-\doxysubsubsection{\texorpdfstring{addCylinder()}{addCylinder()}}
-{\footnotesize\ttfamily void add\+Cylinder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtesseract__visualization_1_1EntityManager}{Entity\+Manager}} \&}]{entity\+\_\+manager,  }\item[{ignition\+::msgs\+::\+Link \&}]{link,  }\item[{long \&}]{sub\+\_\+index,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&}]{pt1,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&}]{pt2,  }\item[{const \mbox{\hyperlink{classtesseract__scene__graph_1_1Material}{tesseract\+\_\+scene\+\_\+graph\+::\+Material}} \&}]{material,  }\item[{const Eigen\+::\+Vector3d \&}]{ }\end{DoxyParamCaption})}
-
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000026}{Todo}}]LEVI fix \end{DoxyRefDesc}
 
 
 \doxysubsection{Variable Documentation}
