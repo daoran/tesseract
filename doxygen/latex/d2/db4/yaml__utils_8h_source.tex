@@ -372,7 +372,7 @@
 \DoxyCodeLine{408     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ad4e8cec98432f19161b0e29e70235b4d}{discrete\_plugin\_infos}}.\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer_a43862b3d071da42423ce25ecf7066e0d}{plugins}}.empty())}
 \DoxyCodeLine{409       contact\_manager\_plugins[DISCRETE\_PLUGINS\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ad4e8cec98432f19161b0e29e70235b4d}{discrete\_plugin\_infos}};}
 \DoxyCodeLine{410 }
-\DoxyCodeLine{411     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_ad4e8cec98432f19161b0e29e70235b4d}{discrete\_plugin\_infos}}.\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer_a43862b3d071da42423ce25ecf7066e0d}{plugins}}.empty())}
+\DoxyCodeLine{411     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_acc79d1166c4b4ca623f222bf4c5da9b7}{continuous\_plugin\_infos}}.\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer_a43862b3d071da42423ce25ecf7066e0d}{plugins}}.empty())}
 \DoxyCodeLine{412       contact\_manager\_plugins[CONTINUOUS\_PLUGINS\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo_acc79d1166c4b4ca623f222bf4c5da9b7}{continuous\_plugin\_infos}};}
 \DoxyCodeLine{413 }
 \DoxyCodeLine{414     \textcolor{keywordflow}{return} contact\_manager\_plugins;}
@@ -456,51 +456,155 @@
 \DoxyCodeLine{492 \};}
 \DoxyCodeLine{493 }
 \DoxyCodeLine{494 \textcolor{keyword}{template} <>}
-\DoxyCodeLine{495 \textcolor{keyword}{struct }\mbox{\hyperlink{namespacetesseract__scene__graph_a9f0ce2dde1dfc29ac92461d216bb82a8}{convert}}<\mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::\mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{TransformMap}}>}
+\DoxyCodeLine{495 \textcolor{keyword}{struct }\mbox{\hyperlink{namespacetesseract__scene__graph_a9f0ce2dde1dfc29ac92461d216bb82a8}{convert}}<\mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::TaskComposerPluginInfo>}
 \DoxyCodeLine{496 \{}
-\DoxyCodeLine{497   \textcolor{keyword}{static} Node \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TransformMap_01_4_a263d869d09487c11d349cb8f2c0d19d8}{encode}}(\textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}\& rhs)}
+\DoxyCodeLine{497   \textcolor{keyword}{static} Node \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TaskComposerPluginInfo_01_4_af585bfa9cbd944ab1642cc6ad1e9b888}{encode}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo}{tesseract\_common::TaskComposerPluginInfo}}\& rhs)}
 \DoxyCodeLine{498   \{}
-\DoxyCodeLine{499     Node node;}
-\DoxyCodeLine{500     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& pair : rhs)}
-\DoxyCodeLine{501       node[pair.first] = pair.second;}
-\DoxyCodeLine{502 }
-\DoxyCodeLine{503     \textcolor{keywordflow}{return} node;}
-\DoxyCodeLine{504   \}}
-\DoxyCodeLine{505 }
-\DoxyCodeLine{506   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TransformMap_01_4_a29c37bc5800174f39ad08f2bf4ac3d3a}{decode}}(\textcolor{keyword}{const} Node\& node, \mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}\& rhs)}
-\DoxyCodeLine{507   \{}
-\DoxyCodeLine{508     \textcolor{keywordflow}{if} (!node.IsMap())}
-\DoxyCodeLine{509       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{499     \textcolor{keyword}{const} std::string SEARCH\_PATHS\_KEY\{ \textcolor{stringliteral}{"{}search\_paths"{}} \};}
+\DoxyCodeLine{500     \textcolor{keyword}{const} std::string SEARCH\_LIBRARIES\_KEY\{ \textcolor{stringliteral}{"{}search\_libraries"{}} \};}
+\DoxyCodeLine{501     \textcolor{keyword}{const} std::string EXECUTOR\_PLUGINS\_KEY\{ \textcolor{stringliteral}{"{}executor\_plugins"{}} \};}
+\DoxyCodeLine{502     \textcolor{keyword}{const} std::string NODE\_PLUGINS\_KEY\{ \textcolor{stringliteral}{"{}node\_plugins"{}} \};}
+\DoxyCodeLine{503 }
+\DoxyCodeLine{504     YAML::Node task\_composer\_plugins;}
+\DoxyCodeLine{505     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab45a6c6320dbc898baedbb13c453a27d}{search\_paths}}.empty())}
+\DoxyCodeLine{506       task\_composer\_plugins[SEARCH\_PATHS\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab45a6c6320dbc898baedbb13c453a27d}{search\_paths}};}
+\DoxyCodeLine{507 }
+\DoxyCodeLine{508     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab271a7b9679f22e39177d6788957479a}{search\_libraries}}.empty())}
+\DoxyCodeLine{509       task\_composer\_plugins[SEARCH\_LIBRARIES\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab271a7b9679f22e39177d6788957479a}{search\_libraries}};}
 \DoxyCodeLine{510 }
-\DoxyCodeLine{511     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& pair : node)}
-\DoxyCodeLine{512       rhs[pair.first.as<std::string>()] = pair.second.as<Eigen::Isometry3d>();}
+\DoxyCodeLine{511     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_aaf5e978f99262c763babb425297ad73a}{executor\_plugin\_infos}}.\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer_a43862b3d071da42423ce25ecf7066e0d}{plugins}}.empty())}
+\DoxyCodeLine{512       task\_composer\_plugins[EXECUTOR\_PLUGINS\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_aaf5e978f99262c763babb425297ad73a}{executor\_plugin\_infos}};}
 \DoxyCodeLine{513 }
-\DoxyCodeLine{514     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{515   \}}
-\DoxyCodeLine{516 \};}
-\DoxyCodeLine{517 }
-\DoxyCodeLine{518 \textcolor{keyword}{template} <>}
-\DoxyCodeLine{519 \textcolor{keyword}{struct }\mbox{\hyperlink{namespacetesseract__scene__graph_a9f0ce2dde1dfc29ac92461d216bb82a8}{convert}}<\mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::CalibrationInfo>}
-\DoxyCodeLine{520 \{}
-\DoxyCodeLine{521   \textcolor{keyword}{static} Node \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1CalibrationInfo_01_4_a7f216023392e7bf9146c71f02dc36e0b}{encode}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo}{tesseract\_common::CalibrationInfo}}\& rhs)}
-\DoxyCodeLine{522   \{}
-\DoxyCodeLine{523     Node node;}
-\DoxyCodeLine{524     node[\textcolor{stringliteral}{"{}joints"{}}] = rhs.\mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo_af24c4ce364f56a5ad94a8748d2ffe7b6}{joints}};}
-\DoxyCodeLine{525 }
-\DoxyCodeLine{526     \textcolor{keywordflow}{return} node;}
-\DoxyCodeLine{527   \}}
-\DoxyCodeLine{528 }
-\DoxyCodeLine{529   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1CalibrationInfo_01_4_a3dddb334423753bfee5a8b1f033e3700}{decode}}(\textcolor{keyword}{const} Node\& node, \mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo}{tesseract\_common::CalibrationInfo}}\& rhs)}
-\DoxyCodeLine{530   \{}
-\DoxyCodeLine{531     \textcolor{keyword}{const} YAML::Node\& joints\_node = node[\textcolor{stringliteral}{"{}joints"{}}];}
-\DoxyCodeLine{532 }
-\DoxyCodeLine{533     rhs.\mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo_af24c4ce364f56a5ad94a8748d2ffe7b6}{joints}} = joints\_node.as<\mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}>();}
-\DoxyCodeLine{534 }
-\DoxyCodeLine{535     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{536   \}}
-\DoxyCodeLine{537 \};}
-\DoxyCodeLine{538 \}  \textcolor{comment}{// namespace YAML}}
-\DoxyCodeLine{539 }
-\DoxyCodeLine{540 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_COMMON\_YAML\_UTILS\_H}}
+\DoxyCodeLine{514     \textcolor{keywordflow}{if} (!rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_a6abd261aeddc84dd1f0b8f092b69a739}{node\_plugin\_infos}}.\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer_a43862b3d071da42423ce25ecf7066e0d}{plugins}}.empty())}
+\DoxyCodeLine{515       task\_composer\_plugins[NODE\_PLUGINS\_KEY] = rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_a6abd261aeddc84dd1f0b8f092b69a739}{node\_plugin\_infos}};}
+\DoxyCodeLine{516 }
+\DoxyCodeLine{517     \textcolor{keywordflow}{return} task\_composer\_plugins;}
+\DoxyCodeLine{518   \}}
+\DoxyCodeLine{519 }
+\DoxyCodeLine{520   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TaskComposerPluginInfo_01_4_a7ccc3b2de1ff61d6456a1b77f9e0eb6d}{decode}}(\textcolor{keyword}{const} Node\& node, \mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo}{tesseract\_common::TaskComposerPluginInfo}}\& rhs)}
+\DoxyCodeLine{521   \{}
+\DoxyCodeLine{522     \textcolor{keyword}{const} std::string SEARCH\_PATHS\_KEY\{ \textcolor{stringliteral}{"{}search\_paths"{}} \};}
+\DoxyCodeLine{523     \textcolor{keyword}{const} std::string SEARCH\_LIBRARIES\_KEY\{ \textcolor{stringliteral}{"{}search\_libraries"{}} \};}
+\DoxyCodeLine{524     \textcolor{keyword}{const} std::string EXECUTOR\_PLUGINS\_KEY\{ \textcolor{stringliteral}{"{}executor\_plugins"{}} \};}
+\DoxyCodeLine{525     \textcolor{keyword}{const} std::string NODE\_PLUGINS\_KEY\{ \textcolor{stringliteral}{"{}node\_plugins"{}} \};}
+\DoxyCodeLine{526 }
+\DoxyCodeLine{527     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} YAML::Node\& search\_paths = node[SEARCH\_PATHS\_KEY])}
+\DoxyCodeLine{528     \{}
+\DoxyCodeLine{529       std::set<std::string> sp;}
+\DoxyCodeLine{530       \textcolor{keywordflow}{try}}
+\DoxyCodeLine{531       \{}
+\DoxyCodeLine{532         sp = search\_paths.as<std::set<std::string>>();}
+\DoxyCodeLine{533       \}}
+\DoxyCodeLine{534       \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{535       \{}
+\DoxyCodeLine{536         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}TaskComposerPluginInfo: Constructor failed to cast '"{}} + SEARCH\_PATHS\_KEY +}
+\DoxyCodeLine{537                                  \textcolor{stringliteral}{"{}' to std::set<std::string>! "{}}}
+\DoxyCodeLine{538                                  \textcolor{stringliteral}{"{}Details: "{}} +}
+\DoxyCodeLine{539                                  e.what());}
+\DoxyCodeLine{540       \}}
+\DoxyCodeLine{541       rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab45a6c6320dbc898baedbb13c453a27d}{search\_paths}}.insert(sp.begin(), sp.end());}
+\DoxyCodeLine{542     \}}
+\DoxyCodeLine{543 }
+\DoxyCodeLine{544     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} YAML::Node\& search\_libraries = node[SEARCH\_LIBRARIES\_KEY])}
+\DoxyCodeLine{545     \{}
+\DoxyCodeLine{546       std::set<std::string> sl;}
+\DoxyCodeLine{547       \textcolor{keywordflow}{try}}
+\DoxyCodeLine{548       \{}
+\DoxyCodeLine{549         sl = search\_libraries.as<std::set<std::string>>();}
+\DoxyCodeLine{550       \}}
+\DoxyCodeLine{551       \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{552       \{}
+\DoxyCodeLine{553         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}TaskComposerPluginInfo: Constructor failed to cast '"{}} + SEARCH\_LIBRARIES\_KEY +}
+\DoxyCodeLine{554                                  \textcolor{stringliteral}{"{}' to std::set<std::string>! "{}}}
+\DoxyCodeLine{555                                  \textcolor{stringliteral}{"{}Details: "{}} +}
+\DoxyCodeLine{556                                  e.what());}
+\DoxyCodeLine{557       \}}
+\DoxyCodeLine{558       rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_ab271a7b9679f22e39177d6788957479a}{search\_libraries}}.insert(sl.begin(), sl.end());}
+\DoxyCodeLine{559     \}}
+\DoxyCodeLine{560 }
+\DoxyCodeLine{561     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} YAML::Node\& executor\_plugins = node[EXECUTOR\_PLUGINS\_KEY])}
+\DoxyCodeLine{562     \{}
+\DoxyCodeLine{563       \textcolor{keywordflow}{if} (!executor\_plugins.IsMap())}
+\DoxyCodeLine{564         \textcolor{keywordflow}{throw} std::runtime\_error(EXECUTOR\_PLUGINS\_KEY + \textcolor{stringliteral}{"{}, should contain a map of task composer executor names to "{}}}
+\DoxyCodeLine{565                                                         \textcolor{stringliteral}{"{}plugins!"{}});}
+\DoxyCodeLine{566 }
+\DoxyCodeLine{567       \textcolor{keywordflow}{try}}
+\DoxyCodeLine{568       \{}
+\DoxyCodeLine{569         rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_aaf5e978f99262c763babb425297ad73a}{executor\_plugin\_infos}} = executor\_plugins.as<\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer}{tesseract\_common::PluginInfoContainer}}>();}
+\DoxyCodeLine{570       \}}
+\DoxyCodeLine{571       \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{572       \{}
+\DoxyCodeLine{573         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}TaskComposerPluginInfo: Constructor failed to cast '"{}} + EXECUTOR\_PLUGINS\_KEY +}
+\DoxyCodeLine{574                                  \textcolor{stringliteral}{"{}' to tesseract\_common::PluginInfoContainer! Details: "{}} + e.what());}
+\DoxyCodeLine{575       \}}
+\DoxyCodeLine{576     \}}
+\DoxyCodeLine{577 }
+\DoxyCodeLine{578     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} YAML::Node\& node\_plugins = node[NODE\_PLUGINS\_KEY])}
+\DoxyCodeLine{579     \{}
+\DoxyCodeLine{580       \textcolor{keywordflow}{if} (!node\_plugins.IsMap())}
+\DoxyCodeLine{581         \textcolor{keywordflow}{throw} std::runtime\_error(NODE\_PLUGINS\_KEY + \textcolor{stringliteral}{"{}, should contain a map of names to plugins!"{}});}
+\DoxyCodeLine{582 }
+\DoxyCodeLine{583       \textcolor{keywordflow}{try}}
+\DoxyCodeLine{584       \{}
+\DoxyCodeLine{585         rhs.\mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo_a6abd261aeddc84dd1f0b8f092b69a739}{node\_plugin\_infos}} = node\_plugins.as<\mbox{\hyperlink{structtesseract__common_1_1PluginInfoContainer}{tesseract\_common::PluginInfoContainer}}>();}
+\DoxyCodeLine{586       \}}
+\DoxyCodeLine{587       \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e)}
+\DoxyCodeLine{588       \{}
+\DoxyCodeLine{589         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}TaskComposerPluginInfo: Constructor failed to cast '"{}} + NODE\_PLUGINS\_KEY +}
+\DoxyCodeLine{590                                  \textcolor{stringliteral}{"{}' to tesseract\_common::PluginInfoContainer! Details: "{}} + e.what());}
+\DoxyCodeLine{591       \}}
+\DoxyCodeLine{592     \}}
+\DoxyCodeLine{593 }
+\DoxyCodeLine{594     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{595   \}}
+\DoxyCodeLine{596 \};}
+\DoxyCodeLine{597 }
+\DoxyCodeLine{598 \textcolor{keyword}{template} <>}
+\DoxyCodeLine{599 \textcolor{keyword}{struct }\mbox{\hyperlink{namespacetesseract__scene__graph_a9f0ce2dde1dfc29ac92461d216bb82a8}{convert}}<\mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::\mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{TransformMap}}>}
+\DoxyCodeLine{600 \{}
+\DoxyCodeLine{601   \textcolor{keyword}{static} Node \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TransformMap_01_4_a263d869d09487c11d349cb8f2c0d19d8}{encode}}(\textcolor{keyword}{const} \mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}\& rhs)}
+\DoxyCodeLine{602   \{}
+\DoxyCodeLine{603     Node node;}
+\DoxyCodeLine{604     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& pair : rhs)}
+\DoxyCodeLine{605       node[pair.first] = pair.second;}
+\DoxyCodeLine{606 }
+\DoxyCodeLine{607     \textcolor{keywordflow}{return} node;}
+\DoxyCodeLine{608   \}}
+\DoxyCodeLine{609 }
+\DoxyCodeLine{610   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1TransformMap_01_4_a29c37bc5800174f39ad08f2bf4ac3d3a}{decode}}(\textcolor{keyword}{const} Node\& node, \mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}\& rhs)}
+\DoxyCodeLine{611   \{}
+\DoxyCodeLine{612     \textcolor{keywordflow}{if} (!node.IsMap())}
+\DoxyCodeLine{613       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{614 }
+\DoxyCodeLine{615     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& pair : node)}
+\DoxyCodeLine{616       rhs[pair.first.as<std::string>()] = pair.second.as<Eigen::Isometry3d>();}
+\DoxyCodeLine{617 }
+\DoxyCodeLine{618     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{619   \}}
+\DoxyCodeLine{620 \};}
+\DoxyCodeLine{621 }
+\DoxyCodeLine{622 \textcolor{keyword}{template} <>}
+\DoxyCodeLine{623 \textcolor{keyword}{struct }\mbox{\hyperlink{namespacetesseract__scene__graph_a9f0ce2dde1dfc29ac92461d216bb82a8}{convert}}<\mbox{\hyperlink{namespacetesseract__common}{tesseract\_common}}::CalibrationInfo>}
+\DoxyCodeLine{624 \{}
+\DoxyCodeLine{625   \textcolor{keyword}{static} Node \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1CalibrationInfo_01_4_a7f216023392e7bf9146c71f02dc36e0b}{encode}}(\textcolor{keyword}{const} \mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo}{tesseract\_common::CalibrationInfo}}\& rhs)}
+\DoxyCodeLine{626   \{}
+\DoxyCodeLine{627     Node node;}
+\DoxyCodeLine{628     node[\textcolor{stringliteral}{"{}joints"{}}] = rhs.\mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo_af24c4ce364f56a5ad94a8748d2ffe7b6}{joints}};}
+\DoxyCodeLine{629 }
+\DoxyCodeLine{630     \textcolor{keywordflow}{return} node;}
+\DoxyCodeLine{631   \}}
+\DoxyCodeLine{632 }
+\DoxyCodeLine{633   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{structYAML_1_1convert_3_01tesseract__common_1_1CalibrationInfo_01_4_a3dddb334423753bfee5a8b1f033e3700}{decode}}(\textcolor{keyword}{const} Node\& node, \mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo}{tesseract\_common::CalibrationInfo}}\& rhs)}
+\DoxyCodeLine{634   \{}
+\DoxyCodeLine{635     \textcolor{keyword}{const} YAML::Node\& joints\_node = node[\textcolor{stringliteral}{"{}joints"{}}];}
+\DoxyCodeLine{636 }
+\DoxyCodeLine{637     rhs.\mbox{\hyperlink{structtesseract__common_1_1CalibrationInfo_af24c4ce364f56a5ad94a8748d2ffe7b6}{joints}} = joints\_node.as<\mbox{\hyperlink{namespacetesseract__common_a67bde3cb7bb235f0f61c370ef8bc74d8}{tesseract\_common::TransformMap}}>();}
+\DoxyCodeLine{638 }
+\DoxyCodeLine{639     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{640   \}}
+\DoxyCodeLine{641 \};}
+\DoxyCodeLine{642 \}  \textcolor{comment}{// namespace YAML}}
+\DoxyCodeLine{643 }
+\DoxyCodeLine{644 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_COMMON\_YAML\_UTILS\_H}}
 
 \end{DoxyCode}

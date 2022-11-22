@@ -79,32 +79,23 @@
 \DoxyCodeLine{128   \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a1cd0454f481c812fe38fb958b48672b0}{SDFMesh}}() = \textcolor{keywordflow}{default};}
 \DoxyCodeLine{129   \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_aeb05dd70b58e6de501d0c9916f8e9c4d}{\string~SDFMesh}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
 \DoxyCodeLine{130 }
-\DoxyCodeLine{131 \textcolor{preprocessor}{\#ifndef SWIG}}
-\DoxyCodeLine{136   [[deprecated(\textcolor{stringliteral}{"{}Please use getFaces() instead"{}})]] \textcolor{keyword}{const} std::shared\_ptr<const Eigen::VectorXi>\& \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a6b679b033bd8082340eab0e6d8b4bcfe}{getTriangles}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{137 \textcolor{keyword}{  }\{}
-\DoxyCodeLine{138     \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a06f8044964704be49aeecf8c00c8bcae}{getFaces}}();}
-\DoxyCodeLine{139   \}}
-\DoxyCodeLine{140 }
-\DoxyCodeLine{145   [[deprecated(\textcolor{stringliteral}{"{}Please use getFaceCount() instead"{}})]] \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_af0dc6cd959c4460be1c4ade90f1e32c5}{getTriangleCount}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a091ff79f99455a5bd1b8096c36ebf7cd}{getFaceCount}}(); \}}
-\DoxyCodeLine{146 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// SWIG}}
-\DoxyCodeLine{147 }
-\DoxyCodeLine{148   \mbox{\hyperlink{classtesseract__geometry_1_1Geometry_acd91c55fb9604ed374446c029b6f2d08}{Geometry::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a68982d937586099e298b71ca0e77c8ef}{clone}}()\textcolor{keyword}{ const override}}
-\DoxyCodeLine{149 \textcolor{keyword}{  }\{}
-\DoxyCodeLine{150     \textcolor{keywordflow}{return} std::make\_shared<SDFMesh>(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a3867c7cbd1023088c2f9611ccdce99fc}{getVertices}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a06f8044964704be49aeecf8c00c8bcae}{getFaces}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a091ff79f99455a5bd1b8096c36ebf7cd}{getFaceCount}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a34a3c62e7cb8f71eb248cb8e50781627}{getResource}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a38d3d05d57a5a38fe12a191080eac1a2}{getScale}}());}
-\DoxyCodeLine{151   \}}
-\DoxyCodeLine{152 }
-\DoxyCodeLine{153   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a4efdd472105a7fafe2fcc861dda0e612}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{SDFMesh}}\& rhs) \textcolor{keyword}{const};}
-\DoxyCodeLine{154   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a6070e015d4ef2d3d774986502c2edb93}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{SDFMesh}}\& rhs) \textcolor{keyword}{const};}
-\DoxyCodeLine{155 }
-\DoxyCodeLine{156 \textcolor{keyword}{private}:}
-\DoxyCodeLine{157   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access}};}
-\DoxyCodeLine{158   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>}
-\DoxyCodeLine{159   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_af678f996cc9fde6392990bf704355dc5}{serialize}}(Archive\& ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version);  \textcolor{comment}{// NOLINT}}
-\DoxyCodeLine{160 \};}
-\DoxyCodeLine{161 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
-\DoxyCodeLine{162 \textcolor{preprocessor}{\#include <boost/serialization/tracking.hpp>}}
-\DoxyCodeLine{163 BOOST\_CLASS\_EXPORT\_KEY2(\mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{tesseract\_geometry::SDFMesh}}, \textcolor{stringliteral}{"{}SDFMesh"{}})}
-\DoxyCodeLine{164 \mbox{\hyperlink{any_8h_aaec163e216269fcdb13a222b14cd4ccf}{BOOST\_CLASS\_TRACKING}}(\mbox{\hyperlink{namespacetesseract__geometry}{tesseract\_geometry}}::SDFMesh, \mbox{\hyperlink{namespaceboost}{boost}}::serialization::track\_never)}
-\DoxyCodeLine{165 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{131   \mbox{\hyperlink{classtesseract__geometry_1_1Geometry_acd91c55fb9604ed374446c029b6f2d08}{Geometry::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a68982d937586099e298b71ca0e77c8ef}{clone}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{132 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} std::make\_shared<SDFMesh>(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a3867c7cbd1023088c2f9611ccdce99fc}{getVertices}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a06f8044964704be49aeecf8c00c8bcae}{getFaces}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a091ff79f99455a5bd1b8096c36ebf7cd}{getFaceCount}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a34a3c62e7cb8f71eb248cb8e50781627}{getResource}}(), \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a38d3d05d57a5a38fe12a191080eac1a2}{getScale}}());}
+\DoxyCodeLine{134   \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a4efdd472105a7fafe2fcc861dda0e612}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{SDFMesh}}\& rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{137   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_a6070e015d4ef2d3d774986502c2edb93}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{SDFMesh}}\& rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{keyword}{private}:}
+\DoxyCodeLine{140   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access}};}
+\DoxyCodeLine{141   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>}
+\DoxyCodeLine{142   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh_af678f996cc9fde6392990bf704355dc5}{serialize}}(Archive\& ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version);  \textcolor{comment}{// NOLINT}}
+\DoxyCodeLine{143 \};}
+\DoxyCodeLine{144 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#include <boost/serialization/tracking.hpp>}}
+\DoxyCodeLine{146 BOOST\_CLASS\_EXPORT\_KEY2(\mbox{\hyperlink{classtesseract__geometry_1_1SDFMesh}{tesseract\_geometry::SDFMesh}}, \textcolor{stringliteral}{"{}SDFMesh"{}})}
+\DoxyCodeLine{147 \mbox{\hyperlink{eigen__serialization_8h_a6ce327d54a408162d753adb9cc40e1cd}{BOOST\_CLASS\_TRACKING}}(\mbox{\hyperlink{namespacetesseract__geometry}{tesseract\_geometry}}::SDFMesh, \mbox{\hyperlink{namespaceboost}{boost}}::serialization::track\_never)}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

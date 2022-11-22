@@ -1,12 +1,12 @@
 <map id="tesseract_common/include/tesseract_common/sfinae_utils.h" name="tesseract_common/include/tesseract_common/sfinae_utils.h">
-<area shape="rect" id="node1" title=" " alt="" coords="3980,5,4159,61"/>
-<area shape="rect" id="node2" href="$dc/d40/clone__cache_8h.html" title=" " alt="" coords="3762,109,3940,165"/>
-<area shape="rect" id="node4" href="$d5/d03/serialization__extensions_8h.html" title="Boost serialization class extension macros and helpers." alt="" coords="3965,109,4174,165"/>
-<area shape="rect" id="node8" href="$de/df1/tesseract__common__unit_8cpp.html" title=" " alt="" coords="4404,525,4594,567"/>
-<area shape="rect" id="node3" href="$d6/d9a/clone__cache__unit_8cpp.html" title=" " alt="" coords="3772,213,3930,255"/>
-<area shape="rect" id="node5" href="$dd/d50/serialization_8h.html" title="Additional Boost serialization wrappers." alt="" coords="3958,213,4176,255"/>
-<area shape="rect" id="node6" href="$df/d8d/any_8h.html" title="This a boost serializable any." alt="" coords="4219,429,4398,470"/>
-<area shape="rect" id="node7" href="$df/d25/any_8cpp.html" title="This a boost serializable any." alt="" coords="4039,525,4194,567"/>
+<area shape="rect" id="node1" title=" " alt="" coords="3950,5,4128,61"/>
+<area shape="rect" id="node2" href="$dc/d40/clone__cache_8h.html" title=" " alt="" coords="3731,109,3910,165"/>
+<area shape="rect" id="node4" href="$d5/d03/serialization__extensions_8h.html" title="Boost serialization class extension macros and helpers." alt="" coords="3934,109,4144,165"/>
+<area shape="rect" id="node8" href="$de/df1/tesseract__common__unit_8cpp.html" title=" " alt="" coords="4406,525,4595,567"/>
+<area shape="rect" id="node3" href="$d6/d9a/clone__cache__unit_8cpp.html" title=" " alt="" coords="3741,213,3900,255"/>
+<area shape="rect" id="node5" href="$dd/d50/serialization_8h.html" title="Additional Boost serialization wrappers." alt="" coords="3927,213,4146,255"/>
+<area shape="rect" id="node6" href="$d8/d6c/any__poly_8h.html" title=" " alt="" coords="4205,429,4406,470"/>
+<area shape="rect" id="node7" href="$d3/d43/any__poly_8cpp.html" title=" " alt="" coords="4034,525,4188,567"/>
 <area shape="rect" id="node9" href="$db/d3e/type__erasure_8h.html" title="Boilerplate code for creating type erasures." alt="" coords="378,310,556,366"/>
 <area shape="rect" id="node10" href="$d2/d05/unit__test__utils_8h.html" title="Common Tesseract unit test utilities." alt="" coords="124,310,303,366"/>
 <area shape="rect" id="node11" href="$d4/d44/tesseract__common__serialization__unit_8cpp.html" title="Tests serialization of types in tesseract_common." alt="" coords="42,421,254,477"/>
@@ -20,33 +20,33 @@
 <area shape="rect" id="node19" href="$d7/d6f/resource__locator_8cpp.html" title="Resource locator functions." alt="" coords="1711,317,1866,359"/>
 <area shape="rect" id="node20" href="$d8/d8c/tesseract__common_2src_2types_8cpp.html" title="Common Tesseract Types." alt="" coords="1890,317,2044,359"/>
 <area shape="rect" id="node21" href="$d1/d81/command_8cpp.html" title=" " alt="" coords="2068,317,2223,359"/>
-<area shape="rect" id="node22" href="$dc/d0c/add__allowed__collision__command_8cpp.html" title="Used to add an allowed collision to the environment." alt="" coords="2248,310,2436,366"/>
-<area shape="rect" id="node23" href="$df/d2e/add__contact__managers__plugin__info__command_8cpp.html" title="Used to add contact managers to the environment." alt="" coords="2460,310,2703,366"/>
-<area shape="rect" id="node24" href="$dc/de2/add__kinematics__information__command_8cpp.html" title=" " alt="" coords="2728,310,2934,366"/>
-<area shape="rect" id="node25" href="$d6/d88/add__link__command_8cpp.html" title="Used to add a link to the environment." alt="" coords="2958,310,3122,366"/>
-<area shape="rect" id="node26" href="$dc/d4b/add__scene__graph__command_8cpp.html" title="Used to add a scene graph to the environment." alt="" coords="3147,310,3326,366"/>
-<area shape="rect" id="node27" href="$d2/db8/change__collision__margins__command_8cpp.html" title="Used to change collision margins." alt="" coords="3350,310,3568,366"/>
-<area shape="rect" id="node28" href="$dc/d96/change__joint__acceleration__limits__command_8cpp.html" title="Used to change joint accelerations limis in the environment." alt="" coords="3592,303,3760,373"/>
-<area shape="rect" id="node29" href="$d9/dbd/change__joint__origin__command_8cpp.html" title="Used to change joint origin." alt="" coords="3784,310,3963,366"/>
-<area shape="rect" id="node30" href="$d2/d6a/change__joint__position__limits__command_8cpp.html" title="Used to change joint position limis in the environment." alt="" coords="3988,303,4146,373"/>
-<area shape="rect" id="node31" href="$d3/d3e/change__joint__velocity__limits__command_8cpp.html" title="Used to change joint velocity limis in the environment." alt="" coords="4170,303,4329,373"/>
-<area shape="rect" id="node32" href="$d2/d25/change__link__collision__enabled__command_8cpp.html" title="Used to change if a link is enabled for collision checking." alt="" coords="4353,303,4512,373"/>
-<area shape="rect" id="node33" href="$df/d75/change__link__origin__command_8cpp.html" title="Used to change a link origin." alt="" coords="4536,310,4710,366"/>
-<area shape="rect" id="node34" href="$df/de6/change__link__visibility__command_8cpp.html" title="Used to change link visibility." alt="" coords="4734,310,4925,366"/>
-<area shape="rect" id="node35" href="$dd/d2e/move__joint__command_8cpp.html" title="Used to move a link in the environment." alt="" coords="4950,310,5128,366"/>
-<area shape="rect" id="node36" href="$d6/d03/move__link__command_8cpp.html" title="Used to move a link in the environment." alt="" coords="5153,310,5328,366"/>
-<area shape="rect" id="node37" href="$d1/d8e/remove__allowed__collision__command_8cpp.html" title="Used to remove an allowed collision from the acm." alt="" coords="5352,310,5566,366"/>
-<area shape="rect" id="node38" href="$da/d52/remove__allowed__collision__link__command_8cpp.html" title="Used to remove an allowed collision from the acm for a link." alt="" coords="5590,303,5749,373"/>
-<area shape="rect" id="node39" href="$db/d9e/remove__joint__command_8cpp.html" title="Used to remove a joint from the environment." alt="" coords="5773,310,5932,366"/>
-<area shape="rect" id="node40" href="$d1/d03/remove__link__command_8cpp.html" title="Used to remove a link from the environment." alt="" coords="5956,310,6114,366"/>
-<area shape="rect" id="node41" href="$d1/d3d/replace__joint__command_8cpp.html" title="Used to replace a joint in the environment." alt="" coords="6138,310,6297,366"/>
-<area shape="rect" id="node42" href="$d8/da6/set__active__continuous__contact__manager__command_8cpp.html" title="Used to set the active continuous contact manager." alt="" coords="6321,303,6520,373"/>
-<area shape="rect" id="node43" href="$d1/dd8/set__active__discrete__contact__manager__command_8cpp.html" title="Used to set the active discrete contact manager." alt="" coords="6544,303,6726,373"/>
-<area shape="rect" id="node44" href="$dc/d82/environment_8cpp.html" title="Tesseract environment interface implementation." alt="" coords="6751,317,6906,359"/>
-<area shape="rect" id="node45" href="$d8/d11/tesseract__geometry_2src_2geometries_2box_8cpp.html" title="Tesseract Box Geometry." alt="" coords="6930,317,7090,359"/>
-<area shape="rect" id="node46" href="$d9/dfb/tesseract__geometry_2src_2geometries_2capsule_8cpp.html" title="Tesseract Capsule Geometry." alt="" coords="7114,317,7300,359"/>
-<area shape="rect" id="node47" href="$d9/d0d/tesseract__geometry_2src_2geometries_2cone_8cpp.html" title=" " alt="" coords="7324,317,7492,359"/>
-<area shape="rect" id="node48" href="$d6/dec/tesseract__geometry_2src_2geometries_2convex__mesh_8cpp.html" title=" " alt="" coords="7516,310,7674,366"/>
-<area shape="rect" id="node49" href="$d7/da9/tesseract__geometry_2src_2geometries_2cylinder_8cpp.html" title=" " alt="" coords="7698,317,7882,359"/>
-<area shape="rect" id="node50" href="$de/dd6/tesseract__geometry_2src_2geometries_2mesh_8cpp.html" title=" " alt="" coords="7906,317,8078,359"/>
+<area shape="rect" id="node22" href="$df/d2e/add__contact__managers__plugin__info__command_8cpp.html" title="Used to add contact managers to the environment." alt="" coords="2247,310,2490,366"/>
+<area shape="rect" id="node23" href="$dc/de2/add__kinematics__information__command_8cpp.html" title=" " alt="" coords="2514,310,2721,366"/>
+<area shape="rect" id="node24" href="$d6/d88/add__link__command_8cpp.html" title="Used to add a link to the environment." alt="" coords="2745,310,2909,366"/>
+<area shape="rect" id="node25" href="$dc/d4b/add__scene__graph__command_8cpp.html" title="Used to add a scene graph to the environment." alt="" coords="2934,310,3112,366"/>
+<area shape="rect" id="node26" href="$d2/db8/change__collision__margins__command_8cpp.html" title="Used to change collision margins." alt="" coords="3137,310,3354,366"/>
+<area shape="rect" id="node27" href="$dc/d96/change__joint__acceleration__limits__command_8cpp.html" title="Used to change joint accelerations limis in the environment." alt="" coords="3379,303,3547,373"/>
+<area shape="rect" id="node28" href="$d9/dbd/change__joint__origin__command_8cpp.html" title="Used to change joint origin." alt="" coords="3571,310,3750,366"/>
+<area shape="rect" id="node29" href="$d2/d6a/change__joint__position__limits__command_8cpp.html" title="Used to change joint position limis in the environment." alt="" coords="3774,303,3933,373"/>
+<area shape="rect" id="node30" href="$d3/d3e/change__joint__velocity__limits__command_8cpp.html" title="Used to change joint velocity limis in the environment." alt="" coords="3957,303,4116,373"/>
+<area shape="rect" id="node31" href="$d2/d25/change__link__collision__enabled__command_8cpp.html" title="Used to change if a link is enabled for collision checking." alt="" coords="4140,303,4298,373"/>
+<area shape="rect" id="node32" href="$df/d75/change__link__origin__command_8cpp.html" title="Used to change a link origin." alt="" coords="4322,310,4497,366"/>
+<area shape="rect" id="node33" href="$df/de6/change__link__visibility__command_8cpp.html" title="Used to change link visibility." alt="" coords="4521,310,4712,366"/>
+<area shape="rect" id="node34" href="$da/da9/modify__allowed__collisions__command_8cpp.html" title=" " alt="" coords="4736,310,4958,366"/>
+<area shape="rect" id="node35" href="$dd/d2e/move__joint__command_8cpp.html" title="Used to move a link in the environment." alt="" coords="4983,310,5162,366"/>
+<area shape="rect" id="node36" href="$d6/d03/move__link__command_8cpp.html" title="Used to move a link in the environment." alt="" coords="5186,310,5361,366"/>
+<area shape="rect" id="node37" href="$da/d52/remove__allowed__collision__link__command_8cpp.html" title="Used to remove an allowed collision from the acm for a link." alt="" coords="5385,303,5544,373"/>
+<area shape="rect" id="node38" href="$db/d9e/remove__joint__command_8cpp.html" title="Used to remove a joint from the environment." alt="" coords="5568,310,5726,366"/>
+<area shape="rect" id="node39" href="$d1/d03/remove__link__command_8cpp.html" title="Used to remove a link from the environment." alt="" coords="5750,310,5909,366"/>
+<area shape="rect" id="node40" href="$d1/d3d/replace__joint__command_8cpp.html" title="Used to replace a joint in the environment." alt="" coords="5933,310,6092,366"/>
+<area shape="rect" id="node41" href="$d8/da6/set__active__continuous__contact__manager__command_8cpp.html" title="Used to set the active continuous contact manager." alt="" coords="6116,303,6314,373"/>
+<area shape="rect" id="node42" href="$d1/dd8/set__active__discrete__contact__manager__command_8cpp.html" title="Used to set the active discrete contact manager." alt="" coords="6338,303,6521,373"/>
+<area shape="rect" id="node43" href="$dc/d82/environment_8cpp.html" title="Tesseract environment interface implementation." alt="" coords="6546,317,6700,359"/>
+<area shape="rect" id="node44" href="$d8/d11/tesseract__geometry_2src_2geometries_2box_8cpp.html" title="Tesseract Box Geometry." alt="" coords="6724,317,6884,359"/>
+<area shape="rect" id="node45" href="$d9/dfb/tesseract__geometry_2src_2geometries_2capsule_8cpp.html" title="Tesseract Capsule Geometry." alt="" coords="6909,317,7094,359"/>
+<area shape="rect" id="node46" href="$d9/d0d/tesseract__geometry_2src_2geometries_2cone_8cpp.html" title=" " alt="" coords="7119,317,7287,359"/>
+<area shape="rect" id="node47" href="$d6/dec/tesseract__geometry_2src_2geometries_2convex__mesh_8cpp.html" title=" " alt="" coords="7311,310,7468,366"/>
+<area shape="rect" id="node48" href="$d7/da9/tesseract__geometry_2src_2geometries_2cylinder_8cpp.html" title=" " alt="" coords="7492,317,7676,359"/>
+<area shape="rect" id="node49" href="$de/dd6/tesseract__geometry_2src_2geometries_2mesh_8cpp.html" title=" " alt="" coords="7701,317,7873,359"/>
+<area shape="rect" id="node50" href="$d6/d72/tesseract__geometry_2src_2geometries_2octree_8cpp.html" title=" " alt="" coords="7898,317,8074,359"/>
 </map>

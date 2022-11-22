@@ -14,7 +14,7 @@ class \mbox{\hyperlink{classtesseract__common_1_1AllowedCollisionMatrix}{Allowed
 \item 
 struct \mbox{\hyperlink{structtesseract__common_1_1ambiguate}{ambiguate}}
 \item 
-struct \mbox{\hyperlink{structtesseract__common_1_1Any}{Any}}
+struct \mbox{\hyperlink{structtesseract__common_1_1AnyPoly}{Any\+Poly}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1BytesResource}{Bytes\+Resource}}
 \item 
@@ -28,8 +28,8 @@ class \mbox{\hyperlink{classtesseract__common_1_1CollisionMarginData}{Collision\
 \begin{DoxyCompactList}\small\item\em Stores information about how the margins allowed between collision objects. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtesseract__common_1_1ContactManagersPluginInfo}{Contact\+Managers\+Plugin\+Info}}
 \begin{DoxyCompactList}\small\item\em The contact managers plugin information structure. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classtesseract__common_1_1GeneralStatusCategory}{General\+Status\+Category}}
-\item 
+class \mbox{\hyperlink{classtesseract__common_1_1GeneralResourceLocator}{General\+Resource\+Locator}}
+\begin{DoxyCompactList}\small\item\em A general resource loaders using environment variable. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtesseract__common_1_1got__type}{got\+\_\+type}}
 \item 
 struct \mbox{\hyperlink{structtesseract__common_1_1got__type_3_01A_01_4}{got\+\_\+type$<$ A $>$}}
@@ -64,10 +64,8 @@ struct \mbox{\hyperlink{structtesseract__common_1_1sig__check}{sig\+\_\+check}}
 \item 
 class \mbox{\hyperlink{classtesseract__common_1_1SimpleLocatedResource}{Simple\+Located\+Resource}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classtesseract__common_1_1Resource}{Resource}} implementation for a local file. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classtesseract__common_1_1StatusCategory}{Status\+Category}}
-\item 
-class \mbox{\hyperlink{classtesseract__common_1_1StatusCode}{Status\+Code}}
-\item 
+struct \mbox{\hyperlink{structtesseract__common_1_1TaskComposerPluginInfo}{Task\+Composer\+Plugin\+Info}}
+\begin{DoxyCompactList}\small\item\em The task composer plugin information structure. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__common_1_1TesseractSupportResourceLocator}{Tesseract\+Support\+Resource\+Locator}}
 \begin{DoxyCompactList}\small\item\em Abstract class for resource loaders. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtesseract__common_1_1TestPluginBase}{Test\+Plugin\+Base}}
@@ -89,7 +87,7 @@ struct \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+E
 \item 
 using \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{Allowed\+Collision\+Entries}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, std\+::string, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}} $>$
 \item 
-using \mbox{\hyperlink{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}{Any\+Base}} = \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}} $>$
+using \mbox{\hyperlink{namespacetesseract__common_a5b0272abd157d81a79f04aad1a6ddd01}{Any\+Poly\+Base}} = \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$ \mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}} $>$
 \item 
 using \mbox{\hyperlink{namespacetesseract__common_a84cc21cc4b384291adbbddaa81fe6447}{Pairs\+Collision\+Margin\+Data}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, double, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}} $>$
 \item 
@@ -163,6 +161,8 @@ std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{namespacetesseract__common_ad10
 \begin{DoxyCompactList}\small\item\em Tests Boost serialization for a serializable derived type. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Args$>$ }\\std\+::string \mbox{\hyperlink{namespacetesseract__common_a7f13ad2a741226ab5255302f6750ed4a}{str\+Format}} (const std\+::string \&format, Args... args)
 \item 
+std\+::string \mbox{\hyperlink{namespacetesseract__common_aca142577b0d587606411468a2163106f}{file\+To\+String}} (const tesseract\+\_\+common\+::fs\+::path \&filepath)
+\begin{DoxyCompactList}\small\item\em Read in the contents of the file into a string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a4ed12ea384452e2d5d4f7a0854035384}{twist\+Change\+Ref\+Point}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ twist, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&ref\+\_\+point)
 \begin{DoxyCompactList}\small\item\em Change the reference point of the provided Twist. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a98c27df906a6e17d088772d3d1c21a5d}{twist\+Change\+Base}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ twist, const Eigen\+::\+Isometry3d \&change\+\_\+base)
@@ -316,11 +316,11 @@ Enable easy switching to std\+::filesystem when available.
 \doxysubsubsection{\texorpdfstring{AllowedCollisionEntries}{AllowedCollisionEntries}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_a79d2a34647d0da5e574629878c142086}{tesseract\+\_\+common\+::\+Allowed\+Collision\+Entries}} = typedef std\+::unordered\+\_\+map$<$\mbox{\hyperlink{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}{tesseract\+\_\+common\+::\+Link\+Names\+Pair}}, std\+::string, \mbox{\hyperlink{structtesseract__common_1_1PairHash}{tesseract\+\_\+common\+::\+Pair\+Hash}}$>$}
 
-\mbox{\Hypertarget{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}\label{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}} 
-\index{tesseract\_common@{tesseract\_common}!AnyBase@{AnyBase}}
-\index{AnyBase@{AnyBase}!tesseract\_common@{tesseract\_common}}
-\doxysubsubsection{\texorpdfstring{AnyBase}{AnyBase}}
-{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_ad3b891cb3adafbd48305272e1fb8f095}{tesseract\+\_\+common\+::\+Any\+Base}} = typedef \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$\mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}}$>$}
+\mbox{\Hypertarget{namespacetesseract__common_a5b0272abd157d81a79f04aad1a6ddd01}\label{namespacetesseract__common_a5b0272abd157d81a79f04aad1a6ddd01}} 
+\index{tesseract\_common@{tesseract\_common}!AnyPolyBase@{AnyPolyBase}}
+\index{AnyPolyBase@{AnyPolyBase}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{AnyPolyBase}{AnyPolyBase}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetesseract__common_a5b0272abd157d81a79f04aad1a6ddd01}{tesseract\+\_\+common\+::\+Any\+Poly\+Base}} = typedef \mbox{\hyperlink{structtesseract__common_1_1TypeErasureBase}{tesseract\+\_\+common\+::\+Type\+Erasure\+Base}}$<$\mbox{\hyperlink{structtesseract__common_1_1TypeErasureInterface}{Type\+Erasure\+Interface}}, \mbox{\hyperlink{structtesseract__common_1_1detail__any_1_1AnyInstance}{detail\+\_\+any\+::\+Any\+Instance}}$>$}
 
 \mbox{\Hypertarget{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}\label{namespacetesseract__common_a5b28b7ae665b374a7ca166d496f648ce}} 
 \index{tesseract\_common@{tesseract\_common}!LinkNamesPair@{LinkNamesPair}}
@@ -636,6 +636,24 @@ This will remove libraries with full path in the provided library\+\_\+names and
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A set of the libraries provided as full path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetesseract__common_aca142577b0d587606411468a2163106f}\label{namespacetesseract__common_aca142577b0d587606411468a2163106f}} 
+\index{tesseract\_common@{tesseract\_common}!fileToString@{fileToString}}
+\index{fileToString@{fileToString}!tesseract\_common@{tesseract\_common}}
+\doxysubsubsection{\texorpdfstring{fileToString()}{fileToString()}}
+{\footnotesize\ttfamily std\+::string tesseract\+\_\+common\+::file\+To\+String (\begin{DoxyParamCaption}\item[{const tesseract\+\_\+common\+::fs\+::path \&}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Read in the contents of the file into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The file to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contents of the file 
 \end{DoxyReturn}
 \mbox{\Hypertarget{namespacetesseract__common_ac8f354484775381dd5c207ee0dfe21f2}\label{namespacetesseract__common_ac8f354484775381dd5c207ee0dfe21f2}} 
 \index{tesseract\_common@{tesseract\_common}!fromYAMLString@{fromYAMLString}}

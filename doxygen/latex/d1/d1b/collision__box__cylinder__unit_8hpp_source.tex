@@ -112,7 +112,7 @@
 \DoxyCodeLine{124   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
 \DoxyCodeLine{125 }
 \DoxyCodeLine{126   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} result\_vector;}
-\DoxyCodeLine{127   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{127   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{128 }
 \DoxyCodeLine{129   EXPECT\_TRUE(!result\_vector.empty());}
 \DoxyCodeLine{130   EXPECT\_NEAR(result\_vector[0].distance, -\/0.55, 0.0001);}
@@ -150,7 +150,7 @@
 \DoxyCodeLine{164   \mbox{\hyperlink{namespacetesseract__common_a94d9921fc7ed323609ac57d06f939cb6}{tesseract\_common::VectorIsometry3d}} transforms = \{ location[\textcolor{stringliteral}{"{}cylinder\_link"{}}] \};}
 \DoxyCodeLine{165   checker.setCollisionObjectsTransform(names, transforms);}
 \DoxyCodeLine{166   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
-\DoxyCodeLine{167   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{167   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{168 }
 \DoxyCodeLine{169   EXPECT\_TRUE(result\_vector.empty());}
 \DoxyCodeLine{170 }
@@ -162,7 +162,7 @@
 \DoxyCodeLine{178   checker.setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.251));}
 \DoxyCodeLine{179   EXPECT\_NEAR(checker.getCollisionMarginData().getMaxCollisionMargin(), 0.251, 1e-\/5);}
 \DoxyCodeLine{180   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
-\DoxyCodeLine{181   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{181   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{182 }
 \DoxyCodeLine{183   EXPECT\_TRUE(!result\_vector.empty());}
 \DoxyCodeLine{184   EXPECT\_NEAR(result\_vector[0].distance, 0.25, 0.001);}

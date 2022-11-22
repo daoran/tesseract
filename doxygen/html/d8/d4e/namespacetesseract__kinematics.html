@@ -221,10 +221,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a2f74af65eeb166856e00a64254da7ee8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a2f74af65eeb166856e00a64254da7ee8">isValid</a> (const std::array&lt; FloatType, 6 &gt; &amp;qs)</td></tr>
 <tr class="memdesc:a2f74af65eeb166856e00a64254da7ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a vector of floats, this check if they are finite.  <a href="../../d8/d4e/namespacetesseract__kinematics.html#a2f74af65eeb166856e00a64254da7ee8">More...</a><br /></td></tr>
 <tr class="separator:a2f74af65eeb166856e00a64254da7ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8269b58a5907ee0bb90b4fd3d3a937c3"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
-<tr class="memitem:a8269b58a5907ee0bb90b4fd3d3a937c3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a8269b58a5907ee0bb90b4fd3d3a937c3">harmonizeTowardZero</a> (Eigen::Ref&lt; <a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a59d7ac70f855c7d00848b703e6bcfe9a">VectorX</a>&lt; FloatType &gt; &gt; qs)</td></tr>
-<tr class="memdesc:a8269b58a5907ee0bb90b4fd3d3a937c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This take an array of floats and modifies them in place to be between [-PI, PI].  <a href="../../d8/d4e/namespacetesseract__kinematics.html#a8269b58a5907ee0bb90b4fd3d3a937c3">More...</a><br /></td></tr>
-<tr class="separator:a8269b58a5907ee0bb90b4fd3d3a937c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51971caada7d5330a60765fd1a83cda1"><td class="memTemplParams" colspan="2">template&lt;typename FloatType &gt; </td></tr>
 <tr class="memitem:a51971caada7d5330a60765fd1a83cda1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a51971caada7d5330a60765fd1a83cda1">harmonizeTowardZero</a> (Eigen::Ref&lt; <a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a59d7ac70f855c7d00848b703e6bcfe9a">VectorX</a>&lt; FloatType &gt; &gt; qs, const <a class="el" href="../../db/dad/vhacdRaycastMesh_8cpp.html#adcf134d50025cc52907d0c8ac798d89d">std::vector</a>&lt; Eigen::Index &gt; &amp;redundancy_capable_joints)</td></tr>
 <tr class="memdesc:a51971caada7d5330a60765fd1a83cda1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This take an array of floats and modifies them in place to be between [-PI, PI].  <a href="../../d8/d4e/namespacetesseract__kinematics.html#a51971caada7d5330a60765fd1a83cda1">More...</a><br /></td></tr>
@@ -648,45 +644,8 @@ template&lt;typename FloatType &gt; </div>
 
 </div>
 </div>
-<a id="a8269b58a5907ee0bb90b4fd3d3a937c3" name="a8269b58a5907ee0bb90b4fd3d3a937c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8269b58a5907ee0bb90b4fd3d3a937c3">&#9670;&nbsp;</a></span>harmonizeTowardZero() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename FloatType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tesseract_kinematics::harmonizeTowardZero </td>
-          <td>(</td>
-          <td class="paramtype">Eigen::Ref&lt; <a class="el" href="../../d8/d4e/namespacetesseract__kinematics.html#a59d7ac70f855c7d00848b703e6bcfe9a">VectorX</a>&lt; FloatType &gt; &gt;&#160;</td>
-          <td class="paramname"><em>qs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This take an array of floats and modifies them in place to be between [-PI, PI]. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">qs</td><td>A pointer to a float array </td></tr>
-    <tr><td class="paramname">dof</td><td>The length of the float array </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a51971caada7d5330a60765fd1a83cda1" name="a51971caada7d5330a60765fd1a83cda1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51971caada7d5330a60765fd1a83cda1">&#9670;&nbsp;</a></span>harmonizeTowardZero() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a51971caada7d5330a60765fd1a83cda1">&#9670;&nbsp;</a></span>harmonizeTowardZero()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1851,7 +1810,7 @@ template&lt;typename FloatType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2022 21:10:42 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Nov 22 2022 10:44:54 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

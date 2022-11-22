@@ -8,7 +8,5 @@ var searchData=
   ['ir_5fcoincident_5',['IR_COINCIDENT',['../d6/d3c/namespacetesseract__collision_1_1FLOAT__MATH.html#a19fa38793feab4dd0f29d8b5b9139e5bade4a9bce49f102a655f5394a23059a83',1,'tesseract_collision::FLOAT_MATH']]],
   ['ir_5fdo_5fintersect_6',['IR_DO_INTERSECT',['../d6/d3c/namespacetesseract__collision_1_1FLOAT__MATH.html#a19fa38793feab4dd0f29d8b5b9139e5ba3ae239bad07a491c5a7fce92828e974c',1,'tesseract_collision::FLOAT_MATH']]],
   ['ir_5fdont_5fintersect_7',['IR_DONT_INTERSECT',['../d6/d3c/namespacetesseract__collision_1_1FLOAT__MATH.html#a19fa38793feab4dd0f29d8b5b9139e5baa990ae53ea6616c5537ed7595ad60600',1,'tesseract_collision::FLOAT_MATH']]],
-  ['ir_5fparallel_8',['IR_PARALLEL',['../d6/d3c/namespacetesseract__collision_1_1FLOAT__MATH.html#a19fa38793feab4dd0f29d8b5b9139e5baa05e67169a28b598cf6c8a4e60909863',1,'tesseract_collision::FLOAT_MATH']]],
-  ['isconfigured_9',['IsConfigured',['../d7/d1b/classtesseract__common_1_1GeneralStatusCategory.html#a6e7d14b55d92f3664a7121c5dc402492a3d8a1c17d1cf8b3ab814a763a616a922',1,'tesseract_common::GeneralStatusCategory']]],
-  ['isnotconfigured_10',['IsNotConfigured',['../d7/d1b/classtesseract__common_1_1GeneralStatusCategory.html#a6e7d14b55d92f3664a7121c5dc402492a50293b6000ef13c217f647dbb4eaefaa',1,'tesseract_common::GeneralStatusCategory']]]
+  ['ir_5fparallel_8',['IR_PARALLEL',['../d6/d3c/namespacetesseract__collision_1_1FLOAT__MATH.html#a19fa38793feab4dd0f29d8b5b9139e5baa05e67169a28b598cf6c8a4e60909863',1,'tesseract_collision::FLOAT_MATH']]]
 ];

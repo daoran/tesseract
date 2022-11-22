@@ -125,7 +125,7 @@
 \DoxyCodeLine{137   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80ca5fb1f955b45e38e31789286a1790398d}{ContactTestType::ALL}}));}
 \DoxyCodeLine{138 }
 \DoxyCodeLine{139   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} result\_vector;}
-\DoxyCodeLine{140   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{140   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{141 }
 \DoxyCodeLine{142   EXPECT\_TRUE(result\_vector.size() >= 37);}
 \DoxyCodeLine{143 }
@@ -137,7 +137,7 @@
 \DoxyCodeLine{151   checker.setCollisionObjectsTransform(location);}
 \DoxyCodeLine{152 }
 \DoxyCodeLine{153   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80ca5fb1f955b45e38e31789286a1790398d}{ContactTestType::ALL}}));}
-\DoxyCodeLine{154   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{154   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{155 }
 \DoxyCodeLine{156   EXPECT\_TRUE(result\_vector.empty());}
 \DoxyCodeLine{157 }
@@ -149,7 +149,7 @@
 \DoxyCodeLine{165   checker.setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.55));}
 \DoxyCodeLine{166   EXPECT\_NEAR(checker.getCollisionMarginData().getMaxCollisionMargin(), 0.55, 1e-\/5);}
 \DoxyCodeLine{167   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
-\DoxyCodeLine{168   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{168   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{169 }
 \DoxyCodeLine{170   EXPECT\_TRUE(!result\_vector.empty());}
 \DoxyCodeLine{171   EXPECT\_NEAR(result\_vector[0].distance, 0.52448, 0.001);}
@@ -177,7 +177,7 @@
 \DoxyCodeLine{195   checker.setCollisionMarginData(\mbox{\hyperlink{namespacetesseract__collision_a0717a3c53d08d510257f631ea96cb560}{CollisionMarginData}}(0.55));}
 \DoxyCodeLine{196   EXPECT\_NEAR(checker.getCollisionMarginData().getMaxCollisionMargin(), 0.55, 1e-\/5);}
 \DoxyCodeLine{197   checker.contactTest(result, ContactRequest(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
-\DoxyCodeLine{198   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{198   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{199 }
 \DoxyCodeLine{200   EXPECT\_TRUE(!result\_vector.empty());}
 \DoxyCodeLine{201   EXPECT\_NEAR(result\_vector[0].distance, 0.5, 0.001);}

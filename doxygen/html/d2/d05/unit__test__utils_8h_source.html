@@ -95,7 +95,7 @@ $(function() {
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::string file_path = <a class="code hl_function" href="../../df/da9/namespacetesseract__common.html#a58ecad04db85855fa9e4de21084598ca">tesseract_common::getTempPath</a>() + typename_string + <span class="stringliteral">&quot;.xml&quot;</span>;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    EXPECT_TRUE(tesseract_common::Serialization::toArchiveFileXML&lt;SerializableType&gt;(<span class="keywordtype">object</span>, file_path));</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">auto</span> nobject = tesseract_common::Serialization::fromArchiveFileXML&lt;SerializableType&gt;(file_path);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SerializableType nobject{ tesseract_common::Serialization::fromArchiveFileXML&lt;SerializableType&gt;(file_path) };</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    EXPECT_FALSE(<span class="keywordtype">object</span> != nobject);  <span class="comment">// Using != because it call == for code coverage</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
@@ -103,7 +103,7 @@ $(function() {
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::string file_path = <a class="code hl_function" href="../../df/da9/namespacetesseract__common.html#a58ecad04db85855fa9e4de21084598ca">tesseract_common::getTempPath</a>() + typename_string + <span class="stringliteral">&quot;.binary&quot;</span>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    EXPECT_TRUE(tesseract_common::Serialization::toArchiveFileBinary&lt;SerializableType&gt;(<span class="keywordtype">object</span>, file_path));</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">auto</span> nobject = tesseract_common::Serialization::fromArchiveFileBinary&lt;SerializableType&gt;(file_path);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    SerializableType nobject{ tesseract_common::Serialization::fromArchiveFileBinary&lt;SerializableType&gt;(file_path) };</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    EXPECT_FALSE(<span class="keywordtype">object</span> != nobject);  <span class="comment">// Using != because it call == for code coverage</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  }</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        tesseract_common::Serialization::toArchiveStringXML&lt;SerializableType&gt;(<span class="keywordtype">object</span>, typename_string);</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    EXPECT_FALSE(object_string.empty());</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">auto</span> nobject = tesseract_common::Serialization::fromArchiveStringXML&lt;SerializableType&gt;(object_string);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    SerializableType nobject{ tesseract_common::Serialization::fromArchiveStringXML&lt;SerializableType&gt;(object_string) };</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    EXPECT_FALSE(<span class="keywordtype">object</span> != nobject);  <span class="comment">// Using != because it call == for code coverage</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  }</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
@@ -201,7 +201,7 @@ $(function() {
 <div class="ttc" id="anamespacetesseract__common_html"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html">tesseract_common</a></div><div class="ttdef"><b>Definition:</b> allowed_collision_matrix.h:16</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_a1b449b344d06caa397190a9a82dd507a"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a1b449b344d06caa397190a9a82dd507a">tesseract_common::testSerializationPtr</a></div><div class="ttdeci">void testSerializationPtr(const std::shared_ptr&lt; SerializableType &gt; &amp;object, const std::string &amp;typename_string)</div><div class="ttdoc">Tests Boost serialization of shared pointer for a serializable type.</div><div class="ttdef"><b>Definition:</b> unit_test_utils.h:83</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_a5330a58c8c79cce5559a316e76118558"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a5330a58c8c79cce5559a316e76118558">tesseract_common::testSerialization</a></div><div class="ttdeci">void testSerialization(const SerializableType &amp;object, const std::string &amp;typename_string)</div><div class="ttdoc">Tests Boost serialization for a serializable type.</div><div class="ttdef"><b>Definition:</b> unit_test_utils.h:47</div></div>
-<div class="ttc" id="anamespacetesseract__common_html_a58ecad04db85855fa9e4de21084598ca"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a58ecad04db85855fa9e4de21084598ca">tesseract_common::getTempPath</a></div><div class="ttdeci">std::string getTempPath()</div><div class="ttdoc">Get the host temp directory path.</div><div class="ttdef"><b>Definition:</b> utils.cpp:194</div></div>
+<div class="ttc" id="anamespacetesseract__common_html_a58ecad04db85855fa9e4de21084598ca"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#a58ecad04db85855fa9e4de21084598ca">tesseract_common::getTempPath</a></div><div class="ttdeci">std::string getTempPath()</div><div class="ttdoc">Get the host temp directory path.</div><div class="ttdef"><b>Definition:</b> utils.cpp:209</div></div>
 <div class="ttc" id="anamespacetesseract__common_html_aa8cf5fe962e9933b44d1f8248f0ab2fb"><div class="ttname"><a href="../../df/da9/namespacetesseract__common.html#aa8cf5fe962e9933b44d1f8248f0ab2fb">tesseract_common::testSerializationDerivedClass</a></div><div class="ttdeci">void testSerializationDerivedClass(const std::shared_ptr&lt; SerializableTypeBase &gt; &amp;object, const std::string &amp;typename_string)</div><div class="ttdoc">Tests Boost serialization for a serializable derived type.</div><div class="ttdef"><b>Definition:</b> unit_test_utils.h:122</div></div>
 <div class="ttc" id="aserialization_8h_html"><div class="ttname"><a href="../../dd/d50/serialization_8h.html">serialization.h</a></div><div class="ttdoc">Additional Boost serialization wrappers.</div></div>
 <div class="ttc" id="astructtesseract__common_1_1Serialization_html_a07a0927a3734ee3cb3ce76bc6a0ac1be"><div class="ttname"><a href="../../d0/dc2/structtesseract__common_1_1Serialization.html#a07a0927a3734ee3cb3ce76bc6a0ac1be">tesseract_common::Serialization::toArchiveFileXML</a></div><div class="ttdeci">static bool toArchiveFileXML(const SerializableType &amp;archive_type, const std::string &amp;file_path, const std::string &amp;name=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> serialization.h:112</div></div>
@@ -210,7 +210,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 24 2022 21:10:38 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Nov 22 2022 10:44:51 for Tesseract by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

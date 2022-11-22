@@ -9,6 +9,5 @@ var searchData=
   ['sphere_5foutside_6',['SPHERE_OUTSIDE',['../d3/d4b/classtesseract__geometry_1_1Octree.html#a50b534fbd4a871cd257ac52d6009af00a474a03c0f9a733d18169249b3103e629',1,'tesseract_geometry::Octree']]],
   ['staticfilter_7',['StaticFilter',['../d0/df7/namespacetesseract__collision_1_1tesseract__collision__fcl.html#af7dded074ea546324fb45b909fea527fa343cfc9ddeee1f64bc5a1fe9f2bae260',1,'tesseract_collision::tesseract_collision_fcl']]],
   ['string_8',['STRING',['../d0/d5b/tesseract__environment__unit_8cpp.html#a3a32177399531ca863fffa708e0675bba63b588d5559f64f89a416e656880b949',1,'tesseract_environment_unit.cpp']]],
-  ['success_9',['Success',['../d7/d1b/classtesseract__common_1_1GeneralStatusCategory.html#a6e7d14b55d92f3664a7121c5dc402492ac82674f544c9afe288c09f70d69eba8d',1,'tesseract_common::GeneralStatusCategory']]],
-  ['synchronized_10',['SYNCHRONIZED',['../d2/d5f/namespacetesseract__environment.html#ad69281c5429c1e008229dbe5c5c4769da35c25b3993876576ae1222f9ebb04f63',1,'tesseract_environment']]]
+  ['synchronized_9',['SYNCHRONIZED',['../d2/d5f/namespacetesseract__environment.html#ad69281c5429c1e008229dbe5c5c4769da35c25b3993876576ae1222f9ebb04f63',1,'tesseract_environment']]]
 ];

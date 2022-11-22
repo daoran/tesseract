@@ -10,6 +10,7 @@ Common Tesseract Utility Functions.
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$type\+\_\+traits$>$}\newline
 {\ttfamily \#include $<$console\+\_\+bridge/console.\+h$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include $<$tesseract\+\_\+common/utils.\+h$>$}\newline
 Include dependency graph for utils.\+cpp\+:
 \nopagebreak
@@ -43,6 +44,8 @@ template bool \mbox{\hyperlink{namespacetesseract__common_a14e39b554da010e8c3606
 \item 
 {\footnotesize template$<$typename E $>$ }\\std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+polymorphic$<$ E $>$\+::value $>$ \mbox{\hyperlink{namespacetesseract__common_abc1990ddb29716885e94980b49c187d8}{tesseract\+\_\+common\+::my\+\_\+rethrow\+\_\+if\+\_\+nested}} (const E \&e)
 \item 
+std\+::string \mbox{\hyperlink{namespacetesseract__common_aca142577b0d587606411468a2163106f}{tesseract\+\_\+common\+::file\+To\+String}} (const tesseract\+\_\+common\+::fs\+::path \&filepath)
+\begin{DoxyCompactList}\small\item\em Read in the contents of the file into a string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a4ed12ea384452e2d5d4f7a0854035384}{tesseract\+\_\+common\+::twist\+Change\+Ref\+Point}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ twist, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector3d $>$ \&ref\+\_\+point)
 \begin{DoxyCompactList}\small\item\em Change the reference point of the provided Twist. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacetesseract__common_a98c27df906a6e17d088772d3d1c21a5d}{tesseract\+\_\+common\+::twist\+Change\+Base}} (Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ twist, const Eigen\+::\+Isometry3d \&change\+\_\+base)
@@ -120,7 +123,7 @@ January 18, 2018
 TODO 
 \end{DoxyVersion}
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000075}{Bug}}]No known bugs\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000074}{Bug}}]No known bugs\end{DoxyRefDesc}
 
 
 \begin{DoxyCopyright}{Copyright}

@@ -91,57 +91,50 @@
 \DoxyCodeLine{147 }
 \DoxyCodeLine{152   \textcolor{keyword}{const} std::shared\_ptr<const Eigen::VectorXi>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a06f8044964704be49aeecf8c00c8bcae}{getFaces}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a132870ff3a1feff1fcde465c9ce4fac4}{faces\_}}; \}}
 \DoxyCodeLine{153 }
-\DoxyCodeLine{154 \textcolor{preprocessor}{\#ifndef SWIG}}
-\DoxyCodeLine{159   [[deprecated(\textcolor{stringliteral}{"{}Deprecated due to typo.  Please use getVertexCount()"{}})]] \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ab06462b6fac116cd46f67f188bc076ee}{getVerticeCount}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{160 \textcolor{keyword}{  }\{}
-\DoxyCodeLine{161     \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a1e7fe9f8ecc3a57a85f0e2ca6df8daac}{getVertexCount}}();}
-\DoxyCodeLine{162   \}}
-\DoxyCodeLine{163 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// SWIG}}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{169   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a1e7fe9f8ecc3a57a85f0e2ca6df8daac}{getVertexCount}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ae3a0bfc79c6786879979d59a1daf8de3}{vertex\_count\_}}; \}}
-\DoxyCodeLine{170 }
-\DoxyCodeLine{175   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a091ff79f99455a5bd1b8096c36ebf7cd}{getFaceCount}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}; \}}
-\DoxyCodeLine{176 }
-\DoxyCodeLine{184   \mbox{\hyperlink{classtesseract__common_1_1Resource_ab1639f2420acb1637e16386860d65962}{tesseract\_common::Resource::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a34a3c62e7cb8f71eb248cb8e50781627}{getResource}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}}; \}}
-\DoxyCodeLine{185 }
-\DoxyCodeLine{190   \textcolor{keyword}{const} Eigen::Vector3d\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a38d3d05d57a5a38fe12a191080eac1a2}{getScale}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}}; \}}
-\DoxyCodeLine{191 }
-\DoxyCodeLine{199   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector3d>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_af3fb123c87479e7f95effaf7d2379f56}{getNormals}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_accd8a7ec875f52896d7ea461b3af28d2}{normals\_}}; \}}
-\DoxyCodeLine{200 }
-\DoxyCodeLine{208   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector4d>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a82048a274147910af4d7dba120ae3064}{getVertexColors}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a0cd879cbe4378fc3ae3033a61113a3e0}{vertex\_colors\_}}; \}}
-\DoxyCodeLine{209 }
-\DoxyCodeLine{218   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a40e28bff7129cc427bee736136b13e72}{MeshMaterial::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad5233cd2be0d4454d60921acb8276344}{getMaterial}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a01d31718a84f10c61426904fb4104ccd}{mesh\_material\_}}; \}}
-\DoxyCodeLine{219 }
-\DoxyCodeLine{230   \textcolor{keyword}{const} std::shared\_ptr<const std::vector<MeshTexture::Ptr>>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a50220ee764b41b20a7892890d01302de}{getTextures}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_afc4e49201b761f3a632ebd6c1d690580}{mesh\_textures\_}}; \}}
+\DoxyCodeLine{158   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a1e7fe9f8ecc3a57a85f0e2ca6df8daac}{getVertexCount}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ae3a0bfc79c6786879979d59a1daf8de3}{vertex\_count\_}}; \}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{164   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a091ff79f99455a5bd1b8096c36ebf7cd}{getFaceCount}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}; \}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{173   \mbox{\hyperlink{classtesseract__common_1_1Resource_ab1639f2420acb1637e16386860d65962}{tesseract\_common::Resource::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a34a3c62e7cb8f71eb248cb8e50781627}{getResource}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}}; \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{179   \textcolor{keyword}{const} Eigen::Vector3d\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a38d3d05d57a5a38fe12a191080eac1a2}{getScale}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}}; \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{188   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector3d>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_af3fb123c87479e7f95effaf7d2379f56}{getNormals}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_accd8a7ec875f52896d7ea461b3af28d2}{normals\_}}; \}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{197   \textcolor{keyword}{const} std::shared\_ptr<const tesseract\_common::VectorVector4d>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a82048a274147910af4d7dba120ae3064}{getVertexColors}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a0cd879cbe4378fc3ae3033a61113a3e0}{vertex\_colors\_}}; \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{207   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_a40e28bff7129cc427bee736136b13e72}{MeshMaterial::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad5233cd2be0d4454d60921acb8276344}{getMaterial}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a01d31718a84f10c61426904fb4104ccd}{mesh\_material\_}}; \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{219   \textcolor{keyword}{const} std::shared\_ptr<const std::vector<MeshTexture::Ptr>>\& \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a50220ee764b41b20a7892890d01302de}{getTextures}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_afc4e49201b761f3a632ebd6c1d690580}{mesh\_textures\_}}; \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221   \mbox{\hyperlink{classtesseract__geometry_1_1Geometry_acd91c55fb9604ed374446c029b6f2d08}{Geometry::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ab2ac74ece83cedb9fba05a131254e402}{clone}}()\textcolor{keyword}{ const override}}
+\DoxyCodeLine{222 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{223     \textcolor{keywordflow}{return} std::make\_shared<PolygonMesh>(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad31d20502cf384e3dd14f23635602169}{vertices\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a132870ff3a1feff1fcde465c9ce4fac4}{faces\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}});}
+\DoxyCodeLine{224   \}}
+\DoxyCodeLine{225   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a5e41dc13a883eb68844620faa4c21c3e}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{PolygonMesh}}\& rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{226   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad52c05abb758311dd76b59542721cb75}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{PolygonMesh}}\& rhs) \textcolor{keyword}{const};}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228 \textcolor{keyword}{private}:}
+\DoxyCodeLine{229   std::shared\_ptr<const tesseract\_common::VectorVector3d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad31d20502cf384e3dd14f23635602169}{vertices\_}};}
+\DoxyCodeLine{230   std::shared\_ptr<const Eigen::VectorXi> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a132870ff3a1feff1fcde465c9ce4fac4}{faces\_}};}
 \DoxyCodeLine{231 }
-\DoxyCodeLine{232   \mbox{\hyperlink{classtesseract__geometry_1_1Geometry_acd91c55fb9604ed374446c029b6f2d08}{Geometry::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ab2ac74ece83cedb9fba05a131254e402}{clone}}()\textcolor{keyword}{ const override}}
-\DoxyCodeLine{233 \textcolor{keyword}{  }\{}
-\DoxyCodeLine{234     \textcolor{keywordflow}{return} std::make\_shared<PolygonMesh>(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad31d20502cf384e3dd14f23635602169}{vertices\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a132870ff3a1feff1fcde465c9ce4fac4}{faces\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}}, \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}});}
-\DoxyCodeLine{235   \}}
-\DoxyCodeLine{236   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a5e41dc13a883eb68844620faa4c21c3e}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{PolygonMesh}}\& rhs) \textcolor{keyword}{const};}
-\DoxyCodeLine{237   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad52c05abb758311dd76b59542721cb75}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{PolygonMesh}}\& rhs) \textcolor{keyword}{const};}
-\DoxyCodeLine{238 }
-\DoxyCodeLine{239 \textcolor{keyword}{private}:}
-\DoxyCodeLine{240   std::shared\_ptr<const tesseract\_common::VectorVector3d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ad31d20502cf384e3dd14f23635602169}{vertices\_}};}
-\DoxyCodeLine{241   std::shared\_ptr<const Eigen::VectorXi> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a132870ff3a1feff1fcde465c9ce4fac4}{faces\_}};}
-\DoxyCodeLine{242 }
-\DoxyCodeLine{243   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ae3a0bfc79c6786879979d59a1daf8de3}{vertex\_count\_}}\{ 0 \};}
-\DoxyCodeLine{244   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}\{ 0 \};}
-\DoxyCodeLine{245   \mbox{\hyperlink{classtesseract__common_1_1Resource_ab1639f2420acb1637e16386860d65962}{tesseract\_common::Resource::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}};}
-\DoxyCodeLine{246   Eigen::Vector3d \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}};}
-\DoxyCodeLine{247   std::shared\_ptr<const tesseract\_common::VectorVector3d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_accd8a7ec875f52896d7ea461b3af28d2}{normals\_}};}
-\DoxyCodeLine{248   std::shared\_ptr<const tesseract\_common::VectorVector4d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a0cd879cbe4378fc3ae3033a61113a3e0}{vertex\_colors\_}};}
-\DoxyCodeLine{249   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ad67358c38f5044f5759070974ec73e54}{MeshMaterial::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a01d31718a84f10c61426904fb4104ccd}{mesh\_material\_}};}
-\DoxyCodeLine{250   std::shared\_ptr<const std::vector<MeshTexture::Ptr>> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_afc4e49201b761f3a632ebd6c1d690580}{mesh\_textures\_}};}
-\DoxyCodeLine{251 }
-\DoxyCodeLine{252   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access}};}
-\DoxyCodeLine{253   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>}
-\DoxyCodeLine{254   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a60bbb46c06ff67f684746f0262ded2a4}{serialize}}(Archive\& ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version);  \textcolor{comment}{// NOLINT}}
-\DoxyCodeLine{255 \};}
-\DoxyCodeLine{256 }
-\DoxyCodeLine{257 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
-\DoxyCodeLine{258 \textcolor{preprocessor}{\#include <boost/serialization/tracking.hpp>}}
-\DoxyCodeLine{259 BOOST\_CLASS\_EXPORT\_KEY2(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{tesseract\_geometry::PolygonMesh}}, \textcolor{stringliteral}{"{}PolygonMesh"{}})}
-\DoxyCodeLine{260 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// POLYGON\_MESH\_H}}
+\DoxyCodeLine{232   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ae3a0bfc79c6786879979d59a1daf8de3}{vertex\_count\_}}\{ 0 \};}
+\DoxyCodeLine{233   \textcolor{keywordtype}{int} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_adae8356c78fa94a4fbee4a78043dc05b}{face\_count\_}}\{ 0 \};}
+\DoxyCodeLine{234   \mbox{\hyperlink{classtesseract__common_1_1Resource_ab1639f2420acb1637e16386860d65962}{tesseract\_common::Resource::ConstPtr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a2a16336dfaf095e54df5e9cbd3db9dd7}{resource\_}};}
+\DoxyCodeLine{235   Eigen::Vector3d \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a9b7aa279f06894790b680a381e825be6}{scale\_}};}
+\DoxyCodeLine{236   std::shared\_ptr<const tesseract\_common::VectorVector3d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_accd8a7ec875f52896d7ea461b3af28d2}{normals\_}};}
+\DoxyCodeLine{237   std::shared\_ptr<const tesseract\_common::VectorVector4d> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a0cd879cbe4378fc3ae3033a61113a3e0}{vertex\_colors\_}};}
+\DoxyCodeLine{238   \mbox{\hyperlink{classtesseract__geometry_1_1MeshMaterial_ad67358c38f5044f5759070974ec73e54}{MeshMaterial::Ptr}} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a01d31718a84f10c61426904fb4104ccd}{mesh\_material\_}};}
+\DoxyCodeLine{239   std::shared\_ptr<const std::vector<MeshTexture::Ptr>> \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_afc4e49201b761f3a632ebd6c1d690580}{mesh\_textures\_}};}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241   \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access}};}
+\DoxyCodeLine{242   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>}
+\DoxyCodeLine{243   \textcolor{keywordtype}{void} \mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh_a60bbb46c06ff67f684746f0262ded2a4}{serialize}}(Archive\& ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version);  \textcolor{comment}{// NOLINT}}
+\DoxyCodeLine{244 \};}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246 \}  \textcolor{comment}{// namespace tesseract\_geometry}}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#include <boost/serialization/tracking.hpp>}}
+\DoxyCodeLine{248 BOOST\_CLASS\_EXPORT\_KEY2(\mbox{\hyperlink{classtesseract__geometry_1_1PolygonMesh}{tesseract\_geometry::PolygonMesh}}, \textcolor{stringliteral}{"{}PolygonMesh"{}})}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// POLYGON\_MESH\_H}}
 
 \end{DoxyCode}

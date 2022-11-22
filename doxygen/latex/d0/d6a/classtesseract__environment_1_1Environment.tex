@@ -295,9 +295,7 @@ bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_ad707bbc713547f
 \item 
 bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_a96e16d8a925dac26c54239f4c16dba89}{apply\+Change\+Link\+Visibility\+Command}} (const \mbox{\hyperlink{classtesseract__environment_1_1ChangeLinkVisibilityCommand_a32fe25dc1df9fb2c4114a2ecb36006b0}{Change\+Link\+Visibility\+Command\+::\+Const\+Ptr}} \&cmd)
 \item 
-bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_a9a7d764756bbba5671fcb1523b72ce31}{apply\+Add\+Allowed\+Collision\+Command}} (const \mbox{\hyperlink{classtesseract__environment_1_1AddAllowedCollisionCommand_ad3b58efd9b437dd3f9b9ad80f0fe1596}{Add\+Allowed\+Collision\+Command\+::\+Const\+Ptr}} \&cmd)
-\item 
-bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_a4054b1c81fd84d6d3277b3e0e9af7864}{apply\+Remove\+Allowed\+Collision\+Command}} (const \mbox{\hyperlink{classtesseract__environment_1_1RemoveAllowedCollisionCommand_a9d255725e662954db01245fdcadf79ab}{Remove\+Allowed\+Collision\+Command\+::\+Const\+Ptr}} \&cmd)
+bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_ae74f5f73e42c66b915448e9ac6abd451}{apply\+Modify\+Allowed\+Collisions\+Command}} (const \mbox{\hyperlink{classtesseract__environment_1_1ModifyAllowedCollisionsCommand_ac8f0571f45196b458e6a1e0f51e99468}{Modify\+Allowed\+Collisions\+Command\+::\+Const\+Ptr}} \&cmd)
 \item 
 bool \mbox{\hyperlink{classtesseract__environment_1_1Environment_a42be6f3675b216f5a7ea3e67047f38f1}{apply\+Remove\+Allowed\+Collision\+Link\+Command}} (const \mbox{\hyperlink{classtesseract__environment_1_1RemoveAllowedCollisionLinkCommand_a0e9f0d5be3bd60c2b387fd19a463afaa}{Remove\+Allowed\+Collision\+Link\+Command\+::\+Const\+Ptr}} \&cmd)
 \item 
@@ -433,12 +431,6 @@ This allows for user defined callbacks for looking up TCP information.
 {\em fn} & User defined callback function for locating TCP information \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classtesseract__environment_1_1Environment_a9a7d764756bbba5671fcb1523b72ce31}\label{classtesseract__environment_1_1Environment_a9a7d764756bbba5671fcb1523b72ce31}} 
-\index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyAddAllowedCollisionCommand@{applyAddAllowedCollisionCommand}}
-\index{applyAddAllowedCollisionCommand@{applyAddAllowedCollisionCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
-\doxysubsubsection{\texorpdfstring{applyAddAllowedCollisionCommand()}{applyAddAllowedCollisionCommand()}}
-{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Environment\+::apply\+Add\+Allowed\+Collision\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1AddAllowedCollisionCommand_ad3b58efd9b437dd3f9b9ad80f0fe1596}{Add\+Allowed\+Collision\+Command\+::\+Const\+Ptr}} \&}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{classtesseract__environment_1_1Environment_a2b8bd838a8a4f8c353894d119c604c10}\label{classtesseract__environment_1_1Environment_a2b8bd838a8a4f8c353894d119c604c10}} 
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyAddCommand@{applyAddCommand}}
 \index{applyAddCommand@{applyAddCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
@@ -557,6 +549,12 @@ true if successful. If returned false, then only a partial set of commands have 
 
 Apply \mbox{\hyperlink{classtesseract__environment_1_1Command}{Command}} Helper which does not lock. 
 
+\mbox{\Hypertarget{classtesseract__environment_1_1Environment_ae74f5f73e42c66b915448e9ac6abd451}\label{classtesseract__environment_1_1Environment_ae74f5f73e42c66b915448e9ac6abd451}} 
+\index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyModifyAllowedCollisionsCommand@{applyModifyAllowedCollisionsCommand}}
+\index{applyModifyAllowedCollisionsCommand@{applyModifyAllowedCollisionsCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
+\doxysubsubsection{\texorpdfstring{applyModifyAllowedCollisionsCommand()}{applyModifyAllowedCollisionsCommand()}}
+{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Environment\+::apply\+Modify\+Allowed\+Collisions\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1ModifyAllowedCollisionsCommand_ac8f0571f45196b458e6a1e0f51e99468}{Modify\+Allowed\+Collisions\+Command\+::\+Const\+Ptr}} \&}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classtesseract__environment_1_1Environment_a41c01098b672358847478f9d32115d1e}\label{classtesseract__environment_1_1Environment_a41c01098b672358847478f9d32115d1e}} 
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyMoveJointCommand@{applyMoveJointCommand}}
 \index{applyMoveJointCommand@{applyMoveJointCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
@@ -568,12 +566,6 @@ Apply \mbox{\hyperlink{classtesseract__environment_1_1Command}{Command}} Helper 
 \index{applyMoveLinkCommand@{applyMoveLinkCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
 \doxysubsubsection{\texorpdfstring{applyMoveLinkCommand()}{applyMoveLinkCommand()}}
 {\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Environment\+::apply\+Move\+Link\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1MoveLinkCommand_aff5435d35b419004a90188018ab141c5}{Move\+Link\+Command\+::\+Const\+Ptr}} \&}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classtesseract__environment_1_1Environment_a4054b1c81fd84d6d3277b3e0e9af7864}\label{classtesseract__environment_1_1Environment_a4054b1c81fd84d6d3277b3e0e9af7864}} 
-\index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyRemoveAllowedCollisionCommand@{applyRemoveAllowedCollisionCommand}}
-\index{applyRemoveAllowedCollisionCommand@{applyRemoveAllowedCollisionCommand}!tesseract\_environment::Environment@{tesseract\_environment::Environment}}
-\doxysubsubsection{\texorpdfstring{applyRemoveAllowedCollisionCommand()}{applyRemoveAllowedCollisionCommand()}}
-{\footnotesize\ttfamily bool tesseract\+\_\+environment\+::\+Environment\+::apply\+Remove\+Allowed\+Collision\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtesseract__environment_1_1RemoveAllowedCollisionCommand_a9d255725e662954db01245fdcadf79ab}{Remove\+Allowed\+Collision\+Command\+::\+Const\+Ptr}} \&}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classtesseract__environment_1_1Environment_a42be6f3675b216f5a7ea3e67047f38f1}\label{classtesseract__environment_1_1Environment_a42be6f3675b216f5a7ea3e67047f38f1}} 
 \index{tesseract\_environment::Environment@{tesseract\_environment::Environment}!applyRemoveAllowedCollisionLinkCommand@{applyRemoveAllowedCollisionLinkCommand}}

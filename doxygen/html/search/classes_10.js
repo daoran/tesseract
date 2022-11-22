@@ -21,7 +21,5 @@ var searchData=
   ['sphere_18',['Sphere',['../de/dcb/classtesseract__geometry_1_1Sphere.html',1,'tesseract_geometry']]],
   ['srdfmodel_19',['SRDFModel',['../dc/d03/classtesseract__srdf_1_1SRDFModel.html',1,'tesseract_srdf']]],
   ['statesolver_20',['StateSolver',['../d8/d95/classtesseract__scene__graph_1_1StateSolver.html',1,'tesseract_scene_graph']]],
-  ['statuscategory_21',['StatusCategory',['../d3/d71/classtesseract__common_1_1StatusCategory.html',1,'tesseract_common']]],
-  ['statuscode_22',['StatusCode',['../d0/d3f/classtesseract__common_1_1StatusCode.html',1,'tesseract_common']]],
-  ['swappedcreatefunc_23',['SwappedCreateFunc',['../d9/d2f/structtesseract__collision_1_1tesseract__collision__bullet_1_1TesseractCompoundCollisionAlgorithm_1_1SwappedCreateFunc.html',1,'tesseract_collision::tesseract_collision_bullet::TesseractCompoundCollisionAlgorithm::SwappedCreateFunc'],['../d2/d28/structtesseract__collision_1_1tesseract__collision__bullet_1_1TesseractCompoundCompoundCollisionAlgorithm_1_1SwappedCreateFunc.html',1,'tesseract_collision::tesseract_collision_bullet::TesseractCompoundCompoundCollisionAlgorithm::SwappedCreateFunc']]]
+  ['swappedcreatefunc_21',['SwappedCreateFunc',['../d9/d2f/structtesseract__collision_1_1tesseract__collision__bullet_1_1TesseractCompoundCollisionAlgorithm_1_1SwappedCreateFunc.html',1,'tesseract_collision::tesseract_collision_bullet::TesseractCompoundCollisionAlgorithm::SwappedCreateFunc'],['../d2/d28/structtesseract__collision_1_1tesseract__collision__bullet_1_1TesseractCompoundCompoundCollisionAlgorithm_1_1SwappedCreateFunc.html',1,'tesseract_collision::tesseract_collision_bullet::TesseractCompoundCompoundCollisionAlgorithm::SwappedCreateFunc']]]
 ];

@@ -121,7 +121,7 @@
 \DoxyCodeLine{133   checker.\mbox{\hyperlink{classtesseract__collision_1_1DiscreteContactManager_a1ddfa181400941e093c76a852df72425}{contactTest}}(result, \mbox{\hyperlink{structtesseract__collision_1_1ContactRequest}{ContactRequest}}(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
 \DoxyCodeLine{134 }
 \DoxyCodeLine{135   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} result\_vector;}
-\DoxyCodeLine{136   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(result), result\_vector);}
+\DoxyCodeLine{136   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(result), result\_vector);}
 \DoxyCodeLine{137 }
 \DoxyCodeLine{138   std::vector<int> idx = \{ 0, 1, 1 \};}
 \DoxyCodeLine{139   \textcolor{keywordflow}{if} (result\_vector[0].link\_names[0] != \textcolor{stringliteral}{"{}sphere\_link"{}})}
@@ -134,7 +134,7 @@
 \DoxyCodeLine{146   cloned\_checker-\/>contactTest(cloned\_result, \mbox{\hyperlink{structtesseract__collision_1_1ContactRequest}{ContactRequest}}(\mbox{\hyperlink{namespacetesseract__collision_ac3da4f46ae16e86ba4f1dfd2935eb80cae9c32f09a44ae1ae34e42d53502fab77}{ContactTestType::CLOSEST}}));}
 \DoxyCodeLine{147 }
 \DoxyCodeLine{148   \mbox{\hyperlink{namespacetesseract__collision_a96d77f62b7c26962d1090f0a2f00419b}{ContactResultVector}} cloned\_result\_vector;}
-\DoxyCodeLine{149   \mbox{\hyperlink{namespacetesseract__collision_a3d63942ad37df10958b434c860782fbb}{flattenResults}}(std::move(cloned\_result), cloned\_result\_vector);}
+\DoxyCodeLine{149   \mbox{\hyperlink{namespacetesseract__collision_a1e54919ee87e54445b7926d0b2880882}{flattenMoveResults}}(std::move(cloned\_result), cloned\_result\_vector);}
 \DoxyCodeLine{150 }
 \DoxyCodeLine{151   std::vector<int> cloned\_idx = \{ 0, 1, 1 \};}
 \DoxyCodeLine{152   \textcolor{keywordflow}{if} (cloned\_result\_vector[0].link\_names[0] != \textcolor{stringliteral}{"{}sphere\_link"{}})}

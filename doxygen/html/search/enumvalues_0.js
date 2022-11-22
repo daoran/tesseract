@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['add_5fallowed_5fcollision_0',['ADD_ALLOWED_COLLISION',['../d2/d5f/namespacetesseract__environment.html#afc00c1aecb519acba3afc24dbd367029ab2889e5decae30347cb29cdeb282d664',1,'tesseract_environment']]],
+  ['add_0',['ADD',['../d2/d5f/namespacetesseract__environment.html#a2a9b1fba4c87d71e405a826aae989903a9eeb52badb613229884838847294b90d',1,'tesseract_environment']]],
   ['add_5fcontact_5fmanagers_5fplugin_5finfo_1',['ADD_CONTACT_MANAGERS_PLUGIN_INFO',['../d2/d5f/namespacetesseract__environment.html#afc00c1aecb519acba3afc24dbd367029a888e6375965550fe9f245043026d8490',1,'tesseract_environment']]],
   ['add_5fkinematics_5finformation_2',['ADD_KINEMATICS_INFORMATION',['../d2/d5f/namespacetesseract__environment.html#afc00c1aecb519acba3afc24dbd367029a6f820e76663d877e0103c6aea1616b1b',1,'tesseract_environment']]],
   ['add_5flink_3',['ADD_LINK',['../d2/d5f/namespacetesseract__environment.html#afc00c1aecb519acba3afc24dbd367029a83bca506d8f37c1e0d096e2683d691e4',1,'tesseract_environment']]],

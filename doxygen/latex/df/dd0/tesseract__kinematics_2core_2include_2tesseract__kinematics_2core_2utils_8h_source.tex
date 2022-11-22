@@ -376,34 +376,20 @@
 \DoxyCodeLine{484 \}}
 \DoxyCodeLine{485 }
 \DoxyCodeLine{491 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{492 \mbox{\hyperlink{macros_8h_af67a6ff1a54b41b2a6e4bd36bc47b118}{DEPRECATED}}(\textcolor{stringliteral}{"{}Use redundancy version"{}})}
-\DoxyCodeLine{493 inline \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}<FloatType>> qs)}
+\DoxyCodeLine{492 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}> qs,}
+\DoxyCodeLine{493                                 \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
 \DoxyCodeLine{494 \{}
 \DoxyCodeLine{495   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
 \DoxyCodeLine{496   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
 \DoxyCodeLine{497 }
-\DoxyCodeLine{498   \textcolor{keywordflow}{for} (Eigen::Index i = 0; i < qs.rows(); ++i)}
+\DoxyCodeLine{498   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& i : redundancy\_capable\_joints)}
 \DoxyCodeLine{499   \{}
 \DoxyCodeLine{500     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
 \DoxyCodeLine{501     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
 \DoxyCodeLine{502   \}}
 \DoxyCodeLine{503 \}}
 \DoxyCodeLine{504 }
-\DoxyCodeLine{510 \textcolor{keyword}{template} <\textcolor{keyword}{typename} FloatType>}
-\DoxyCodeLine{511 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonizeTowardZero}}(Eigen::Ref<\mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX<FloatType>}}> qs,}
-\DoxyCodeLine{512                                 \textcolor{keyword}{const} std::vector<Eigen::Index>\& redundancy\_capable\_joints)}
-\DoxyCodeLine{513 \{}
-\DoxyCodeLine{514   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} pi = FloatType(M\_PI);}
-\DoxyCodeLine{515   \textcolor{keyword}{const} \textcolor{keyword}{static} \textcolor{keyword}{auto} two\_pi = FloatType(2.0 * M\_PI);}
-\DoxyCodeLine{516 }
-\DoxyCodeLine{517   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& i : redundancy\_capable\_joints)}
-\DoxyCodeLine{518   \{}
-\DoxyCodeLine{519     FloatType diff = std::fmod(qs[i] + pi, two\_pi);}
-\DoxyCodeLine{520     qs[i] = (diff < 0) ? (diff + pi) : (diff -\/ pi);}
-\DoxyCodeLine{521   \}}
-\DoxyCodeLine{522 \}}
-\DoxyCodeLine{523 }
-\DoxyCodeLine{524 \}  \textcolor{comment}{// namespace tesseract\_kinematics}}
-\DoxyCodeLine{525 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_KINEMATICS\_UTILS\_H}}
+\DoxyCodeLine{505 \}  \textcolor{comment}{// namespace tesseract\_kinematics}}
+\DoxyCodeLine{506 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// TESSERACT\_KINEMATICS\_UTILS\_H}}
 
 \end{DoxyCode}

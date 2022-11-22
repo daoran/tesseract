@@ -24,7 +24,7 @@
 \DoxyCodeLine{50     std::string file\_path = \mbox{\hyperlink{namespacetesseract__common_a58ecad04db85855fa9e4de21084598ca}{tesseract\_common::getTempPath}}() + typename\_string + \textcolor{stringliteral}{"{}.xml"{}};}
 \DoxyCodeLine{51     EXPECT\_TRUE(tesseract\_common::Serialization::toArchiveFileXML<SerializableType>(\textcolor{keywordtype}{object}, file\_path));}
 \DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{keyword}{auto} nobject = tesseract\_common::Serialization::fromArchiveFileXML<SerializableType>(file\_path);}
+\DoxyCodeLine{53     SerializableType nobject\{ tesseract\_common::Serialization::fromArchiveFileXML<SerializableType>(file\_path) \};}
 \DoxyCodeLine{54     EXPECT\_FALSE(\textcolor{keywordtype}{object} != nobject);  \textcolor{comment}{// Using != because it call == for code coverage}}
 \DoxyCodeLine{55   \}}
 \DoxyCodeLine{56 }
@@ -32,7 +32,7 @@
 \DoxyCodeLine{58     std::string file\_path = \mbox{\hyperlink{namespacetesseract__common_a58ecad04db85855fa9e4de21084598ca}{tesseract\_common::getTempPath}}() + typename\_string + \textcolor{stringliteral}{"{}.binary"{}};}
 \DoxyCodeLine{59     EXPECT\_TRUE(tesseract\_common::Serialization::toArchiveFileBinary<SerializableType>(\textcolor{keywordtype}{object}, file\_path));}
 \DoxyCodeLine{60 }
-\DoxyCodeLine{61     \textcolor{keyword}{auto} nobject = tesseract\_common::Serialization::fromArchiveFileBinary<SerializableType>(file\_path);}
+\DoxyCodeLine{61     SerializableType nobject\{ tesseract\_common::Serialization::fromArchiveFileBinary<SerializableType>(file\_path) \};}
 \DoxyCodeLine{62     EXPECT\_FALSE(\textcolor{keywordtype}{object} != nobject);  \textcolor{comment}{// Using != because it call == for code coverage}}
 \DoxyCodeLine{63   \}}
 \DoxyCodeLine{64 }
@@ -41,7 +41,7 @@
 \DoxyCodeLine{67         tesseract\_common::Serialization::toArchiveStringXML<SerializableType>(\textcolor{keywordtype}{object}, typename\_string);}
 \DoxyCodeLine{68     EXPECT\_FALSE(object\_string.empty());}
 \DoxyCodeLine{69 }
-\DoxyCodeLine{70     \textcolor{keyword}{auto} nobject = tesseract\_common::Serialization::fromArchiveStringXML<SerializableType>(object\_string);}
+\DoxyCodeLine{70     SerializableType nobject\{ tesseract\_common::Serialization::fromArchiveStringXML<SerializableType>(object\_string) \};}
 \DoxyCodeLine{71     EXPECT\_FALSE(\textcolor{keywordtype}{object} != nobject);  \textcolor{comment}{// Using != because it call == for code coverage}}
 \DoxyCodeLine{72   \}}
 \DoxyCodeLine{73 \}}

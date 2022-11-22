@@ -108,8 +108,6 @@ bool \mbox{\hyperlink{namespacetesseract__kinematics_ae2bebd951f959b4c39b06dc7b3
 \begin{DoxyCompactList}\small\item\em Kinematics only return solution between PI and -\/PI. Provided the limits it will append redundant solutions. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Float\+Type $>$ }\\bool \mbox{\hyperlink{namespacetesseract__kinematics_a2f74af65eeb166856e00a64254da7ee8}{is\+Valid}} (const std\+::array$<$ Float\+Type, 6 $>$ \&qs)
 \begin{DoxyCompactList}\small\item\em Given a vector of floats, this check if they are finite. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Float\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}{harmonize\+Toward\+Zero}} (Eigen\+::\+Ref$<$ \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}$<$ Float\+Type $>$ $>$ qs)
-\begin{DoxyCompactList}\small\item\em This take an array of floats and modifies them in place to be between \mbox{[}-\/PI, PI\mbox{]}. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Float\+Type $>$ }\\void \mbox{\hyperlink{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}{harmonize\+Toward\+Zero}} (Eigen\+::\+Ref$<$ \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}$<$ Float\+Type $>$ $>$ qs, const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&redundancy\+\_\+capable\+\_\+joints)
 \begin{DoxyCompactList}\small\item\em This take an array of floats and modifies them in place to be between \mbox{[}-\/PI, PI\mbox{]}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacetesseract__kinematics_ad7331d401c8c7f0780dcd728e77b64d9}{check\+Kinematics}} (const \mbox{\hyperlink{classtesseract__kinematics_1_1KinematicGroup}{Kinematic\+Group}} \&manip, double tol=1e-\/3)
@@ -308,28 +306,10 @@ void tesseract\+\_\+kinematics\+::get\+Redundant\+Solutions\+Helper (\begin{Doxy
 
 This a recursive function for calculating all permutations of the redundant solutions. 
 
-This should not be used directly, use get\+Redundant\+Solutions function. \mbox{\Hypertarget{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}\label{namespacetesseract__kinematics_a8269b58a5907ee0bb90b4fd3d3a937c3}} 
+This should not be used directly, use get\+Redundant\+Solutions function. \mbox{\Hypertarget{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}\label{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}} 
 \index{tesseract\_kinematics@{tesseract\_kinematics}!harmonizeTowardZero@{harmonizeTowardZero}}
 \index{harmonizeTowardZero@{harmonizeTowardZero}!tesseract\_kinematics@{tesseract\_kinematics}}
-\doxysubsubsection{\texorpdfstring{harmonizeTowardZero()}{harmonizeTowardZero()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
-void tesseract\+\_\+kinematics\+::harmonize\+Toward\+Zero (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}$<$ Float\+Type $>$ $>$}]{qs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-This take an array of floats and modifies them in place to be between \mbox{[}-\/PI, PI\mbox{]}. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em qs} & A pointer to a float array \\
-\hline
-{\em dof} & The length of the float array \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}\label{namespacetesseract__kinematics_a51971caada7d5330a60765fd1a83cda1}} 
-\index{tesseract\_kinematics@{tesseract\_kinematics}!harmonizeTowardZero@{harmonizeTowardZero}}
-\index{harmonizeTowardZero@{harmonizeTowardZero}!tesseract\_kinematics@{tesseract\_kinematics}}
-\doxysubsubsection{\texorpdfstring{harmonizeTowardZero()}{harmonizeTowardZero()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{harmonizeTowardZero()}{harmonizeTowardZero()}}
 {\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
 void tesseract\+\_\+kinematics\+::harmonize\+Toward\+Zero (\begin{DoxyParamCaption}\item[{Eigen\+::\+Ref$<$ \mbox{\hyperlink{namespacetesseract__kinematics_a59d7ac70f855c7d00848b703e6bcfe9a}{VectorX}}$<$ Float\+Type $>$ $>$}]{qs,  }\item[{const \mbox{\hyperlink{vhacdRaycastMesh_8cpp_adcf134d50025cc52907d0c8ac798d89d}{std\+::vector}}$<$ Eigen\+::\+Index $>$ \&}]{redundancy\+\_\+capable\+\_\+joints }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
