@@ -10,69 +10,38 @@ on:
   workflow_dispatch:
 
 jobs:
-  industrial_ci:
+  ci:
     if: contains(github.event.pull_request.labels.*.name, 'check-tesseract-ros') || github.event.schedule == true
-    name: ${{ matrix.env.CI_NAME }}
+    name: ${{ matrix.distro }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        env:
-          - {CI_NAME: Bionic-Build-Nightly,
-             OS_NAME: ubuntu,
-             OS_CODE_NAME: bionic,
-             ROS_DISTRO: melodic,
-             ROS_REPO: main,
-             UPSTREAM_WORKSPACE: 'dependencies.rosinstall',
-             DOWNSTREAM_WORKSPACE: 'github:ros-industrial-consortium/tesseract_planning#master github:ros-industrial-consortium/trajopt_ros#master github:ros-industrial-consortium/tesseract_ros#master',
-             ROSDEP_SKIP_KEYS: "bullet ros_industrial_cmake_boilerplate fcl iwyu",
-             DOCKER_IMAGE: "rosindustrial/tesseract:melodic",
-             CCACHE_DIR: "/home/runner/work/tesseract/tesseract/Bionic-Build-Nightly/.ccache",
-             PARALLEL_TESTS: false,
-             UPSTREAM_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release",
-             TARGET_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release",
-             DOWNSTREAM_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release"}
-          - {CI_NAME: Focal-Build-Nightly,
-             OS_NAME: ubuntu,
-             OS_CODE_NAME: focal,
-             ROS_DISTRO: noetic,
-             ROS_REPO: main,
-             UPSTREAM_WORKSPACE: 'dependencies.rosinstall',
-             DOWNSTREAM_WORKSPACE: 'github:ros-industrial-consortium/tesseract_planning#master github:ros-industrial-consortium/trajopt_ros#master github:ros-industrial-consortium/tesseract_ros#master',
-             ROSDEP_SKIP_KEYS: "bullet fcl ompl orocos_kdl python-numpy ifopt python descartes_opw descartes_samplers descartes_light opw_kinematics ros_industrial_cmake_boilerplate iwyu taskflow",
-             DOCKER_IMAGE: "rosindustrial/tesseract:noetic",
-             CCACHE_DIR: "/home/runner/work/tesseract/tesseract/Focal-Build-Nightly/.ccache",
-             UPSTREAM_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release",
-             TARGET_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release",
-             DOWNSTREAM_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release"}
-
+        distro: [focal, jammy]
+    container:
+      image: ubuntu:${{ matrix.distro }}
+      env:
+        CCACHE_DIR: "$GITHUB_WORKSPACE/${{ matrix.distro }}/.ccache"
+        DEBIAN_FRONTEND: noninteractive
+        TZ: Etc/UTC
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Free Disk Space
-        continue-on-error: true
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
-          df -h
-
-      - name: Prepare ccache timestamp
-        id: ccache_cache_timestamp
-        shell: cmake -P {0}
-        run: |
-          string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
-          message("::set-output name=timestamp::${current_date}")
-
-      - name: ccache cache files
-        continue-on-error: true
-        uses: actions/cache@v1.1.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          path: ${{ matrix.env.CI_NAME }}/.ccache
-          key: ${{ matrix.env.CI_NAME }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
-          restore-keys: |
-            ${{ matrix.env.CI_NAME }}-ccache-
+          path: target_ws/src
 
-      - uses: 'ros-industrial/industrial_ci@master'
-        env: ${{matrix.env}}
+      - name: Install Depends
+        shell: bash
+        run: |
+          apt update
+          apt upgrade -y
+          apt install -y liboctomap-dev
+
+      - name: Build and Tests
+        uses: tesseract-robotics/colcon-action@v1
+        with:
+          ccache-prefix: ${{ matrix.distro }}
+          vcs-file: dependencies.repos
+          upstream-args: --cmake-args -DCMAKE_BUILD_TYPE=Release
+          target-path: target_ws/src
+          target-args: --cmake-args -DCMAKE_BUILD_TYPE=Debug -DTESSERACT_ENABLE_TESTING=ON

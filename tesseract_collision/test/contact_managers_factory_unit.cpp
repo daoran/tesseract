@@ -30,13 +30,19 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_collision/core/contact_managers_plugin_factory.h>
+#include <tesseract_collision/core/discrete_contact_manager.h>
+#include <tesseract_collision/core/continuous_contact_manager.h>
+#include <tesseract_common/yaml_utils.h>
+#include <tesseract_common/resource_locator.h>
 
 using namespace tesseract_collision;
 
 void runContactManagersFactoryTest(const tesseract_common::fs::path& config_path)
 {
-  ContactManagersPluginFactory factory(config_path);
-  YAML::Node plugin_config = YAML::LoadFile(config_path.string());
+  tesseract_common::GeneralResourceLocator locator;
+  ContactManagersPluginFactory factory(config_path, locator);
+  YAML::Node plugin_config =
+      tesseract_common::processYamlIncludeDirective(YAML::LoadFile(config_path.string()), locator);
 
   const YAML::Node& plugin_info = plugin_config["contact_manager_plugins"];
   const YAML::Node& search_paths = plugin_info["search_paths"];
@@ -150,8 +156,9 @@ TEST(TesseractContactManagersFactoryUnit, LoadStringPluginTest)  // NOLINT
                                 BulletCastSimpleManager:
                                   class: BulletCastSimpleManagerFactory)";
 
-  ContactManagersPluginFactory factory(config);
-  YAML::Node plugin_config = YAML::Load(config);
+  tesseract_common::GeneralResourceLocator locator;
+  ContactManagersPluginFactory factory(config, locator);
+  YAML::Node plugin_config = tesseract_common::loadYamlString(config, locator);
 
   const YAML::Node& plugin_info = plugin_config["contact_manager_plugins"];
   const YAML::Node& search_paths = plugin_info["search_paths"];
@@ -209,6 +216,8 @@ TEST(TesseractContactManagersFactoryUnit, PluginFactorAPIUnit)  // NOLINT
   EXPECT_EQ(factory.getContinuousContactManagerPlugins().size(), 0);
   EXPECT_ANY_THROW(factory.getDefaultDiscreteContactManagerPlugin());    // NOLINT
   EXPECT_ANY_THROW(factory.getDefaultContinuousContactManagerPlugin());  // NOLINT
+  EXPECT_FALSE(factory.hasDiscreteContactManagerPlugins());
+  EXPECT_FALSE(factory.hasContinuousContactManagerPlugins());
 
   factory.addSearchPath("/usr/local/lib");
   EXPECT_EQ(factory.getSearchPaths().size(), 2);
@@ -226,6 +235,7 @@ TEST(TesseractContactManagersFactoryUnit, PluginFactorAPIUnit)  // NOLINT
     pi.class_name = "TestDiscreteManagerFactory";
     factory.addDiscreteContactManagerPlugin("TestDiscreteManager", pi);
     EXPECT_EQ(factory.getDiscreteContactManagerPlugins().size(), 1);
+    EXPECT_TRUE(factory.hasDiscreteContactManagerPlugins());
 
     map = factory.getDiscreteContactManagerPlugins();
     EXPECT_TRUE(map.find("TestDiscreteManager") != map.end());
@@ -235,6 +245,7 @@ TEST(TesseractContactManagersFactoryUnit, PluginFactorAPIUnit)  // NOLINT
     pi2.class_name = "Test2DiscreteManagerFactory";
     factory.addDiscreteContactManagerPlugin("Test2DiscreteManager", pi2);
     EXPECT_EQ(factory.getDiscreteContactManagerPlugins().size(), 2);
+    EXPECT_TRUE(factory.hasDiscreteContactManagerPlugins());
 
     map = factory.getDiscreteContactManagerPlugins();
     EXPECT_TRUE(map.find("Test2DiscreteManager") != map.end());
@@ -262,6 +273,7 @@ TEST(TesseractContactManagersFactoryUnit, PluginFactorAPIUnit)  // NOLINT
     pi.class_name = "TestContinuousManagerFactory";
     factory.addContinuousContactManagerPlugin("TestContinuousManager", pi);
     EXPECT_EQ(factory.getContinuousContactManagerPlugins().size(), 1);
+    EXPECT_TRUE(factory.hasContinuousContactManagerPlugins());
 
     map = factory.getContinuousContactManagerPlugins();
     EXPECT_TRUE(map.find("TestContinuousManager") != map.end());
@@ -271,6 +283,7 @@ TEST(TesseractContactManagersFactoryUnit, PluginFactorAPIUnit)  // NOLINT
     pi2.class_name = "Test2ContinuousManagerFactory";
     factory.addContinuousContactManagerPlugin("Test2ContinuousManager", pi2);
     EXPECT_EQ(factory.getContinuousContactManagerPlugins().size(), 2);
+    EXPECT_TRUE(factory.hasContinuousContactManagerPlugins());
 
     map = factory.getContinuousContactManagerPlugins();
     EXPECT_TRUE(map.find("Test2ContinuousManager") != map.end());
@@ -310,8 +323,9 @@ TEST(TesseractContactManagersFactoryUnit, LoadOnlyDiscretePluginTest)  // NOLINT
                                 FCLDiscreteBVHManager:
                                   class: FCLDiscreteBVHManagerFactory)";
 
-  ContactManagersPluginFactory factory(config);
-  YAML::Node plugin_config = YAML::Load(config);
+  tesseract_common::GeneralResourceLocator locator;
+  ContactManagersPluginFactory factory(config, locator);
+  YAML::Node plugin_config = tesseract_common::loadYamlString(config, locator);
 
   const YAML::Node& plugin_info = plugin_config["contact_manager_plugins"];
   const YAML::Node& search_paths = plugin_info["search_paths"];
@@ -364,8 +378,9 @@ TEST(TesseractContactManagersFactoryUnit, LoadOnlyContinuousPluginTest)  // NOLI
                                 BulletCastSimpleManager:
                                   class: BulletCastSimpleManagerFactory)";
 
-  ContactManagersPluginFactory factory(config);
-  YAML::Node plugin_config = YAML::Load(config);
+  tesseract_common::GeneralResourceLocator locator;
+  ContactManagersPluginFactory factory(config, locator);
+  YAML::Node plugin_config = tesseract_common::loadYamlString(config, locator);
 
   const YAML::Node& plugin_info = plugin_config["contact_manager_plugins"];
   const YAML::Node& search_paths = plugin_info["search_paths"];

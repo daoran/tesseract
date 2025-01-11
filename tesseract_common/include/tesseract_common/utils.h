@@ -30,18 +30,23 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <array>
 #include <vector>
+#include <set>
 #include <string>
 #include <sstream>
 #include <stdexcept>
 #include <random>
-#include <iomanip>
 #include <Eigen/Core>
-#include <iostream>
-#include <tinyxml2.h>
+#include <Eigen/Geometry>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/allowed_collision_matrix.h>
-#include <tesseract_common/types.h>
+#include <tesseract_common/filesystem.h>
+
+namespace tinyxml2
+{
+class XMLElement;
+class XMLAttribute;
+}  // namespace tinyxml2
 
 namespace tesseract_common
 {
@@ -117,34 +122,39 @@ Eigen::VectorXd concat(const Eigen::VectorXd& a, const Eigen::VectorXd& b);
 Eigen::Vector3d calcRotationalError(const Eigen::Ref<const Eigen::Matrix3d>& R);
 
 /**
- * @brief Calculate the rotation error vector given a rotation error matrix where the angle is between [0, 2 * pi]
- * @details This function does not break down when the angle is near zero or 2pi when calculating the numerical
- * jacobian. This is because when using Eigen's angle axis it converts the angle to be between [0, PI] where internally
- * if the angle is between [-PI, 0] it flips the sign of the axis. Both this function and calcRotationalError both check
- * for this flip and reverts it. Since the angle is always between [-PI, PI], switching the range to [0, PI] will
- * never be close to 2PI. In the case of zero, it also does not break down because we are making sure that the angle
- * axis aligns with the quaternion axis eliminating this issue. As you can see the quaternion keeps the angle small but
- * flips the axis so the correct delta rotation is calculated.
- *
- * Angle: 0.001 results in an axis: [0, 0, 1]
- * Angle: -0.001 results in and axis: [0, 0, -1]
- * e1 = angle * axis = [0, 0, 0.001]
- * e2 = angle * axis = [0, 0, -0.001]
- * delta = e2 - e1 = [0, 0, 0.002]
- *
- * @details This should be used when numerically calculating rotation jacobians
- * @param R rotation error matrix
- * @return Rotation error vector = Eigen::AngleAxisd.axis() * Eigen::AngleAxisd.angle()
- */
-Eigen::Vector3d calcRotationalError2(const Eigen::Ref<const Eigen::Matrix3d>& R);
-
-/**
  * @brief Calculate error between two transforms expressed in t1 coordinate system
+ * @warning This should not be used to calculate numerical jacobian, see calcJacobianTransformErrorDiff
  * @param t1 Target Transform
  * @param t2 Current Transform
- * @return error [Position, Rotational(Angle Axis)]
+ * @return error [Position, calcRotationalError(Angle Axis)]
  */
 Eigen::VectorXd calcTransformError(const Eigen::Isometry3d& t1, const Eigen::Isometry3d& t2);
+
+/**
+ * @brief Calculate jacobian transform error difference expressed in the target frame coordinate system
+ * @details This is used when the target is a fixed frame in the environment
+ * @param target Target The desired transform to express the transform error difference in
+ * @param source The current location of the source transform
+ * @param source_perturbed The perturbed location of the source transform
+ * @return The change in error represented in the target frame
+ */
+Eigen::VectorXd calcJacobianTransformErrorDiff(const Eigen::Isometry3d& target,
+                                               const Eigen::Isometry3d& source,
+                                               const Eigen::Isometry3d& source_perturbed);
+
+/**
+ * @brief Calculate jacobian transform error difference expressed in the target frame coordinate system
+ * @details This is used when the target and source are both dynamic links
+ * @param target Target The desired transform to express the transform error difference in
+ * @param target_perturbed The perturbed location of the target transform
+ * @param source The current location of the source transform
+ * @param source_perturbed The perturbed location of the source transform
+ * @return The change in error represented in the target frame
+ */
+Eigen::VectorXd calcJacobianTransformErrorDiff(const Eigen::Isometry3d& target,
+                                               const Eigen::Isometry3d& target_perturbed,
+                                               const Eigen::Isometry3d& source,
+                                               const Eigen::Isometry3d& source_perturbed);
 
 /**
  * @brief This computes a random color RGBA [0, 1] with alpha set to 1
@@ -360,7 +370,7 @@ void reorder(Eigen::Ref<Eigen::VectorXd> v, std::vector<Eigen::Index> order);
  * @param value The value to update from the xml element
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE
  */
-tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLElement* xml_element, std::string& value);
+int QueryStringValue(const tinyxml2::XMLElement* xml_element, std::string& value);
 
 /**
  * @brief Query a string Text from xml element
@@ -368,7 +378,7 @@ tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLElement* xml_element, std
  * @param test The value to update from the xml element
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE
  */
-tinyxml2::XMLError QueryStringText(const tinyxml2::XMLElement* xml_element, std::string& text);
+int QueryStringText(const tinyxml2::XMLElement* xml_element, std::string& text);
 
 /**
  * @brief Query a string value from xml attribute
@@ -376,7 +386,7 @@ tinyxml2::XMLError QueryStringText(const tinyxml2::XMLElement* xml_element, std:
  * @param value The value to update from the xml attribute
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_WRONG_ATTRIBUTE_TYPE
  */
-tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute, std::string& value);
+int QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute, std::string& value);
 
 /**
  * @brief Query a string attribute from an xml element
@@ -386,7 +396,7 @@ tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute,
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE or
  * tinyxml2::XML_WRONG_ATTRIBUTE_TYPE
  */
-tinyxml2::XMLError QueryStringAttribute(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value);
+int QueryStringAttribute(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value);
 
 /**
  * @brief Get string attribute if exist. If it does not exist it returns the default value.
@@ -409,9 +419,7 @@ std::string StringAttribute(const tinyxml2::XMLElement* xml_element, const char*
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE or
  * tinyxml2::XML_WRONG_ATTRIBUTE_TYPE
  */
-tinyxml2::XMLError QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_element,
-                                                const char* name,
-                                                std::string& value);
+int QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value);
 
 /**
  * @brief Query a double attribute from an xml element and print error log
@@ -425,9 +433,7 @@ tinyxml2::XMLError QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE or
  * tinyxml2::XML_WRONG_ATTRIBUTE_TYPE
  */
-tinyxml2::XMLError QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_element,
-                                                const char* name,
-                                                double& value);
+int QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, double& value);
 
 /**
  * @brief Query a int attribute from an xml element and print error log
@@ -441,7 +447,7 @@ tinyxml2::XMLError QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_
  * @return tinyxml2::XML_SUCCESS if successful, otherwise returns tinyxml2::XML_NO_ATTRIBUTE or
  * tinyxml2::XML_WRONG_ATTRIBUTE_TYPE
  */
-tinyxml2::XMLError QueryIntAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, int& value);
+int QueryIntAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, int& value);
 
 /**
  * @brief Check if two double are relatively equal

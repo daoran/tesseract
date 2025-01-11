@@ -1,5 +1,4 @@
 find_package(benchmark REQUIRED)
-find_package(tesseract_support REQUIRED)
 
 macro(add_benchmark benchmark_name benchmark_file)
   add_executable(${benchmark_name} ${benchmark_file})
@@ -14,7 +13,6 @@ macro(add_benchmark benchmark_name benchmark_file)
     benchmark::benchmark
     ${PROJECT_NAME}
     tesseract::tesseract_urdf
-    tesseract::tesseract_support
     console_bridge
     ${Boost_LIBRARIES})
   target_include_directories(${benchmark_name} PRIVATE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
@@ -23,3 +21,5 @@ macro(add_benchmark benchmark_name benchmark_file)
 endmacro()
 
 add_benchmark(${PROJECT_NAME}_clone_benchmark environment_clone_benchmarks.cpp)
+add_benchmark(${PROJECT_NAME}_check_trajectory check_trajectory_benchmarks.cpp)
+add_benchmark(${PROJECT_NAME}_kinematics kinematics_benchmarks.cpp)

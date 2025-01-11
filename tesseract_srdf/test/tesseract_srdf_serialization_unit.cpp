@@ -34,7 +34,9 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 #include <tesseract_common/utils.h>
 #include <tesseract_srdf/kinematics_information.h>
 #include <tesseract_srdf/srdf_model.h>
-#include <tesseract_support/tesseract_support_resource_locator.h>
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/link.h>
+#include <tesseract_scene_graph/joint.h>
 
 using namespace tesseract_common;
 using namespace tesseract_scene_graph;
@@ -76,7 +78,7 @@ SceneGraph getSceneGraph()
   joint_2.parent_link_name = "link_1";
   joint_2.child_link_name = "link_2";
   joint_2.type = JointType::REVOLUTE;
-  joint_2.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_2.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_2));
 
   Joint joint_3("joint_a3");
@@ -84,7 +86,7 @@ SceneGraph getSceneGraph()
   joint_3.parent_link_name = "link_2";
   joint_3.child_link_name = "link_3";
   joint_3.type = JointType::REVOLUTE;
-  joint_3.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_3.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_3));
 
   Joint joint_4("joint_a4");
@@ -92,7 +94,7 @@ SceneGraph getSceneGraph()
   joint_4.parent_link_name = "link_3";
   joint_4.child_link_name = "link_4";
   joint_4.type = JointType::REVOLUTE;
-  joint_4.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_4.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_4));
 
   Joint joint_5("joint_a5");
@@ -100,7 +102,7 @@ SceneGraph getSceneGraph()
   joint_5.parent_link_name = "link_4";
   joint_5.child_link_name = "link_5";
   joint_5.type = JointType::REVOLUTE;
-  joint_5.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_5.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_5));
 
   Joint joint_6("joint_a6");
@@ -108,7 +110,7 @@ SceneGraph getSceneGraph()
   joint_6.parent_link_name = "link_5";
   joint_6.child_link_name = "link_6";
   joint_6.type = JointType::REVOLUTE;
-  joint_6.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_6.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_6));
 
   Joint joint_7("joint_a7");
@@ -116,7 +118,7 @@ SceneGraph getSceneGraph()
   joint_7.parent_link_name = "link_6";
   joint_7.child_link_name = "link_7";
   joint_7.type = JointType::REVOLUTE;
-  joint_7.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10);
+  joint_7.limits = std::make_shared<JointLimits>(-7, 7, 0, 5, 10, 20);
   EXPECT_TRUE(g.addJoint(joint_7));
 
   Joint joint_tool0("joint_tool0");
@@ -128,10 +130,9 @@ SceneGraph getSceneGraph()
   return g;
 }
 
-SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph)
+SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph, const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/lbr_iiwa_14_r820.srdf";
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = locator.locateResource("package://tesseract_support/urdf/lbr_iiwa_14_r820.srdf")->getFilePath();
 
   auto srdf = std::make_shared<SRDFModel>();
   srdf->initFile(scene_graph, path, locator);
@@ -141,17 +142,18 @@ SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph)
 
 TEST(TesseractSRDFSerializeUnit, KinematicsInformation)  // NOLINT
 {
+  GeneralResourceLocator locator;
   auto graph = getSceneGraph();
-  auto srdf = getSRDFModel(graph);
+  auto srdf = getSRDFModel(graph, locator);
 
   tesseract_common::testSerialization<KinematicsInformation>(srdf->kinematics_information, "KinematicsInformation");
 }
 
 TEST(TesseractSRDFSerializeUnit, SRDFModel)  // NOLINT
 {
-  TesseractSupportResourceLocator locator;
+  GeneralResourceLocator locator;
   auto graph = getSceneGraph();
-  auto srdf = getSRDFModel(graph);
+  auto srdf = getSRDFModel(graph, locator);
 
   tesseract_common::testSerialization<SRDFModel>(*srdf, "SRDFModel");
 }

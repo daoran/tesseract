@@ -24,7 +24,15 @@
  * limitations under the License.
  */
 
+#include <tesseract_common/macros.h>
+TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
+#include <console_bridge/console.h>
+TESSERACT_COMMON_IGNORE_WARNINGS_POP
+
 #include <tesseract_kinematics/kdl/kdl_utils.h>
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/joint.h>
+#include <tesseract_scene_graph/kdl_parser.h>
 
 namespace tesseract_kinematics
 {
@@ -43,8 +51,6 @@ void KDLToEigen(const KDL::Frame& frame, Eigen::Isometry3d& transform)
 
 void EigenToKDL(const Eigen::Isometry3d& transform, KDL::Frame& frame)
 {
-  frame.Identity();
-
   for (int i = 0; i < 3; ++i)
     frame.p[i] = transform(i, 3);
 
@@ -108,6 +114,8 @@ bool parseSceneGraph(KDLChainData& results,
 
   results.joint_names.clear();
   results.joint_names.resize(results.robot_chain.getNrOfJoints());
+  results.q_min.resize(results.robot_chain.getNrOfJoints());
+  results.q_max.resize(results.robot_chain.getNrOfJoints());
 
   results.segment_index.clear();
   results.segment_index[results.base_link_name] = 0;
@@ -128,6 +136,27 @@ bool parseSceneGraph(KDLChainData& results,
 
     results.joint_names[j] = jnt.getName();
 
+    auto joint = scene_graph.getJoint(results.joint_names[j]);
+    double lower = std::numeric_limits<float>::lowest();
+    double upper = std::numeric_limits<float>::max();
+    // Does the joint have limits?
+    if (joint->type != tesseract_scene_graph::JointType::CONTINUOUS)
+    {
+      if (joint->safety)
+      {
+        lower = std::max(joint->limits->lower, joint->safety->soft_lower_limit);
+        upper = std::min(joint->limits->upper, joint->safety->soft_upper_limit);
+      }
+      else
+      {
+        lower = joint->limits->lower;
+        upper = joint->limits->upper;
+      }
+    }
+    // Assign limits
+    results.q_min(j) = lower;
+    results.q_max(j) = upper;
+
     ++j;
   }
 
@@ -143,4 +172,5 @@ bool parseSceneGraph(KDLChainData& results,
   chains.emplace_back(base_name, tip_name);
   return parseSceneGraph(results, scene_graph, chains);
 }
+
 }  // namespace tesseract_kinematics

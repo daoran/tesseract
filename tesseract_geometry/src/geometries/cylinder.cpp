@@ -27,7 +27,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -35,6 +34,13 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_geometry
 {
+Cylinder::Cylinder(double r, double l) : Geometry(GeometryType::CYLINDER), r_(r), l_(l) {}
+
+double Cylinder::getRadius() const { return r_; }
+double Cylinder::getLength() const { return l_; }
+
+Geometry::Ptr Cylinder::clone() const { return std::make_shared<Cylinder>(r_, l_); }
+
 bool Cylinder::operator==(const Cylinder& rhs) const
 {
   bool equal = true;

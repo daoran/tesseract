@@ -16,6 +16,22 @@ macro(tesseract_variables)
     set(BUILD_SHARED_LIBS ON)
   endif()
 
+  if(NOT DEFINED TESSERACT_PACKAGE_SOURCE_UPLOAD)
+    set(TESSERACT_PACKAGE_SOURCE_UPLOAD OFF)
+  endif()
+
+  if(NOT DEFINED TESSERACT_PACKAGE_SOURCE_DISTRIBUTIONS)
+    set(TESSERACT_PACKAGE_SOURCE_DISTRIBUTIONS focal jammy)
+  endif()
+
+  if(NOT DEFINED TESSERACT_PACKAGE_SOURCE_DPUT_HOST)
+    set(TESSERACT_PACKAGE_SOURCE_DPUT_HOST ppa:levi-armstrong/tesseract-robotics)
+  endif()
+
+  if(NOT DEFINED TESSERACT_PACKAGE_SOURCE_DEBIAN_INCREMENT)
+    set(TESSERACT_PACKAGE_SOURCE_DEBIAN_INCREMENT 0)
+  endif()
+
   if(NOT DEFINED TESSERACT_ENABLE_EXAMPLES)
     set(TESSERACT_ENABLE_EXAMPLES ON)
   endif()
@@ -64,7 +80,7 @@ macro(tesseract_variables)
           -Wsign-conversion
           -Wno-sign-compare
           -Wnon-virtual-dtor)
-      exec_program(uname ARGS -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
+      execute_process(COMMAND uname -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
       if(NOT
          CMAKE_SYSTEM_NAME2
          MATCHES
@@ -79,12 +95,13 @@ macro(tesseract_variables)
              "unknown")
         set(TESSERACT_COMPILE_OPTIONS_PUBLIC -mno-avx)
       endif()
-    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*")
       set(TESSERACT_COMPILE_OPTIONS_PRIVATE
           -Wall
           -Wextra
           -Wconversion
           -Wsign-conversion)
+      set(TESSERACT_COMPILE_DEFINITIONS "BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED")
       message(WARNING "Non-GNU compiler detected. If using AVX instructions, Eigen alignment issues may result.")
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
       set(TESSERACT_COMPILE_DEFINITIONS "_USE_MATH_DEFINES=ON")
@@ -101,7 +118,7 @@ macro(tesseract_variables)
           -Werror=sign-conversion
           -Wno-sign-compare
           -Werror=non-virtual-dtor)
-      exec_program(uname ARGS -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
+      execute_process(COMMAND uname -p OUTPUT_VARIABLE CMAKE_SYSTEM_NAME2)
       if(NOT
          CMAKE_SYSTEM_NAME2
          MATCHES
@@ -116,12 +133,13 @@ macro(tesseract_variables)
              "unknown")
         set(TESSERACT_COMPILE_OPTIONS_PUBLIC -mno-avx)
       endif()
-    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang.*")
       set(TESSERACT_COMPILE_OPTIONS_PRIVATE
           -Werror=all
           -Werror=extra
           -Werror=conversion
           -Werror=sign-conversion)
+      set(TESSERACT_COMPILE_DEFINITIONS "BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED")
       message(WARNING "Non-GNU compiler detected. If using AVX instructions, Eigen alignment issues may result.")
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
       set(TESSERACT_COMPILE_DEFINITIONS "_USE_MATH_DEFINES=ON")
@@ -132,65 +150,6 @@ macro(tesseract_variables)
   endif()
 
   set(TESSERACT_CXX_VERSION 17)
-endmacro()
-
-macro(tesseract_cpack)
-  set(oneValueArgs
-      VERSION
-      MAINTAINER
-      DESCRIPTION
-      LICENSE_FILE
-      README_FILE)
-  set(multiValueArgs LINUX_DEPENDS WINDOWS_DEPENDS)
-  cmake_parse_arguments(
-    ARG
-    ""
-    "${oneValueArgs}"
-    "${multiValueArgs}"
-    ${ARGN})
-
-  set(CPACK_PACKAGE_VENDOR "ROS-Industrial")
-  set(CPACK_RESOURCE_FILE_LICENSE ${ARG_LICENSE_FILE})
-  set(CPACK_RESOURCE_FILE_README ${ARG_README_FILE})
-  if(UNIX)
-    string(
-      REPLACE "_"
-              "-"
-              TESSERACT_PACKAGE_NAME
-              ${PROJECT_NAME})
-    set(CPACK_GENERATOR "DEB;TXZ")
-
-    if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
-      set(DEB_ARCH "amd64")
-    else()
-      set(DEB_ARCH ${CMAKE_SYSTEM_PROCESSOR})
-    endif()
-
-    set(CPACK_PACKAGE_FILE_NAME "${TESSERACT_PACKAGE_PREFIX}${TESSERACT_PACKAGE_NAME}_${DEB_ARCH}_linux_${ARG_VERSION}")
-    set(CPACK_DEBIAN_PACKAGE_NAME "${TESSERACT_PACKAGE_PREFIX}${TESSERACT_PACKAGE_NAME}")
-    set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE ${DEB_ARCH})
-    set(CPACK_DEBIAN_PACKAGE_MAINTAINER ${ARG_MAINTAINER})
-    set(CPACK_DEBIAN_PACKAGE_DESCRIPTION ${ARG_DESCRIPTION})
-    set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON)
-    string(
-      REPLACE ";"
-              ","
-              CPACK_DEBIAN_PACKAGE_DEPENDS
-              "${ARG_LINUX_DEPENDS}")
-  elseif(WIN32)
-    set(CPACK_GENERATOR "NuGet;TXZ")
-    set(CPACK_PACKAGE_FILE_NAME
-        "${TESSERACT_PACKAGE_PREFIX}${TESSERACT_PACKAGE_NAME}_${CMAKE_SYSTEM_PROCESSOR}_windows_${ARG_VERSION}")
-    set(CPACK_NUGET_PACKAGE_NAME
-        "${TESSERACT_PACKAGE_PREFIX}${TESSERACT_PACKAGE_NAME}_${CMAKE_SYSTEM_PROCESSOR}_windows")
-    set(CPACK_NUGET_PACKAGE_DESCRIPTION ${ARG_DESCRIPTION})
-    string(
-      REPLACE ";"
-              ","
-              CPACK_NUGET_PACKAGE_DEPENDENCIES
-              "${ARG_WINDOWS_DEPENDS}")
-  endif()
-  include(CPack)
 endmacro()
 
 macro(find_bullet)
@@ -207,29 +166,6 @@ macro(find_bullet)
     message(
       WARNING "Bullet does not appear to be build with double precision, current definitions: ${BULLET_DEFINITIONS}")
   endif()
-
-  # Some Bullet installations (vcpkg) use absolute paths instead of relative to BULLET_ROOT_DIR in the CMake vars
-  set(BULLET_INCLUDE_DIRS_ABS "")
-  set(BULLET_LIBRARY_DIRS_ABS "")
-  if(NOT IS_ABSOLUTE "${BULLET_INCLUDE_DIR}")
-    foreach(dir IN LISTS BULLET_INCLUDE_DIRS)
-      list(APPEND BULLET_INCLUDE_DIRS_ABS "${BULLET_ROOT_DIR}/${dir}")
-    endforeach()
-    foreach(dir IN LISTS BULLET_LIBRARY_DIRS)
-      list(APPEND BULLET_LIBRARY_DIRS_ABS "${BULLET_ROOT_DIR}/${dir}")
-    endforeach()
-  else()
-    set(BULLET_INCLUDE_DIRS_ABS ${BULLET_INCLUDE_DIRS})
-    set(BULLET_LIBRARY_DIRS_ABS ${BULLET_LIBRARY_DIRS})
-  endif()
-
-  set(BULLET_LIBRARIES_ABS "")
-  foreach(BULLET_LIB IN LISTS BULLET_LIBRARIES)
-    find_library(BULLET_LIB_ABS_${BULLET_LIB} ${BULLET_LIB} PATHS ${BULLET_LIBRARY_DIRS_ABS} NO_DEFAULT_PATH REQUIRED)
-    list(APPEND BULLET_LIBRARIES_ABS "${BULLET_LIB_ABS_${BULLET_LIB}}")
-    message(STATUS "BULLET_LIB=${BULLET_LIB} BULLET_LIB_ABS=${BULLET_LIB_ABS_${BULLET_LIB}}")
-  endforeach()
-  message(STATUS "BULLET_LIBRARIES_ABS=${BULLET_LIBRARIES_ABS}")
 
   set(BULLET_DEFINITIONS_STRIPED "")
   foreach(DEF ${BULLET_DEFINITIONS})
@@ -248,16 +184,56 @@ macro(find_bullet)
     endif()
   endforeach()
 
-  if(NOT TARGET Bullet3::Bullet)
-    add_library(Bullet3::Bullet INTERFACE IMPORTED)
-    set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${BULLET_INCLUDE_DIRS_ABS}")
-    set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_LINK_LIBRARIES "${BULLET_LIBRARIES_ABS}")
-    set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${BULLET_DEFINITIONS_STRIPED}")
-  endif()
+  if(TARGET Bullet3Common)
+    if(NOT TARGET Bullet3::Bullet)
+      add_library(Bullet3::Bullet INTERFACE IMPORTED)
+      if(NOT WIN32)
+        set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_LINK_LIBRARIES
+                                                         "BulletCollision;Bullet3Geometry;Bullet3Common;LinearMath")
+      else()
+        set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_LINK_LIBRARIES
+                                                         "BulletCollision;Bullet3Common;LinearMath")
+      endif()
 
-  find_library(HACD_LIBRARY HACD HINTS ${BULLET_LIBRARY_DIRS_ABS})
-  if(NOT HACD_LIBRARY)
-    message(
-      WARNING "HACD not found! Convex decomposition library will not be built. Install libbullet-extras-dev on Linux.")
+      set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${BULLET_DEFINITIONS_STRIPED}")
+    endif()
+  else()
+
+    # Some Bullet installations (vcpkg) use absolute paths instead of relative to BULLET_ROOT_DIR in the CMake vars
+    set(BULLET_INCLUDE_DIRS_ABS "")
+    set(BULLET_LIBRARY_DIRS_ABS "")
+    if(NOT IS_ABSOLUTE "${BULLET_INCLUDE_DIR}")
+      foreach(dir IN LISTS BULLET_INCLUDE_DIRS)
+        list(APPEND BULLET_INCLUDE_DIRS_ABS "${BULLET_ROOT_DIR}/${dir}")
+      endforeach()
+      foreach(dir IN LISTS BULLET_LIBRARY_DIRS)
+        list(APPEND BULLET_LIBRARY_DIRS_ABS "${BULLET_ROOT_DIR}/${dir}")
+      endforeach()
+    else()
+      set(BULLET_INCLUDE_DIRS_ABS ${BULLET_INCLUDE_DIRS})
+      set(BULLET_LIBRARY_DIRS_ABS ${BULLET_LIBRARY_DIRS})
+    endif()
+
+    set(BULLET_LIBRARIES_ABS "")
+    foreach(BULLET_LIB IN LISTS BULLET_LIBRARIES)
+      find_library(BULLET_LIB_ABS_${BULLET_LIB} ${BULLET_LIB} PATHS ${BULLET_LIBRARY_DIRS_ABS} NO_DEFAULT_PATH REQUIRED)
+      list(APPEND BULLET_LIBRARIES_ABS "${BULLET_LIB_ABS_${BULLET_LIB}}")
+      message(STATUS "BULLET_LIB=${BULLET_LIB} BULLET_LIB_ABS=${BULLET_LIB_ABS_${BULLET_LIB}}")
+    endforeach()
+    message(STATUS "BULLET_LIBRARIES_ABS=${BULLET_LIBRARIES_ABS}")
+
+    if(NOT TARGET Bullet3::Bullet)
+      add_library(Bullet3::Bullet INTERFACE IMPORTED)
+      set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${BULLET_INCLUDE_DIRS_ABS}")
+      set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_LINK_LIBRARIES "${BULLET_LIBRARIES_ABS}")
+      set_target_properties(Bullet3::Bullet PROPERTIES INTERFACE_COMPILE_DEFINITIONS "${BULLET_DEFINITIONS_STRIPED}")
+    endif()
+
+    find_library(HACD_LIBRARY HACD HINTS ${BULLET_LIBRARY_DIRS_ABS})
+    if(NOT HACD_LIBRARY)
+      message(
+        WARNING "HACD not found! Convex decomposition library will not be built. Install libbullet-extras-dev on Linux."
+      )
+    endif()
   endif()
 endmacro()

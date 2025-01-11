@@ -27,20 +27,17 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
+#include <tesseract_common/serialization.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_geometry/geometry.h>
 
 namespace tesseract_geometry
 {
-bool Geometry::operator==(const Geometry& rhs) const
-{
-  bool equal = true;
-  equal &= type_ == rhs.type_;
-  return equal;
-}
-bool Geometry::operator!=(const Geometry& rhs) const { return !operator==(rhs); }
+Geometry::Geometry(GeometryType type) : type_(type) {}
+
+bool Geometry::operator==(const Geometry& rhs) const { return (type_ == rhs.type_); }
+bool Geometry::operator!=(const Geometry& rhs) const { return !operator==(rhs); }  // LCOV_EXCL_LINE
 
 template <class Archive>
 void Geometry::serialize(Archive& ar, const unsigned int /*version*/)
@@ -49,5 +46,5 @@ void Geometry::serialize(Archive& ar, const unsigned int /*version*/)
 }
 }  // namespace tesseract_geometry
 
-#include <tesseract_common/serialization.h>
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_geometry::Geometry)
+#include <tesseract_common/serialization.h>

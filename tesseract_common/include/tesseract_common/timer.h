@@ -1,6 +1,6 @@
 /**
  * @file timer.h
- * @brief Simple timer class using chrono
+ * @brief Simple timer class using chrono and thread
  *
  * @author Levi Armstrong
  * @date February 2, 2021
@@ -28,55 +28,40 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
+#include <iostream>
+#include <functional>
 #include <chrono>
+#include <thread>
+#include <atomic>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_common
 {
-/** @brief A simple timer class leveraging chrono high resolution clock */
+/** @brief A timer which calls a callback every interval on a separate thread */
 class Timer
 {
-  using Clock = std::chrono::high_resolution_clock;
-
 public:
-  /** @brief Start the timer */
-  void start()
-  {
-    start_time_ = Clock::now();
-    running_ = true;
-  }
+  Timer() = default;
+  ~Timer();
+  Timer(const Timer&) = delete;
+  Timer& operator=(const Timer&) = delete;
+  Timer(Timer&&) = delete;
+  Timer& operator=(Timer&&) = delete;
+
+  /**
+   * @brief Start the timer with a callback function and a std::chrono::duration interval
+   * @param callback The callback called every time the timer expires
+   * @param interval The interval at which the timer triggers
+   */
+  void start(const std::function<void()>& callback, std::chrono::steady_clock::duration interval);
 
   /** @brief Stop the timer */
-  void stop()
-  {
-    end_time_ = Clock::now();
-    running_ = false;
-  }
-
-  /**
-   * @brief Get the elapsed time in milliseconds
-   * @details If timer is actively running it will use Clock::now() as the end time
-   * @return The elapsed time in milliseconds
-   */
-  double elapsedMilliseconds() const
-  {
-    if (running_)
-      return std::chrono::duration<double, std::milli>(Clock::now() - start_time_).count();
-
-    return std::chrono::duration<double, std::milli>(end_time_ - start_time_).count();
-  }
-
-  /**
-   * @brief Get the elapsed time in seconds
-   * @details If timer is actively running it will use Clock::now() as the end time
-   * @return The elapsed time in seconds
-   */
-  double elapsedSeconds() const { return (elapsedMilliseconds() / 1000.0); }
+  void stop();
 
 private:
-  std::chrono::time_point<Clock> start_time_;
-  std::chrono::time_point<Clock> end_time_;
-  bool running_{ false };
+  std::atomic<bool> running_{ false };
+  std::thread timer_thread_;
 };
+
 }  // namespace tesseract_common
 #endif  // TESSERACT_COMMON_TIMER_H

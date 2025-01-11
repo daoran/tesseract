@@ -30,7 +30,7 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/array.hpp>
@@ -241,6 +241,16 @@ void serialize(Archive& ar, std::variant<std::string, Eigen::Isometry3d>& g, con
   split_free(ar, g, version);
 }
 
+/****************************************/
+/****** Eigen::Matrix<double, 6, 1> *****/
+/****************************************/
+
+template <class Archive>
+void serialize(Archive& ar, Eigen::Matrix<double, 6, 1>& g, const unsigned int /*version*/)
+{
+  ar& boost::serialization::make_nvp("data", boost::serialization::make_array(g.data(), 6));
+}
+
 }  // namespace boost::serialization
 
 #include <tesseract_common/serialization.h>
@@ -251,3 +261,4 @@ TESSERACT_SERIALIZE_SAVE_LOAD_FREE_ARCHIVES_INSTANTIATE(Eigen::VectorXi)
 TESSERACT_SERIALIZE_SAVE_LOAD_FREE_ARCHIVES_INSTANTIATE(Eigen::Isometry3d)
 TESSERACT_SERIALIZE_SAVE_LOAD_FREE_ARCHIVES_INSTANTIATE(Eigen::MatrixX2d)
 TESSERACT_SERIALIZE_SAVE_LOAD_FREE_ARCHIVES_INSTANTIATE(std::variant<std::string COMMA Eigen::Isometry3d>)
+TESSERACT_SERIALIZE_FREE_ARCHIVES_INSTANTIATE(Eigen::Matrix<double COMMA 6 COMMA 1>)

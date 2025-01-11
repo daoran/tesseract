@@ -27,7 +27,6 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -36,6 +35,16 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+ChangeLinkVisibilityCommand::ChangeLinkVisibilityCommand() : Command(CommandType::CHANGE_LINK_VISIBILITY) {}
+
+ChangeLinkVisibilityCommand::ChangeLinkVisibilityCommand(std::string link_name, bool enabled)
+  : Command(CommandType::CHANGE_LINK_VISIBILITY), link_name_(std::move(link_name)), enabled_(enabled)
+{
+}
+
+const std::string& ChangeLinkVisibilityCommand::getLinkName() const { return link_name_; }
+bool ChangeLinkVisibilityCommand::getEnabled() const { return enabled_; }
+
 bool ChangeLinkVisibilityCommand::operator==(const ChangeLinkVisibilityCommand& rhs) const
 {
   bool equal = true;

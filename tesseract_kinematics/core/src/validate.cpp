@@ -28,12 +28,12 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <Eigen/Geometry>
 #include <console_bridge/console.h>
-#include <algorithm>
 #include <sstream>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/utils.h>
 #include <tesseract_kinematics/core/validate.h>
+#include <tesseract_common/utils.h>
+#include <tesseract_kinematics/core/kinematic_group.h>
 
 namespace tesseract_kinematics
 {
@@ -118,6 +118,7 @@ bool checkKinematics(const KinematicGroup& manip, double tol)
     }
   }
 
+  // LCOV_EXCL_START
   if (!failed_data.empty())
   {
     CONSOLE_BRIDGE_logError("checkKinematics failed %d out of %d\n           Translation failures %d out of %d (max: "
@@ -168,6 +169,7 @@ bool checkKinematics(const KinematicGroup& manip, double tol)
     CONSOLE_BRIDGE_logError("%s", msg.str().c_str());
     return false;
   }
+  // LCOV_EXCL_STOP
 
   return true;
 }

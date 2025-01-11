@@ -26,14 +26,17 @@
 
 #include <tesseract_kinematics/core/rop_factory.h>
 #include <tesseract_kinematics/core/rop_inv_kin.h>
+#include <tesseract_kinematics/core/forward_kinematics.h>
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/joint.h>
 
 namespace tesseract_kinematics
 {
-InverseKinematics::UPtr ROPInvKinFactory::create(const std::string& solver_name,
-                                                 const tesseract_scene_graph::SceneGraph& scene_graph,
-                                                 const tesseract_scene_graph::SceneState& scene_state,
-                                                 const KinematicsPluginFactory& plugin_factory,
-                                                 const YAML::Node& config) const
+std::unique_ptr<InverseKinematics> ROPInvKinFactory::create(const std::string& solver_name,
+                                                            const tesseract_scene_graph::SceneGraph& scene_graph,
+                                                            const tesseract_scene_graph::SceneState& scene_state,
+                                                            const KinematicsPluginFactory& plugin_factory,
+                                                            const YAML::Node& config) const
 {
   ForwardKinematics::UPtr fwd_kin;
   InverseKinematics::UPtr inv_kin;
@@ -154,7 +157,7 @@ InverseKinematics::UPtr ROPInvKinFactory::create(const std::string& solver_name,
 
       inv_kin = plugin_factory.createInvKin(m_info.class_name, m_info, scene_graph, scene_state);
       if (inv_kin == nullptr)
-        throw std::runtime_error("ROPInvKinFactory, failed to create positioner forward kinematics!");
+        throw std::runtime_error("ROPInvKinFactory, failed to create positioner inverse kinematics!");
     }
     else
     {

@@ -5,6 +5,7 @@ add_library(
   src/kdl_fwd_kin_chain.cpp
   src/kdl_inv_kin_chain_lma.cpp
   src/kdl_inv_kin_chain_nr.cpp
+  src/kdl_inv_kin_chain_nr_jl.cpp
   src/kdl_utils.cpp)
 target_link_libraries(
   ${PROJECT_NAME}_kdl
@@ -59,8 +60,31 @@ set(KINEMATICS_PLUGINS ${KINEMATICS_PLUGINS} "${PROJECT_NAME}_kdl_factories" PAR
 install(
   DIRECTORY include/${PROJECT_NAME}
   DESTINATION include
+  COMPONENT kdl
   FILES_MATCHING
   PATTERN "*.h"
   PATTERN "*.hpp")
 
-install_targets(TARGETS ${PROJECT_NAME}_kdl ${PROJECT_NAME}_kdl_factories)
+# Plugin should not be export only installed
+install(
+  TARGETS ${PROJECT_NAME}_kdl_factories
+  COMPONENT kdl
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
+
+configure_component(
+  COMPONENT kdl
+  NAMESPACE tesseract
+  TARGETS ${PROJECT_NAME}_kdl
+  DEPENDENCIES orocos_kdl "tesseract_kinematics COMPONENTS core")
+
+if(TESSERACT_PACKAGE)
+  cpack_component(
+    COMPONENT kdl
+    VERSION ${pkg_extracted_version}
+    DESCRIPTION "Tesseract Kinematics kdl implementation"
+    COMPONENT_DEPENDS core
+    LINUX_DEPENDS "liborocos-kdl-dev"
+    WINDOWS_DEPENDS "orocos-kdl")
+endif()

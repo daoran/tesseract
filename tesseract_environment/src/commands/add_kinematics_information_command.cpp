@@ -28,8 +28,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
-#include <memory>
-#include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -37,6 +35,19 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+AddKinematicsInformationCommand::AddKinematicsInformationCommand() : Command(CommandType::ADD_KINEMATICS_INFORMATION) {}
+
+AddKinematicsInformationCommand::AddKinematicsInformationCommand(
+    tesseract_srdf::KinematicsInformation kinematics_information)
+  : Command(CommandType::ADD_KINEMATICS_INFORMATION), kinematics_information_(std::move(kinematics_information))
+{
+}
+
+const tesseract_srdf::KinematicsInformation& AddKinematicsInformationCommand::getKinematicsInformation() const
+{
+  return kinematics_information_;
+}
+
 bool AddKinematicsInformationCommand::operator==(const AddKinematicsInformationCommand& rhs) const
 {
   bool equal = true;

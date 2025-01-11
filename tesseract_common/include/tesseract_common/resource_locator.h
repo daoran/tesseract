@@ -28,10 +28,20 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <functional>
 #include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
+
+#include <tesseract_common/filesystem.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_common
 {
@@ -74,7 +84,23 @@ class GeneralResourceLocator : public ResourceLocator
 public:
   using Ptr = std::shared_ptr<GeneralResourceLocator>;
   using ConstPtr = std::shared_ptr<const GeneralResourceLocator>;
-  GeneralResourceLocator();
+  /**
+   * @brief Construct a new General Resource Locator object using the TESSERACT_RESOURCE_PATH environment variable
+   *
+   * @param environment_variables A vector of environment variables to search for paths
+   */
+  GeneralResourceLocator(const std::vector<std::string>& environment_variables = { "TESSERACT_RESOURCE_PATH",
+                                                                                   "ROS_PACKAGE_PATH" });
+  /**
+   * @brief Construct a new General Resource Locator object using the provided paths and/or the TESSERACT_RESOURCE_PATH
+   * environment variable
+   *
+   * @param paths A vector of paths to search for resources
+   * @param environment_variables A vector of environment variables to search for paths
+   */
+  GeneralResourceLocator(const std::vector<tesseract_common::fs::path>& paths,
+                         const std::vector<std::string>& environment_variables = { "TESSERACT_RESOURCE_PATH",
+                                                                                   "ROS_PACKAGE_PATH" });
   GeneralResourceLocator(const GeneralResourceLocator&) = default;
   GeneralResourceLocator& operator=(const GeneralResourceLocator&) = default;
   GeneralResourceLocator(GeneralResourceLocator&&) = default;
@@ -86,12 +112,32 @@ public:
   bool operator==(const GeneralResourceLocator& rhs) const;
   bool operator!=(const GeneralResourceLocator& rhs) const;
 
+  /**
+   * @brief Add path to the resource locator
+   *
+   * @param path The path to add. Must be a directory
+   * @return true Success
+   * @return false Directory does not exist
+   */
+  bool addPath(const tesseract_common::fs::path& path);
+
+  /**
+   * @brief Load paths from an environment variable
+   *
+   * @param environment_variable The environment variable to load paths from
+   * @return true Success
+   * @return false Environment variable does not exist
+   */
+  bool loadEnvironmentVariable(const std::string& environment_variable);
+
 private:
   friend class boost::serialization::access;
   template <class Archive>
   void serialize(Archive& ar, const unsigned int version);  // NOLINT
 
   std::unordered_map<std::string, std::string> package_paths_;
+
+  void processToken(const std::string& token);
 };
 
 /**  @brief Represents resource data available from a file or url */
@@ -230,11 +276,11 @@ private:
 };
 
 }  // namespace tesseract_common
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(tesseract_common::ResourceLocator)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(tesseract_common::Resource)
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_common::GeneralResourceLocator, "GeneralResourceLocator")
-BOOST_CLASS_EXPORT_KEY2(tesseract_common::SimpleLocatedResource, "SimpleLocatedResource")
-BOOST_CLASS_EXPORT_KEY2(tesseract_common::BytesResource, "BytesResource")
+BOOST_CLASS_EXPORT_KEY(tesseract_common::GeneralResourceLocator)
+BOOST_CLASS_EXPORT_KEY(tesseract_common::SimpleLocatedResource)
+BOOST_CLASS_EXPORT_KEY(tesseract_common::BytesResource)
 
 #endif  // TESSERACT_COMMON_RESOURCE_LOCATOR_H

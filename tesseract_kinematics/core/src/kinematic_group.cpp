@@ -29,15 +29,23 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_kinematics/core/kinematic_group.h>
+#include <tesseract_kinematics/core/inverse_kinematics.h>
+#include <tesseract_kinematics/core/utils.h>
 #include <tesseract_common/utils.h>
 
-#include <tesseract_scene_graph/kdl_parser.h>
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_state_solver/state_solver.h>
 
 namespace tesseract_kinematics
 {
+KinGroupIKInput::KinGroupIKInput(const Eigen::Isometry3d& p, std::string wf, std::string tl)
+  : pose(p), working_frame(std::move(wf)), tip_link_name(std::move(tl))
+{
+}
+
 KinematicGroup::KinematicGroup(std::string name,
                                std::vector<std::string> joint_names,
-                               InverseKinematics::UPtr inv_kin,
+                               std::unique_ptr<InverseKinematics> inv_kin,
                                const tesseract_scene_graph::SceneGraph& scene_graph,
                                const tesseract_scene_graph::SceneState& scene_state)
   : JointGroup(std::move(name), joint_names, scene_graph, scene_state)
@@ -94,6 +102,8 @@ KinematicGroup::KinematicGroup(std::string name,
 }
 
 KinematicGroup::KinematicGroup(const KinematicGroup& other) : JointGroup(other) { *this = other; }
+
+KinematicGroup::~KinematicGroup() = default;
 
 KinematicGroup& KinematicGroup::operator=(const KinematicGroup& other)
 {
@@ -156,7 +166,8 @@ IKSolutions KinematicGroup::calcInvKin(const KinGroupIKInputs& tip_link_poses,
       for (Eigen::Index i = 0; i < inv_kin_->numJoints(); ++i)
         ordered_sol(i) = solution(inv_kin_joint_map_[static_cast<std::size_t>(i)]);
 
-      if (tesseract_common::satisfiesPositionLimits<double>(ordered_sol, limits_.joint_limits))
+      tesseract_kinematics::harmonizeTowardMedian<double>(ordered_sol, redundancy_indices_, limits_.joint_limits);
+      if (tesseract_common::satisfiesLimits<double>(ordered_sol, limits_.joint_limits))
         solutions_filtered.push_back(ordered_sol);
     }
 
@@ -168,7 +179,8 @@ IKSolutions KinematicGroup::calcInvKin(const KinGroupIKInputs& tip_link_poses,
   solutions_filtered.reserve(solutions.size());
   for (auto& solution : solutions)
   {
-    if (tesseract_common::satisfiesPositionLimits<double>(solution, limits_.joint_limits))
+    tesseract_kinematics::harmonizeTowardMedian<double>(solution, redundancy_indices_, limits_.joint_limits);
+    if (tesseract_common::satisfiesLimits<double>(solution, limits_.joint_limits))
       solutions_filtered.push_back(solution);
   }
 
@@ -178,7 +190,7 @@ IKSolutions KinematicGroup::calcInvKin(const KinGroupIKInputs& tip_link_poses,
 IKSolutions KinematicGroup::calcInvKin(const KinGroupIKInput& tip_link_pose,
                                        const Eigen::Ref<const Eigen::VectorXd>& seed) const
 {
-  return calcInvKin(KinGroupIKInputs{ tip_link_pose }, seed);
+  return calcInvKin(KinGroupIKInputs{ tip_link_pose }, seed);  // NOLINT
 }
 
 std::vector<std::string> KinematicGroup::getAllValidWorkingFrames() const { return working_frames_; }
@@ -192,4 +204,7 @@ std::vector<std::string> KinematicGroup::getAllPossibleTipLinkNames() const
 
   return ik_tip_links;
 }
+
+const InverseKinematics& KinematicGroup::getInverseKinematics() const { return *inv_kin_; }
+
 }  // namespace tesseract_kinematics

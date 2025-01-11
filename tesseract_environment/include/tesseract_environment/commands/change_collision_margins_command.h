@@ -28,13 +28,17 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
-#include <unordered_map>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
 #include <tesseract_common/collision_margin_data.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -77,7 +81,5 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::ChangeCollisionMarginsCommand, "ChangeCollisionMarginsCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::ChangeCollisionMarginsCommand)
 #endif  // TESSERACT_ENVIRONMENT_CHANGE_COLLISION_MARGINS_COMMAND_H

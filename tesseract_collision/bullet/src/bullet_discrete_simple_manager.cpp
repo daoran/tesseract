@@ -39,14 +39,17 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "tesseract_collision/bullet/bullet_discrete_simple_manager.h"
+#include <tesseract_collision/bullet/bullet_discrete_simple_manager.h>
+#include <tesseract_common/contact_allowed_validator.h>
 
 namespace tesseract_collision::tesseract_collision_bullet
 {
 static const CollisionShapesConst EMPTY_COLLISION_SHAPES_CONST;
 static const tesseract_common::VectorIsometry3d EMPTY_COLLISION_SHAPES_TRANSFORMS;
 
-BulletDiscreteSimpleManager::BulletDiscreteSimpleManager(std::string name) : name_(std::move(name))
+BulletDiscreteSimpleManager::BulletDiscreteSimpleManager(std::string name,
+                                                         TesseractCollisionConfigurationInfo config_info)
+  : name_(std::move(name)), config_info_(std::move(config_info)), coll_config_(config_info_)
 {
   dispatcher_ = std::make_unique<btCollisionDispatcher>(&coll_config_);
 
@@ -65,7 +68,7 @@ std::string BulletDiscreteSimpleManager::getName() const { return name_; }
 
 DiscreteContactManager::UPtr BulletDiscreteSimpleManager::clone() const
 {
-  auto manager = std::make_unique<BulletDiscreteSimpleManager>();
+  auto manager = std::make_unique<BulletDiscreteSimpleManager>(name_, config_info_.clone());
 
   auto margin = static_cast<btScalar>(contact_test_data_.collision_margin_data.getMaxCollisionMargin());
 
@@ -84,7 +87,7 @@ DiscreteContactManager::UPtr BulletDiscreteSimpleManager::clone() const
 
   manager->setActiveCollisionObjects(active_);
   manager->setCollisionMarginData(contact_test_data_.collision_margin_data);
-  manager->setIsContactAllowedFn(contact_test_data_.fn);
+  manager->setContactAllowedValidator(contact_test_data_.validator);
 
   return manager;
 }
@@ -248,8 +251,16 @@ const CollisionMarginData& BulletDiscreteSimpleManager::getCollisionMarginData()
 {
   return contact_test_data_.collision_margin_data;
 }
-void BulletDiscreteSimpleManager::setIsContactAllowedFn(IsContactAllowedFn fn) { contact_test_data_.fn = fn; }
-IsContactAllowedFn BulletDiscreteSimpleManager::getIsContactAllowedFn() const { return contact_test_data_.fn; }
+void BulletDiscreteSimpleManager::setContactAllowedValidator(
+    std::shared_ptr<const tesseract_common::ContactAllowedValidator> validator)
+{
+  contact_test_data_.validator = std::move(validator);
+}
+std::shared_ptr<const tesseract_common::ContactAllowedValidator>
+BulletDiscreteSimpleManager::getContactAllowedValidator() const
+{
+  return contact_test_data_.validator;
+}
 void BulletDiscreteSimpleManager::contactTest(ContactResultMap& collisions, const ContactRequest& request)
 {
   contact_test_data_.res = &collisions;
@@ -285,7 +296,7 @@ void BulletDiscreteSimpleManager::contactTest(ContactResultMap& collisions, cons
 
       if (aabb_check)
       {
-        bool needs_collision = needsCollisionCheck(*cow1, *cow2, contact_test_data_.fn, false);
+        bool needs_collision = needsCollisionCheck(*cow1, *cow2, contact_test_data_.validator, false);
 
         if (needs_collision)
         {

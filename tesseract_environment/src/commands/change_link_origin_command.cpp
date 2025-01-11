@@ -31,7 +31,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/library_version_type.hpp>
 #endif
 #include <boost/serialization/unordered_map.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -41,6 +40,16 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+ChangeLinkOriginCommand::ChangeLinkOriginCommand() : Command(CommandType::CHANGE_LINK_ORIGIN) {}
+
+ChangeLinkOriginCommand::ChangeLinkOriginCommand(std::string link_name, const Eigen::Isometry3d& origin)
+  : Command(CommandType::CHANGE_LINK_ORIGIN), link_name_(std::move(link_name)), origin_(origin)
+{
+}
+
+const std::string& ChangeLinkOriginCommand::getLinkName() const { return link_name_; }
+const Eigen::Isometry3d& ChangeLinkOriginCommand::getOrigin() const { return origin_; }
+
 bool ChangeLinkOriginCommand::operator==(const ChangeLinkOriginCommand& rhs) const
 {
   bool equal = true;

@@ -8,13 +8,12 @@
 
 Platform             | CI Status
 ---------------------|:---------
-Linux (Focal)        | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/Focal-Build/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Linux (Bionic)       | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/Bionic-Build/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Windows              | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/Windows-Noetic-Build/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Lint  (Clang-Format) | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/Clang-Format/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Lint  (CMake-Format) | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/CMake-Format/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Lint  (Clang-Tidy)   | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/Clang-Tidy/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
-Lint  (CodeCov)      | [![Build Status](https://github.com/tesseract-robotics/tesseract/workflows/CodeCov/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions)
+Linux (Focal)        | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/ubuntu.yml)
+Windows              | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/windows.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/windows.yml)
+Lint  (Clang-Format) | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/clang_format.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/clang_format.yml)
+Lint  (CMake-Format) | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/cmake_format.yml)
+Lint  (Clang-Tidy)   | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/code_quality.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/code_quality.yml)
+Lint  (CodeCov)      | [![Build Status](https://github.com/tesseract-robotics/tesseract/actions/workflows/code_quality.yml/badge.svg)](https://github.com/tesseract-robotics/tesseract/actions/workflows/code_quality.yml)
 
 [![Github Issues](https://img.shields.io/github/issues/tesseract-robotics/tesseract.svg)](http://github.com/tesseract-robotics/tesseract/issues)
 
@@ -26,8 +25,8 @@ Lint  (CodeCov)      | [![Build Status](https://github.com/tesseract-robotics/te
 The planning framework (Tesseract) was designed to be light weight, limiting the number of dependencies, mainly only using standard libraries like, eigen, boost, orocos and to the packages below. The core packages are ROS agnostic and have full python support.
 
 ## Dependencies
-[![ros_industrial_cmake_boilerplate](https://img.shields.io/badge/ros_industrial_cmake_boilerplate-0.2.15-brightgreen)](https://github.com/ros-industrial/ros_industrial_cmake_boilerplate/tree/0.2.15)  
-[![opw_kinematics](https://img.shields.io/badge/opw_kinematics-0.4.5-brightgreen)](https://github.com/Jmeyer1292/opw_kinematics/tree/0.4.5)
+[![ros_industrial_cmake_boilerplate](https://img.shields.io/badge/ros_industrial_cmake_boilerplate-0.6.0-brightgreen)](https://github.com/ros-industrial/ros_industrial_cmake_boilerplate/tree/0.5.3)  
+[![opw_kinematics](https://img.shields.io/badge/opw_kinematics-0.5.0-brightgreen)](https://github.com/Jmeyer1292/opw_kinematics/tree/0.5.0)
 
 ## Tesseract Setup Wizard and Visualization Tools
 
@@ -75,8 +74,8 @@ python3 -m pip install --user  tesseract_robotics tesseract_robotics_viewer
 ## Documentation
 
 * [Wiki](https://tesseract-docs.readthedocs.io)
-* [Doxygen](https://tesseract-robotics.github.io/tesseract/)
-* [Benchmark](https://tesseract-robotics.github.io/tesseract/dev/bench)
+* [Doxygen](https://tesseract-robotics.github.io/tesseract_docs/tesseract/)
+* [Benchmark](https://tesseract-robotics.github.io/tesseract_docs/tesseract/dev/bench/)
 
 ## Evolution
 
@@ -87,6 +86,26 @@ How to create:
 * Create Video: `gource -1280x720 -seconds-per-day 0.2 --auto-skip-seconds 0.2 --disable-bloom -background d0d3d4 --hide filenames,mouse,progress -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4`
 * Create Gif: `ffmpeg -i gource.mp4 -r 10 -vf "scale=800:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" tesseract_evolution.gif`
 
+## Docker Development Container
+
+It common to leverage docker to develop for different distributions of Ubuntu, so a docker compose file has been provided to simplify this process for Tesseract development.
+
+Initial setup, you must create directories for the different distributions to save Qt Creator configs so they persist.
+
+``` bash
+mkdir ~/.config/QtProjectDocker
+mkdir ~/.config/QtProjectDocker/focal
+mkdir ~/.config/QtProjectDocker/noetic
+mkdir ~/.config/QtProjectDocker/jammy
+```
+
+Now you can start the development docker. Replace focal with what ubuntu distro you want to develope with.
+
+``` bash
+cd <path to tesseract repo>/docker
+USER_ID=$(id -u) GROUP_ID=$(id -g) UBUNTU_TAG=focal docker compose -f docker-compose-dev.yaml up --build --remove-orphans
+```
+
 ## TODO's
 
 Warning: These packages are under heavy development and are subject to change.
@@ -96,7 +115,7 @@ See [issue #66](https://github.com/tesseract-robotics/tesseract/issues/66)
 ## Build Instructions
 
 1) Clone repository into your workspace
-2) Clone the repositories in the dependencies.rosinstall file using wstool or some other method (e.g. manually git cloning them)
+2) Clone the repositories in the dependencies.repos file using wstool or some other method (e.g. manually git cloning them)
 3) Build the workspace using catkin tools, colcon, or a similar tool
 
 NOTE: For noetic tesseract_ext is not required. Install the following dependencies: libbullet-dev, libbullet-extras-dev and ros-noetic-fcl. Taskflow can be install using the PPA below.
@@ -135,6 +154,18 @@ NOTE: Must be a clean build when generating a code coverage report. Also must bu
   - Marks the end of an excluded section. The current line not part of this section.
 
 .. NOTE: You can replace **LCOV** above with **GCOV** or **GCOVR**.
+
+## Boost Serialization
+
+This package leverages boost serialization. When adding new classes which may be inherited from and then serialized as the base type it is imported to add the following macros for the base type and all derived types.
+
+- Header
+  - Abstract Class
+    - `BOOST_SERIALIZATION_ASSUME_ABSTRACT(tesseract_common::JointLimits)`
+  - Non-Abstract Class
+    - `BOOST_CLASS_EXPORT_KEY(tesseract_common::JointLimits)`
+- Cpp
+  - `BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::JointLimits)`
 
 ## Create Debian Package (Linux) or NuGet Package (Windows)
 

@@ -28,7 +28,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -37,6 +36,19 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+SetActiveDiscreteContactManagerCommand::SetActiveDiscreteContactManagerCommand()
+  : Command(CommandType::SET_ACTIVE_DISCRETE_CONTACT_MANAGER)
+{
+}
+
+SetActiveDiscreteContactManagerCommand::SetActiveDiscreteContactManagerCommand(std::string active_contact_manager)
+  : Command(CommandType::SET_ACTIVE_DISCRETE_CONTACT_MANAGER)
+  , active_contact_manager_(std::move(active_contact_manager))
+{
+}
+
+const std::string& SetActiveDiscreteContactManagerCommand::getName() const { return active_contact_manager_; }
+
 bool SetActiveDiscreteContactManagerCommand::operator==(const SetActiveDiscreteContactManagerCommand& rhs) const
 {
   bool equal = true;

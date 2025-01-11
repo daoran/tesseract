@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.15.0)
 
 # Extract package name and version
 find_package(ros_industrial_cmake_boilerplate REQUIRED)
 extract_package_metadata(pkg)
-project(${pkg_extracted_name} VERSION ${pkg_extracted_version} LANGUAGES CXX)
+project(${pkg_extracted_name} VERSION ${pkg_extracted_version} LANGUAGES C CXX)
 
 if(WIN32)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
@@ -11,17 +11,17 @@ endif()
 
 find_package(Eigen3 REQUIRED)
 find_package(console_bridge REQUIRED)
-find_package(tesseract_collision REQUIRED)
+find_package(tesseract_collision REQUIRED COMPONENTS core)
 find_package(tesseract_common REQUIRED)
 find_package(tesseract_environment REQUIRED)
 find_package(tesseract_scene_graph REQUIRED)
 find_package(tesseract_state_solver REQUIRED)
 
-# Optional to build ignition visualization
-find_package(ignition-common3 COMPONENTS profiler events av QUIET)
-find_package(ignition-transport8 QUIET)
-find_package(ignition-msgs5 QUIET)
-find_package(ignition-math6-eigen3 QUIET)
+# Optional to build gazebo visualization
+find_package(gz-common5 COMPONENTS profiler events av QUIET)
+find_package(gz-transport11 QUIET)
+find_package(gz-msgs8 QUIET)
+find_package(gz-math7-eigen3 QUIET)
 
 if(NOT TARGET console_bridge::console_bridge)
   add_library(console_bridge::console_bridge INTERFACE IMPORTED)
@@ -36,13 +36,13 @@ else()
   endif()
 endif()
 
-set(IGNITION_FOUND FALSE)
-if(ignition-common3_FOUND
-   AND ignition-transport8_FOUND
-   AND ignition-msgs5_FOUND
-   AND ignition-math6-eigen3_FOUND)
-  set(IGNITION_FOUND TRUE)
-  message(STATUS "Ignition Visualization Library will be built!")
+set(GAZEBO_FOUND FALSE)
+if(gz-common5_FOUND
+   AND gz-transport11_FOUND
+   AND gz-msgs8_FOUND
+   AND gz-math7-eigen3_FOUND)
+  set(GAZEBO_FOUND TRUE)
+  message(STATUS "Gazebo Visualization Library will be built!")
 endif()
 
 # Load variable for clang tidy args, compiler options and cxx version
@@ -96,14 +96,17 @@ target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CUR
                                                   "$<INSTALL_INTERFACE:include>")
 
 list(APPEND PACKAGE_LIBRARIES ${PROJECT_NAME})
-if(IGNITION_FOUND)
+option(TESSERACT_BUILD_GZ_VISUALIZATION "Build Gazebo visualization plugin" ON)
+if(GAZEBO_FOUND AND TESSERACT_BUILD_GZ_VISUALIZATION)
   add_library(${PROJECT_NAME}_ignition src/ignition/entity_manager.cpp src/ignition/conversions.cpp)
   target_link_libraries(
     ${PROJECT_NAME}_ignition
     PUBLIC tesseract::tesseract_scene_graph
            tesseract::tesseract_common
-           ${IGNITION-COMMON_LIBRARIES}
-           ${IGNITION-MSGS_LIBRARIES}
+           gz-common5::gz-common5-profiler
+           gz-common5::gz-common5-events
+           gz-common5::gz-common5-av
+           gz-msg8::gz-msg8
            console_bridge::console_bridge)
   target_compile_options(${PROJECT_NAME}_ignition PRIVATE ${TESSERACT_COMPILE_OPTIONS_PRIVATE})
   target_compile_options(${PROJECT_NAME}_ignition PUBLIC ${TESSERACT_COMPILE_OPTIONS_PUBLIC})
@@ -118,8 +121,6 @@ if(IGNITION_FOUND)
     ENABLE ${TESSERACT_ENABLE_CODE_COVERAGE})
   target_include_directories(${PROJECT_NAME}_ignition PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                                                              "$<INSTALL_INTERFACE:include>")
-  target_include_directories(${PROJECT_NAME}_ignition SYSTEM PUBLIC ${IGNITION-COMMON_INCLUDE_DIRS}
-                                                                    ${IGNITION-MSGS_INCLUDE_DIRS})
 
   add_library(${PROJECT_NAME}_ignition_visualization src/ignition/tesseract_ignition_visualization.cpp)
   target_link_libraries(
@@ -128,9 +129,11 @@ if(IGNITION_FOUND)
            ${PROJECT_NAME}_ignition
            tesseract::tesseract_scene_graph
            tesseract::tesseract_common
-           ${IGNITION-COMMON_LIBRARIES}
-           ${IGNITION-TRANSPORT_LIBRARIES}
-           ${IGNITION-MSGS_LIBRARIES}
+           gz-common5::gz-common5-profiler
+           gz-common5::gz-common5-events
+           gz-common5::gz-common5-av
+           gz-transport11::gz-transport11
+           gz-msg8::gz-msg8
            console_bridge::console_bridge)
   target_compile_options(${PROJECT_NAME}_ignition_visualization PRIVATE ${TESSERACT_COMPILE_OPTIONS_PRIVATE})
   target_compile_options(${PROJECT_NAME}_ignition_visualization PUBLIC ${TESSERACT_COMPILE_OPTIONS_PUBLIC})
@@ -146,9 +149,6 @@ if(IGNITION_FOUND)
   target_include_directories(
     ${PROJECT_NAME}_ignition_visualization PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                                                   "$<INSTALL_INTERFACE:include>")
-  target_include_directories(
-    ${PROJECT_NAME}_ignition_visualization SYSTEM
-    PUBLIC ${IGNITION-COMMON_INCLUDE_DIRS} ${IGNITION-TRANSPORT_INCLUDE_DIRS} ${IGNITION-MSGS_INCLUDE_DIRS})
 
   list(
     APPEND
@@ -156,23 +156,34 @@ if(IGNITION_FOUND)
     ${PROJECT_NAME}_ignition
     ${PROJECT_NAME}_ignition_visualization)
 else()
-  list(APPEND IGNITION_MISSING "")
-  if(NOT ignition-common3_FOUND)
-    list(APPEND IGNITION_MISSING "ignition-common3")
+  list(APPEND GAZEBO_MISSING "")
+  if(NOT gz-common5_FOUND)
+    list(APPEND GAZEBO_MISSING "gz-common5")
   endif()
-  if(NOT ignition-transport8_FOUND)
-    list(APPEND IGNITION_MISSING "ignition-transport8")
+  if(NOT ignition-transport11_FOUND)
+    list(APPEND GAZEBO_MISSING "gz-transport11")
   endif()
-  if(NOT ignition-msgs5_FOUND)
-    list(APPEND IGNITION_MISSING "ignition-msgs5")
+  if(NOT gz-msgs8_FOUND)
+    list(APPEND GAZEBO_MISSING "gz-msgs8")
   endif()
-  if(NOT ignition-math6-eigen3_FOUND)
-    list(APPEND IGNITION_MISSING "ignition-math6-eigen3")
+  if(NOT gz-math7-eigen3_FOUND)
+    list(APPEND GAZEBO_MISSING "gz-math7-eigen3")
   endif()
-  message(STATUS "Ignition Visualization Library will not be built! Missing: ${IGNITION_MISSING}")
+  message(STATUS "Gazebo Visualization Library will not be built! Missing: ${GAZEBO_MISSING}")
 endif()
 
-configure_package(NAMESPACE tesseract TARGETS ${PACKAGE_LIBRARIES})
+configure_package(
+  NAMESPACE tesseract
+  TARGETS ${PACKAGE_LIBRARIES}
+  DEPENDENCIES
+    Eigen3
+    console_bridge
+    "tesseract_collision COMPONENTS core"
+    tesseract_common
+    tesseract_environment
+    tesseract_scene_graph
+    tesseract_state_solver
+  CFG_EXTRAS cmake/tesseract_visualization-extras.cmake)
 
 # Mark cpp header files for installation
 install(
@@ -182,23 +193,24 @@ install(
   PATTERN "*.h"
   PATTERN ".svn" EXCLUDE)
 
-if(TESSERACT_ENABLE_TESTING)
+if(TESSERACT_ENABLE_TESTING OR TESSERACT_VISUALIZATION_ENABLE_TESTING)
   enable_testing()
   add_run_tests_target(ENABLE ${TESSERACT_ENABLE_RUN_TESTING})
   add_subdirectory(test)
 endif()
 
 if(TESSERACT_PACKAGE)
-  tesseract_cpack(
+  cpack(
     VERSION ${pkg_extracted_version}
-    MAINTAINER <https://github.com/ros-industrial-consortium/tesseract>
+    MAINTAINER_NAME ${pkg_extracted_maintainer_name}
+    MAINTAINER_EMAIL ${pkg_extracted_maintainer_email}
     DESCRIPTION ${pkg_extracted_description}
     LICENSE_FILE ${CMAKE_CURRENT_LIST_DIR}/../LICENSE
     README_FILE ${CMAKE_CURRENT_LIST_DIR}/../README.md
     LINUX_DEPENDS
       "libconsole-bridge-dev"
       "libeigen3-dev"
-      "${TESSERACT_PACKAGE_PREFIX}tesseract-collision"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-collision-core"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-common"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-environment"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-scene-graph"
@@ -206,9 +218,18 @@ if(TESSERACT_PACKAGE)
     WINDOWS_DEPENDS
       "console-bridge"
       "Eigen3"
-      "${TESSERACT_PACKAGE_PREFIX}tesseract-collision"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-collision-core"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-common"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-environment"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-scene-graph"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-state-solver")
+
+  if(UNIX AND TESSERACT_PACKAGE_SOURCE)
+    cpack_debian_source_package(
+      CHANGLELOG ${CMAKE_CURRENT_LIST_DIR}/CHANGELOG.rst
+      UPLOAD ${TESSERACT_PACKAGE_SOURCE_UPLOAD}
+      DPUT_HOST ${TESSERACT_PACKAGE_SOURCE_DPUT_HOST}
+      DEBIAN_INCREMENT ${TESSERACT_PACKAGE_SOURCE_DEBIAN_INCREMENT}
+      DISTRIBUTIONS ${TESSERACT_PACKAGE_SOURCE_DISTRIBUTIONS})
+  endif()
 endif()

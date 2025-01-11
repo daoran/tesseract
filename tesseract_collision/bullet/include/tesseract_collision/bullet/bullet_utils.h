@@ -88,7 +88,9 @@ Eigen::Isometry3d convertBtToEigen(const btTransform& t);
 class CollisionObjectWrapper : public btCollisionObject
 {
 public:
+  // LCOV_EXCL_START
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  // LCOV_EXCL_STOP
 
   using Ptr = std::shared_ptr<CollisionObjectWrapper>;
   using ConstPtr = std::shared_ptr<const CollisionObjectWrapper>;
@@ -207,11 +209,14 @@ btTransform getLinkTransformFromCOW(const btCollisionObjectWrapper* cow);
  * @brief This is used to check if a collision check is required between the provided two collision objects
  * @param cow1 The first collision object
  * @param cow2 The second collision object
- * @param acm  The contact allowed function pointer
+ * @param validator  The contact allowed validator
  * @param verbose Indicate if verbose information should be printed to the terminal
  * @return True if the two collision objects should be checked for collision, otherwise false
  */
-bool needsCollisionCheck(const COW& cow1, const COW& cow2, const IsContactAllowedFn& acm, bool verbose = false);
+bool needsCollisionCheck(const COW& cow1,
+                         const COW& cow2,
+                         const std::shared_ptr<const tesseract_common::ContactAllowedValidator>& validator,
+                         bool verbose = false);
 
 btScalar addDiscreteSingleResult(btManifoldPoint& cp,
                                  const btCollisionObjectWrapper* colObj0Wrap,

@@ -1,11 +1,12 @@
 #include <console_bridge/console.h>
 #include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/link.h>
+#include <tesseract_scene_graph/joint.h>
 #include <tesseract_common/allowed_collision_matrix.h>
 #include <tesseract_common/resource_locator.h>
+#include <tesseract_common/utils.h>
 #include <tesseract_srdf/srdf_model.h>
 #include <tesseract_srdf/utils.h>
-#include <iostream>
-#include <tesseract_support/tesseract_support_resource_locator.h>
 
 using namespace tesseract_scene_graph;
 using namespace tesseract_srdf;
@@ -101,7 +102,7 @@ int main(int /*argc*/, char** /*argv*/)
   // documentation:end:1: Create scene graph
 
   // documentation:start:2: Get the srdf file path
-  tesseract_common::TesseractSupportResourceLocator locator;
+  tesseract_common::GeneralResourceLocator locator;
   std::string srdf_file =
       locator.locateResource("package://tesseract_support/urdf/lbr_iiwa_14_r820.srdf")->getFilePath();
   // documentation:end:2: Get the srdf file path

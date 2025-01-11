@@ -28,11 +28,16 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -42,7 +47,7 @@ public:
   using Ptr = std::shared_ptr<MoveJointCommand>;
   using ConstPtr = std::shared_ptr<const MoveJointCommand>;
 
-  MoveJointCommand() : Command(CommandType::MOVE_JOINT){};
+  MoveJointCommand();
 
   /**
    * @brief Move a joint from one link to another
@@ -52,13 +57,10 @@ public:
    * @param joint_name The name of the joint to move
    * @param new_parent_link The name of the link to move to.e
    */
-  MoveJointCommand(std::string joint_name, std::string parent_link)
-    : Command(CommandType::MOVE_JOINT), joint_name_(std::move(joint_name)), parent_link_(std::move(parent_link))
-  {
-  }
+  MoveJointCommand(std::string joint_name, std::string parent_link);
 
-  const std::string& getJointName() const { return joint_name_; }
-  const std::string& getParentLink() const { return parent_link_; }
+  const std::string& getJointName() const;
+  const std::string& getParentLink() const;
 
   bool operator==(const MoveJointCommand& rhs) const;
   bool operator!=(const MoveJointCommand& rhs) const;
@@ -73,8 +75,6 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::MoveJointCommand, "MoveJointCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::MoveJointCommand)
 
 #endif  // TESSERACT_ENVIRONMENT_MOVE_JOINT_COMMAND_H

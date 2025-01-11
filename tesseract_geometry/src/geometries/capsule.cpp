@@ -27,7 +27,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -35,6 +34,13 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_geometry
 {
+Capsule::Capsule(double r, double l) : Geometry(GeometryType::CAPSULE), r_(r), l_(l) {}
+
+double Capsule::getRadius() const { return r_; }
+double Capsule::getLength() const { return l_; }
+
+Geometry::Ptr Capsule::clone() const { return std::make_shared<Capsule>(r_, l_); }
+
 bool Capsule::operator==(const Capsule& rhs) const
 {
   bool equal = true;

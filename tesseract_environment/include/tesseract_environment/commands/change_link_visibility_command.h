@@ -28,11 +28,16 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -42,20 +47,17 @@ public:
   using Ptr = std::shared_ptr<ChangeLinkVisibilityCommand>;
   using ConstPtr = std::shared_ptr<const ChangeLinkVisibilityCommand>;
 
-  ChangeLinkVisibilityCommand() : Command(CommandType::CHANGE_LINK_VISIBILITY){};
+  ChangeLinkVisibilityCommand();
 
   /**
    * @brief Set a links visibility
    * @param name The name of the link
    * @param visibility True if should be visible, otherwise false
    */
-  ChangeLinkVisibilityCommand(std::string link_name, bool enabled)
-    : Command(CommandType::CHANGE_LINK_VISIBILITY), link_name_(std::move(link_name)), enabled_(enabled)
-  {
-  }
+  ChangeLinkVisibilityCommand(std::string link_name, bool enabled);
 
-  const std::string& getLinkName() const { return link_name_; }
-  bool getEnabled() const { return enabled_; }
+  const std::string& getLinkName() const;
+  bool getEnabled() const;
 
   bool operator==(const ChangeLinkVisibilityCommand& rhs) const;
   bool operator!=(const ChangeLinkVisibilityCommand& rhs) const;
@@ -70,7 +72,5 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::ChangeLinkVisibilityCommand, "ChangeLinkVisibilityCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::ChangeLinkVisibilityCommand)
 #endif  // TESSERACT_ENVIRONMENT_CHANGE_LINK_VISIBILITY_COMMAND_H

@@ -28,13 +28,18 @@
 
 #include <memory>
 #include <typeindex>
+#include <stdexcept>
+#include <boost/stacktrace.hpp>
+#include <boost/core/demangle.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
+#include <boost/serialization/assume_abstract.hpp>
 #include <boost/serialization/unique_ptr.hpp>
-#include <tesseract_common/serialization.h>
 
 namespace tesseract_common
 {
+struct Serialization;
+
 /** @brief This is the interface that all type erasures interfaces must inherit from */
 struct TypeErasureInterface
 {
@@ -59,7 +64,9 @@ private:
   friend class boost::serialization::access;
   friend struct tesseract_common::Serialization;
   template <class Archive>
-  void serialize(Archive& /*ar*/, const unsigned int /*version*/){};  // NOLINT
+  void serialize(Archive& /*ar*/, const unsigned int /*version*/)
+  {
+  }  // NOLINT
 };
 
 template <typename ConcreteType, typename ConceptInterface>
@@ -68,7 +75,7 @@ struct TypeErasureInstance : ConceptInterface
   using ConceptValueType = ConcreteType;
   using ConceptInterfaceType = ConceptInterface;
 
-  TypeErasureInstance() = default;
+  TypeErasureInstance() = default;  // NOLINT(cppcoreguidelines-pro-type-member-init)
 
   explicit TypeErasureInstance(ConcreteType value) : value_(std::move(value)) {}
 
@@ -89,6 +96,11 @@ struct TypeErasureInstance : ConceptInterface
     return this->getType() == other.getType() && this->get() == *static_cast<const ConceptValueType*>(other.recover());
   }
 
+  std::unique_ptr<tesseract_common::TypeErasureInterface> clone() const override
+  {
+    throw std::runtime_error("This should never be called!");
+  }
+
   ConcreteType value_;
 
 private:
@@ -100,32 +112,6 @@ private:
     // If this line is removed a exception is thrown for unregistered cast need to too look into this.
     ar& boost::serialization::make_nvp("base", boost::serialization::base_object<ConceptInterface>(*this));
     ar& boost::serialization::make_nvp("impl", value_);
-  }
-};
-
-template <typename F>
-struct TypeErasureInstanceWrapper : F  // NOLINT
-{
-  using ConceptValueType = typename F::ConceptValueType;
-  using ConceptInterfaceType = typename F::ConceptInterfaceType;
-
-  TypeErasureInstanceWrapper() = default;
-  TypeErasureInstanceWrapper(const ConceptValueType& x) : F(x) {}
-  TypeErasureInstanceWrapper(TypeErasureInstanceWrapper&& x) noexcept : F(std::move(x)) {}
-
-  std::unique_ptr<TypeErasureInterface> clone() const final
-  {
-    return std::make_unique<TypeErasureInstanceWrapper<F>>(this->get());
-  }
-
-private:
-  friend class boost::serialization::access;
-  friend struct tesseract_common::Serialization;
-  template <class Archive>
-  void serialize(Archive& ar, const unsigned int /*version*/)  // NOLINT
-  {
-    // If this line is removed a exception is thrown for unregistered cast need to too look into this.
-    ar& boost::serialization::make_nvp("base", boost::serialization::base_object<F>(*this));
   }
 };
 
@@ -146,11 +132,11 @@ public:
 
   template <typename T, generic_ctor_enabler<T> = 0>
   TypeErasureBase(T&& value)  // NOLINT
-    : value_(std::make_unique<TypeErasureInstanceWrapper<ConceptInstance<uncvref_t<T>>>>(value))
+    : value_(std::make_unique<ConceptInstance<uncvref_t<T>>>(value))
   {
   }
 
-  TypeErasureBase() : value_(nullptr){};  // NOLINT
+  TypeErasureBase() : value_(nullptr) {}  // NOLINT
 
   // Destructor
   ~TypeErasureBase() = default;
@@ -213,10 +199,11 @@ public:
   T& as()
   {
     if (getType() != typeid(T))
-      throw std::runtime_error("TypeErasureBase, tried to cast '" + std::string(getType().name()) + "' to '" +
-                               std::string(typeid(T).name()) + "'!");
+      throw std::runtime_error("TypeErasureBase, tried to cast '" + boost::core::demangle(getType().name()) + "' to '" +
+                               boost::core::demangle(typeid(T).name()) + "'\nBacktrace:\n" +
+                               boost::stacktrace::to_string(boost::stacktrace::stacktrace()) + "\n");
 
-    auto* p = static_cast<uncvref_t<T>*>(value_->recover());
+    auto* p = static_cast<uncvref_t<T>*>(value_->recover());  // NOLINT
     return *p;
   }
 
@@ -224,10 +211,11 @@ public:
   const T& as() const
   {
     if (getType() != typeid(T))
-      throw std::runtime_error("TypeErasureBase, tried to cast '" + std::string(getType().name()) + "' to '" +
-                               std::string(typeid(T).name()) + "'!");
+      throw std::runtime_error("TypeErasureBase, tried to cast '" + boost::core::demangle(getType().name()) + "' to '" +
+                               boost::core::demangle(typeid(T).name()) + "'\nBacktrace:\n" +
+                               boost::stacktrace::to_string(boost::stacktrace::stacktrace()) + "\n");
 
-    const auto* p = static_cast<const uncvref_t<T>*>(value_->recover());
+    const auto* p = static_cast<const uncvref_t<T>*>(value_->recover());  // NOLINT
     return *p;
   }
 

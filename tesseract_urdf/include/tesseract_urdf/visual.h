@@ -33,20 +33,14 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <vector>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
+#include <tesseract_common/fwd.h>
+#include <tesseract_scene_graph/fwd.h>
+
 namespace tinyxml2
 {
 class XMLElement;  // NOLINT
 class XMLDocument;
 }  // namespace tinyxml2
-namespace tesseract_scene_graph
-{
-class Visual;
-class Material;
-}  // namespace tesseract_scene_graph
-namespace tesseract_common
-{
-class ResourceLocator;
-}
 
 namespace tesseract_urdf
 {
@@ -55,9 +49,9 @@ namespace tesseract_urdf
  * @param xml_element The xml element
  * @param locator The Tesseract resource locator
  * @param version The version number
- * @return A vector tesseract_scene_graph Visual objects
+ * @return A Visual object
  */
-std::vector<std::shared_ptr<tesseract_scene_graph::Visual>>
+std::shared_ptr<tesseract_scene_graph::Visual>
 parseVisual(const tinyxml2::XMLElement* xml_element,
             const tesseract_common::ResourceLocator& locator,
             std::unordered_map<std::string, std::shared_ptr<tesseract_scene_graph::Material>>& available_materials,

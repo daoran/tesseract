@@ -28,7 +28,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -37,6 +36,18 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+RemoveAllowedCollisionLinkCommand::RemoveAllowedCollisionLinkCommand()
+  : Command(CommandType::REMOVE_ALLOWED_COLLISION_LINK)
+{
+}
+
+RemoveAllowedCollisionLinkCommand::RemoveAllowedCollisionLinkCommand(std::string link_name)
+  : Command(CommandType::REMOVE_ALLOWED_COLLISION_LINK), link_name_(std::move(link_name))
+{
+}
+
+const std::string& RemoveAllowedCollisionLinkCommand::getLinkName() const { return link_name_; }
+
 bool RemoveAllowedCollisionLinkCommand::operator==(const RemoveAllowedCollisionLinkCommand& rhs) const
 {
   bool equal = true;

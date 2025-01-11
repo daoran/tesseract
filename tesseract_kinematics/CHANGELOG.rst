@@ -2,6 +2,163 @@
 Changelog for package tesseract_kinematics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.27.1 (2024-12-03)
+-------------------
+
+0.27.0 (2024-12-01)
+-------------------
+
+0.26.0 (2024-10-27)
+-------------------
+* Remove TesseractSupportResourceLocator
+* Contributors: Levi Armstrong
+
+0.25.0 (2024-09-28)
+-------------------
+
+0.24.1 (2024-08-19)
+-------------------
+
+0.24.0 (2024-08-14)
+-------------------
+
+0.23.1 (2024-07-28)
+-------------------
+
+0.23.0 (2024-07-24)
+-------------------
+* Do not export plugin libraries (`#1028 <https://github.com/tesseract-robotics/tesseract/issues/1028>`_)
+* Fixes for building on Ubuntu Noble (`#1016 <https://github.com/tesseract-robotics/tesseract/issues/1016>`_)
+* Contributors: Levi Armstrong, Roelof Oomen
+
+0.22.2 (2024-06-10)
+-------------------
+* Add backtrace to type erasure casting to quickly identify where the issue location
+* Contributors: Levi Armstrong
+
+0.22.1 (2024-06-03)
+-------------------
+* - Also add KDL parameters to KDLInvKinChainNR_JL (see `#843 <https://github.com/tesseract-robotics/tesseract/issues/843>`_)
+  - Some clang_tidy and typo fixes
+* Contributors: Roelof Oomen
+
+0.22.0 (2024-06-02)
+-------------------
+* Add the ability to change KDL parameters from kinematics configuration (`#843 <https://github.com/tesseract-robotics/tesseract/issues/843>`_)
+  Co-authored-by: Levi Armstrong <levi.armstrong@gmail.com>
+* Add support for jerk limits
+* Leverage forward declarations to improve compile times (`#990 <https://github.com/tesseract-robotics/tesseract/issues/990>`_)
+* Remove ineffective frame.Identity() call
+  See `#984 <https://github.com/tesseract-robotics/tesseract/issues/984>`_
+* Contributors: Levi Armstrong, Roelof, Sean Cardello
+
+0.21.5 (2023-12-14)
+-------------------
+
+0.21.4 (2023-11-20)
+-------------------
+
+0.21.3 (2023-11-16)
+-------------------
+
+0.21.2 (2023-11-10)
+-------------------
+
+0.21.1 (2023-11-09)
+-------------------
+
+0.21.0 (2023-11-07)
+-------------------
+
+0.20.2 (2023-10-26)
+-------------------
+
+0.20.1 (2023-10-13)
+-------------------
+* Replaced the implementation of tesseract_kinematics::parseSceneGraph (`#947 <https://github.com/tesseract-robotics/tesseract/issues/947>`_)
+* Unused includes cleanup (`#946 <https://github.com/tesseract-robotics/tesseract/issues/946>`_)
+* Add Eigen::Vector3d yaml support (`#945 <https://github.com/tesseract-robotics/tesseract/issues/945>`_)
+* Merge pull request `#943 <https://github.com/tesseract-robotics/tesseract/issues/943>`_ from marrts/fix/ik_fast/free_joint_state_parsing
+  Make `free_joint_state` parsing more generalized
+* Make `free_joint_state` parsing more generalized
+* Contributors: Levi Armstrong, Roelof, Tyler Marr
+
+0.20.0 (2023-09-27)
+-------------------
+* Add support for KDL::ChainIkSolverPos_NR_JL, which takes joint limits (`#928 <https://github.com/tesseract-robotics/tesseract/issues/928>`_)
+* Contributors: Roelof
+
+0.19.2 (2023-09-06)
+-------------------
+
+0.19.1 (2023-09-05)
+-------------------
+
+0.19.0 (2023-09-05)
+-------------------
+* Update kinematics and collision packages to leverage cmake components (`#927 <https://github.com/tesseract-robotics/tesseract/issues/927>`_)
+* Update emails
+* Improved reporting of errors in IK plugin loader (`#924 <https://github.com/tesseract-robotics/tesseract/issues/924>`_)
+* Added IKFast factory boilerplate (`#916 <https://github.com/tesseract-robotics/tesseract/issues/916>`_)
+  * Added IKFast factory boilerplate
+  * Updated IKFast unit tests to use new IKFast boilerplate factory
+  * Reverted change to kinematic_group.h
+  * Add include guards
+  * Fix filename in header comment
+  Co-authored-by: Tyler Marr <41449746+marrts@users.noreply.github.com>
+  * IKFast plugins as cpp instead of h
+  * Fix ikfast clang-tidy issues
+  ---------
+  Co-authored-by: Tyler Marr <41449746+marrts@users.noreply.github.com>
+  Co-authored-by: Levi Armstrong <levi.armstrong@gmail.com>
+* Fix of ManipulatorInfo and typos (`#914 <https://github.com/tesseract-robotics/tesseract/issues/914>`_)
+  - ManipulatorInfo constructor now accepts tcp_offset as variant to match data member.
+  - Fixed typos in rep and rop factories.
+* Contributors: Levi Armstrong, Michael Ripperger, Roelof
+
+0.18.1 (2023-06-30)
+-------------------
+
+0.18.0 (2023-06-29)
+-------------------
+* Update kinematics group inverse kinematics to harmonize within joint limits (`#899 <https://github.com/tesseract-robotics/tesseract/issues/899>`_)
+* Add package cmake flags for testing, examples and benchmarks
+* Contributors: John Wason, Levi Armstrong
+
+0.17.0 (2023-06-06)
+-------------------
+
+0.16.3 (2023-05-04)
+-------------------
+
+0.16.2 (2023-04-28)
+-------------------
+
+0.16.1 (2023-04-11)
+-------------------
+* Improve tesseract_kinematics code coverage
+* Contributors: Levi Armstrong
+
+0.16.0 (2023-04-09)
+-------------------
+* Add AddTrajectoryLinkCommand
+* Contributors: Levi Armstrong
+
+0.15.3 (2023-03-22)
+-------------------
+
+0.15.2 (2023-03-15)
+-------------------
+
+0.15.1 (2023-03-14)
+-------------------
+
+0.15.0 (2023-03-03)
+-------------------
+* Performance improvements found using callgrind (`#852 <https://github.com/tesseract-robotics/tesseract/issues/852>`_)
+* Closes `#848 <https://github.com/tesseract-robotics/tesseract/issues/848>`_
+* Contributors: Levi Armstrong, Roelof Oomen
+
 0.14.0 (2022-10-23)
 -------------------
 * Remove deprecated items

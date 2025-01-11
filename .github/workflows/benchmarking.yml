@@ -9,29 +9,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  industrial_ci:
-    name: ${{ matrix.env.CI_NAME }}
+  benchmark:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        env:
-          - {CI_NAME: Focal-Benchmark,
-             OS_NAME: ubuntu,
-             OS_CODE_NAME: focal,
-             ROS_DISTRO: noetic,
-             ROS_REPO: main,
-             UPSTREAM_WORKSPACE: 'dependencies.rosinstall',
-             ROSDEP_SKIP_KEYS: "bullet ros_industrial_cmake_boilerplate fcl iwyu",
-             DOCKER_IMAGE: "rosindustrial/tesseract:noetic",
-             CCACHE_DIR: "/home/runner/work/tesseract/tesseract/Focal-Benchmark/.ccache",
-             UPSTREAM_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release",
-             TARGET_CMAKE_ARGS: "-DCMAKE_BUILD_TYPE=Release -DTESSERACT_ENABLE_TESTING=OFF -DTESSERACT_ENABLE_BENCHMARKING=ON -DTESSERACT_ENABLE_RUN_BENCHMARKING=ON -DBENCHMARK_ARGS=CI_ONLY",
-             DOCKER_RUN_OPTS: '-v ~/work/tesseract/tesseract/benchmarks:/root/benchmarks',
-             AFTER_SCRIPT: '$target_ws/src/tesseract/.run_combine_benchmark_results'}
-
+    container:
+      image: ubuntu:20.04
+      env:
+        CCACHE_DIR: "$GITHUB_WORKSPACE/benchmark/.ccache"
+        DEBIAN_FRONTEND: noninteractive
+        TZ: Etc/UTC
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          path: target_ws/src
+
+      - name: Install Depends
+        shell: bash
+        run: |
+          apt update
+          apt upgrade -y
+          apt install -y cmake curl lsb-release ca-certificates gnupg python3 python3-distutils python3-pip ccache git liboctomap-dev
+          python3 -m pip install vcstool -q
+          python3 -m pip install colcon-common-extensions -q
+          python3 -m pip install rosdep -q
+          rosdep init
+          rosdep update
+          cd $GITHUB_WORKSPACE/target_ws/src
+          ./.github/workflows/add_ros_apt_sources.sh
 
       - name: Prepare ccache timestamp
         id: ccache_cache_timestamp
@@ -43,31 +46,55 @@ jobs:
       - name: ccache cache files
         uses: actions/cache@v1.1.0
         with:
-          path: ${{ matrix.env.CI_NAME }}/.ccache
-          key: ${{ matrix.env.CI_NAME }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
+          path: benchmark/.ccache
+          key: benchmark-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
           restore-keys: |
-            ${{ matrix.env.CI_NAME }}-ccache-
+            benchmark-ccache-
 
-      - uses: 'ros-industrial/industrial_ci@master'
-        env: ${{matrix.env}}
+      - name: Build Upstream Workspace
+        shell: bash
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/upstream_ws/src
+          vcs import --input "$GITHUB_WORKSPACE/target_ws/src/dependencies.repos" $GITHUB_WORKSPACE/upstream_ws/src/
+          cd $GITHUB_WORKSPACE/upstream_ws
+          rosdep install --from-paths src --ignore-src -r -y
+          colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_BUILD_TYPE=Release
+          if [ $? -ge 1 ]; then return 1; fi
+
+      - name: Build Target Workspace And Run Benchmarks
+        shell: bash
+        run: |
+          source $GITHUB_WORKSPACE/upstream_ws/install/setup.bash
+          cd $GITHUB_WORKSPACE/target_ws
+          rosdep install --from-paths src --ignore-src -r -y
+          colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_BUILD_TYPE=Release -DTESSERACT_ENABLE_TESTING=OFF -DTESSERACT_ENABLE_BENCHMARKING=ON -DTESSERACT_ENABLE_RUN_BENCHMARKING=ON -DBENCHMARK_ARGS=CI_ONLY
+          if [ $? -ge 1 ]; then return 1; fi
+          ./src/.run_combine_benchmark_results
 
       - name: Store Bullet Discrete, FCL Discrete and Environment benchmark result
-        uses: rhysd/github-action-benchmark@v1
+        uses: benchmark-action/github-action-benchmark@v1
         with:
           name: C++ Benchmark
           tool: 'googlecpp'
-          output-file-path: /home/runner/work/tesseract/tesseract/benchmarks/tesseract-benchmark_result.json
-          # Use personal access token instead of GITHUB_TOKEN due to https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/false
-          github-token: ${{ secrets.GITHUB_TOKEN }} # GitHub API token to make a commit comment
+          output-file-path: $GITHUB_WORKSPACE/target_ws/benchmarks/tesseract-benchmark_result.json
+          benchmark-data-dir-path: tesseract/dev/bench
+          gh-repository: github.com/tesseract-robotics/tesseract_docs
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: false
           # Show alert with commit comment on detecting possible performance regression
           alert-threshold: '200%'
           comment-on-alert: true
           fail-on-alert: false
-          alert-comment-cc-users: '@mpowelson'
+          alert-comment-cc-users: '@Levi-Armstrong'
           max-items-in-chart: 20
 
-      # PERSONAL_GITHUB_TOKEN needed here since we are pushing to a branch
       - name: Push benchmark result
-        run: git push 'https://tesseract-robotics:${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/tesseract-robotics/tesseract.git' gh-pages:gh-pages
-        if: github.event_name != 'pull_request'
+        uses: cpina/github-action-push-to-another-repository@v1.6
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.DOCS_DEPLOY_KEY }}
+        with:
+          source-directory: benchmark-data-repository/tesseract/dev/bench
+          destination-github-username: tesseract-robotics
+          destination-repository-name: tesseract_docs
+          target-branch: gh-pages
+          target-directory: tesseract/dev/bench

@@ -50,8 +50,11 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <BulletCollision/Gimpact/btTriangleShapeEx.h>
 #include <boost/thread/mutex.hpp>
 #include <memory>
+#include <stdexcept>
 #include <octomap/octomap.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
+
+#include <tesseract_geometry/geometries.h>
 
 namespace tesseract_collision::tesseract_collision_bullet
 {
@@ -219,7 +222,7 @@ std::shared_ptr<btCollisionShape> createShapePrimitive(const tesseract_geometry:
   managed_shapes.resize(octree.getTreeDepth() + 1);
   switch (geom->getSubType())
   {
-    case tesseract_geometry::Octree::SubType::BOX:
+    case tesseract_geometry::OctreeSubType::BOX:
     {
       for (auto it = octree.begin(static_cast<unsigned char>(octree.getTreeDepth())), end = octree.end(); it != end;
            ++it)
@@ -255,7 +258,7 @@ std::shared_ptr<btCollisionShape> createShapePrimitive(const tesseract_geometry:
 
       return subshape;
     }
-    case tesseract_geometry::Octree::SubType::SPHERE_INSIDE:
+    case tesseract_geometry::OctreeSubType::SPHERE_INSIDE:
     {
       for (auto it = octree.begin(static_cast<unsigned char>(octree.getTreeDepth())), end = octree.end(); it != end;
            ++it)
@@ -290,7 +293,7 @@ std::shared_ptr<btCollisionShape> createShapePrimitive(const tesseract_geometry:
 
       return subshape;
     }
-    case tesseract_geometry::Octree::SubType::SPHERE_OUTSIDE:
+    case tesseract_geometry::OctreeSubType::SPHERE_OUTSIDE:
     {
       for (auto it = octree.begin(static_cast<unsigned char>(octree.getTreeDepth())), end = octree.end(); it != end;
            ++it)
@@ -397,12 +400,18 @@ std::shared_ptr<btCollisionShape> createShapePrimitive(const CollisionShapeConst
       shape->setMargin(BULLET_MARGIN);
       break;
     }
+    case tesseract_geometry::GeometryType::COMPOUND_MESH:
+    {
+      throw std::runtime_error("CompundMesh type should not be passed to this function!");
+    }
+    // LCOV_EXCL_START
     default:
     {
       CONSOLE_BRIDGE_logError("This geometric shape type (%d) is not supported using BULLET yet",
                               static_cast<int>(geom->getType()));
       break;
     }
+      // LCOV_EXCL_STOP
   }
 
   return shape;
@@ -441,7 +450,8 @@ CollisionObjectWrapper::CollisionObjectWrapper(std::string name,
   m_collisionFilterGroup = btBroadphaseProxy::KinematicFilter;
   m_collisionFilterMask = btBroadphaseProxy::StaticFilter | btBroadphaseProxy::KinematicFilter;
 
-  if (m_shapes.size() == 1 && m_shape_poses[0].matrix().isIdentity())
+  if (m_shapes.size() == 1 && m_shape_poses[0].matrix().isIdentity() &&
+      m_shapes[0]->getType() != tesseract_geometry::GeometryType::COMPOUND_MESH)
   {
     std::shared_ptr<btCollisionShape> shape = createShapePrimitive(m_shapes[0], this, 0);
     manage(shape);
@@ -459,12 +469,29 @@ CollisionObjectWrapper::CollisionObjectWrapper(std::string name,
 
     for (std::size_t j = 0; j < m_shapes.size(); ++j)
     {
-      std::shared_ptr<btCollisionShape> subshape = createShapePrimitive(m_shapes[j], this, static_cast<int>(j));
-      if (subshape != nullptr)
+      if (m_shapes[j]->getType() == tesseract_geometry::GeometryType::COMPOUND_MESH)
       {
-        manage(subshape);
-        btTransform geomTrans = convertEigenToBt(m_shape_poses[j]);
-        compound->addChildShape(geomTrans, subshape.get());
+        const auto& meshes = std::static_pointer_cast<const tesseract_geometry::CompoundMesh>(m_shapes[j])->getMeshes();
+        for (const auto& mesh : meshes)
+        {
+          std::shared_ptr<btCollisionShape> subshape = createShapePrimitive(mesh, this, static_cast<int>(j));
+          if (subshape != nullptr)
+          {
+            manage(subshape);
+            btTransform geomTrans = convertEigenToBt(m_shape_poses[j]);
+            compound->addChildShape(geomTrans, subshape.get());
+          }
+        }
+      }
+      else
+      {
+        std::shared_ptr<btCollisionShape> subshape = createShapePrimitive(m_shapes[j], this, static_cast<int>(j));
+        if (subshape != nullptr)
+        {
+          manage(subshape);
+          btTransform geomTrans = convertEigenToBt(m_shape_poses[j]);
+          compound->addChildShape(geomTrans, subshape.get());
+        }
       }
     }
   }
@@ -667,11 +694,14 @@ btTransform getLinkTransformFromCOW(const btCollisionObjectWrapper* cow)
   return cow->getWorldTransform();
 }
 
-bool needsCollisionCheck(const COW& cow1, const COW& cow2, const IsContactAllowedFn& acm, bool verbose)
+bool needsCollisionCheck(const COW& cow1,
+                         const COW& cow2,
+                         const std::shared_ptr<const tesseract_common::ContactAllowedValidator>& validator,
+                         bool verbose)
 {
   return cow1.m_enabled && cow2.m_enabled && (cow2.m_collisionFilterGroup & cow1.m_collisionFilterMask) &&  // NOLINT
          (cow1.m_collisionFilterGroup & cow2.m_collisionFilterMask) &&                                      // NOLINT
-         !isContactAllowed(cow1.getName(), cow2.getName(), acm, verbose);
+         !isContactAllowed(cow1.getName(), cow2.getName(), validator, verbose);
 }
 
 btScalar addDiscreteSingleResult(btManifoldPoint& cp,
@@ -684,10 +714,10 @@ btScalar addDiscreteSingleResult(btManifoldPoint& cp,
   const auto* cd0 = static_cast<const CollisionObjectWrapper*>(colObj0Wrap->getCollisionObject());  // NOLINT
   const auto* cd1 = static_cast<const CollisionObjectWrapper*>(colObj1Wrap->getCollisionObject());  // NOLINT
 
-  ObjectPairKey pc = getObjectPairKey(cd0->getName(), cd1->getName());
+  ObjectPairKey pc = tesseract_common::makeOrderedLinkPair(cd0->getName(), cd1->getName());
 
-  const auto& it = collisions.res->find(pc);
-  bool found = (it != collisions.res->end());
+  const auto it = collisions.res->find(pc);
+  bool found = (it != collisions.res->end() && !it->second.empty());
 
   //    size_t l = 0;
   //    if (found)
@@ -819,8 +849,8 @@ btScalar addCastSingleResult(btManifoldPoint& cp,
                                                       std::make_pair(cd0->getName(), cd1->getName()) :
                                                       std::make_pair(cd1->getName(), cd0->getName());
 
-  auto it = collisions.res->find(pc);
-  bool found = it != collisions.res->end();
+  const auto it = collisions.res->find(pc);
+  bool found = (it != collisions.res->end() && !it->second.empty());
 
   //    size_t l = 0;
   //    if (found)
@@ -952,7 +982,7 @@ BroadphaseContactResultCallback::BroadphaseContactResultCallback(ContactTestData
 bool BroadphaseContactResultCallback::needsCollision(const CollisionObjectWrapper* cow0,
                                                      const CollisionObjectWrapper* cow1) const
 {
-  return !collisions_.done && needsCollisionCheck(*cow0, *cow1, collisions_.fn, verbose_);
+  return !collisions_.done && needsCollisionCheck(*cow0, *cow1, collisions_.validator, verbose_);
 }
 
 DiscreteBroadphaseContactResultCallback::DiscreteBroadphaseContactResultCallback(ContactTestData& collisions,
@@ -1155,7 +1185,7 @@ bool DiscreteCollisionCollector::needsCollision(btBroadphaseProxy* proxy0) const
 {
   return !collisions_.done &&
          needsCollisionCheck(
-             *cow_, *(static_cast<CollisionObjectWrapper*>(proxy0->m_clientObject)), collisions_.fn, verbose_);
+             *cow_, *(static_cast<CollisionObjectWrapper*>(proxy0->m_clientObject)), collisions_.validator, verbose_);
 }
 
 CastCollisionCollector::CastCollisionCollector(ContactTestData& collisions,
@@ -1188,7 +1218,7 @@ bool CastCollisionCollector::needsCollision(btBroadphaseProxy* proxy0) const
 {
   return !collisions_.done &&
          needsCollisionCheck(
-             *cow_, *(static_cast<CollisionObjectWrapper*>(proxy0->m_clientObject)), collisions_.fn, verbose_);
+             *cow_, *(static_cast<CollisionObjectWrapper*>(proxy0->m_clientObject)), collisions_.validator, verbose_);
 }
 
 COW::Ptr makeCastCollisionObject(const COW::Ptr& cow)
@@ -1269,7 +1299,9 @@ COW::Ptr makeCastCollisionObject(const COW::Ptr& cow)
       }
       else
       {
+        // LCOV_EXCL_START
         throw std::runtime_error("I can only collision check convex shapes and compound shapes made of convex shapes");
+        // LCOV_EXCL_STOP
       }
     }
 
@@ -1283,7 +1315,9 @@ COW::Ptr makeCastCollisionObject(const COW::Ptr& cow)
   }
   else
   {
+    // LCOV_EXCL_START
     throw std::runtime_error("I can only collision check convex shapes and compound shapes made of convex shapes");
+    // LCOV_EXCL_STOP
   }
 
   return new_cow;

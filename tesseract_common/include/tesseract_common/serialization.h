@@ -28,8 +28,6 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <variant>
-#include <Eigen/Dense>
 #include <fstream>
 #include <sstream>
 #include <boost/archive/xml_oarchive.hpp>
@@ -40,7 +38,7 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/tracking_enum.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/types.h>
+#include <tesseract_common/filesystem.h>
 #include <tesseract_common/serialization_extensions.h>
 
 // Used to replace commas in these macros to avoid them being interpreted as multiple arguments
@@ -53,6 +51,16 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
   template void Type::serialize(boost::archive::xml_iarchive& ar, const unsigned int version);                         \
   template void Type::serialize(boost::archive::binary_oarchive& ar, const unsigned int version);                      \
   template void Type::serialize(boost::archive::binary_iarchive& ar, const unsigned int version);
+
+#define TESSERACT_SERIALIZE_FREE_ARCHIVES_INSTANTIATE(Type)                                                            \
+  template void boost::serialization::serialize(                                                                       \
+      boost::archive::xml_oarchive& ar, Type& g, const unsigned int version); /* NOLINT */                             \
+  template void boost::serialization::serialize(                                                                       \
+      boost::archive::xml_iarchive& ar, Type& g, const unsigned int version); /* NOLINT */                             \
+  template void boost::serialization::serialize(                                                                       \
+      boost::archive::binary_oarchive& ar, Type& g, const unsigned int version); /* NOLINT */                          \
+  template void boost::serialization::serialize(                                                                       \
+      boost::archive::binary_iarchive& ar, Type& g, const unsigned int version); /* NOLINT */
 
 // Use this macro for serialization defined using the invasive method inside the class with custom load/save functions
 #define TESSERACT_SERIALIZE_SAVE_LOAD_ARCHIVES_INSTANTIATE(Type)                                                       \
@@ -115,7 +123,7 @@ struct Serialization
   {
     fs::path fp(file_path);
     if (!fp.has_extension())
-      fp.append(".").append(serialization::xml::extension<SerializableType>::value);
+      fp = fs::path(file_path + serialization::xml::extension<SerializableType>::value);
 
     std::ofstream os(fp.string());
     {  // Must be scoped because all data is not written until the oost::archive::xml_oarchive goes out of scope
@@ -140,7 +148,7 @@ struct Serialization
   {
     fs::path fp(file_path);
     if (!fp.has_extension())
-      fp.append(".").append(serialization::binary::extension<SerializableType>::value);
+      fp = fs::path(file_path + serialization::binary::extension<SerializableType>::value);
 
     std::ofstream os(fp.string(), std::ios_base::binary);
     {  // Must be scoped because all data is not written until the oost::archive::xml_oarchive goes out of scope
@@ -156,6 +164,40 @@ struct Serialization
     }
 
     return true;
+  }
+
+  template <typename SerializableType>
+  static bool toArchiveFile(const SerializableType& archive_type,
+                            const std::string& file_path,
+                            const std::string& name = "")
+  {
+    fs::path fp(file_path);
+    if (fp.extension() == serialization::binary::extension<SerializableType>::value)
+      return toArchiveFileBinary<SerializableType>(archive_type, file_path, name);
+
+    return toArchiveFileXML<SerializableType>(archive_type, file_path, name);
+  }
+
+  template <typename SerializableType>
+  static std::vector<std::uint8_t> toArchiveBinaryData(const SerializableType& archive_type,
+                                                       const std::string& name = "")
+  {
+    std::stringstream ss;
+    {  // Must be scoped because all data is not written until the oost::archive::xml_oarchive goes out of scope
+      boost::archive::xml_oarchive oa(ss);
+
+      // Boost uses the same function for serialization and deserialization so it requires a non-const reference
+      // Because we are only serializing here it is safe to cast away const
+      if (name.empty())
+        oa << boost::serialization::make_nvp<SerializableType>("archive_type",
+                                                               const_cast<SerializableType&>(archive_type));  // NOLINT
+      else
+        oa << boost::serialization::make_nvp<SerializableType>(name.c_str(),
+                                                               const_cast<SerializableType&>(archive_type));  // NOLINT
+    }
+
+    std::string data = ss.str();
+    return std::vector<std::uint8_t>(data.begin(), data.end());
   }
 
   template <typename SerializableType>
@@ -196,6 +238,31 @@ struct Serialization
       std::ifstream ifs(file_path, std::ios_base::binary);
       assert(ifs.good());
       boost::archive::binary_iarchive ia(ifs);
+      ia >> BOOST_SERIALIZATION_NVP(archive_type);
+    }
+
+    return archive_type;
+  }
+
+  template <typename SerializableType>
+  static SerializableType fromArchiveFile(const std::string& file_path)
+  {
+    fs::path fp(file_path);
+    if (fp.extension() == serialization::binary::extension<SerializableType>::value)
+      return fromArchiveFileBinary<SerializableType>(file_path);
+
+    return fromArchiveFileXML<SerializableType>(file_path);
+  }
+
+  template <typename SerializableType>
+  static SerializableType fromArchiveBinaryData(const std::vector<std::uint8_t>& archive_binary)
+  {
+    SerializableType archive_type;
+
+    {  // Must be scoped because all data is not written until the oost::archive::xml_oarchive goes out of scope
+      std::stringstream ss;
+      std::copy(archive_binary.begin(), archive_binary.end(), std::ostreambuf_iterator<char>(ss));
+      boost::archive::xml_iarchive ia(ss);
       ia >> BOOST_SERIALIZATION_NVP(archive_type);
     }
 

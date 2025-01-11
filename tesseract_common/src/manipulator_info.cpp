@@ -26,8 +26,6 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <stdexcept>
-#include <iostream>
 #include <boost/algorithm/string.hpp>
 #include <boost/serialization/nvp.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
@@ -41,11 +39,11 @@ namespace tesseract_common
 ManipulatorInfo::ManipulatorInfo(std::string manipulator_,
                                  std::string working_frame_,
                                  std::string tcp_frame_,
-                                 const Eigen::Isometry3d& tcp_offset_)
+                                 std::variant<std::string, Eigen::Isometry3d> tcp_offset_)
   : manipulator(std::move(manipulator_))
   , working_frame(std::move(working_frame_))
   , tcp_frame(std::move(tcp_frame_))
-  , tcp_offset(tcp_offset_)
+  , tcp_offset(std::move(tcp_offset_))
 {
 }
 
@@ -111,3 +109,5 @@ void ManipulatorInfo::serialize(Archive& ar, const unsigned int /*version*/)
 
 #include <tesseract_common/serialization.h>
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_common::ManipulatorInfo)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::ManipulatorInfo)
+TESSERACT_ANY_EXPORT_IMPLEMENT(TesseractCommonManipulatorInfo)

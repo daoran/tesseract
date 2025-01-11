@@ -32,11 +32,15 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/utils.h>
 #include <tesseract_environment/commands/add_scene_graph_command.h>
+#include <tesseract_common/utils.h>
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/joint.h>
 
 namespace tesseract_environment
 {
+AddSceneGraphCommand::AddSceneGraphCommand() : Command(CommandType::ADD_SCENE_GRAPH) {}
+
 AddSceneGraphCommand::AddSceneGraphCommand(const tesseract_scene_graph::SceneGraph& scene_graph, std::string prefix)
   : Command(CommandType::ADD_SCENE_GRAPH)
   , scene_graph_(scene_graph.clone())
@@ -54,6 +58,13 @@ AddSceneGraphCommand::AddSceneGraphCommand(const tesseract_scene_graph::SceneGra
   , prefix_(std::move(prefix))
 {
 }
+
+const std::shared_ptr<const tesseract_scene_graph::SceneGraph>& AddSceneGraphCommand::getSceneGraph() const
+{
+  return scene_graph_;
+}
+const std::shared_ptr<const tesseract_scene_graph::Joint>& AddSceneGraphCommand::getJoint() const { return joint_; }
+const std::string& AddSceneGraphCommand::getPrefix() const { return prefix_; }
 
 bool AddSceneGraphCommand::operator==(const AddSceneGraphCommand& rhs) const
 {

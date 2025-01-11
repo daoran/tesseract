@@ -6,7 +6,18 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_collision/core/common.h>
+#include <tesseract_common/contact_allowed_validator.h>
 #include <tesseract_common/utils.h>
+
+class TestContactAllowedValidator : public tesseract_common::ContactAllowedValidator
+{
+public:
+  bool operator()(const std::string& s1, const std::string& s2) const override
+  {
+    return (tesseract_common::makeOrderedLinkPair("base_link", "link_1") ==
+            tesseract_common::makeOrderedLinkPair(s1, s2));
+  }
+};
 
 TEST(TesseractCoreUnit, getCollisionObjectPairsUnit)  // NOLINT
 {
@@ -14,15 +25,15 @@ TEST(TesseractCoreUnit, getCollisionObjectPairsUnit)  // NOLINT
   std::vector<std::string> static_links{ "base_link", "part_link" };
 
   std::vector<tesseract_collision::ObjectPairKey> check_pairs;
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_1", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_1", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_2", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("base_link", "link_1"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("base_link", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("base_link", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_1"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_1", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_1", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_2", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("base_link", "link_1"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("base_link", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("base_link", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_1"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_3"));
 
   std::vector<tesseract_collision::ObjectPairKey> pairs =
       tesseract_collision::getCollisionObjectPairs(active_links, static_links);
@@ -30,36 +41,30 @@ TEST(TesseractCoreUnit, getCollisionObjectPairsUnit)  // NOLINT
   EXPECT_TRUE(tesseract_common::isIdentical<tesseract_collision::ObjectPairKey>(pairs, check_pairs, false));
 
   // Now check provided a is contact allowed function
-  auto acm = [](const std::string& s1, const std::string& s2) {
-    return (tesseract_collision::getObjectPairKey("base_link", "link_1") ==
-            tesseract_collision::getObjectPairKey(s1, s2));
-  };
+  auto validator = std::make_shared<TestContactAllowedValidator>();
 
   check_pairs.clear();
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_1", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_1", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("link_2", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("base_link", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("base_link", "link_3"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_1"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_2"));
-  check_pairs.push_back(tesseract_collision::getObjectPairKey("part_link", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_1", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_1", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("link_2", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("base_link", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("base_link", "link_3"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_1"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_2"));
+  check_pairs.push_back(tesseract_common::makeOrderedLinkPair("part_link", "link_3"));
 
-  pairs = tesseract_collision::getCollisionObjectPairs(active_links, static_links, acm);
+  pairs = tesseract_collision::getCollisionObjectPairs(active_links, static_links, validator);
 
   EXPECT_TRUE(tesseract_common::isIdentical<tesseract_collision::ObjectPairKey>(pairs, check_pairs, false));
 }
 
 TEST(TesseractCoreUnit, isContactAllowedUnit)  // NOLINT
 {
-  auto acm = [](const std::string& s1, const std::string& s2) {
-    return (tesseract_collision::getObjectPairKey("base_link", "link_1") ==
-            tesseract_collision::getObjectPairKey(s1, s2));
-  };
+  auto validator = std::make_shared<TestContactAllowedValidator>();
 
-  EXPECT_TRUE(tesseract_collision::isContactAllowed("base_link", "base_link", acm, false));
-  EXPECT_FALSE(tesseract_collision::isContactAllowed("base_link", "link_2", acm, false));
-  EXPECT_TRUE(tesseract_collision::isContactAllowed("base_link", "link_1", acm, true));
+  EXPECT_TRUE(tesseract_collision::isContactAllowed("base_link", "base_link", validator, false));
+  EXPECT_FALSE(tesseract_collision::isContactAllowed("base_link", "link_2", validator, false));
+  EXPECT_TRUE(tesseract_collision::isContactAllowed("base_link", "link_1", validator, true));
 }
 
 TEST(TesseractCoreUnit, scaleVerticesUnit)  // NOLINT
@@ -185,6 +190,513 @@ TEST(TesseractCoreUnit, ContactResultsUnit)  // NOLINT
   EXPECT_TRUE(results.cc_transform[0].isApprox(Eigen::Isometry3d::Identity()));
   EXPECT_TRUE(results.cc_transform[1].isApprox(Eigen::Isometry3d::Identity()));
   EXPECT_EQ(results.single_contact_point, false);
+}
+
+TEST(TesseractCoreUnit, ContactResultMapUnit)  // NOLINT
+{
+  {  // Test construction state
+    tesseract_collision::ContactResultMap result_map;
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_EQ(result_map.getContainer().size(), 0);
+  }
+
+  auto key1 = tesseract_common::makeOrderedLinkPair("link1", "link2");
+  auto key2 = tesseract_common::makeOrderedLinkPair("link2", "link3");
+
+  {  // Test addContactResult single method
+    tesseract_collision::ContactResultMap result_map;
+    result_map.addContactResult(key1, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 1);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    result_map.addContactResult(key1, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    result_map.addContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    // test clear
+    result_map.clear();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    // test release
+    result_map.release();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_TRUE(result_map.getContainer().empty());
+  }
+
+  {  // Test addContactResult vector method
+    tesseract_collision::ContactResultMap result_map;
+    result_map.addContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    result_map.addContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 4);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 4);
+
+    result_map.addContactResult(key2, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 6);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 4);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    // test release
+    result_map.release();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_TRUE(result_map.getContainer().empty());
+  }
+
+  {  // Test setContactResult single method
+    tesseract_collision::ContactResultMap result_map;
+    result_map.setContactResult(key1, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 1);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    result_map.addContactResult(key1, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    result_map.setContactResult(key1, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 1);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    result_map.setContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    // test clear
+    result_map.clear();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    // test shrink to fit
+    result_map.shrinkToFit();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_TRUE(result_map.getContainer().empty());
+  }
+
+  {  // Test setContactResult vector method
+    tesseract_collision::ContactResultMap result_map;
+    result_map.setContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    result_map.addContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 4);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 4);
+
+    result_map.setContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 2);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 1);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    result_map.setContactResult(key2, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    EXPECT_EQ(result_map.count(), 4);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    // test release
+    result_map.release();
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_TRUE(result_map.getContainer().empty());
+  }
+
+  {  // flatten move
+    tesseract_collision::ContactResultMap result_map;
+    result_map.setContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    result_map.addContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    tesseract_collision::ContactResultVector result_vector;
+    result_map.flattenMoveResults(result_vector);
+    EXPECT_EQ(result_vector.size(), 3);
+
+    EXPECT_EQ(result_map.count(), 0);
+    EXPECT_EQ(result_map.size(), 0);
+    EXPECT_TRUE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+  }
+
+  {  // flatten copy
+    tesseract_collision::ContactResultMap result_map;
+    result_map.addContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    result_map.setContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    tesseract_collision::ContactResultVector result_vector;
+    result_map.flattenCopyResults(result_vector);
+    EXPECT_EQ(result_vector.size(), 3);
+
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+  }
+
+  {  // flatten reference wrapper
+    tesseract_collision::ContactResultMap result_map;
+    result_map.setContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    result_map.addContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    std::vector<std::reference_wrapper<tesseract_collision::ContactResult>> result_vector;
+    result_map.flattenWrapperResults(result_vector);
+    EXPECT_EQ(result_vector.size(), 3);
+
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+  }
+
+  {  // flatten reference wrapper const
+    tesseract_collision::ContactResultMap result_map;
+    result_map.addContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    result_map.setContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    std::vector<std::reference_wrapper<const tesseract_collision::ContactResult>> result_vector;
+    result_map.flattenWrapperResults(result_vector);
+    EXPECT_EQ(result_vector.size(), 3);
+
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+  }
+
+  {  // filter
+    tesseract_collision::ContactResultMap result_map;
+    result_map.setContactResult(key1, { tesseract_collision::ContactResult{}, tesseract_collision::ContactResult{} });
+    result_map.addContactResult(key2, tesseract_collision::ContactResult{});
+    EXPECT_EQ(result_map.count(), 3);
+    EXPECT_EQ(result_map.size(), 2);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    auto it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 2);
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+
+    auto filter = [key1](tesseract_collision::ContactResultMap::PairType& pair) {
+      if (key1 == pair.first)
+        pair.second.clear();
+    };
+    result_map.filter(filter);
+
+    EXPECT_EQ(result_map.count(), 1);
+    EXPECT_EQ(result_map.size(), 1);
+    EXPECT_FALSE(result_map.empty());
+    EXPECT_TRUE(result_map.begin() == result_map.getContainer().begin());
+    EXPECT_TRUE(result_map.end() == result_map.getContainer().end());
+    EXPECT_TRUE(result_map.cbegin() == result_map.getContainer().cbegin());
+    EXPECT_TRUE(result_map.cend() == result_map.getContainer().cend());
+    EXPECT_EQ(result_map.getContainer().size(), 2);
+    it = result_map.find(key1);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 0);
+    EXPECT_TRUE(it->second.capacity() > 0);
+
+    it = result_map.find(key2);
+    EXPECT_TRUE(it != result_map.end());
+    EXPECT_EQ(it->second.size(), 1);
+  }
 }
 
 TEST(TesseractCoreUnit, CollisionCheckConfigUnit)  // NOLINT

@@ -2,6 +2,127 @@
 Changelog for package tesseract_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.27.1 (2024-12-03)
+-------------------
+
+0.27.0 (2024-12-01)
+-------------------
+
+0.26.0 (2024-10-27)
+-------------------
+* Remove TesseractSupportResourceLocator
+* Fix serialization
+* Contributors: Levi Armstrong
+
+0.25.0 (2024-09-28)
+-------------------
+
+0.24.1 (2024-08-19)
+-------------------
+
+0.24.0 (2024-08-14)
+-------------------
+
+0.23.1 (2024-07-28)
+-------------------
+* Cleanup boost serialization
+* Use latest vcpkg release for GitHub Action (`#1035 <https://github.com/tesseract-robotics/tesseract/issues/1035>`_)
+  * Use latest vcpkg release in windows action
+  * ci
+  * Fix deprecated boost filesystem functions
+* Contributors: John Wason, Levi Armstrong
+
+0.23.0 (2024-07-24)
+-------------------
+
+0.22.2 (2024-06-10)
+-------------------
+
+0.22.1 (2024-06-03)
+-------------------
+
+0.22.0 (2024-06-02)
+-------------------
+* Leverage forward declarations to improve compile times (`#990 <https://github.com/tesseract-robotics/tesseract/issues/990>`_)
+* Contributors: Levi Armstrong
+
+0.21.5 (2023-12-14)
+-------------------
+
+0.21.4 (2023-11-20)
+-------------------
+
+0.21.3 (2023-11-16)
+-------------------
+
+0.21.2 (2023-11-10)
+-------------------
+
+0.21.1 (2023-11-09)
+-------------------
+
+0.21.0 (2023-11-07)
+-------------------
+
+0.20.2 (2023-10-26)
+-------------------
+
+0.20.1 (2023-10-13)
+-------------------
+
+0.20.0 (2023-09-27)
+-------------------
+
+0.19.2 (2023-09-06)
+-------------------
+
+0.19.1 (2023-09-05)
+-------------------
+
+0.19.0 (2023-09-05)
+-------------------
+* Update kinematics and collision packages to leverage cmake components (`#927 <https://github.com/tesseract-robotics/tesseract/issues/927>`_)
+* Update emails
+* Contributors: Levi Armstrong
+
+0.18.1 (2023-06-30)
+-------------------
+
+0.18.0 (2023-06-29)
+-------------------
+* Add package cmake flags for testing, examples and benchmarks
+* Contributors: Levi Armstrong
+
+0.17.0 (2023-06-06)
+-------------------
+
+0.16.3 (2023-05-04)
+-------------------
+
+0.16.2 (2023-04-28)
+-------------------
+
+0.16.1 (2023-04-11)
+-------------------
+
+0.16.0 (2023-04-09)
+-------------------
+
+0.15.3 (2023-03-22)
+-------------------
+
+0.15.2 (2023-03-15)
+-------------------
+
+0.15.1 (2023-03-14)
+-------------------
+
+0.15.0 (2023-03-03)
+-------------------
+* Fix tesseract_common plugin info implementations equal and insert methods
+* Fix KinematicsInformation equal and insert methods
+* Contributors: Levi Armstrong
+
 0.14.0 (2022-10-23)
 -------------------
 

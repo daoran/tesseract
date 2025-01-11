@@ -28,8 +28,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/split_free.hpp>
-#include <memory>
-#include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
@@ -42,14 +40,14 @@ template <class Archive>
 void save(Archive& ar, const CommandType& g, const unsigned int /*version*/)
 {
   int value = static_cast<int>(g);
-  ar &= BOOST_SERIALIZATION_NVP(value);
+  ar& BOOST_SERIALIZATION_NVP(value);
 }
 
 template <class Archive>
 void load(Archive& ar, CommandType& g, const unsigned int /*version*/)
 {
   int value = 0;
-  ar &= BOOST_SERIALIZATION_NVP(value);
+  ar& BOOST_SERIALIZATION_NVP(value);
   g = static_cast<CommandType>(value);
 }
 
@@ -65,7 +63,7 @@ bool Command::operator==(const Command& rhs) const
   equal &= type_ == rhs.type_;
   return equal;
 }
-bool Command::operator!=(const Command& rhs) const { return !operator==(rhs); }
+bool Command::operator!=(const Command& rhs) const { return !operator==(rhs); }  // LCOV_EXCL_LINE
 
 template <class Archive>
 void Command::serialize(Archive& ar, const unsigned int /*version*/)
@@ -76,3 +74,4 @@ void Command::serialize(Archive& ar, const unsigned int /*version*/)
 
 #include <tesseract_common/serialization.h>
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_environment::Command)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_environment::Command)

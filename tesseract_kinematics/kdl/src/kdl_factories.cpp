@@ -28,14 +28,19 @@
 #include <tesseract_kinematics/kdl/kdl_fwd_kin_chain.h>
 #include <tesseract_kinematics/kdl/kdl_inv_kin_chain_lma.h>
 #include <tesseract_kinematics/kdl/kdl_inv_kin_chain_nr.h>
+#include <tesseract_kinematics/kdl/kdl_inv_kin_chain_nr_jl.h>
+
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/scene_state.h>
 
 namespace tesseract_kinematics
 {
-ForwardKinematics::UPtr KDLFwdKinChainFactory::create(const std::string& solver_name,
-                                                      const tesseract_scene_graph::SceneGraph& scene_graph,
-                                                      const tesseract_scene_graph::SceneState& /*scene_state*/,
-                                                      const KinematicsPluginFactory& /*plugin_factory*/,
-                                                      const YAML::Node& config) const
+std::unique_ptr<ForwardKinematics>
+KDLFwdKinChainFactory::create(const std::string& solver_name,
+                              const tesseract_scene_graph::SceneGraph& scene_graph,
+                              const tesseract_scene_graph::SceneState& /*scene_state*/,
+                              const KinematicsPluginFactory& /*plugin_factory*/,
+                              const YAML::Node& config) const
 {
   std::string base_link;
   std::string tip_link;
@@ -61,14 +66,16 @@ ForwardKinematics::UPtr KDLFwdKinChainFactory::create(const std::string& solver_
   return std::make_unique<KDLFwdKinChain>(scene_graph, base_link, tip_link, solver_name);
 }
 
-InverseKinematics::UPtr KDLInvKinChainLMAFactory::create(const std::string& solver_name,
-                                                         const tesseract_scene_graph::SceneGraph& scene_graph,
-                                                         const tesseract_scene_graph::SceneState& /*scene_state*/,
-                                                         const KinematicsPluginFactory& /*plugin_factory*/,
-                                                         const YAML::Node& config) const
+std::unique_ptr<InverseKinematics>
+KDLInvKinChainLMAFactory::create(const std::string& solver_name,
+                                 const tesseract_scene_graph::SceneGraph& scene_graph,
+                                 const tesseract_scene_graph::SceneState& /*scene_state*/,
+                                 const KinematicsPluginFactory& /*plugin_factory*/,
+                                 const YAML::Node& config) const
 {
   std::string base_link;
   std::string tip_link;
+  KDLInvKinChainLMA::Config kdl_config;
 
   try
   {
@@ -81,6 +88,25 @@ InverseKinematics::UPtr KDLInvKinChainLMAFactory::create(const std::string& solv
       tip_link = n.as<std::string>();
     else
       throw std::runtime_error("KDLInvKinChainLMAFactory, missing 'tip_link' entry");
+
+    // Optional configuration parameters
+    if (YAML::Node n = config["task_weights"])
+    {
+      // Make sure the length matches the constructor interface
+      if (n.size() != 6)
+        throw std::runtime_error("KDLInvKinChainLMAFactory, size of task_weights needs to be 6");
+
+      kdl_config.task_weights = n.as<std::array<double, 6>>();
+    }
+
+    if (YAML::Node n = config["eps"])
+      kdl_config.eps = n.as<double>();
+
+    if (YAML::Node n = config["max_iterations"])
+      kdl_config.max_iterations = n.as<int>();
+
+    if (YAML::Node n = config["eps_joints"])
+      kdl_config.eps_joints = n.as<double>();
   }
   catch (const std::exception& e)
   {
@@ -88,17 +114,19 @@ InverseKinematics::UPtr KDLInvKinChainLMAFactory::create(const std::string& solv
     return nullptr;
   }
 
-  return std::make_unique<KDLInvKinChainLMA>(scene_graph, base_link, tip_link, solver_name);
+  return std::make_unique<KDLInvKinChainLMA>(scene_graph, base_link, tip_link, kdl_config, solver_name);
 }
 
-InverseKinematics::UPtr KDLInvKinChainNRFactory::create(const std::string& solver_name,
-                                                        const tesseract_scene_graph::SceneGraph& scene_graph,
-                                                        const tesseract_scene_graph::SceneState& /*scene_state*/,
-                                                        const KinematicsPluginFactory& /*plugin_factory*/,
-                                                        const YAML::Node& config) const
+std::unique_ptr<InverseKinematics>
+KDLInvKinChainNRFactory::create(const std::string& solver_name,
+                                const tesseract_scene_graph::SceneGraph& scene_graph,
+                                const tesseract_scene_graph::SceneState& /*scene_state*/,
+                                const KinematicsPluginFactory& /*plugin_factory*/,
+                                const YAML::Node& config) const
 {
   std::string base_link;
   std::string tip_link;
+  KDLInvKinChainNR::Config kdl_config;
 
   try
   {
@@ -111,6 +139,19 @@ InverseKinematics::UPtr KDLInvKinChainNRFactory::create(const std::string& solve
       tip_link = n.as<std::string>();
     else
       throw std::runtime_error("KDLInvKinChainNRFactory, missing 'tip_link' entry");
+
+    // Optional configuration parameters
+    if (YAML::Node n = config["velocity_eps"])
+      kdl_config.vel_eps = n.as<double>();
+
+    if (YAML::Node n = config["velocity_iterations"])
+      kdl_config.vel_iterations = n.as<int>();
+
+    if (YAML::Node n = config["position_eps"])
+      kdl_config.pos_eps = n.as<double>();
+
+    if (YAML::Node n = config["position_iterations"])
+      kdl_config.pos_iterations = n.as<int>();
   }
   catch (const std::exception& e)
   {
@@ -118,7 +159,51 @@ InverseKinematics::UPtr KDLInvKinChainNRFactory::create(const std::string& solve
     return nullptr;
   }
 
-  return std::make_unique<KDLInvKinChainNR>(scene_graph, base_link, tip_link, solver_name);
+  return std::make_unique<KDLInvKinChainNR>(scene_graph, base_link, tip_link, kdl_config, solver_name);
+}
+
+std::unique_ptr<InverseKinematics>
+KDLInvKinChainNR_JLFactory::create(const std::string& solver_name,
+                                   const tesseract_scene_graph::SceneGraph& scene_graph,
+                                   const tesseract_scene_graph::SceneState& /*scene_state*/,
+                                   const KinematicsPluginFactory& /*plugin_factory*/,
+                                   const YAML::Node& config) const
+{
+  std::string base_link;
+  std::string tip_link;
+  KDLInvKinChainNR_JL::Config kdl_config;
+
+  try
+  {
+    if (YAML::Node n = config["base_link"])
+      base_link = n.as<std::string>();
+    else
+      throw std::runtime_error("KDLInvKinChainNR_JLFactory, missing 'base_link' entry");
+
+    if (YAML::Node n = config["tip_link"])
+      tip_link = n.as<std::string>();
+    else
+      throw std::runtime_error("KDLInvKinChainNR_JLFactory, missing 'tip_link' entry");
+    // Optional configuration parameters
+    if (YAML::Node n = config["velocity_eps"])
+      kdl_config.vel_eps = n.as<double>();
+
+    if (YAML::Node n = config["velocity_iterations"])
+      kdl_config.vel_iterations = n.as<int>();
+
+    if (YAML::Node n = config["position_eps"])
+      kdl_config.pos_eps = n.as<double>();
+
+    if (YAML::Node n = config["position_iterations"])
+      kdl_config.pos_iterations = n.as<int>();
+  }
+  catch (const std::exception& e)
+  {
+    CONSOLE_BRIDGE_logError("KDLInvKinChainNR_JLFactory: Failed to parse yaml config data! Details: %s", e.what());
+    return nullptr;
+  }
+
+  return std::make_unique<KDLInvKinChainNR_JL>(scene_graph, base_link, tip_link, kdl_config, solver_name);
 }
 
 TESSERACT_PLUGIN_ANCHOR_IMPL(KDLFactoriesAnchor)
@@ -131,3 +216,5 @@ TESSERACT_ADD_FWD_KIN_PLUGIN(tesseract_kinematics::KDLFwdKinChainFactory, KDLFwd
 TESSERACT_ADD_INV_KIN_PLUGIN(tesseract_kinematics::KDLInvKinChainLMAFactory, KDLInvKinChainLMAFactory);
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 TESSERACT_ADD_INV_KIN_PLUGIN(tesseract_kinematics::KDLInvKinChainNRFactory, KDLInvKinChainNRFactory);
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+TESSERACT_ADD_INV_KIN_PLUGIN(tesseract_kinematics::KDLInvKinChainNR_JLFactory, KDLInvKinChainNR_JLFactory);

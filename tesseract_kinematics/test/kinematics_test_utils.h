@@ -42,51 +42,47 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 #include <tesseract_kinematics/core/validate.h>
 
 #include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/link.h>
+#include <tesseract_scene_graph/joint.h>
 #include <tesseract_state_solver/kdl/kdl_state_solver.h>
 
 #include <tesseract_urdf/urdf_parser.h>
 #include <tesseract_common/utils.h>
-#include <tesseract_support/tesseract_support_resource_locator.h>
+#include <tesseract_common/resource_locator.h>
 
 namespace tesseract_kinematics::test_suite
 {
-inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphIIWA()
+inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphIIWA(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/lbr_iiwa_14_r820.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = locator.locateResource("package://tesseract_support/urdf/lbr_iiwa_14_r820.urdf")->getFilePath();
   return tesseract_urdf::parseURDFFile(path, locator);
 }
 
-inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphABBExternalPositioner()
+inline tesseract_scene_graph::SceneGraph::UPtr
+getSceneGraphABBExternalPositioner(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/abb_irb2400_external_positioner.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path =
+      locator.locateResource("package://tesseract_support/urdf/abb_irb2400_external_positioner.urdf")->getFilePath();
   return tesseract_urdf::parseURDFFile(path, locator);
 }
 
-inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphABBOnPositioner()
+inline tesseract_scene_graph::SceneGraph::UPtr
+getSceneGraphABBOnPositioner(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/abb_irb2400_on_positioner.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path =
+      locator.locateResource("package://tesseract_support/urdf/abb_irb2400_on_positioner.urdf")->getFilePath();
   return tesseract_urdf::parseURDFFile(path, locator);
 }
 
-inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphABB()
+inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphABB(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/abb_irb2400.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = locator.locateResource("package://tesseract_support/urdf/abb_irb2400.urdf")->getFilePath();
   return tesseract_urdf::parseURDFFile(path, locator);
 }
 
-inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphIIWA7()
+inline tesseract_scene_graph::SceneGraph::UPtr getSceneGraphIIWA7(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/iiwa7.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = locator.locateResource("package://tesseract_support/urdf/iiwa7.urdf")->getFilePath();
   return tesseract_urdf::parseURDFFile(path, locator);
 }
 
@@ -240,8 +236,12 @@ inline tesseract_common::KinematicLimits getTargetLimits(const tesseract_scene_g
     auto joint = scene_graph.getJoint(joint_names[static_cast<std::size_t>(i)]);
     limits.joint_limits(i, 0) = joint->limits->lower;
     limits.joint_limits(i, 1) = joint->limits->upper;
-    limits.velocity_limits(i) = joint->limits->velocity;
-    limits.acceleration_limits(i) = joint->limits->acceleration;
+    limits.velocity_limits(i, 0) = -joint->limits->velocity;
+    limits.velocity_limits(i, 1) = joint->limits->velocity;
+    limits.acceleration_limits(i, 0) = -joint->limits->acceleration;
+    limits.acceleration_limits(i, 1) = joint->limits->acceleration;
+    limits.jerk_limits(i, 0) = -joint->limits->jerk;
+    limits.jerk_limits(i, 1) = joint->limits->jerk;
   }
 
   return limits;
@@ -298,34 +298,60 @@ inline void runJacobianTest(tesseract_kinematics::KinematicGroup& kin_group,
   Eigen::MatrixXd jacobian, numerical_jacobian;
   jacobian.resize(6, kin_group.numJoints());
 
-  tesseract_common::TransformMap poses = kin_group.calcFwdKin(jvals);
   {  // Test with all information
     jacobian = kin_group.calcJacobian(jvals, link_name, link_point);
 
     numerical_jacobian.resize(6, kin_group.numJoints());
-    tesseract_kinematics::numericalJacobian(numerical_jacobian, kin_group, jvals, link_name, link_point);
+    tesseract_kinematics::numericalJacobian(
+        numerical_jacobian, Eigen::Isometry3d::Identity(), kin_group, jvals, link_name, link_point);
 
     for (int i = 0; i < 6; ++i)
-    {
       for (int j = 0; j < static_cast<int>(kin_group.numJoints()); ++j)
-      {
         EXPECT_NEAR(numerical_jacobian(i, j), jacobian(i, j), 1e-3);
-      }
-    }
   }
 
   {  // Test don't use link_point
     jacobian = kin_group.calcJacobian(jvals, link_name);
 
     numerical_jacobian.resize(6, kin_group.numJoints());
-    tesseract_kinematics::numericalJacobian(numerical_jacobian, kin_group, jvals, link_name, Eigen::Vector3d::Zero());
+    tesseract_kinematics::numericalJacobian(
+        numerical_jacobian, Eigen::Isometry3d::Identity(), kin_group, jvals, link_name, Eigen::Vector3d::Zero());
 
     for (int i = 0; i < 6; ++i)
-    {
       for (int j = 0; j < static_cast<int>(kin_group.numJoints()); ++j)
-      {
         EXPECT_NEAR(numerical_jacobian(i, j), jacobian(i, j), 1e-3);
-      }
+  }
+
+  std::vector<std::string> static_link_names = kin_group.getStaticLinkNames();
+  tesseract_common::TransformMap poses = kin_group.calcFwdKin(jvals);
+  for (const auto& static_link_name : static_link_names)
+  {
+    {  // Test with all information
+      jacobian = kin_group.calcJacobian(jvals, static_link_name, link_name, link_point);
+
+      numerical_jacobian.resize(6, kin_group.numJoints());
+      tesseract_kinematics::numericalJacobian(
+          numerical_jacobian, poses.at(static_link_name).inverse(), kin_group, jvals, link_name, link_point);
+
+      for (int i = 0; i < 6; ++i)
+        for (int j = 0; j < static_cast<int>(kin_group.numJoints()); ++j)
+          EXPECT_NEAR(numerical_jacobian(i, j), jacobian(i, j), 1e-3);
+    }
+
+    {  // Test don't use link_point
+      jacobian = kin_group.calcJacobian(jvals, static_link_name, link_name);
+
+      numerical_jacobian.resize(6, kin_group.numJoints());
+      tesseract_kinematics::numericalJacobian(numerical_jacobian,
+                                              poses.at(static_link_name).inverse(),
+                                              kin_group,
+                                              jvals,
+                                              link_name,
+                                              Eigen::Vector3d::Zero());
+
+      for (int i = 0; i < 6; ++i)
+        for (int j = 0; j < static_cast<int>(kin_group.numJoints()); ++j)
+          EXPECT_NEAR(numerical_jacobian(i, j), jacobian(i, j), 1e-3);
     }
   }
 }
@@ -344,14 +370,22 @@ inline void runKinJointLimitsTest(const tesseract_common::KinematicLimits& limit
   EXPECT_EQ(limits.joint_limits.rows(), target_limits.joint_limits.rows());
   EXPECT_EQ(limits.velocity_limits.rows(), target_limits.velocity_limits.rows());
   EXPECT_EQ(limits.acceleration_limits.rows(), target_limits.acceleration_limits.rows());
+  EXPECT_EQ(limits.jerk_limits.rows(), target_limits.jerk_limits.rows());
 
   // Check limits
   for (Eigen::Index i = 0; i < limits.joint_limits.rows(); ++i)
   {
     EXPECT_NEAR(limits.joint_limits(i, 0), target_limits.joint_limits(i, 0), 1e-6);
     EXPECT_NEAR(limits.joint_limits(i, 1), target_limits.joint_limits(i, 1), 1e-6);
-    EXPECT_NEAR(limits.velocity_limits(i), target_limits.velocity_limits(i), 1e-6);
-    EXPECT_NEAR(limits.acceleration_limits(i), target_limits.acceleration_limits(i), 1e-6);
+
+    EXPECT_NEAR(limits.velocity_limits(i, 0), target_limits.velocity_limits(i, 0), 1e-6);
+    EXPECT_NEAR(limits.velocity_limits(i, 1), target_limits.velocity_limits(i, 1), 1e-6);
+
+    EXPECT_NEAR(limits.acceleration_limits(i, 0), target_limits.acceleration_limits(i, 0), 1e-6);
+    EXPECT_NEAR(limits.acceleration_limits(i, 1), target_limits.acceleration_limits(i, 1), 1e-6);
+
+    EXPECT_NEAR(limits.jerk_limits(i, 0), target_limits.jerk_limits(i, 0), 1e-6);
+    EXPECT_NEAR(limits.jerk_limits(i, 1), target_limits.jerk_limits(i, 1), 1e-6);
   }
 }
 
@@ -368,14 +402,22 @@ inline void runKinSetJointLimitsTest(tesseract_kinematics::KinematicGroup& kin_g
   EXPECT_TRUE(limits.joint_limits.rows() > 0);
   EXPECT_TRUE(limits.velocity_limits.rows() > 0);
   EXPECT_TRUE(limits.acceleration_limits.rows() > 0);
+  EXPECT_TRUE(limits.jerk_limits.rows() > 0);
 
   // Check limits
   for (Eigen::Index i = 0; i < limits.joint_limits.rows(); ++i)
   {
     limits.joint_limits(i, 0) = -5.0 - double(i);
     limits.joint_limits(i, 1) = 5.0 + double(i);
-    limits.velocity_limits(i) = 10.0 + double(i);
-    limits.acceleration_limits(i) = 5.0 + double(i);
+
+    limits.velocity_limits(i, 0) = -10.0 - double(i);
+    limits.velocity_limits(i, 1) = 10.0 + double(i);
+
+    limits.acceleration_limits(i, 0) = -5.0 - double(i);
+    limits.acceleration_limits(i, 1) = 5.0 + double(i);
+
+    limits.jerk_limits(i, 0) = -5.0 - double(i);
+    limits.jerk_limits(i, 1) = 5.0 + double(i);
   }
 
   kin_group.setLimits(limits);
@@ -920,7 +962,8 @@ inline void runInvKinIIWATest(const tesseract_kinematics::KinematicsPluginFactor
                               const std::string& inv_factory_name,
                               const std::string& fwd_factory_name)
 {
-  tesseract_scene_graph::SceneGraph::Ptr scene_graph = getSceneGraphIIWA();
+  tesseract_common::GeneralResourceLocator locator;
+  tesseract_scene_graph::SceneGraph::Ptr scene_graph = getSceneGraphIIWA(locator);
   std::string manip_name = "manip";
   std::string base_link_name = "base_link";
   std::string tip_link_name = "tool0";
@@ -995,6 +1038,7 @@ inline void runInvKinIIWATest(const tesseract_kinematics::KinematicsPluginFactor
     runActiveLinkNamesIIWATest(kin_group);
     runKinJointLimitsTest(kin_group.getLimits(), target_limits);
     runKinSetJointLimitsTest(kin_group);
+    EXPECT_EQ(kin_group.getRedundancyCapableJointIndices(), std::vector<Eigen::Index>({ 0, 1, 2, 3, 4, 5, 6 }));
   }
 
   {  // Check cloned
@@ -1031,6 +1075,7 @@ inline void runInvKinIIWATest(const tesseract_kinematics::KinematicsPluginFactor
     runActiveLinkNamesIIWATest(kin_group);
     runKinJointLimitsTest(kin_group.getLimits(), target_limits);
     runKinSetJointLimitsTest(kin_group);
+    EXPECT_EQ(kin_group.getRedundancyCapableJointIndices(), std::vector<Eigen::Index>({ 0, 1, 2, 3, 4, 5, 6 }));
   }
 
   fwd_plugin_info.config["base_link"] = "missing_link";

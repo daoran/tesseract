@@ -28,17 +28,21 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
+#include <boost/serialization/export.hpp>
 #include <unordered_map>
 #include <string>
 #include <vector>
-#include <array>
-#include <map>
+#include <set>
 #include <Eigen/Geometry>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/types.h>
-#include <tesseract_common/utils.h>
+#include <tesseract_common/eigen_types.h>
+#include <tesseract_common/plugin_info.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_srdf
 {
@@ -61,7 +65,9 @@ using GroupNames = std::set<std::string>;
  */
 struct KinematicsInformation
 {
+  // LCOV_EXCL_START
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  // LCOV_EXCL_STOP
 
   /** @brief A set of group names */
   GroupNames group_names;
@@ -151,7 +157,6 @@ private:
 
 }  // namespace tesseract_srdf
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_srdf::KinematicsInformation, "KinematicsInformation")
+BOOST_CLASS_EXPORT_KEY(tesseract_srdf::KinematicsInformation)
+
 #endif  // TESSERACT_SRDF_KINEMATICS_INFORMATION_H
