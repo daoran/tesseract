@@ -25,9 +25,13 @@
  */
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
+#include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/shared_ptr.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/uuid_serialize.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -45,10 +49,10 @@ bool JointState::operator==(const JointState& other) const
 {
   bool ret_val = true;
   ret_val &= (joint_names == other.joint_names);
-  ret_val &= (position.isApprox(other.position, 1e-5));
-  ret_val &= (velocity.isApprox(other.velocity, 1e-5));
-  ret_val &= (acceleration.isApprox(other.acceleration, 1e-5));
-  ret_val &= (effort.isApprox(other.effort, 1e-5));
+  ret_val &= ((position.size() == other.position.size()) && (position.isApprox(other.position, 1e-5)));
+  ret_val &= ((velocity.size() == other.velocity.size()) && (velocity.isApprox(other.velocity, 1e-5)));
+  ret_val &= ((acceleration.size() == other.acceleration.size()) && (acceleration.isApprox(other.acceleration, 1e-5)));
+  ret_val &= ((effort.size() == other.effort.size()) && (effort.isApprox(other.effort, 1e-5)));
   ret_val &= (tesseract_common::almostEqualRelativeAndAbs(time, other.time, 1e-5));
   return ret_val;
 }
@@ -76,12 +80,15 @@ JointTrajectory::JointTrajectory(std::vector<JointState> states, std::string des
 bool JointTrajectory::operator==(const JointTrajectory& other) const
 {
   bool ret_val = true;
+  ret_val &= (uuid == other.uuid);
   ret_val &= (description == other.description);
   ret_val &= (states == other.states);
   return ret_val;
 }
 
 bool JointTrajectory::operator!=(const JointTrajectory& rhs) const { return !operator==(rhs); }
+
+// LCOV_EXCL_START
 
 ///////////////
 // Iterators //
@@ -121,14 +128,17 @@ JointTrajectory::const_reference JointTrajectory::at(size_type n) const { return
 JointTrajectory::pointer JointTrajectory::data() { return states.data(); }
 JointTrajectory::const_pointer JointTrajectory::data() const { return states.data(); }
 JointTrajectory::reference JointTrajectory::operator[](size_type pos) { return states[pos]; }
-JointTrajectory::const_reference JointTrajectory::operator[](size_type pos) const { return states[pos]; };
+JointTrajectory::const_reference JointTrajectory::operator[](size_type pos) const { return states[pos]; }
 
 ///////////////
 // Modifiers //
 ///////////////
 void JointTrajectory::clear() { states.clear(); }
 JointTrajectory::iterator JointTrajectory::insert(const_iterator p, const value_type& x) { return states.insert(p, x); }
-JointTrajectory::iterator JointTrajectory::insert(const_iterator p, value_type&& x) { return states.insert(p, x); }
+JointTrajectory::iterator JointTrajectory::insert(const_iterator p, value_type&& x)
+{
+  return states.insert(p, std::move(x));
+}
 JointTrajectory::iterator JointTrajectory::insert(const_iterator p, std::initializer_list<value_type> l)
 {
   return states.insert(p, l);
@@ -162,11 +172,14 @@ void JointTrajectory::emplace_back(Args&&... args)
 #endif
 
 void JointTrajectory::pop_back() { states.pop_back(); }
-void JointTrajectory::swap(std::vector<value_type>& other) { states.swap(other); }
+void JointTrajectory::swap(std::vector<value_type>& other) noexcept { states.swap(other); }
+
+// LCOV_EXCL_STOP
 
 template <class Archive>
 void JointTrajectory::serialize(Archive& ar, const unsigned int version)  // NOLINT
 {
+  ar& BOOST_SERIALIZATION_NVP(uuid);
   ar& BOOST_SERIALIZATION_NVP(states);
   ar& BOOST_SERIALIZATION_NVP(description);
 }
@@ -176,3 +189,9 @@ void JointTrajectory::serialize(Archive& ar, const unsigned int version)  // NOL
 #include <tesseract_common/serialization.h>
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_common::JointState)
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_common::JointTrajectory)
+TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_common::JointStateAnyPoly)
+TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_common::JointStatePtrAnyPoly)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::JointState)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::JointTrajectory)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::JointStateAnyPoly)
+BOOST_CLASS_EXPORT_IMPLEMENT(tesseract_common::JointStatePtrAnyPoly)

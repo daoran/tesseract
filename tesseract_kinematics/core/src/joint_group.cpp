@@ -31,7 +31,12 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 #include <tesseract_kinematics/core/joint_group.h>
 #include <tesseract_common/utils.h>
 
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/joint.h>
+#include <tesseract_scene_graph/link.h>
 #include <tesseract_scene_graph/kdl_parser.h>
+
+#include <tesseract_state_solver/kdl/kdl_state_solver.h>
 
 namespace tesseract_kinematics
 {
@@ -47,8 +52,8 @@ JointGroup::JointGroup(std::string name,
       throw std::runtime_error("Joint name '" + joint_name + "' does not exist in the provided scene graph!");
   }
 
-  tesseract_scene_graph::KDLTreeData data =
-      tesseract_scene_graph::parseSceneGraph(scene_graph, joint_names_, scene_state.joints);
+  tesseract_scene_graph::KDLTreeData data = tesseract_scene_graph::parseSceneGraph(
+      scene_graph, joint_names_, scene_state.joints, scene_state.floating_joints);
   state_solver_ = std::make_unique<tesseract_scene_graph::KDLStateSolver>(scene_graph, data);
   jacobian_map_.reserve(joint_names_.size());
   std::vector<std::string> solver_jn = state_solver_->getActiveJointNames();
@@ -76,8 +81,12 @@ JointGroup::JointGroup(std::string name,
     // Set limits
     limits_.joint_limits(i, 0) = joint->limits->lower;
     limits_.joint_limits(i, 1) = joint->limits->upper;
-    limits_.velocity_limits(i) = joint->limits->velocity;
-    limits_.acceleration_limits(i) = joint->limits->acceleration;
+    limits_.velocity_limits(i, 0) = -joint->limits->velocity;
+    limits_.velocity_limits(i, 1) = joint->limits->velocity;
+    limits_.acceleration_limits(i, 0) = -joint->limits->acceleration;
+    limits_.acceleration_limits(i, 1) = joint->limits->acceleration;
+    limits_.jerk_limits(i, 0) = -joint->limits->jerk;
+    limits_.jerk_limits(i, 1) = joint->limits->jerk;
 
     // Set redundancy indices
     switch (joint->type)
@@ -94,6 +103,8 @@ JointGroup::JointGroup(std::string name,
   if (static_link_names_.size() + active_link_names.size() != scene_graph.getLinks().size())
     throw std::runtime_error("JointGroup: Static link names are not correct!");
 }
+
+JointGroup::~JointGroup() = default;
 
 JointGroup::JointGroup(const JointGroup& other) { *this = other; }
 
@@ -169,12 +180,12 @@ Eigen::MatrixXd JointGroup::calcJacobian(const Eigen::Ref<const Eigen::VectorXd>
     Eigen::MatrixXd base_link_jac = state_solver_->getJacobian(joint_names_, joint_angles, base_link_name);
     Eigen::MatrixXd base_kin_jac(6, numJoints());
     for (Eigen::Index i = 0; i < numJoints(); ++i)
-      base_link_jac.col(i) = base_link_jac.col(jacobian_map_[static_cast<std::size_t>(i)]);
+      base_kin_jac.col(i) = base_link_jac.col(jacobian_map_[static_cast<std::size_t>(i)]);
 
     tesseract_common::jacobianChangeBase(kin_jac, base_link_tf.inverse());
-    tesseract_common::jacobianChangeBase(base_link_jac, base_link_tf.inverse());
+    tesseract_common::jacobianChangeBase(base_kin_jac, base_link_tf.inverse());
 
-    kin_jac = kin_jac + base_link_jac;
+    kin_jac = kin_jac + base_kin_jac;
   }
   else
   {
@@ -210,14 +221,14 @@ Eigen::MatrixXd JointGroup::calcJacobian(const Eigen::Ref<const Eigen::VectorXd>
     Eigen::MatrixXd base_link_jac = state_solver_->getJacobian(joint_names_, joint_angles, base_link_name);
     Eigen::MatrixXd base_kin_jac(6, numJoints());
     for (Eigen::Index i = 0; i < numJoints(); ++i)
-      base_link_jac.col(i) = base_link_jac.col(jacobian_map_[static_cast<std::size_t>(i)]);
+      base_kin_jac.col(i) = base_link_jac.col(jacobian_map_[static_cast<std::size_t>(i)]);
 
     tesseract_common::jacobianChangeBase(kin_jac, base_link_tf.inverse());
     tesseract_common::jacobianChangeRefPoint(kin_jac, (base_link_tf.inverse() * link_tf).linear() * link_point);
 
-    tesseract_common::jacobianChangeBase(base_link_jac, base_link_tf.inverse());
+    tesseract_common::jacobianChangeBase(base_kin_jac, base_link_tf.inverse());
 
-    kin_jac = kin_jac + base_link_jac;
+    kin_jac = kin_jac + base_kin_jac;
   }
   else
   {
@@ -276,8 +287,8 @@ tesseract_common::KinematicLimits JointGroup::getLimits() const { return limits_
 void JointGroup::setLimits(const tesseract_common::KinematicLimits& limits)
 {
   Eigen::Index nj = numJoints();
-  if (limits.joint_limits.rows() != nj || limits.velocity_limits.size() != nj ||
-      limits.acceleration_limits.size() != nj)
+  if (limits.joint_limits.rows() != nj || limits.velocity_limits.rows() != nj ||
+      limits.acceleration_limits.rows() != nj || limits.jerk_limits.rows() != nj)
     throw std::runtime_error("Kinematics Group limits assigned are invalid!");
 
   limits_ = limits;

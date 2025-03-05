@@ -31,6 +31,9 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <type_traits>
 #include <console_bridge/console.h>
 #include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <tinyxml2.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -69,7 +72,7 @@ std::enable_if_t<std::is_polymorphic<E>::value> my_rethrow_if_nested(const E& e)
     p->rethrow_nested();
 }
 
-std::string fileToString(const tesseract_common::fs::path& filepath)
+std::string fileToString(const std::filesystem::path& filepath)
 {
   std::ifstream ifs(filepath.c_str());
   std::string contents;
@@ -121,7 +124,7 @@ Eigen::VectorXd concat(const Eigen::VectorXd& a, const Eigen::VectorXd& b)
   return out;
 }
 
-Eigen::Vector3d calcRotationalError(const Eigen::Ref<const Eigen::Matrix3d>& R)
+std::pair<Eigen::Vector3d, double> calcRotationalErrorDecomposed(const Eigen::Ref<const Eigen::Matrix3d>& R)
 {
   Eigen::Quaterniond q(R);
   Eigen::AngleAxisd r12(q);
@@ -133,7 +136,7 @@ Eigen::Vector3d calcRotationalError(const Eigen::Ref<const Eigen::Matrix3d>& R)
   // Make sure that the angle is on [-pi, pi]
   const static double two_pi = 2.0 * M_PI;
   double angle = s * r12.angle();
-  Eigen::Vector3d axis = s * r12.axis();
+  Eigen::Vector3d axis{ s * r12.axis() };
   angle = copysign(fmod(fabs(angle), two_pi), angle);
   if (angle < -M_PI)
     angle += two_pi;
@@ -142,37 +145,87 @@ Eigen::Vector3d calcRotationalError(const Eigen::Ref<const Eigen::Matrix3d>& R)
 
   assert(std::abs(angle) <= M_PI);
 
-  return axis * angle;
+  return { axis, angle };
 }
 
-Eigen::Vector3d calcRotationalError2(const Eigen::Ref<const Eigen::Matrix3d>& R)
+Eigen::Vector3d calcRotationalError(const Eigen::Ref<const Eigen::Matrix3d>& R)
 {
-  Eigen::Quaterniond q(R);
-  Eigen::AngleAxisd r12(q);
-
-  // Eigen angle axis flips the sign of axis so rotation is always positive which is
-  // not ideal for numerical differentiation.
-  int s = (q.vec().dot(r12.axis()) < 0) ? -1 : 1;
-
-  // Make sure that the angle is on [0, 2 * pi]
-  const static double two_pi = 2.0 * M_PI;
-  double angle = s * r12.angle();
-  Eigen::Vector3d axis = s * r12.axis();
-  angle = copysign(fmod(fabs(angle), two_pi), angle);
-  if (angle < 0)
-    angle += two_pi;
-  else if (angle > two_pi)
-    angle -= two_pi;
-
-  assert(angle <= two_pi && angle >= 0);
-
-  return axis * angle;
+  std::pair<Eigen::Vector3d, double> data = calcRotationalErrorDecomposed(R);
+  return data.first * data.second;
 }
 
 Eigen::VectorXd calcTransformError(const Eigen::Isometry3d& t1, const Eigen::Isometry3d& t2)
 {
   Eigen::Isometry3d pose_err = t1.inverse() * t2;
   return concat(pose_err.translation(), calcRotationalError(pose_err.rotation()));
+}
+
+Eigen::VectorXd calcJacobianTransformErrorDiff(const Eigen::Isometry3d& target,
+                                               const Eigen::Isometry3d& source,
+                                               const Eigen::Isometry3d& source_perturbed)
+{
+  Eigen::Isometry3d pose_err = target.inverse() * source;
+  std::pair<Eigen::Vector3d, double> pose_rotation_err = calcRotationalErrorDecomposed(pose_err.rotation());
+  Eigen::VectorXd err = concat(pose_err.translation(), pose_rotation_err.first * pose_rotation_err.second);
+
+  Eigen::Isometry3d perturbed_pose_err = target.inverse() * source_perturbed;
+  std::pair<Eigen::Vector3d, double> perturbed_pose_rotation_err =
+      calcRotationalErrorDecomposed(perturbed_pose_err.rotation());
+
+  // They should always pointing in the same direction, but when error is close to zero this can flip so we will correct
+  if (perturbed_pose_rotation_err.first.dot(pose_rotation_err.first) < 0)
+  {
+    perturbed_pose_rotation_err.first *= -1;
+    perturbed_pose_rotation_err.second *= -1;
+  }
+
+  // Angle axis has a discontinity at PI so need to correctly handle this calculating jacobian difference
+  Eigen::VectorXd perturbed_err;
+  if (perturbed_pose_rotation_err.second > M_PI_2 && pose_rotation_err.second < -M_PI_2)
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * (perturbed_pose_rotation_err.second - (2 * M_PI)));
+  else if (perturbed_pose_rotation_err.second < -M_PI_2 && pose_rotation_err.second > M_PI_2)
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * (perturbed_pose_rotation_err.second + (2 * M_PI)));
+  else
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * perturbed_pose_rotation_err.second);
+
+  return (perturbed_err - err);
+}
+
+Eigen::VectorXd calcJacobianTransformErrorDiff(const Eigen::Isometry3d& target,
+                                               const Eigen::Isometry3d& target_perturbed,
+                                               const Eigen::Isometry3d& source,
+                                               const Eigen::Isometry3d& source_perturbed)
+{
+  Eigen::Isometry3d pose_err = target.inverse() * source;
+  std::pair<Eigen::Vector3d, double> pose_rotation_err = calcRotationalErrorDecomposed(pose_err.rotation());
+  Eigen::VectorXd err = concat(pose_err.translation(), pose_rotation_err.first * pose_rotation_err.second);
+
+  Eigen::Isometry3d perturbed_pose_err = target_perturbed.inverse() * source_perturbed;
+  std::pair<Eigen::Vector3d, double> perturbed_pose_rotation_err =
+      calcRotationalErrorDecomposed(perturbed_pose_err.rotation());
+
+  // They should always pointing in the same direction
+#ifndef NDEBUG
+  if (std::abs(pose_rotation_err.second) > 0.01 && perturbed_pose_rotation_err.first.dot(pose_rotation_err.first) < 0)
+    throw std::runtime_error("calcJacobianTransformErrorDiff, angle axes are pointing in oposite directions!");
+#endif
+
+  // Angle axis has a discontinity at PI so need to correctly handle this calculating  jacobian difference
+  Eigen::VectorXd perturbed_err;
+  if (perturbed_pose_rotation_err.second > M_PI_2 && pose_rotation_err.second < -M_PI_2)
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * (perturbed_pose_rotation_err.second - (2 * M_PI)));
+  else if (perturbed_pose_rotation_err.second < -M_PI_2 && pose_rotation_err.second > M_PI_2)
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * (perturbed_pose_rotation_err.second + (2 * M_PI)));
+  else
+    perturbed_err = concat(perturbed_pose_err.translation(),
+                           perturbed_pose_rotation_err.first * perturbed_pose_rotation_err.second);
+
+  return (perturbed_err - err);
 }
 
 Eigen::Vector4d computeRandomColor()
@@ -192,7 +245,7 @@ Eigen::Vector4d computeRandomColor()
 
 void printNestedException(const std::exception& e, int level)  // NOLINT(misc-no-recursion)
 {
-  std::cerr << std::string(static_cast<unsigned>(2 * level), ' ') << "exception: " << e.what() << std::endl;
+  std::cerr << std::string(static_cast<unsigned>(2 * level), ' ') << "exception: " << e.what() << "\n";
   try
   {
     my_rethrow_if_nested(e);
@@ -201,12 +254,15 @@ void printNestedException(const std::exception& e, int level)  // NOLINT(misc-no
   {
     printNestedException(e, level + 1);
   }
-  catch (...)
+  catch (...)  // NOLINT
   {
   }
 }
 
-std::string getTempPath() { return fs::temp_directory_path().string() + std::string(1, fs::path::preferred_separator); }
+std::string getTempPath()
+{
+  return std::filesystem::temp_directory_path().string() + std::string(1, std::filesystem::path::preferred_separator);
+}
 
 bool isNumeric(const std::string& s)
 {
@@ -221,7 +277,7 @@ bool isNumeric(const std::string& s)
   double out{ 0 };
   ss >> out;
 
-  return !(ss.fail() || !ss.eof());
+  return !ss.fail() && ss.eof();
 }
 
 bool isNumeric(const std::vector<std::string>& sv)
@@ -280,7 +336,7 @@ void reorder(Eigen::Ref<Eigen::VectorXd> v, std::vector<Eigen::Index> order)
   }
 }
 
-tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLElement* xml_element, std::string& value)
+int QueryStringValue(const tinyxml2::XMLElement* xml_element, std::string& value)
 {
   if (xml_element->Value() == nullptr)
     return tinyxml2::XML_NO_ATTRIBUTE;
@@ -290,7 +346,7 @@ tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLElement* xml_element, std
   return tinyxml2::XML_SUCCESS;
 }
 
-tinyxml2::XMLError QueryStringText(const tinyxml2::XMLElement* xml_element, std::string& text)
+int QueryStringText(const tinyxml2::XMLElement* xml_element, std::string& text)
 {
   if (xml_element->GetText() == nullptr)
     return tinyxml2::XML_NO_ATTRIBUTE;
@@ -300,7 +356,7 @@ tinyxml2::XMLError QueryStringText(const tinyxml2::XMLElement* xml_element, std:
   return tinyxml2::XML_SUCCESS;
 }
 
-tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute, std::string& value)
+int QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute, std::string& value)
 {
   if (xml_attribute->Value() == nullptr)
     return tinyxml2::XML_WRONG_ATTRIBUTE_TYPE;
@@ -310,7 +366,7 @@ tinyxml2::XMLError QueryStringValue(const tinyxml2::XMLAttribute* xml_attribute,
   return tinyxml2::XML_SUCCESS;
 }
 
-tinyxml2::XMLError QueryStringAttribute(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value)
+int QueryStringAttribute(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value)
 {
   const tinyxml2::XMLAttribute* attribute = xml_element->FindAttribute(name);
   if (attribute == nullptr)
@@ -326,11 +382,9 @@ std::string StringAttribute(const tinyxml2::XMLElement* xml_element, const char*
   return str;
 }
 
-tinyxml2::XMLError QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_element,
-                                                const char* name,
-                                                std::string& value)
+int QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, std::string& value)
 {
-  tinyxml2::XMLError status = QueryStringAttribute(xml_element, name, value);
+  int status = QueryStringAttribute(xml_element, name, value);
 
   if (status != tinyxml2::XML_NO_ATTRIBUTE && status != tinyxml2::XML_SUCCESS)
   {
@@ -348,11 +402,9 @@ tinyxml2::XMLError QueryStringAttributeRequired(const tinyxml2::XMLElement* xml_
   return status;
 }
 
-tinyxml2::XMLError QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_element,
-                                                const char* name,
-                                                double& value)
+int QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, double& value)
 {
-  tinyxml2::XMLError status = xml_element->QueryDoubleAttribute(name, &value);
+  int status = xml_element->QueryDoubleAttribute(name, &value);
 
   if (status != tinyxml2::XML_NO_ATTRIBUTE && status != tinyxml2::XML_SUCCESS)
   {
@@ -370,9 +422,9 @@ tinyxml2::XMLError QueryDoubleAttributeRequired(const tinyxml2::XMLElement* xml_
   return status;
 }
 
-tinyxml2::XMLError QueryIntAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, int& value)
+int QueryIntAttributeRequired(const tinyxml2::XMLElement* xml_element, const char* name, int& value)
 {
-  tinyxml2::XMLError status = xml_element->QueryIntAttribute(name, &value);
+  int status = xml_element->QueryIntAttribute(name, &value);
 
   if (status != tinyxml2::XML_NO_ATTRIBUTE && status != tinyxml2::XML_SUCCESS)
   {

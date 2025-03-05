@@ -27,18 +27,12 @@
 #define TESSERACT_KINEMATICS_KDL_INV_KIN_CHAIN_LMA_H
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <kdl/tree.hpp>
-#include <kdl/chain.hpp>
 #include <kdl/chainiksolverpos_lma.hpp>
-#include <unordered_map>
-#include <console_bridge/console.h>
+#include <array>
 #include <mutex>
-
-#include <tesseract_scene_graph/graph.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_kinematics/core/inverse_kinematics.h>
-#include <tesseract_kinematics/core/types.h>
 #include <tesseract_kinematics/kdl/kdl_utils.h>
 
 namespace tesseract_kinematics
@@ -60,6 +54,22 @@ public:
   using UPtr = std::unique_ptr<KDLInvKinChainLMA>;
   using ConstUPtr = std::unique_ptr<const KDLInvKinChainLMA>;
 
+  /**
+   * @brief The Config struct
+   *
+   * This contains parameters that can be used to customize the KDL solver for your application.
+   * They are ultimately passed to the constuctor of the underlying ChainIkSolver.
+   *
+   * The defaults provided here are the same defaults imposed by the KDL library.
+   */
+  struct Config
+  {
+    std::array<double, 6> task_weights{ 1.0, 1.0, 1.0, 0.1, 0.1, 0.1 };
+    double eps{ 1E-5 };
+    int max_iterations{ 500 };
+    double eps_joints{ 1E-15 };
+  };
+
   ~KDLInvKinChainLMA() override = default;
   KDLInvKinChainLMA(const KDLInvKinChainLMA& other);
   KDLInvKinChainLMA& operator=(const KDLInvKinChainLMA& other);
@@ -77,6 +87,7 @@ public:
   KDLInvKinChainLMA(const tesseract_scene_graph::SceneGraph& scene_graph,
                     const std::string& base_link,
                     const std::string& tip_link,
+                    Config kdl_config,
                     std::string solver_name = KDL_INV_KIN_CHAIN_LMA_SOLVER_NAME);
 
   /**
@@ -88,6 +99,7 @@ public:
    */
   KDLInvKinChainLMA(const tesseract_scene_graph::SceneGraph& scene_graph,
                     const std::vector<std::pair<std::string, std::string> >& chains,
+                    Config kdl_config,
                     std::string solver_name = KDL_INV_KIN_CHAIN_LMA_SOLVER_NAME);
 
   IKSolutions calcInvKin(const tesseract_common::TransformMap& tip_link_poses,
@@ -103,6 +115,7 @@ public:
 
 private:
   KDLChainData kdl_data_;                                        /**< @brief KDL data parsed from Scene Graph */
+  Config kdl_config_;                                            /**< @brief KDL configuration data parsed from YAML */
   std::unique_ptr<KDL::ChainIkSolverPos_LMA> ik_solver_;         /**< @brief KDL Inverse kinematic solver */
   std::string solver_name_{ KDL_INV_KIN_CHAIN_LMA_SOLVER_NAME }; /**< @brief Name of this solver */
   mutable std::mutex mutex_; /**< @brief KDL is not thread safe due to mutable variables in Joint Class */

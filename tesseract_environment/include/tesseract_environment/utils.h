@@ -26,12 +26,18 @@
 #ifndef TESSERACT_ENVIRONMENT_CORE_UTILS_H
 #define TESSERACT_ENVIRONMENT_CORE_UTILS_H
 
-#include <tesseract_scene_graph/graph.h>
-#include <tesseract_scene_graph/scene_state.h>
-#include <tesseract_collision/core/continuous_contact_manager.h>
-#include <tesseract_collision/core/discrete_contact_manager.h>
-#include <tesseract_collision/core/types.h>
-#include <tesseract_environment/environment.h>
+#include <tesseract_common/macros.h>
+TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
+#include <string>
+#include <vector>
+TESSERACT_COMMON_IGNORE_WARNINGS_POP
+
+#include <tesseract_scene_graph/fwd.h>
+#include <tesseract_collision/core/fwd.h>
+#include <tesseract_state_solver/fwd.h>
+#include <tesseract_kinematics/core/fwd.h>
+
+#include <tesseract_common/eigen_types.h>
 
 namespace tesseract_environment
 {
@@ -53,70 +59,68 @@ void getActiveLinkNamesRecursive(std::vector<std::string>& active_links,
 
 /**
  * @brief Should perform a continuous collision check between two states configuring the manager with the config
+ * @param contact_results The contact results to populate. It does not get cleared
  * @param manager A continuous contact manager
  * @param state0 First environment state
  * @param state1 Second environment state
  * @param config CollisionCheckConfig used to specify collision check settings
- * @return Return the contact results map. If empty no contacts were found
  */
-tesseract_collision::ContactResultMap checkTrajectorySegment(tesseract_collision::ContinuousContactManager& manager,
-                                                             const tesseract_common::TransformMap& state0,
-                                                             const tesseract_common::TransformMap& state1,
-                                                             const tesseract_collision::CollisionCheckConfig& config);
+void checkTrajectorySegment(tesseract_collision::ContactResultMap& contact_results,
+                            tesseract_collision::ContinuousContactManager& manager,
+                            const tesseract_common::TransformMap& state0,
+                            const tesseract_common::TransformMap& state1,
+                            const tesseract_collision::CollisionCheckConfig& config);
 
 /**
  * @brief Should perform a continuous collision check between two states only passing along the contact_request to the
  * manager
+ * @param contact_results The contact results to populate. It does not get cleared
  * @param manager A continuous contact manager
  * @param state0 First environment state
  * @param state1 Second environment state
  * @param contact_request Contact request passed to the manager
- * @return Return the contact results map. If empty not contacts were found
  */
-tesseract_collision::ContactResultMap
-checkTrajectorySegment(tesseract_collision::ContinuousContactManager& manager,
-                       const tesseract_common::TransformMap& state0,
-                       const tesseract_common::TransformMap& state1,
-                       const tesseract_collision::ContactRequest& contact_request);
+void checkTrajectorySegment(tesseract_collision::ContactResultMap& contact_results,
+                            tesseract_collision::ContinuousContactManager& manager,
+                            const tesseract_common::TransformMap& state0,
+                            const tesseract_common::TransformMap& state1,
+                            const tesseract_collision::ContactRequest& contact_request);
 
 /**
  * @brief Should perform a discrete collision check a state first configuring manager with config
+ * @param contact_results The contact results to populate. It does not get cleared
  * @param manager A discrete contact manager
  * @param state First environment state
  * @param config CollisionCheckConfig used to specify collision check settings
- * @return Return the contact results map. If empty no contacts were found
  */
-tesseract_collision::ContactResultMap checkTrajectoryState(tesseract_collision::DiscreteContactManager& manager,
-                                                           const tesseract_common::TransformMap& state,
-                                                           const tesseract_collision::CollisionCheckConfig& config);
+void checkTrajectoryState(tesseract_collision::ContactResultMap& contact_results,
+                          tesseract_collision::DiscreteContactManager& manager,
+                          const tesseract_common::TransformMap& state,
+                          const tesseract_collision::CollisionCheckConfig& config);
 
 /**
- * @brief Should perform a discrete collision check a state only passing contact_request to the manager
+ * @brief Should perform a discrete collision check a state first configuring manager with config
+ * @param contact_results The contact results to populate. It does not get cleared
  * @param manager A discrete contact manager
  * @param state First environment state
  * @param contact_request Contact request passed to the manager
- * @return Return the contact results map. If empty no contacts were found
  */
-tesseract_collision::ContactResultMap checkTrajectoryState(tesseract_collision::DiscreteContactManager& manager,
-                                                           const tesseract_common::TransformMap& state,
-                                                           const tesseract_collision::ContactRequest& contact_request);
+void checkTrajectoryState(tesseract_collision::ContactResultMap& contact_results,
+                          tesseract_collision::ContinuousContactManager& manager,
+                          const tesseract_common::TransformMap& state,
+                          const tesseract_collision::ContactRequest& contact_request);
 
 /**
- * @brief This processes interpolated contact results and updated cc_time and cc_type
- * @details This is copied from the trajopt utility processInterpolatedCollisionResults
- * @param segment_results The full results to store sub segment results in after processing
- * @param sub_segment_results The interpolated results to process
- * @param sub_segment_index The current sub segment index
- * @param sub_segment_last_index The last sub segment index
- * @param manip_active_link_names The active link names
- * @param discrete If discrete contact checker was used
+ * @brief Should perform a discrete collision check a state only passing contact_request to the manager
+ * @param contact_results The contact results to populate. It does not get cleared
+ * @param manager A discrete contact manager
+ * @param state First environment state
+ * @param contact_request Contact request passed to the manager
  */
-void processInterpolatedSubSegmentCollisionResults(tesseract_collision::ContactResultMap& segment_results,
-                                                   tesseract_collision::ContactResultMap& sub_segment_results,
-                                                   int sub_segment_index,
-                                                   int sub_segment_last_index,
-                                                   const std::vector<std::string>& manip_active_link_names,
-                                                   bool discrete);
+void checkTrajectoryState(tesseract_collision::ContactResultMap& contact_results,
+                          tesseract_collision::DiscreteContactManager& manager,
+                          const tesseract_common::TransformMap& state,
+                          const tesseract_collision::ContactRequest& contact_request);
 
 /**
  * @brief Should perform a continuous collision check over the trajectory and stop on first collision.

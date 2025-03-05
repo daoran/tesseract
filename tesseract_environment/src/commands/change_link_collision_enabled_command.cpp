@@ -31,7 +31,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/library_version_type.hpp>
 #endif
 #include <boost/serialization/unordered_map.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -40,6 +39,19 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+ChangeLinkCollisionEnabledCommand::ChangeLinkCollisionEnabledCommand()
+  : Command(CommandType::CHANGE_LINK_COLLISION_ENABLED)
+{
+}
+
+ChangeLinkCollisionEnabledCommand::ChangeLinkCollisionEnabledCommand(std::string link_name, bool enabled)
+  : Command(CommandType::CHANGE_LINK_COLLISION_ENABLED), link_name_(std::move(link_name)), enabled_(enabled)
+{
+}
+
+const std::string& ChangeLinkCollisionEnabledCommand::getLinkName() const { return link_name_; }
+bool ChangeLinkCollisionEnabledCommand::getEnabled() const { return enabled_; }
+
 bool ChangeLinkCollisionEnabledCommand::operator==(const ChangeLinkCollisionEnabledCommand& rhs) const
 {
   bool equal = true;

@@ -29,14 +29,28 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 #include <memory>
-#include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/utils.h>
 #include <tesseract_environment/commands/replace_joint_command.h>
+#include <tesseract_common/utils.h>
+#include <tesseract_scene_graph/joint.h>
 
 namespace tesseract_environment
 {
+ReplaceJointCommand::ReplaceJointCommand() : Command(CommandType::REPLACE_JOINT) {}
+
+ReplaceJointCommand::ReplaceJointCommand(const tesseract_scene_graph::Joint& joint)
+  : Command(CommandType::REPLACE_JOINT), joint_(std::make_shared<tesseract_scene_graph::Joint>(joint.clone()))
+{
+  if (joint_->type != tesseract_scene_graph::JointType::FIXED)
+  {
+    //      if ()
+    /** @todo check limits */
+  }
+}
+
+const tesseract_scene_graph::Joint::ConstPtr& ReplaceJointCommand::getJoint() const { return joint_; }
+
 bool ReplaceJointCommand::operator==(const ReplaceJointCommand& rhs) const
 {
   bool equal = true;

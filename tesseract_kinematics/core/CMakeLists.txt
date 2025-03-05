@@ -1,10 +1,12 @@
 add_library(
   ${PROJECT_NAME}_core
+  src/inverse_kinematics.cpp
   src/rop_inv_kin.cpp
   src/rep_inv_kin.cpp
   src/joint_group.cpp
   src/kinematic_group.cpp
   src/kinematics_plugin_factory.cpp
+  src/utils.cpp
   src/validate.cpp)
 target_link_libraries(
   ${PROJECT_NAME}_core
@@ -54,8 +56,41 @@ set(KINEMATICS_PLUGINS ${KINEMATICS_PLUGINS} "${PROJECT_NAME}_core_factories" PA
 install(
   DIRECTORY include/${PROJECT_NAME}
   DESTINATION include
+  COMPONENT core
   FILES_MATCHING
   PATTERN "*.h"
   PATTERN "*.hpp")
 
-install_targets(TARGETS ${PROJECT_NAME}_core ${PROJECT_NAME}_core_factories)
+configure_component(
+  COMPONENT core
+  NAMESPACE tesseract
+  TARGETS ${PROJECT_NAME}_core ${PROJECT_NAME}_core_factories
+  DEPENDENCIES
+    Eigen3
+    console_bridge
+    tesseract_scene_graph
+    tesseract_state_solver
+    tesseract_common
+    yaml-cpp
+  CFG_EXTRAS cmake/core-extras.cmake)
+
+if(TESSERACT_PACKAGE)
+  cpack_component(
+    COMPONENT core
+    VERSION ${pkg_extracted_version}
+    DESCRIPTION "Tesseract Kinematics core components"
+    LINUX_DEPENDS
+      "libconsole-bridge-dev"
+      "libeigen3-dev"
+      "libyaml-cpp-dev"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-common"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-scene-graph"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-state-solver"
+    WINDOWS_DEPENDS
+      "console_bridge"
+      "Eigen3"
+      "yaml-cpp"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-common"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-scene-graph"
+      "${TESSERACT_PACKAGE_PREFIX}tesseract-state-solver")
+endif()

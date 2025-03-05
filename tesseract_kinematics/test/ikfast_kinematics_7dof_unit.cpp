@@ -30,7 +30,7 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include "kinematics_test_utils.h"
-#include "iiwa7_ikfast_kinematics.h"
+#include "tesseract_kinematics/ikfast/impl/ikfast_inv_kin.hpp"
 #include <tesseract_kinematics/kdl/kdl_fwd_kin_chain.h>
 
 using namespace tesseract_kinematics::test_suite;
@@ -48,7 +48,8 @@ TEST(TesseractKinematicsUnit, IKFastInvKin7DOF)  // NOLINT
   Eigen::VectorXd seed = Eigen::VectorXd::Zero(7);
 
   // Setup test
-  auto scene_graph = getSceneGraphIIWA7();
+  tesseract_common::GeneralResourceLocator locator;
+  auto scene_graph = getSceneGraphIIWA7(locator);
   std::string base_link_name = "link_0";
   std::string tip_link_name = "ikfast_tcp_link";
   std::vector<std::string> joint_names{ "joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6", "joint_7" };
@@ -57,7 +58,7 @@ TEST(TesseractKinematicsUnit, IKFastInvKin7DOF)  // NOLINT
 
   std::vector<std::vector<double>> free_joint_states = { { -2.0 }, { -1.0 }, { 0.0 }, { 1.0 }, { 2.0 } };
 
-  auto iiwa_inv_kin = std::make_shared<iiwa7Kinematics>(
+  auto iiwa_inv_kin = std::make_shared<IKFastInvKin>(
       base_link_name, tip_link_name, joint_names, IKFAST_INV_KIN_CHAIN_SOLVER_NAME, free_joint_states);
 
   EXPECT_EQ(iiwa_inv_kin->getSolverName(), IKFAST_INV_KIN_CHAIN_SOLVER_NAME);

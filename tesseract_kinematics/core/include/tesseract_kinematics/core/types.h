@@ -28,12 +28,9 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <string>
 #include <vector>
+#include <Eigen/Core>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
-
-#include <tesseract_common/types.h>
-#include <tesseract_common/utils.h>
 
 namespace tesseract_kinematics
 {

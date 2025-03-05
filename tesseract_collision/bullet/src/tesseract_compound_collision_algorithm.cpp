@@ -33,6 +33,8 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 #include <tesseract_collision/core/types.h>
 
 // LCOV_EXCL_START
+// See tesseract issue: https://github.com/tesseract-robotics/tesseract/issues/934
+TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 namespace tesseract_collision::tesseract_collision_bullet
 {
 TesseractCompoundCollisionAlgorithm::TesseractCompoundCollisionAlgorithm(const btCollisionAlgorithmConstructionInfo& ci,
@@ -108,7 +110,7 @@ public:
   const btCollisionObjectWrapper* m_compoundColObjWrap;
   const btCollisionObjectWrapper* m_otherObjWrap;
   btDispatcher* m_dispatcher;
-  const btDispatcherInfo& m_dispatchInfo;
+  const btDispatcherInfo& m_dispatchInfo;  // NOLINT
   btManifoldResult* m_resultOut;
   btCollisionAlgorithm** m_childCollisionAlgorithms;
   btPersistentManifold* m_sharedManifold;
@@ -162,12 +164,27 @@ public:
 
     if (TestAabbAgainstAabb2(aabbMin0, aabbMax0, aabbMin1, aabbMax1))
     {
+#if BT_BULLET_VERSION >= 300
+      btTransform preTransform = childTrans;
+      if (this->m_compoundColObjWrap->m_preTransform != nullptr)
+      {
+        preTransform = preTransform * (*(this->m_compoundColObjWrap->m_preTransform));
+      }
+      btCollisionObjectWrapper compoundWrap(this->m_compoundColObjWrap,
+                                            childShape,
+                                            m_compoundColObjWrap->getCollisionObject(),
+                                            newChildWorldTrans,
+                                            preTransform,
+                                            -1,
+                                            index);
+#else
       btCollisionObjectWrapper compoundWrap(this->m_compoundColObjWrap,
                                             childShape,
                                             m_compoundColObjWrap->getCollisionObject(),
                                             newChildWorldTrans,
                                             -1,
                                             index);
+#endif
 
       btCollisionAlgorithm* algo = nullptr;
       bool allocatedAlgorithm = false;
@@ -206,7 +223,7 @@ public:
 
       algo->processCollision(&compoundWrap, m_otherObjWrap, m_dispatchInfo, m_resultOut);
 
-#if 0
+#if 0  // NOLINT
                         if (m_dispatchInfo.m_debugDraw && (m_dispatchInfo.m_debugDraw->getDebugMode() & btIDebugDraw::DBG_DrawAabb))
                         {
                                 btVector3 worldAabbMin,worldAabbMax;
@@ -237,7 +254,7 @@ public:
     const auto* compoundShape = static_cast<const btCompoundShape*>(m_compoundColObjWrap->getCollisionShape());
     const btCollisionShape* childShape = compoundShape->getChildShape(index);
 
-#if 0
+#if 0  // NOLINT
                 if (m_dispatchInfo.m_debugDraw && (m_dispatchInfo.m_debugDraw->getDebugMode() & btIDebugDraw::DBG_DrawAabb))
                 {
                         btVector3 worldAabbMin,worldAabbMax;
@@ -295,6 +312,7 @@ void TesseractCompoundCollisionAlgorithm::processCollision(const btCollisionObje
     {
       if (m_childCollisionAlgorithms[i] != nullptr)
       {
+        // See tesseract issue: https://github.com/tesseract-robotics/tesseract/issues/934
         m_childCollisionAlgorithms[i]->getAllContactManifolds(manifoldArray);
         for (int m = 0; m < manifoldArray.size(); m++)
         {
@@ -411,10 +429,8 @@ btScalar TesseractCompoundCollisionAlgorithm::calculateTimeOfImpact(btCollisionO
     // btCollisionShape* tmpShape = colObj->getCollisionShape();
     // colObj->internalSetTemporaryCollisionShape( childShape );
     btScalar frac = m_childCollisionAlgorithms[i]->calculateTimeOfImpact(colObj, otherObj, dispatchInfo, resultOut);
-    if (frac < hitFraction)
-    {
-      hitFraction = frac;
-    }
+    hitFraction = std::min(frac, hitFraction);
+
     // revert back
     // colObj->internalSetTemporaryCollisionShape( tmpShape);
     colObj->setWorldTransform(orgTrans);
@@ -422,4 +438,5 @@ btScalar TesseractCompoundCollisionAlgorithm::calculateTimeOfImpact(btCollisionO
   return hitFraction;
 }
 }  // namespace tesseract_collision::tesseract_collision_bullet
+TESSERACT_COMMON_IGNORE_WARNINGS_POP
 // LCOV_EXCL_STOP

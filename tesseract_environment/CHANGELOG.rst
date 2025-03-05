@@ -2,6 +2,204 @@
 Changelog for package tesseract_environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.28.8 (2025-02-01)
+-------------------
+* Fix collision shape caching
+* Contributors: Levi Armstrong
+
+0.28.7 (2025-01-29)
+-------------------
+* Fix thread safety issue with set active contact manager
+* Contributors: Levi Armstrong
+
+0.28.6 (2025-01-26)
+-------------------
+
+0.28.5 (2025-01-21)
+-------------------
+
+0.28.4 (2025-01-18)
+-------------------
+* Add missing floating joint methods to environment monitor interface
+* Add missing floating joint methods to environment
+* Contributors: Levi Armstrong
+
+0.28.3 (2025-01-18)
+-------------------
+
+0.28.2 (2025-01-17)
+-------------------
+
+0.28.1 (2025-01-17)
+-------------------
+
+0.28.0 (2025-01-16)
+-------------------
+* Update tesseract_environment benchmarks
+* Add floating joint support
+* Add ContactAllowedValidator and ContactResultValidator (`#1095 <https://github.com/tesseract-robotics/tesseract/issues/1095>`_)
+* Change environment getJointGroup and getKinematicGroup to return shared pointers
+* Contributors: Levi Armstrong
+
+0.27.1 (2024-12-03)
+-------------------
+
+0.27.0 (2024-12-01)
+-------------------
+* Fix environment clear such that cache is cleared before plugin factories are destroyed
+* Contributors: Levi Armstrong
+
+0.26.0 (2024-10-27)
+-------------------
+* Remove TesseractSupportResourceLocator
+* Fix serialization
+* Contributors: Levi Armstrong
+
+0.25.0 (2024-09-28)
+-------------------
+* Only run kinematic check when testing is enabled and debug is enabled
+* Contributors: Levi Armstrong
+
+0.24.1 (2024-08-19)
+-------------------
+* Expose environment init revision
+* Contributors: Levi Armstrong
+
+0.24.0 (2024-08-14)
+-------------------
+* Fix clang detection on Mac OS (`#1038 <https://github.com/tesseract-robotics/tesseract/issues/1038>`_)
+* Contributors: John Wason
+
+0.23.1 (2024-07-28)
+-------------------
+* Cleanup boost serialization
+* Add export implementation environment command
+* Contributors: Levi Armstrong
+
+0.23.0 (2024-07-24)
+-------------------
+* Add any poly support for environment
+* Fixes for building on Ubuntu Noble (`#1016 <https://github.com/tesseract-robotics/tesseract/issues/1016>`_)
+* Contributors: Levi Armstrong, Roelof Oomen
+
+0.22.2 (2024-06-10)
+-------------------
+* Fix command serialization
+* Contributors: Levi Armstrong
+
+0.22.1 (2024-06-03)
+-------------------
+
+0.22.0 (2024-06-02)
+-------------------
+* Add more clone benchmarks
+* Leverage forward declarations to improve compile times (`#990 <https://github.com/tesseract-robotics/tesseract/issues/990>`_)
+* Add kinematics benchmarks
+* Contributors: Levi Armstrong
+
+0.21.5 (2023-12-14)
+-------------------
+
+0.21.4 (2023-11-20)
+-------------------
+
+0.21.3 (2023-11-16)
+-------------------
+* Fix thread safety in environment (`#964 <https://github.com/tesseract-robotics/tesseract/issues/964>`_)
+  * Fix thread safety in environment.cpp
+  * Clang format
+* Contributors: Levi Armstrong
+
+0.21.2 (2023-11-10)
+-------------------
+
+0.21.1 (2023-11-09)
+-------------------
+
+0.21.0 (2023-11-07)
+-------------------
+
+0.20.2 (2023-10-26)
+-------------------
+* Update environment clear method to clear all internal cache data
+* Contributors: Levi Armstrong
+
+0.20.1 (2023-10-13)
+-------------------
+* Unused includes cleanup (`#946 <https://github.com/tesseract-robotics/tesseract/issues/946>`_)
+* Contributors: Roelof
+
+0.20.0 (2023-09-27)
+-------------------
+* Fix missing locks in tesseract_environment (`#938 <https://github.com/tesseract-robotics/tesseract/issues/938>`_)
+* Contributors: Roelof
+
+0.19.2 (2023-09-06)
+-------------------
+
+0.19.1 (2023-09-05)
+-------------------
+
+0.19.0 (2023-09-05)
+-------------------
+* Update kinematics and collision packages to leverage cmake components (`#927 <https://github.com/tesseract-robotics/tesseract/issues/927>`_)
+* Update emails
+* Contributors: Levi Armstrong
+
+0.18.1 (2023-06-30)
+-------------------
+
+0.18.0 (2023-06-29)
+-------------------
+* Update kinematics group inverse kinematics to harmonize within joint limits (`#899 <https://github.com/tesseract-robotics/tesseract/issues/899>`_)
+* Trajectory logging fixup (`#908 <https://github.com/tesseract-robotics/tesseract/issues/908>`_)
+* Improve Trajectory Collision Logging (`#765 <https://github.com/tesseract-robotics/tesseract/issues/765>`_)
+* Add package cmake flags for testing, examples and benchmarks
+* Contributors: John Wason, Levi Armstrong, Tyler Marr
+
+0.17.0 (2023-06-06)
+-------------------
+* Windows updates (`#893 <https://github.com/tesseract-robotics/tesseract/issues/893>`_)
+* Fix check trajectory print statements (`#892 <https://github.com/tesseract-robotics/tesseract/issues/892>`_)
+* implemented benchmarking for checking trajectories (`#887 <https://github.com/tesseract-robotics/tesseract/issues/887>`_)
+* Contributors: John Wason, Levi Armstrong, Tyler Marr
+
+0.16.3 (2023-05-04)
+-------------------
+
+0.16.2 (2023-04-28)
+-------------------
+
+0.16.1 (2023-04-11)
+-------------------
+* Add unit tests to cover new addTrajectoryLinkCommand
+* Contributors: Levi Armstrong
+
+0.16.0 (2023-04-09)
+-------------------
+* Improve collision code coverage
+* Add ContactResultMap shrinkToFit and CollisionCheckProgramType
+* Add AddTrajectoryLinkCommand
+* General cleanup of commands moving things to cpp
+* Add contact results class
+* Contributors: Levi Armstrong
+
+0.15.3 (2023-03-22)
+-------------------
+
+0.15.2 (2023-03-15)
+-------------------
+* Switch include in tesseract_collision
+* Contributors: Levi Armstrong
+
+0.15.1 (2023-03-14)
+-------------------
+
+0.15.0 (2023-03-03)
+-------------------
+* Improve tesseract_environment code coverage
+* Contributors: Levi Armstrong
+
 0.14.0 (2022-10-23)
 -------------------
 * Add modify allowed collisions command

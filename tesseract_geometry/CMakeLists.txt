@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.15.0)
 
 # Extract package name and version
 find_package(ros_industrial_cmake_boilerplate REQUIRED)
@@ -16,7 +16,6 @@ find_package(console_bridge REQUIRED)
 find_package(tesseract_common REQUIRED)
 find_package(octomap REQUIRED)
 find_package(assimp REQUIRED)
-link_directories(${assimp_LIBRARY_DIRS})
 
 if(NOT TARGET console_bridge::console_bridge)
   add_library(console_bridge::console_bridge INTERFACE IMPORTED)
@@ -65,11 +64,14 @@ add_code_coverage_all_targets(EXCLUDE ${COVERAGE_EXCLUDE} ENABLE ${TESSERACT_ENA
 add_library(
   ${PROJECT_NAME} SHARED
   src/geometry.cpp
+  src/utils.cpp
   src/geometries/box.cpp
   src/geometries/capsule.cpp
+  src/geometries/compound_mesh.cpp
   src/geometries/cone.cpp
   src/geometries/convex_mesh.cpp
   src/geometries/cylinder.cpp
+  src/geometries/mesh_material.cpp
   src/geometries/mesh.cpp
   src/geometries/octree.cpp
   src/geometries/plane.cpp
@@ -83,7 +85,7 @@ target_link_libraries(
          console_bridge::console_bridge
          octomap
          octomath
-         ${assimp_LIBRARIES})
+         assimp::assimp)
 target_compile_options(${PROJECT_NAME} PUBLIC ${TESSERACT_COMPILE_OPTIONS_PUBLIC})
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${TESSERACT_COMPILE_DEFINITIONS} ${TESSERACT_ASSIMP_USE_PBRMATERIAL})
 target_clang_tidy(${PROJECT_NAME} ENABLE ${TESSERACT_ENABLE_CLANG_TIDY})
@@ -96,7 +98,6 @@ target_code_coverage(
   ENABLE ${TESSERACT_ENABLE_CODE_COVERAGE})
 target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                                                   "$<INSTALL_INTERFACE:include>")
-target_include_directories(${PROJECT_NAME} SYSTEM INTERFACE ${assimp_INCLUDE_DIRS})
 
 configure_package(NAMESPACE tesseract TARGETS ${PROJECT_NAME})
 
@@ -111,20 +112,21 @@ install(
 install(FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/Findassimp.cmake" DESTINATION lib/cmake/${PROJECT_NAME})
 
 # ADD Examples
-if(TESSERACT_ENABLE_EXAMPLES)
+if(TESSERACT_ENABLE_EXAMPLES OR TESSERACT_GEOMETRY_ENABLE_EXAMPLES)
   add_subdirectory(examples)
 endif()
 
-if(TESSERACT_ENABLE_TESTING)
+if(TESSERACT_ENABLE_TESTING OR TESSERACT_GEOMETRY_ENABLE_TESTING)
   enable_testing()
   add_run_tests_target(ENABLE ${TESSERACT_ENABLE_RUN_TESTING})
   add_subdirectory(test)
 endif()
 
 if(TESSERACT_PACKAGE)
-  tesseract_cpack(
+  cpack(
     VERSION ${pkg_extracted_version}
-    MAINTAINER <https://github.com/ros-industrial-consortium/tesseract>
+    MAINTAINER_NAME ${pkg_extracted_maintainer_name}
+    MAINTAINER_EMAIL ${pkg_extracted_maintainer_email}
     DESCRIPTION ${pkg_extracted_description}
     LICENSE_FILE ${CMAKE_CURRENT_LIST_DIR}/../LICENSE
     README_FILE ${CMAKE_CURRENT_LIST_DIR}/../README.md
@@ -140,4 +142,13 @@ if(TESSERACT_PACKAGE)
       "octomap | ${TESSERACT_PACKAGE_PREFIX}octomap"
       "Eigen3"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-common")
+
+  if(UNIX AND TESSERACT_PACKAGE_SOURCE)
+    cpack_debian_source_package(
+      CHANGLELOG ${CMAKE_CURRENT_LIST_DIR}/CHANGELOG.rst
+      UPLOAD ${TESSERACT_PACKAGE_SOURCE_UPLOAD}
+      DPUT_HOST ${TESSERACT_PACKAGE_SOURCE_DPUT_HOST}
+      DEBIAN_INCREMENT ${TESSERACT_PACKAGE_SOURCE_DEBIAN_INCREMENT}
+      DISTRIBUTIONS ${TESSERACT_PACKAGE_SOURCE_DISTRIBUTIONS})
+  endif()
 endif()

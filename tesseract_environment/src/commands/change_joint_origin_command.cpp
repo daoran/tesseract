@@ -28,7 +28,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -40,6 +39,7 @@ namespace tesseract_environment
 {
 ChangeJointOriginCommand::ChangeJointOriginCommand() : Command(CommandType::CHANGE_JOINT_ORIGIN){};
 
+// NOLINTNEXTLINE(modernize-pass-by-value)
 ChangeJointOriginCommand::ChangeJointOriginCommand(std::string joint_name, const Eigen::Isometry3d& origin)
   : Command(CommandType::CHANGE_JOINT_ORIGIN), joint_name_(std::move(joint_name)), origin_(origin)
 {

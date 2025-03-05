@@ -1,10 +1,8 @@
-find_package(tesseract_support REQUIRED)
 add_executable(${PROJECT_NAME}_box_box_example box_box_example.cpp)
 target_link_libraries(
   ${PROJECT_NAME}_box_box_example
   ${PROJECT_NAME}_bullet
   ${PROJECT_NAME}_fcl
-  tesseract::tesseract_support
   tesseract::tesseract_geometry
   console_bridge::console_bridge
   ${Boost_LIBRARIES}
@@ -16,4 +14,16 @@ target_cxx_version(${PROJECT_NAME}_box_box_example PRIVATE VERSION ${TESSERACT_C
 target_clang_tidy(${PROJECT_NAME}_box_box_example ENABLE ${TESSERACT_ENABLE_CLANG_TIDY})
 target_compile_definitions(${PROJECT_NAME}_box_box_example PRIVATE DATA_DIR="${CMAKE_SOURCE_DIR}/test")
 
-install(TARGETS ${PROJECT_NAME}_box_box_example DESTINATION bin)
+configure_component(
+  COMPONENT examples
+  NAMESPACE tesseract
+  TARGETS ${PROJECT_NAME}_box_box_example
+  DEPENDENCIES "tesseract_collision COMPONENTS core bullet fcl")
+
+if(TESSERACT_PACKAGE)
+  cpack_component(
+    COMPONENT examples
+    VERSION ${pkg_extracted_version}
+    DESCRIPTION "Tesseract Collision Examples components"
+    COMPONENT_DEPENDS core bullet fcl)
+endif()

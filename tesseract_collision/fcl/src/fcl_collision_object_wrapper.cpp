@@ -28,24 +28,6 @@
 
 namespace tesseract_collision::tesseract_collision_fcl
 {
-FCLCollisionObjectWrapper::FCLCollisionObjectWrapper(const std::shared_ptr<fcl::CollisionGeometry<double>>& cgeom)
-  : fcl::CollisionObject<double>(cgeom)
-{
-}
-
-FCLCollisionObjectWrapper::FCLCollisionObjectWrapper(const std::shared_ptr<fcl::CollisionGeometry<double>>& cgeom,
-                                                     const fcl::Transform3<double>& tf)
-  : fcl::CollisionObject<double>(cgeom, tf)
-{
-}
-
-FCLCollisionObjectWrapper::FCLCollisionObjectWrapper(const std::shared_ptr<fcl::CollisionGeometry<double>>& cgeom,
-                                                     const fcl::Matrix3<double>& R,
-                                                     const fcl::Vector3<double>& T)
-  : fcl::CollisionObject<double>(cgeom, R, T)
-{
-}
-
 void FCLCollisionObjectWrapper::setContactDistanceThreshold(double contact_distance)
 {
   contact_distance_ = contact_distance;
@@ -70,6 +52,14 @@ void FCLCollisionObjectWrapper::updateAABB()
     aabb.min_ = center - delta;
     aabb.max_ = center + delta;
   }
+}
+
+void FCLCollisionObjectWrapper::setShapeIndex(int index) { shape_index_ = index; }
+
+int FCLCollisionObjectWrapper::getShapeIndex() const
+{
+  assert(shape_index_ >= 0);
+  return shape_index_;
 }
 
 }  // namespace tesseract_collision::tesseract_collision_fcl

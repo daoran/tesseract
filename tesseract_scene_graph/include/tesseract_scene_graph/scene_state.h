@@ -32,14 +32,19 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
+#include <boost/serialization/export.hpp>
 #include <Eigen/Core>
 #include <unordered_map>
 #include <vector>
 #include <memory>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/types.h>
+#include <tesseract_common/eigen_types.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_scene_graph
 {
@@ -64,6 +69,9 @@ struct SceneState
   /**  @brief The joint values used for calculating the joint and link transforms */
   std::unordered_map<std::string, double> joints;
 
+  /** @brief The floating joint values used for calculating the joint and link transforms */
+  tesseract_common::TransformMap floating_joints;
+
   /** @brief The link transforms in world coordinate system */
   tesseract_common::TransformMap link_transforms;
 
@@ -71,6 +79,8 @@ struct SceneState
   tesseract_common::TransformMap joint_transforms;
 
   Eigen::VectorXd getJointValues(const std::vector<std::string>& joint_names) const;
+
+  tesseract_common::TransformMap getFloatingJointValues(const std::vector<std::string>& joint_names) const;
 
   bool operator==(const SceneState& rhs) const;
   bool operator!=(const SceneState& rhs) const;
@@ -82,7 +92,5 @@ private:
 };
 }  // namespace tesseract_scene_graph
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_scene_graph::SceneState, "SceneState")
+BOOST_CLASS_EXPORT_KEY(tesseract_scene_graph::SceneState)
 #endif  // TESSERACT_SCENE_GRAPH_SCENE_STATE_H

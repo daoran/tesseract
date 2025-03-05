@@ -41,16 +41,22 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <string>
 #include <vector>
+#include <memory>
+#include <unordered_map>
+#include <Eigen/Geometry>
 
 #include <kdl/tree.hpp>
 #include <kdl/jacobian.hpp>
-#include <console_bridge/console.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_scene_graph/graph.h>
+#include <tesseract_common/eigen_types.h>
 
 namespace tesseract_scene_graph
 {
+class SceneGraph;
+class Joint;
+class Inertial;
+
 /**
  * @brief Convert Eigen::Isometry3d to KDL::Frame
  * @param transform Input Eigen transform (Isometry3d)
@@ -106,32 +112,38 @@ Eigen::MatrixXd convert(const KDL::Jacobian& jacobian, const std::vector<int>& q
  * @param joint Tesseract Joint
  * @return A KDL Joint
  */
-KDL::Joint convert(const Joint::ConstPtr& joint);
+KDL::Joint convert(const std::shared_ptr<const Joint>& joint);
 
 /**
  * @brief Convert Tesseract Inertail to KDL Inertial
  * @param inertial
  * @return
  */
-KDL::RigidBodyInertia convert(const Inertial::ConstPtr& inertial);
+KDL::RigidBodyInertia convert(const std::shared_ptr<const Inertial>& inertial);
 
 /** @brief The KDLTreeData populated when parsing scene graph */
 struct KDLTreeData
 {
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
   KDL::Tree tree;
   std::string base_link_name;
   std::vector<std::string> joint_names;
   std::vector<std::string> active_joint_names;
+  std::vector<std::string> floating_joint_names;
   std::vector<std::string> link_names;
   std::vector<std::string> active_link_names;
   std::vector<std::string> static_link_names;
+  tesseract_common::TransformMap floating_joint_values;
+
+  bool operator==(const KDLTreeData& rhs) const;
+  bool operator!=(const KDLTreeData& rhs) const;
 };
 
 /**
  * @brief Convert a Tesseract SceneGraph into a KDL Tree
  * @throws If graph is not a tree
  * @param scene_graph The Tesseract Scene Graph
- * @param tree The KDL Tree to populate.
  * @return Returns KDL tree data representation of the scene graph
  */
 KDLTreeData parseSceneGraph(const SceneGraph& scene_graph);
@@ -144,12 +156,15 @@ KDLTreeData parseSceneGraph(const SceneGraph& scene_graph);
  * other trees are attached to this link by a fixed joint.
  * @throws If graph is not a tree it will return false.
  * @param scene_graph The Tesseract Scene Graph
- * @param tree The KDL Tree to populate.
+ * @param joint_names The active joint names
+ * @param joint_values The active joint values
+ * @param floating_joint_values The floating joint values
  * @return Returns KDL tree representation of the sub scene graph
  */
 KDLTreeData parseSceneGraph(const SceneGraph& scene_graph,
                             const std::vector<std::string>& joint_names,
-                            const std::unordered_map<std::string, double>& joint_values);
+                            const std::unordered_map<std::string, double>& joint_values,
+                            const tesseract_common::TransformMap& floating_joint_values = {});
 
 }  // namespace tesseract_scene_graph
 

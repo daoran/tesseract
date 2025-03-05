@@ -28,12 +28,17 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
 #include <tesseract_srdf/kinematics_information.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -43,17 +48,14 @@ public:
   using Ptr = std::shared_ptr<AddKinematicsInformationCommand>;
   using ConstPtr = std::shared_ptr<const AddKinematicsInformationCommand>;
 
-  AddKinematicsInformationCommand() : Command(CommandType::ADD_KINEMATICS_INFORMATION){};
+  AddKinematicsInformationCommand();
   /**
    * @brief Add kinematics information to the environment
    * @param kin_info The kinematics information
    */
-  AddKinematicsInformationCommand(tesseract_srdf::KinematicsInformation kinematics_information)
-    : Command(CommandType::ADD_KINEMATICS_INFORMATION), kinematics_information_(std::move(kinematics_information))
-  {
-  }
+  AddKinematicsInformationCommand(tesseract_srdf::KinematicsInformation kinematics_information);
 
-  const tesseract_srdf::KinematicsInformation& getKinematicsInformation() const { return kinematics_information_; }
+  const tesseract_srdf::KinematicsInformation& getKinematicsInformation() const;
 
   bool operator==(const AddKinematicsInformationCommand& rhs) const;
   bool operator!=(const AddKinematicsInformationCommand& rhs) const;
@@ -67,7 +69,5 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::AddKinematicsInformationCommand, "AddKinematicsInformationCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::AddKinematicsInformationCommand)
 #endif  // TESSERACT_ENVIRONMENT_ADD_KINEMATICS_INFORMATION_COMMAND_H

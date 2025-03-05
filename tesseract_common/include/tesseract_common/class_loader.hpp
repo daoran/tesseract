@@ -37,8 +37,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <console_bridge/console.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/class_loader.h>
-
 namespace tesseract_common
 {
 template <class ClassBase>
@@ -186,7 +184,7 @@ std::vector<std::string> ClassLoader::getAvailableSections(const std::string& li
     if (include_hidden)
       return false;
 
-    return (section.substr(0, 1) == ".");
+    return (section.substr(0, 1) == ".") || (section.substr(0, 1) == "_");
   };
 
   sections.erase(std::remove_if(sections.begin(), sections.end(), search_fn), sections.end());

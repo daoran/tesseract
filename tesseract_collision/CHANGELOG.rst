@@ -2,6 +2,229 @@
 Changelog for package tesseract_collision
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.28.8 (2025-02-01)
+-------------------
+* Add UUID to tesseract_geometry::Geometry and update collision shape cache
+* Fix collision shape caching
+* Contributors: Levi Armstrong
+
+0.28.7 (2025-01-29)
+-------------------
+* Disable collision shape caching in bullet and fcl (`#1116 <https://github.com/tesseract-robotics/tesseract/issues/1116>`_)
+* Contributors: Levi Armstrong
+
+0.28.6 (2025-01-26)
+-------------------
+* Add collision shape caching based on tesseract_geometry::Geometry object
+* Contributors: Levi Armstrong
+
+0.28.5 (2025-01-21)
+-------------------
+
+0.28.4 (2025-01-18)
+-------------------
+
+0.28.3 (2025-01-18)
+-------------------
+
+0.28.2 (2025-01-17)
+-------------------
+
+0.28.1 (2025-01-17)
+-------------------
+* Fix rosinstall so focal has its own so newer versions leverage system depends
+* Contributors: Levi Armstrong
+
+0.28.0 (2025-01-16)
+-------------------
+* Fix cpack build
+* Leverage tesseract_common loadYamlFile and loadYamlString
+* Add ContactAllowedValidator and ContactResultValidator (`#1095 <https://github.com/tesseract-robotics/tesseract/issues/1095>`_)
+* Add installed headers to core component
+* Add yaml include directive support
+* Move getSummary implementation to cpp
+* Get a brief string summary of a contact map (`#1079 <https://github.com/tesseract-robotics/tesseract/issues/1079>`_)
+* Simplify shape_id counter
+* Fix use of compound mesh in FCL
+* Add more serialization for eigen types and collision types
+* Fix typo in unit tests
+* Contributors: Levi Armstrong, Max DeSantis, Roelof Oomen, Tyler Marr
+
+0.27.1 (2024-12-03)
+-------------------
+
+0.27.0 (2024-12-01)
+-------------------
+* Update package.xml
+* Update fcl rosdep key in package.xml
+* Contributors: Levi Armstrong
+
+0.26.0 (2024-10-27)
+-------------------
+* Remove TesseractSupportResourceLocator
+* Contributors: Levi Armstrong
+
+0.25.0 (2024-09-28)
+-------------------
+* Add geometry type CompoundMesh
+* Contributors: Levi Armstrong
+
+0.24.1 (2024-08-19)
+-------------------
+
+0.24.0 (2024-08-14)
+-------------------
+* Add any poly support for collision types
+* Contributors: Levi Armstrong
+
+0.23.1 (2024-07-28)
+-------------------
+
+0.23.0 (2024-07-24)
+-------------------
+* Do not export plugin libraries (`#1028 <https://github.com/tesseract-robotics/tesseract/issues/1028>`_)
+* Contributors: Levi Armstrong
+
+0.22.2 (2024-06-10)
+-------------------
+* Add ability to briefly summarize trajectory collisions (`#1011 <https://github.com/tesseract-robotics/tesseract/issues/1011>`_)
+* Contributors: Tyler Marr
+
+0.22.1 (2024-06-03)
+-------------------
+
+0.22.0 (2024-06-02)
+-------------------
+* Fix 2 for older bullet versions (e.g. on Ubuntu Focal)
+* Fix for older bullet versions (e.g. on Ubuntu Focal)
+* - Apply [bugfix](https://github.com/bulletphysics/bullet3/commit/fce12964139c8073676a50db0201c1460ad3fcad) and [bugfix](https://github.com/bulletphysics/bullet3/commit/a808d7489500935ac6665dcfe930c43a2008566b) from bullet
+  - Clang-tidy fix
+* Fix map type in comment of ContactResultMap
+  See `#991 <https://github.com/tesseract-robotics/tesseract/issues/991>`_
+* Leverage forward declarations to improve compile times (`#990 <https://github.com/tesseract-robotics/tesseract/issues/990>`_)
+* Added application for performing convex decomposition (`#968 <https://github.com/tesseract-robotics/tesseract/issues/968>`_)
+* Fix default test type in comment (`#980 <https://github.com/tesseract-robotics/tesseract/issues/980>`_)
+* clang-format
+* - Fixes rounding errors in progress logging (went up to 101%)
+  - Fixes some clang-tidy suggestions
+* Contributors: Levi Armstrong, Michael Ripperger, Roelof, Roelof Oomen
+
+0.21.5 (2023-12-14)
+-------------------
+* Add Mac OSX support (`#969 <https://github.com/tesseract-robotics/tesseract/issues/969>`_)
+* Contributors: John Wason
+
+0.21.4 (2023-11-20)
+-------------------
+
+0.21.3 (2023-11-16)
+-------------------
+
+0.21.2 (2023-11-10)
+-------------------
+
+0.21.1 (2023-11-09)
+-------------------
+
+0.21.0 (2023-11-07)
+-------------------
+* Fix FCL contact test when calculate distance is false but contact threshold is greater than zero
+* Add collision unit test with calculate distance disabled
+* Contributors: Levi Armstrong
+
+0.20.2 (2023-10-26)
+-------------------
+
+0.20.1 (2023-10-13)
+-------------------
+* Unused includes cleanup (`#946 <https://github.com/tesseract-robotics/tesseract/issues/946>`_)
+* Contributors: Roelof
+
+0.20.0 (2023-09-27)
+-------------------
+
+0.19.2 (2023-09-06)
+-------------------
+* Fix Ubunut Jammy release build
+* Contributors: Levi Armstrong
+
+0.19.1 (2023-09-05)
+-------------------
+* Fix benchmark build
+* Contributors: Levi Armstrong
+
+0.19.0 (2023-09-05)
+-------------------
+* Update kinematics and collision packages to leverage cmake components (`#927 <https://github.com/tesseract-robotics/tesseract/issues/927>`_)
+* Update emails
+* Contributors: Levi Armstrong
+
+0.18.1 (2023-06-30)
+-------------------
+* Fix convert convex hull to set correct creation method
+* Contributors: Levi Armstrong
+
+0.18.0 (2023-06-29)
+-------------------
+* Update kinematics group inverse kinematics to harmonize within joint limits (`#899 <https://github.com/tesseract-robotics/tesseract/issues/899>`_)
+* Trajectory logging fixup (`#908 <https://github.com/tesseract-robotics/tesseract/issues/908>`_)
+* Improve Trajectory Collision Logging (`#765 <https://github.com/tesseract-robotics/tesseract/issues/765>`_)
+* Add package cmake flags for testing, examples and benchmarks
+* Add assert to ContactResultsMap to make sure key is an ordered pair
+* Fix makeConvexMesh to pass through scale used on resource
+* Update VHACD to latest (v4.1, tag 454913f) (`#896 <https://github.com/tesseract-robotics/tesseract/issues/896>`_)
+* Contributors: John Wason, Levi Armstrong, Roelof, Tyler Marr
+
+0.17.0 (2023-06-06)
+-------------------
+* Remove invalid assert from FCL collision and distance callback functions
+* Contributors: Levi Armstrong
+
+0.16.3 (2023-05-04)
+-------------------
+
+0.16.2 (2023-04-28)
+-------------------
+
+0.16.1 (2023-04-11)
+-------------------
+
+0.16.0 (2023-04-09)
+-------------------
+* Improve collision code coverage
+* Add ContactResultMap shrinkToFit and CollisionCheckProgramType
+* Fix ContactResultMap serialization
+* Add AddTrajectoryLinkCommand
+* Add documentation to ContactResultMap
+* Remove reserve(100) in ContactResultMap does not improve performance
+* Add contact results class
+* Contributors: Levi Armstrong
+
+0.15.3 (2023-03-22)
+-------------------
+* Update tesseract_collision benchmarks (`#868 <https://github.com/tesseract-robotics/tesseract/issues/868>`_)
+* Add ContactResult boost serialization
+* Contributors: Levi Armstrong
+
+0.15.2 (2023-03-15)
+-------------------
+* Expose Bullet collision pool allocator configuration
+* Switch include in tesseract_collision
+* Contributors: Levi Armstrong
+
+0.15.1 (2023-03-14)
+-------------------
+* Add flattenWrapperResults methods
+* Contributors: Levi Armstrong
+
+0.15.0 (2023-03-03)
+-------------------
+* Update collision benchmarks
+* Remove unused fcl selfCollisionContactTest method
+* Improve tesseract_collision code coverage
+* Fix fcl unregistar bug
+* Contributors: Levi Armstrong
+
 0.14.0 (2022-10-23)
 -------------------
 * Remove deprecated items

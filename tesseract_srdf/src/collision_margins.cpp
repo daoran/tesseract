@@ -27,7 +27,6 @@
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <console_bridge/console.h>
-#include <unordered_map>
 #include <tinyxml2.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -50,8 +49,7 @@ tesseract_common::CollisionMarginData::Ptr parseCollisionMargins(const tesseract
   if (xml_element == nullptr)
     return nullptr;
 
-  tinyxml2::XMLError status =
-      tesseract_common::QueryDoubleAttributeRequired(xml_element, "default_margin", default_margin);
+  int status = tesseract_common::QueryDoubleAttributeRequired(xml_element, "default_margin", default_margin);
   if (status != tinyxml2::XML_SUCCESS)
     std::throw_with_nested(std::runtime_error("CollisionMargins: collision_margins missing attribute "
                                               "'default_margin'."));
@@ -62,9 +60,10 @@ tesseract_common::CollisionMarginData::Ptr parseCollisionMargins(const tesseract
   {
     std::string link1_name, link2_name;
     double link_pair_margin{ 0 };
-    tinyxml2::XMLError status = tesseract_common::QueryStringAttributeRequired(xml_pair_element, "link1", link1_name);
+    int status = tesseract_common::QueryStringAttributeRequired(xml_pair_element, "link1", link1_name);
     if (status != tinyxml2::XML_SUCCESS)
-      throw std::runtime_error("parseCollisionMargins: Missing or failed to parse 'link1' attribute.");
+      std::throw_with_nested(std::runtime_error("parseCollisionMargins: Missing or failed to parse 'link1' "
+                                                "attribute."));
 
     status = tesseract_common::QueryStringAttributeRequired(xml_pair_element, "link2", link2_name);
     if (status != tinyxml2::XML_SUCCESS)

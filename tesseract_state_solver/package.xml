@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>tesseract_state_solver</name>
-  <version>0.14.0</version>
+  <version>0.28.8</version>
   <description>The state solver for tesseract_scene_graph</description>
-  <maintainer email="levi.armstrong@swri.org">Levi Armstrong</maintainer>
+  <maintainer email="levi.armstrong@gmail.com">Levi Armstrong</maintainer>
   <license>Apache 2.0</license>
   <author >Levi Armstrong</author>
 
@@ -17,8 +17,7 @@
   <depend>libconsole-bridge-dev</depend>
   <depend>tesseract_scene_graph</depend>
   <depend>tesseract_common</depend>
-  <depend condition="$ROS_DISTRO != noetic">orocos_kdl</depend>
-  <depend condition="$ROS_DISTRO == noetic">liborocos-kdl-dev</depend>
+  <depend>liborocos-kdl-dev</depend>
 
   <test_depend>gtest</test_depend>
   <test_depend>tesseract_support</test_depend>

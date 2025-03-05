@@ -6,23 +6,23 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_urdf/convex_mesh.h>
 #include <tesseract_geometry/impl/convex_mesh.h>
-#include <tesseract_support/tesseract_support_resource_locator.h>
+#include <tesseract_common/resource_locator.h>
 #include "tesseract_urdf_common_unit.h"
 
 static std::string getTempPkgPath()
 {
   std::string tmp = tesseract_common::getTempPath();
   std::string tmppkg = tmp + "tmppkg";
-  if (!tesseract_common::fs::is_directory(tmppkg) || !tesseract_common::fs::exists(tmppkg))
+  if (!std::filesystem::is_directory(tmppkg) || !std::filesystem::exists(tmppkg))
   {
-    tesseract_common::fs::create_directory(tmppkg);
+    std::filesystem::create_directory(tmppkg);
   }
   return tmppkg;
 }
 
 TEST(TesseractURDFUnit, parse_convex_mesh)  // NOLINT
 {
-  tesseract_common::TesseractSupportResourceLocator resource_locator;
+  tesseract_common::GeneralResourceLocator resource_locator;
   {
     std::string str =
         R"(<convex_mesh filename="package://tesseract_support/meshes/box_2m.ply" scale="1 2 1" extra="0 0 0"/>)";

@@ -30,16 +30,21 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_visualization/trajectory_player.h>
+#include <tesseract_visualization/trajectory_interpolator.h>
 
 namespace tesseract_visualization
 {
+TrajectoryPlayer::TrajectoryPlayer() = default;
+TrajectoryPlayer::~TrajectoryPlayer() = default;
+
 void TrajectoryPlayer::setTrajectory(const tesseract_common::JointTrajectory& trajectory)
 {
   // Prepare the new trajectory message
   trajectory_ = std::make_unique<TrajectoryInterpolator>(trajectory);
 
   // Get the duration
-  trajectory_duration_ = trajectory_->getStateDuration(trajectory_->getStateCount() - 1);
+  trajectory_duration_start_ = trajectory_->getStateDuration(0);
+  trajectory_duration_end_ = trajectory_->getStateDuration(trajectory_->getStateCount() - 1);
 
   // Reset state
   reset();
@@ -74,13 +79,13 @@ tesseract_common::JointState TrajectoryPlayer::setCurrentDuration(double duratio
     throw std::runtime_error("Trajectory is empty!");
 
   finished_ = false;
-  if (duration > trajectory_duration_)
+  if (duration > trajectory_duration_end_)
   {
-    current_duration_ = trajectory_duration_;
+    current_duration_ = trajectory_duration_end_;
     finished_ = true;
   }
-  else if (duration < 0)
-    current_duration_ = 0;
+  else if (duration < trajectory_duration_start_)
+    current_duration_ = trajectory_duration_start_;
   else
     current_duration_ = duration;
 
@@ -100,9 +105,9 @@ tesseract_common::JointState TrajectoryPlayer::getNext()
   auto current_time = std::chrono::high_resolution_clock::now();
   current_duration_ = (scale_ * std::chrono::duration<double>(current_time - start_time_).count());
 
-  if (current_duration_ > trajectory_duration_)
+  if (current_duration_ > trajectory_duration_end_)
   {
-    current_duration_ = trajectory_duration_;
+    current_duration_ = trajectory_duration_end_;
 
     // Compute the interpolated state
     auto mi = trajectory_->getState(current_duration_);
@@ -126,7 +131,9 @@ tesseract_common::JointState TrajectoryPlayer::getByIndex(long index) const
 
 double TrajectoryPlayer::currentDuration() const { return current_duration_; }
 
-double TrajectoryPlayer::trajectoryDuration() const { return trajectory_duration_; }
+double TrajectoryPlayer::trajectoryDurationBegin() const { return trajectory_duration_start_; }
+
+double TrajectoryPlayer::trajectoryDurationEnd() const { return trajectory_duration_end_; }
 
 bool TrajectoryPlayer::isFinished() const { return finished_; }
 
@@ -137,7 +144,7 @@ bool TrajectoryPlayer::isLoopEnabled() const { return loop_; }
 void TrajectoryPlayer::reset()
 {
   // Reset state associated with trajectory playback
-  current_duration_ = 0.0;
+  current_duration_ = trajectory_duration_start_;
 
   // Get the chrono time
   start_time_ = std::chrono::high_resolution_clock::now();

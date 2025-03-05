@@ -27,27 +27,33 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
+#include <boost/uuid/random_generator.hpp>
+#include <boost/uuid/uuid_serialize.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <tesseract_common/serialization.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_geometry/geometry.h>
 
 namespace tesseract_geometry
 {
-bool Geometry::operator==(const Geometry& rhs) const
-{
-  bool equal = true;
-  equal &= type_ == rhs.type_;
-  return equal;
-}
-bool Geometry::operator!=(const Geometry& rhs) const { return !operator==(rhs); }
+Geometry::Geometry(GeometryType type) : type_(type), uuid_(boost::uuids::random_generator()()) {}
+
+GeometryType Geometry::getType() const { return type_; }
+
+void Geometry::setUUID(const boost::uuids::uuid& uuid) { uuid_ = uuid; }
+
+const boost::uuids::uuid& Geometry::getUUID() const { return uuid_; }
+
+bool Geometry::operator==(const Geometry& rhs) const { return (type_ == rhs.type_ && uuid_ == rhs.uuid_); }
+bool Geometry::operator!=(const Geometry& rhs) const { return !operator==(rhs); }  // LCOV_EXCL_LINE
 
 template <class Archive>
 void Geometry::serialize(Archive& ar, const unsigned int /*version*/)
 {
   ar& boost::serialization::make_nvp("type", type_);
+  ar& boost::serialization::make_nvp("uuid", uuid_);
 }
 }  // namespace tesseract_geometry
 
-#include <tesseract_common/serialization.h>
 TESSERACT_SERIALIZE_ARCHIVES_INSTANTIATE(tesseract_geometry::Geometry)

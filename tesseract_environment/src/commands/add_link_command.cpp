@@ -29,14 +29,44 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 #include <memory>
-#include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_common/utils.h>
 #include <tesseract_environment/commands/add_link_command.h>
+#include <tesseract_common/utils.h>
+#include <tesseract_scene_graph/link.h>
+#include <tesseract_scene_graph/joint.h>
 
 namespace tesseract_environment
 {
+AddLinkCommand::AddLinkCommand() : Command(CommandType::ADD_LINK) {}
+
+AddLinkCommand::AddLinkCommand(const tesseract_scene_graph::Link& link, bool replace_allowed)
+  : Command(CommandType::ADD_LINK)
+  , link_(std::make_shared<tesseract_scene_graph::Link>(link.clone()))
+  , joint_(nullptr)
+  , replace_allowed_(replace_allowed)
+{
+}
+
+AddLinkCommand::AddLinkCommand(const tesseract_scene_graph::Link& link,
+                               const tesseract_scene_graph::Joint& joint,
+                               bool replace_allowed)
+  : Command(CommandType::ADD_LINK)
+  , link_(std::make_shared<tesseract_scene_graph::Link>(link.clone()))
+  , joint_(std::make_shared<tesseract_scene_graph::Joint>(joint.clone()))
+  , replace_allowed_(replace_allowed)
+{
+  if (joint_->child_link_name != link.getName())
+    throw std::runtime_error("AddLinkCommand: The provided joint child link name must equal the name of the provided "
+                             "link.");
+
+  /** @todo if joint is not fixed we should verify that limits are provided */
+}
+
+const std::shared_ptr<const tesseract_scene_graph::Link>& AddLinkCommand::getLink() const { return link_; }
+const std::shared_ptr<const tesseract_scene_graph::Joint>& AddLinkCommand::getJoint() const { return joint_; }
+bool AddLinkCommand::replaceAllowed() const { return replace_allowed_; }
+
 bool AddLinkCommand::operator==(const AddLinkCommand& rhs) const
 {
   bool equal = true;

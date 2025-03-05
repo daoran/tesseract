@@ -10,28 +10,31 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/environment.h>
 #include <tesseract_environment/utils.h>
-#include <tesseract_support/tesseract_support_resource_locator.h>
+
+#include <tesseract_collision/core/discrete_contact_manager.h>
+#include <tesseract_collision/core/continuous_contact_manager.h>
+
+#include <tesseract_scene_graph/graph.h>
+
+#include <tesseract_srdf/srdf_model.h>
 
 using namespace tesseract_scene_graph;
 using namespace tesseract_srdf;
 using namespace tesseract_collision;
 using namespace tesseract_environment;
 
-SceneGraph::UPtr getSceneGraph()
+SceneGraph::Ptr getSceneGraph(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/boxbot.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
-  return tesseract_urdf::parseURDFFile(path, locator);
+  std::string path = "package://tesseract_support/urdf/boxbot.urdf";
+  return tesseract_urdf::parseURDFFile(locator.locateResource(path)->getFilePath(), locator);
 }
 
-SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph)
+SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph, const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/boxbot.srdf";
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = "package://tesseract_support/urdf/boxbot.srdf";
 
-  auto srdf = std::make_unique<SRDFModel>();
-  srdf->initFile(scene_graph, path, locator);
+  auto srdf = std::make_shared<SRDFModel>();
+  srdf->initFile(scene_graph, locator.locateResource(path)->getFilePath(), locator);
 
   return srdf;
 }
@@ -46,8 +49,8 @@ void checkIsAllowedFnOverride(std::unique_ptr<ManagerType> manager)
     config.contact_manager_config.acm.addAllowedCollision("allowed_link_1a", "allowed_link_2a", "Unit test");
     config.contact_manager_config.acm_override_type = ACMOverrideType::ASSIGN;
     manager->applyContactManagerConfig(config.contact_manager_config);
-    auto fn = manager->getIsContactAllowedFn();
-    EXPECT_TRUE(fn("allowed_link_1a", "allowed_link_2a"));
+    auto fn = manager->getContactAllowedValidator();
+    EXPECT_TRUE((*fn)("allowed_link_1a", "allowed_link_2a"));
   }
 
   // NONE
@@ -56,8 +59,8 @@ void checkIsAllowedFnOverride(std::unique_ptr<ManagerType> manager)
     config.contact_manager_config.acm.addAllowedCollision("allowed_link_1b", "allowed_link_2b", "Unit test");
     config.contact_manager_config.acm_override_type = ACMOverrideType::NONE;
     manager->applyContactManagerConfig(config.contact_manager_config);
-    auto fn = manager->getIsContactAllowedFn();
-    EXPECT_FALSE(fn("allowed_link_1b", "allowed_link_2b"));
+    auto fn = manager->getContactAllowedValidator();
+    EXPECT_FALSE((*fn)("allowed_link_1b", "allowed_link_2b"));
   }
 
   // OR
@@ -66,9 +69,9 @@ void checkIsAllowedFnOverride(std::unique_ptr<ManagerType> manager)
     config.contact_manager_config.acm.addAllowedCollision("allowed_link_1c", "allowed_link_2c", "Unit test");
     config.contact_manager_config.acm_override_type = ACMOverrideType::OR;
     manager->applyContactManagerConfig(config.contact_manager_config);
-    auto fn = manager->getIsContactAllowedFn();
-    EXPECT_TRUE(fn("allowed_link_1a", "allowed_link_2a"));
-    EXPECT_TRUE(fn("allowed_link_1c", "allowed_link_2c"));
+    auto fn = manager->getContactAllowedValidator();
+    EXPECT_TRUE((*fn)("allowed_link_1a", "allowed_link_2a"));
+    EXPECT_TRUE((*fn)("allowed_link_1c", "allowed_link_2c"));
   }
 
   // AND
@@ -77,18 +80,19 @@ void checkIsAllowedFnOverride(std::unique_ptr<ManagerType> manager)
     config.contact_manager_config.acm.removeAllowedCollision("allowed_link_1a", "allowed_link_2a");
     config.contact_manager_config.acm_override_type = ACMOverrideType::AND;
     manager->applyContactManagerConfig(config.contact_manager_config);
-    auto fn = manager->getIsContactAllowedFn();
-    EXPECT_FALSE(fn("allowed_link_1a", "allowed_link_2a"));
-    EXPECT_TRUE(fn("allowed_link_1c", "allowed_link_2c"));
+    auto fn = manager->getContactAllowedValidator();
+    EXPECT_FALSE((*fn)("allowed_link_1a", "allowed_link_2a"));
+    EXPECT_TRUE((*fn)("allowed_link_1c", "allowed_link_2c"));
   }
 }
 
 TEST(TesseractEnvironmentUtils, applyContactManagerConfigIsAllowed)  // NOLINT
 {
-  auto scene_graph = getSceneGraph();
+  tesseract_common::GeneralResourceLocator locator;
+  auto scene_graph = getSceneGraph(locator);
   EXPECT_TRUE(scene_graph != nullptr);
 
-  auto srdf = getSRDFModel(*scene_graph);
+  auto srdf = getSRDFModel(*scene_graph, locator);
   EXPECT_TRUE(srdf != nullptr);
 
   auto env = std::make_shared<Environment>();
@@ -109,10 +113,12 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigIsAllowed)  // NOLINT
 
 TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLINT
 {
-  auto scene_graph = getSceneGraph();
+  tesseract_common::GeneralResourceLocator locator;
+
+  auto scene_graph = getSceneGraph(locator);
   EXPECT_TRUE(scene_graph != nullptr);
 
-  auto srdf = getSRDFModel(*scene_graph);
+  auto srdf = getSRDFModel(*scene_graph, locator);
   EXPECT_TRUE(srdf != nullptr);
 
   auto env = std::make_shared<Environment>();
@@ -129,6 +135,7 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
   default_config.contact_manager_config.margin_data_override_type =
       tesseract_common::CollisionMarginOverrideType::REPLACE;
 
+  tesseract_collision::ContactResultMap contacts;
   // Check Discrete
   {
     auto config = default_config;
@@ -144,7 +151,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
 
     // In collision by default
     {
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_FALSE(contacts.empty());
     }
 
@@ -152,7 +160,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["boxbot_link"] = false;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_TRUE(contacts.empty());
     }
 
@@ -160,7 +169,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["boxbot_link"] = true;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_FALSE(contacts.empty());
     }
 
@@ -168,7 +178,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["nonexistant_link"] = false;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_FALSE(contacts.empty());
     }
   }
@@ -192,8 +203,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     tmap2["test_box_link"].translate(Eigen::Vector3d(0.9, -2, 0));
 
     {
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       // In collision by default
       EXPECT_FALSE(contacts.empty());
     }
@@ -202,8 +213,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["boxbot_link"] = false;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       EXPECT_TRUE(contacts.empty());
     }
 
@@ -211,8 +222,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["boxbot_link"] = true;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       EXPECT_FALSE(contacts.empty());
     }
 
@@ -220,8 +231,8 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
     {
       config.contact_manager_config.modify_object_enabled["nonexistant_link"] = false;
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       EXPECT_FALSE(contacts.empty());
     }
   }
@@ -229,10 +240,12 @@ TEST(TesseractEnvironmentUtils, applyContactManagerConfigObjectEnable)  // NOLIN
 
 TEST(TesseractEnvironmentUtils, checkTrajectoryState)  // NOLINT
 {
-  auto scene_graph = getSceneGraph();
+  tesseract_common::GeneralResourceLocator locator;
+
+  auto scene_graph = getSceneGraph(locator);
   EXPECT_TRUE(scene_graph != nullptr);
 
-  auto srdf = getSRDFModel(*scene_graph);
+  auto srdf = getSRDFModel(*scene_graph, locator);
   EXPECT_TRUE(srdf != nullptr);
 
   auto env = std::make_shared<Environment>();
@@ -249,6 +262,7 @@ TEST(TesseractEnvironmentUtils, checkTrajectoryState)  // NOLINT
   default_config.contact_manager_config.margin_data_override_type =
       tesseract_common::CollisionMarginOverrideType::REPLACE;
 
+  tesseract_collision::ContactResultMap contacts;
   // Check Discrete
   {
     auto config = default_config;
@@ -265,26 +279,30 @@ TEST(TesseractEnvironmentUtils, checkTrajectoryState)  // NOLINT
     // Not in collision
     {
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config.contact_request);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config.contact_request);
       EXPECT_TRUE(contacts.empty());
     }
     // In collision if manager->applyContactManagerConfig works correctly
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.1);
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config.contact_request);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config.contact_request);
       EXPECT_FALSE(contacts.empty());
     }
     // Not collision if checkTrajectoryState applies the config
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.0);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_TRUE(contacts.empty());
     }
     // In collision if checkTrajectoryState applies the config
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.1);
-      tesseract_collision::ContactResultMap contacts = checkTrajectoryState(*manager, tmap, config);
+      contacts.clear();
+      checkTrajectoryState(contacts, *manager, tmap, config);
       EXPECT_FALSE(contacts.empty());
     }
   }
@@ -310,28 +328,30 @@ TEST(TesseractEnvironmentUtils, checkTrajectoryState)  // NOLINT
     // Not in collision
     {
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       EXPECT_TRUE(contacts.empty());
     }
     // In collision if manager->applyContactManagerConfig works correctly
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.1);
       manager->applyContactManagerConfig(config.contact_manager_config);
-      tesseract_collision::ContactResultMap contacts =
-          checkTrajectorySegment(*manager, tmap1, tmap2, config.contact_request);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config.contact_request);
       EXPECT_FALSE(contacts.empty());
     }
     // Not collision if checkTrajectoryState applies the config
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.0);
-      tesseract_collision::ContactResultMap contacts = checkTrajectorySegment(*manager, tmap1, tmap2, config);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config);
       EXPECT_TRUE(contacts.empty());
     }
     // In collision if checkTrajectoryState applies the config
     {
       config.contact_manager_config.margin_data.setDefaultCollisionMargin(0.1);
-      tesseract_collision::ContactResultMap contacts = checkTrajectorySegment(*manager, tmap1, tmap2, config);
+      contacts.clear();
+      checkTrajectorySegment(contacts, *manager, tmap1, tmap2, config);
       EXPECT_FALSE(contacts.empty());
     }
   }

@@ -42,8 +42,6 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <fstream>
-
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
@@ -83,6 +81,7 @@ std::vector<std::shared_ptr<T>> extractMeshData(const aiScene* scene,
                                                 bool material_and_texture)
 {
   std::vector<std::shared_ptr<T>> meshes;
+  meshes.reserve(node->mNumMeshes);
 
   aiMatrix4x4 transform = parent_transform;
   transform *= node->mTransformation;
@@ -96,12 +95,13 @@ std::vector<std::shared_ptr<T>> extractMeshData(const aiScene* scene,
     std::shared_ptr<std::vector<MeshTexture::Ptr>> textures = nullptr;
 
     const aiMesh* a = scene->mMeshes[node->mMeshes[j]];
+    vertices->reserve(a->mNumVertices);
     for (unsigned int i = 0; i < a->mNumVertices; ++i)
     {
       aiVector3D v = transform * a->mVertices[i];
-      vertices->push_back(Eigen::Vector3d(static_cast<double>(v.x) * scale(0),
-                                          static_cast<double>(v.y) * scale(1),
-                                          static_cast<double>(v.z) * scale(2)));
+      vertices->emplace_back(static_cast<double>(v.x) * scale(0),
+                             static_cast<double>(v.y) * scale(1),
+                             static_cast<double>(v.z) * scale(2));
     }
 
     long triangle_count = 0;
@@ -129,23 +129,25 @@ std::vector<std::shared_ptr<T>> extractMeshData(const aiScene* scene,
     if (normals && a->HasNormals())
     {
       vertex_normals = std::make_shared<tesseract_common::VectorVector3d>();
+      vertex_normals->reserve(a->mNumVertices);
       for (unsigned int i = 0; i < a->mNumVertices; ++i)
       {
         aiVector3D v = transform * a->mNormals[i];
-        vertex_normals->push_back(Eigen::Vector3d(static_cast<double>(v.x) * scale(0),
-                                                  static_cast<double>(v.y) * scale(1),
-                                                  static_cast<double>(v.z) * scale(2)));
+        vertex_normals->emplace_back(static_cast<double>(v.x) * scale(0),
+                                     static_cast<double>(v.y) * scale(1),
+                                     static_cast<double>(v.z) * scale(2));
       }
     }
 
     if (vertex_colors && a->HasVertexColors(0))
     {
       vertex_colors = std::make_shared<tesseract_common::VectorVector4d>();
+      vertex_colors->reserve(a->mNumVertices);
       for (unsigned int i = 0; i < a->mNumVertices; ++i)
       {
         aiColor4D v = a->mColors[0][i];
-        vertex_colors->push_back(Eigen::Vector4d(
-            static_cast<double>(v.r), static_cast<double>(v.g), static_cast<double>(v.b), static_cast<double>(v.a)));
+        vertex_colors->emplace_back(
+            static_cast<double>(v.r), static_cast<double>(v.g), static_cast<double>(v.b), static_cast<double>(v.a));
       }
     }
 
@@ -153,10 +155,10 @@ std::vector<std::shared_ptr<T>> extractMeshData(const aiScene* scene,
     {
       aiMaterial* mat = scene->mMaterials[a->mMaterialIndex];
       {
-        Eigen::Vector4d base_color;
+        Eigen::Vector4d base_color = Eigen::Vector4d::Zero();
         double metallic = 0.0;
         double roughness = 0.5;
-        Eigen::Vector4d emissive;
+        Eigen::Vector4d emissive = Eigen::Vector4d::Zero();
 
         aiColor4D pbr_base_color;
 #ifdef TESSERACT_ASSIMP_USE_PBRMATERIAL
@@ -250,7 +252,7 @@ std::vector<std::shared_ptr<T>> extractMeshData(const aiScene* scene,
               for (unsigned int j = 0; j < a->mNumVertices; ++j)
               {
                 aiVector3D v = tex_coords[j];
-                uvs.push_back(Eigen::Vector2d(static_cast<double>(v.x), static_cast<double>(v.y)));
+                uvs.emplace_back(static_cast<double>(v.x), static_cast<double>(v.y));
               }
               auto tex = std::make_shared<MeshTexture>(
                   texture_image, std::make_shared<tesseract_common::VectorVector2d>(std::move(uvs)));
@@ -334,7 +336,7 @@ std::vector<std::shared_ptr<T>> createMeshFromAsset(const aiScene* scene,
  */
 template <class T>
 std::vector<std::shared_ptr<T>> createMeshFromPath(const std::string& path,
-                                                   Eigen::Vector3d scale = Eigen::Vector3d(1, 1, 1),
+                                                   const Eigen::Vector3d& scale = Eigen::Vector3d(1, 1, 1),
                                                    bool triangulate = false,
                                                    bool flatten = false,
                                                    bool normals = false,
@@ -416,7 +418,7 @@ std::vector<std::shared_ptr<T>> createMeshFromPath(const std::string& path,
  */
 template <class T>
 std::vector<std::shared_ptr<T>> createMeshFromResource(tesseract_common::Resource::Ptr resource,
-                                                       Eigen::Vector3d scale = Eigen::Vector3d(1, 1, 1),
+                                                       const Eigen::Vector3d& scale = Eigen::Vector3d(1, 1, 1),
                                                        bool triangulate = false,
                                                        bool flatten = false,
                                                        bool normals = false,
@@ -535,7 +537,7 @@ template <typename T>
 static std::vector<std::shared_ptr<T>> createMeshFromBytes(const std::string& url,
                                                            const uint8_t* bytes,
                                                            size_t bytes_len,
-                                                           Eigen::Vector3d scale = Eigen::Vector3d(1, 1, 1),
+                                                           const Eigen::Vector3d& scale = Eigen::Vector3d(1, 1, 1),
                                                            bool triangulate = false,
                                                            bool flatten = false,
                                                            bool normals = false,

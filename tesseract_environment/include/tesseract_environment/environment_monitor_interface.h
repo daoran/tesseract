@@ -29,13 +29,19 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <vector>
 #include <chrono>
+#include <memory>
+#include <unordered_map>
+#include <Eigen/Core>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
-#include <tesseract_environment/commands.h>
-#include <tesseract_environment/environment.h>
+#include <tesseract_scene_graph/fwd.h>
+#include <tesseract_common/eigen_types.h>
 
 namespace tesseract_environment
 {
+class Command;
+class Environment;
+
 class EnvironmentMonitorInterface
 {
 public:
@@ -44,9 +50,12 @@ public:
   using UPtr = std::unique_ptr<EnvironmentMonitorInterface>;
   using ConstUPtr = std::unique_ptr<const EnvironmentMonitorInterface>;
 
-  EnvironmentMonitorInterface(std::string env_name) : env_name_(std::move(env_name)) {}
-
+  explicit EnvironmentMonitorInterface(std::string env_name);
   virtual ~EnvironmentMonitorInterface() = default;
+  EnvironmentMonitorInterface(const EnvironmentMonitorInterface&) = default;
+  EnvironmentMonitorInterface& operator=(const EnvironmentMonitorInterface&) = default;
+  EnvironmentMonitorInterface(EnvironmentMonitorInterface&&) = default;
+  EnvironmentMonitorInterface& operator=(EnvironmentMonitorInterface&&) = default;
 
   /**
    * @brief This will wait for all namespaces to begin publishing
@@ -81,9 +90,9 @@ public:
    * @param command The command to apply
    * @return A vector of failed namespace, if empty all namespace were updated successfully.
    */
-  virtual std::vector<std::string> applyCommand(const tesseract_environment::Command& command) const = 0;
-  virtual std::vector<std::string> applyCommands(const tesseract_environment::Commands& commands) const = 0;
-  virtual std::vector<std::string> applyCommands(const std::vector<tesseract_environment::Command>& commands) const = 0;
+  virtual std::vector<std::string> applyCommand(const Command& command) const = 0;
+  virtual std::vector<std::string> applyCommands(const std::vector<std::shared_ptr<const Command>>& commands) const = 0;
+  virtual std::vector<std::string> applyCommands(const std::vector<Command>& commands) const = 0;
 
   /**
    * @brief Apply provided command to only the provided namespace. The namespace does not have to be one that is
@@ -91,12 +100,10 @@ public:
    * @param command The command to apply
    * @return True if successful, otherwise false
    */
-  virtual bool applyCommand(const std::string& monitor_namespace,
-                            const tesseract_environment::Command& command) const = 0;
+  virtual bool applyCommand(const std::string& monitor_namespace, const Command& command) const = 0;
   virtual bool applyCommands(const std::string& monitor_namespace,
-                             const tesseract_environment::Commands& commands) const = 0;
-  virtual bool applyCommands(const std::string& monitor_namespace,
-                             const std::vector<tesseract_environment::Command>& commands) const = 0;
+                             const std::vector<std::shared_ptr<const Command>>& commands) const = 0;
+  virtual bool applyCommands(const std::string& monitor_namespace, const std::vector<Command>& commands) const = 0;
 
   /**
    * @brief Pull current environment state from the environment in the provided namespace
@@ -111,30 +118,43 @@ public:
    * @return True if successful, otherwise false
    */
   virtual bool setEnvironmentState(const std::string& monitor_namespace,
-                                   const std::unordered_map<std::string, double>& joints) const = 0;
+                                   const std::unordered_map<std::string, double>& joints,
+                                   const tesseract_common::TransformMap& floating_joints = {}) const = 0;
   virtual bool setEnvironmentState(const std::string& monitor_namespace,
                                    const std::vector<std::string>& joint_names,
-                                   const std::vector<double>& joint_values) const = 0;
+                                   const std::vector<double>& joint_values,
+                                   const tesseract_common::TransformMap& floating_joints = {}) const = 0;
   virtual bool setEnvironmentState(const std::string& monitor_namespace,
                                    const std::vector<std::string>& joint_names,
-                                   const Eigen::Ref<const Eigen::VectorXd>& joint_values) const = 0;
+                                   const Eigen::Ref<const Eigen::VectorXd>& joint_values,
+                                   const tesseract_common::TransformMap& floating_joints = {}) const = 0;
+  virtual bool setEnvironmentState(const std::string& monitor_namespace,
+                                   const tesseract_common::TransformMap& floating_joints) const = 0;
 
   /**
    * @brief Set environment state for all monitor namespaces
    * @return A vector of failed namespace, if empty all namespace were updated successfully.
    */
-  virtual std::vector<std::string> setEnvironmentState(const std::unordered_map<std::string, double>& joints) const = 0;
-  virtual std::vector<std::string> setEnvironmentState(const std::vector<std::string>& joint_names,
-                                                       const std::vector<double>& joint_values) const = 0;
-  virtual std::vector<std::string> setEnvironmentState(const std::vector<std::string>& joint_names,
-                                                       const Eigen::Ref<const Eigen::VectorXd>& joint_values) const = 0;
+  virtual std::vector<std::string>
+  setEnvironmentState(const std::unordered_map<std::string, double>& joints,
+                      const tesseract_common::TransformMap& floating_joints = {}) const = 0;
+  virtual std::vector<std::string>
+  setEnvironmentState(const std::vector<std::string>& joint_names,
+                      const std::vector<double>& joint_values,
+                      const tesseract_common::TransformMap& floating_joints = {}) const = 0;
+  virtual std::vector<std::string>
+  setEnvironmentState(const std::vector<std::string>& joint_names,
+                      const Eigen::Ref<const Eigen::VectorXd>& joint_values,
+                      const tesseract_common::TransformMap& floating_joints = {}) const = 0;
+  virtual std::vector<std::string>
+  setEnvironmentState(const tesseract_common::TransformMap& floating_joints = {}) const = 0;
 
   /**
    * @brief Pull information from the environment in the provided namespace and create a Environment Object
    * @param monitor_namespace The namespace to extract the environment from.
    * @return Environment Shared Pointer, if nullptr it failed
    */
-  virtual tesseract_environment::Environment::UPtr getEnvironment(const std::string& monitor_namespace) const = 0;
+  virtual std::unique_ptr<Environment> getEnvironment(const std::string& monitor_namespace) const = 0;
 
 protected:
   std::string env_name_;

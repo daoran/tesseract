@@ -8,6 +8,7 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/joint.h>
 
 TEST(TesseractSceneGraphUnit, TesseractSceneGraphJointDynamicsUnit)  // NOLINT
 {
@@ -162,6 +163,11 @@ TEST(TesseractSceneGraphUnit, TesseractSceneGraphJointUnit)  // NOLINT
   joint_1.mimic->offset = 0.5;
   joint_1.mimic->joint_name = "joint_0";
   joint_1.mimic->multiplier = 1.5;
+  joint_1.safety = std::make_shared<JointSafety>();
+  joint_1.safety->soft_lower_limit = -0.5;
+  joint_1.safety->soft_upper_limit = 0.5;
+  joint_1.safety->k_position = 1.1;
+  joint_1.safety->k_velocity = 2.5;
 
   EXPECT_EQ(joint_1.getName(), "joint_n1");
 
@@ -187,6 +193,10 @@ TEST(TesseractSceneGraphUnit, TesseractSceneGraphJointUnit)  // NOLINT
   EXPECT_NEAR(joint_1_clone.mimic->offset, 0.5, 1e-6);
   EXPECT_EQ(joint_1_clone.mimic->joint_name, "joint_0");
   EXPECT_NEAR(joint_1_clone.mimic->multiplier, 1.5, 1e-6);
+  EXPECT_NEAR(joint_1_clone.safety->soft_lower_limit, -0.5, 1e-6);
+  EXPECT_NEAR(joint_1_clone.safety->soft_upper_limit, 0.5, 1e-6);
+  EXPECT_NEAR(joint_1_clone.safety->k_position, 1.1, 1e-6);
+  EXPECT_NEAR(joint_1_clone.safety->k_velocity, 2.5, 1e-6);
 
   std::ostringstream s1;
   s1 << JointType::FIXED;

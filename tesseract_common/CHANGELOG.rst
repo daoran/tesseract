@@ -2,6 +2,240 @@
 Changelog for package tesseract_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.28.8 (2025-02-01)
+-------------------
+
+0.28.7 (2025-01-29)
+-------------------
+
+0.28.6 (2025-01-26)
+-------------------
+
+0.28.5 (2025-01-21)
+-------------------
+
+0.28.4 (2025-01-18)
+-------------------
+
+0.28.3 (2025-01-18)
+-------------------
+
+0.28.2 (2025-01-17)
+-------------------
+
+0.28.1 (2025-01-17)
+-------------------
+
+0.28.0 (2025-01-16)
+-------------------
+* Fix Bullet linking on MacOS (`#1101 <https://github.com/tesseract-robotics/tesseract/issues/1101>`_)
+  * Use Bullet cmake targets when available
+  * Guard creation of Bullet3::Bullet target
+  * Windows does not have Bullet3Geometry.lib
+  * Restore boost-stacktrace changes
+* Add GeneralResourceLocator API functions
+* Leverage tesseract_common loadYamlFile and loadYamlString
+* Add ContactAllowedValidator and ContactResultValidator (`#1095 <https://github.com/tesseract-robotics/tesseract/issues/1095>`_)
+* Leverage fs::path::preferred_separator in locateResource
+* Add yaml include directive support
+* Fix typo in tesseract_common CMakeLists.txt
+* Add more serialization for eigen types and collision types
+* Contributors: John Wason, Levi Armstrong
+
+0.27.1 (2024-12-03)
+-------------------
+* Include stdexcept in type_erasure.h
+* Contributors: John Wason
+
+0.27.0 (2024-12-01)
+-------------------
+* Simplify type erasure
+* Add uuid to tesseract_common::JointTrajectory
+* Contributors: Levi Armstrong
+
+0.26.0 (2024-10-27)
+-------------------
+* Add utility toArchiveFile method
+* Fix serialization
+* Fix abstract class serialization
+* Fix serialization extension marco so they must include . char
+* Fix to archive file with no extension
+* Contributors: Levi Armstrong
+
+0.25.0 (2024-09-28)
+-------------------
+* Add missing package libraries cmake variable
+* Add timer class with callback
+* Rename Timer to Stopwatch
+* Contributors: Levi Armstrong
+
+0.24.1 (2024-08-19)
+-------------------
+
+0.24.0 (2024-08-14)
+-------------------
+* Fix clang detection on Mac OS (`#1038 <https://github.com/tesseract-robotics/tesseract/issues/1038>`_)
+* Contributors: John Wason
+
+0.23.1 (2024-07-28)
+-------------------
+* Cleanup boost serialization
+* Use latest vcpkg release for GitHub Action (`#1035 <https://github.com/tesseract-robotics/tesseract/issues/1035>`_)
+  * Use latest vcpkg release in windows action
+  * ci
+  * Fix deprecated boost filesystem functions
+* Fix use of boost stacktrace
+* Contributors: John Wason, Levi Armstrong
+
+0.23.0 (2024-07-24)
+-------------------
+* Add any poly support to manipulator info
+* Add std::size_t to any poly types
+* Add integral any poly types
+* Add checkForUnknownKeys to yaml utils
+* Handle edge case in calcJacobianTransformErrorDiff
+* Improve any poly serialization macros
+* Fixes for building on Ubuntu Noble (`#1016 <https://github.com/tesseract-robotics/tesseract/issues/1016>`_)
+* Add missing serialization header to AnyPoly
+* Add support for shared pointers to tesseract_common::AnyPoly
+* Contributors: Levi Armstrong, Roelof Oomen
+
+0.22.2 (2024-06-10)
+-------------------
+* Fix windows issue in kinematics_limits.h with using eigen array max and min
+* Add backtrace to type erasure casting to quickly identify where the issue location
+* Contributors: Levi Armstrong
+
+0.22.1 (2024-06-03)
+-------------------
+
+0.22.0 (2024-06-02)
+-------------------
+* Fix deprecated exec_program command (`#1004 <https://github.com/tesseract-robotics/tesseract/issues/1004>`_)
+* Add binary data serialization support functions
+* Add support for jerk limits
+* Leverage forward declarations to improve compile times (`#990 <https://github.com/tesseract-robotics/tesseract/issues/990>`_)
+* Faster pair hash for ACM
+* Fix bug in calcJacobianTransformErrorDiff
+* Correctly handle angle axis singularity when calculating numerical jacobian
+* Added application for performing convex decomposition (`#968 <https://github.com/tesseract-robotics/tesseract/issues/968>`_)
+* Contributors: Levi Armstrong, Michael Ripperger, Roelof Oomen
+
+0.21.5 (2023-12-14)
+-------------------
+* Add Mac OSX support (`#969 <https://github.com/tesseract-robotics/tesseract/issues/969>`_)
+* Add jacobian transform error calculation function (`#971 <https://github.com/tesseract-robotics/tesseract/issues/971>`_)
+* Contributors: John Wason, Levi Armstrong
+
+0.21.4 (2023-11-20)
+-------------------
+
+0.21.3 (2023-11-16)
+-------------------
+* Fix thread safety in environment (`#964 <https://github.com/tesseract-robotics/tesseract/issues/964>`_)
+  * Fix thread safety in environment.cpp
+  * Clang format
+* Contributors: Levi Armstrong
+
+0.21.2 (2023-11-10)
+-------------------
+* Support message conversions
+* Contributors: Levi Armstrong
+
+0.21.1 (2023-11-09)
+-------------------
+
+0.21.0 (2023-11-07)
+-------------------
+
+0.20.2 (2023-10-26)
+-------------------
+* Fix resource locator windows build
+* Contributors: Levi Armstrong
+
+0.20.1 (2023-10-13)
+-------------------
+* Unused includes cleanup (`#946 <https://github.com/tesseract-robotics/tesseract/issues/946>`_)
+* Add Eigen::Vector3d yaml support (`#945 <https://github.com/tesseract-robotics/tesseract/issues/945>`_)
+* Contributors: Levi Armstrong, Roelof
+
+0.20.0 (2023-09-27)
+-------------------
+* Add std::variant boost serialization support
+* Contributors: Levi Armstrong
+
+0.19.2 (2023-09-06)
+-------------------
+* Fix Ubunut Jammy release build
+* Contributors: Levi Armstrong
+
+0.19.1 (2023-09-05)
+-------------------
+
+0.19.0 (2023-09-05)
+-------------------
+* Update kinematics and collision packages to leverage cmake components (`#927 <https://github.com/tesseract-robotics/tesseract/issues/927>`_)
+* Update emails
+* Do not call find_package() if package has already been found.
+* Fix of ManipulatorInfo and typos (`#914 <https://github.com/tesseract-robotics/tesseract/issues/914>`_)
+  - ManipulatorInfo constructor now accepts tcp_offset as variant to match data member.
+  - Fixed typos in rep and rop factories.
+* Contributors: Levi Armstrong, Roelof, Roelof Oomen
+
+0.18.1 (2023-06-30)
+-------------------
+
+0.18.0 (2023-06-29)
+-------------------
+* Add package cmake flags for testing, examples and benchmarks
+* Removed gcc-specific options from clang config
+* Fix JointState equal operator
+* Contributors: Levi Armstrong, Roelof
+
+0.17.0 (2023-06-06)
+-------------------
+* Windows updates (`#893 <https://github.com/tesseract-robotics/tesseract/issues/893>`_)
+* Update resource_locator.cpp (`#889 <https://github.com/tesseract-robotics/tesseract/issues/889>`_)
+* Contributors: John Wason, Levi Armstrong
+
+0.16.3 (2023-05-04)
+-------------------
+
+0.16.2 (2023-04-28)
+-------------------
+* Add yaml support for tool path
+* Contributors: Levi Armstrong
+
+0.16.1 (2023-04-11)
+-------------------
+* Improve tesseract_common unit test coverage
+* Improve general resource locator
+* Contributors: Levi Armstrong
+
+0.16.0 (2023-04-09)
+-------------------
+* Add documentation to ContactResultMap
+* Avoid multiple memory allocations in PairHash::operator()
+* Add contact results class
+* Contributors: Levi Armstrong
+
+0.15.3 (2023-03-22)
+-------------------
+
+0.15.2 (2023-03-15)
+-------------------
+
+0.15.1 (2023-03-14)
+-------------------
+
+0.15.0 (2023-03-03)
+-------------------
+* Performance improvements found using callgrind (`#852 <https://github.com/tesseract-robotics/tesseract/issues/852>`_)
+* Update TaskComposerPluginInfo
+* Improve tesseract_state_solver code coverage
+* Fix tesseract_common plugin info implementations equal and insert methods
+* Contributors: Levi Armstrong
+
 0.14.0 (2022-10-23)
 -------------------
 * Add general resource locator

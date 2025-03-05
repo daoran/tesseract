@@ -28,12 +28,17 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
 #include <Eigen/Geometry>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -47,15 +52,12 @@ public:
   using Ptr = std::shared_ptr<ChangeLinkOriginCommand>;
   using ConstPtr = std::shared_ptr<const ChangeLinkOriginCommand>;
 
-  ChangeLinkOriginCommand() : Command(CommandType::CHANGE_LINK_ORIGIN){};
+  ChangeLinkOriginCommand();
 
-  ChangeLinkOriginCommand(std::string link_name, const Eigen::Isometry3d& origin)
-    : Command(CommandType::CHANGE_LINK_ORIGIN), link_name_(std::move(link_name)), origin_(origin)
-  {
-  }
+  ChangeLinkOriginCommand(std::string link_name, const Eigen::Isometry3d& origin);
 
-  const std::string& getLinkName() const { return link_name_; }
-  const Eigen::Isometry3d& getOrigin() const { return origin_; }
+  const std::string& getLinkName() const;
+  const Eigen::Isometry3d& getOrigin() const;
 
   bool operator==(const ChangeLinkOriginCommand& rhs) const;
   bool operator!=(const ChangeLinkOriginCommand& rhs) const;
@@ -70,7 +72,5 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::ChangeLinkOriginCommand, "ChangeLinkOriginCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::ChangeLinkOriginCommand)
 #endif  // TESSERACT_ENVIRONMENT_CHANGE_LINK_ORIGIN_COMMAND_H

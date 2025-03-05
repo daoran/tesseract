@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.15.0)
 
 # Extract package name and version
 find_package(ros_industrial_cmake_boilerplate REQUIRED)
 extract_package_metadata(pkg)
-project(${pkg_extracted_name} VERSION ${pkg_extracted_version} LANGUAGES CXX)
+project(${pkg_extracted_name} VERSION ${pkg_extracted_version} LANGUAGES C CXX)
 
 if(WIN32)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
@@ -101,7 +101,16 @@ target_code_coverage(
 target_include_directories(${PROJECT_NAME}_ofkt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                                                        "$<INSTALL_INTERFACE:include>")
 
-configure_package(NAMESPACE tesseract TARGETS ${PROJECT_NAME}_core ${PROJECT_NAME}_kdl ${PROJECT_NAME}_ofkt)
+configure_package(
+  NAMESPACE tesseract
+  TARGETS ${PROJECT_NAME}_core ${PROJECT_NAME}_kdl ${PROJECT_NAME}_ofkt
+  DEPENDENCIES
+    Eigen3
+    orocos_kdl
+    console_bridge
+    tesseract_scene_graph
+    tesseract_common
+  CFG_EXTRAS cmake/tesseract_state_solver-extras.cmake)
 
 # Mark cpp header files for installation
 install(
@@ -111,16 +120,17 @@ install(
   PATTERN "*.h"
   PATTERN ".svn" EXCLUDE)
 
-if(TESSERACT_ENABLE_TESTING)
+if(TESSERACT_ENABLE_TESTING OR TESSERACT_STATE_SOLVER_ENABLE_TESTING)
   enable_testing()
   add_run_tests_target(ENABLE ${TESSERACT_ENABLE_RUN_TESTING})
   add_subdirectory(test)
 endif()
 
 if(TESSERACT_PACKAGE)
-  tesseract_cpack(
+  cpack(
     VERSION ${pkg_extracted_version}
-    MAINTAINER <https://github.com/ros-industrial-consortium/tesseract>
+    MAINTAINER_NAME ${pkg_extracted_maintainer_name}
+    MAINTAINER_EMAIL ${pkg_extracted_maintainer_email}
     DESCRIPTION ${pkg_extracted_description}
     LICENSE_FILE ${CMAKE_CURRENT_LIST_DIR}/../LICENSE
     README_FILE ${CMAKE_CURRENT_LIST_DIR}/../README.md
@@ -136,4 +146,13 @@ if(TESSERACT_PACKAGE)
       "Eigen3"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-scene-graph"
       "${TESSERACT_PACKAGE_PREFIX}tesseract-common")
+
+  if(UNIX AND TESSERACT_PACKAGE_SOURCE)
+    cpack_debian_source_package(
+      CHANGLELOG ${CMAKE_CURRENT_LIST_DIR}/CHANGELOG.rst
+      UPLOAD ${TESSERACT_PACKAGE_SOURCE_UPLOAD}
+      DPUT_HOST ${TESSERACT_PACKAGE_SOURCE_DPUT_HOST}
+      DEBIAN_INCREMENT ${TESSERACT_PACKAGE_SOURCE_DEBIAN_INCREMENT}
+      DISTRIBUTIONS ${TESSERACT_PACKAGE_SOURCE_DISTRIBUTIONS})
+  endif()
 endif()

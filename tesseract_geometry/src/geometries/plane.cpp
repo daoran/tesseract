@@ -27,7 +27,6 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_common/utils.h>
@@ -35,6 +34,15 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_geometry
 {
+Plane::Plane(double a, double b, double c, double d) : Geometry(GeometryType::PLANE), a_(a), b_(b), c_(c), d_(d) {}
+
+double Plane::getA() const { return a_; }
+double Plane::getB() const { return b_; }
+double Plane::getC() const { return c_; }
+double Plane::getD() const { return d_; }
+
+Geometry::Ptr Plane::clone() const { return std::make_shared<Plane>(a_, b_, c_, d_); }
+
 bool Plane::operator==(const Plane& rhs) const
 {
   bool equal = true;

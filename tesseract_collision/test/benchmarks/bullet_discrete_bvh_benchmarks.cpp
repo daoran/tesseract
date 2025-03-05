@@ -5,6 +5,7 @@
 #include <tesseract_collision/test_suite/benchmarks/large_dataset_benchmarks.hpp>
 #include <tesseract_collision/test_suite/benchmarks/benchmark_utils.hpp>
 #include <tesseract_collision/bullet/bullet_discrete_bvh_manager.h>
+#include <tesseract_geometry/geometry.h>
 
 using namespace tesseract_collision;
 using namespace test_suite;
@@ -65,7 +66,8 @@ int main(int argc, char** argv)
           auto tf = Eigen::Isometry3d::Identity();
           std::string name = "BM_CONTACT_TEST_0_" + checker->getName() + "_" +
                              ContactTestTypeStrings[static_cast<std::size_t>(test_type)] + "_" +
-                             GeometryTypeStrings[type1] + "_" + GeometryTypeStrings[type2];
+                             GeometryTypeStrings[static_cast<std::size_t>(type1)] + "_" +
+                             GeometryTypeStrings[static_cast<std::size_t>(type2)];
           benchmark::RegisterBenchmark(name.c_str(),
                                        BM_CONTACT_TEST_FUNC,
                                        DiscreteBenchmarkInfo(checker,
@@ -92,7 +94,8 @@ int main(int argc, char** argv)
           auto tf = Eigen::Isometry3d::Identity();
           std::string name = "BM_CONTACT_TEST_1_" + checker->getName() + "_" +
                              ContactTestTypeStrings[static_cast<std::size_t>(test_type)] + "_" +
-                             GeometryTypeStrings[type1] + "_" + GeometryTypeStrings[type2];
+                             GeometryTypeStrings[static_cast<std::size_t>(type1)] + "_" +
+                             GeometryTypeStrings[static_cast<std::size_t>(type2)];
           benchmark::RegisterBenchmark(name.c_str(),
                                        BM_CONTACT_TEST_FUNC,
                                        DiscreteBenchmarkInfo(checker,
@@ -120,7 +123,8 @@ int main(int argc, char** argv)
           auto tf = Eigen::Isometry3d::Identity();
           std::string name = "BM_CONTACT_TEST_2_" + checker->getName() + "_" +
                              ContactTestTypeStrings[static_cast<std::size_t>(test_type)] + "_" +
-                             GeometryTypeStrings[type1] + "_" + GeometryTypeStrings[type2];
+                             GeometryTypeStrings[static_cast<std::size_t>(type1)] + "_" +
+                             GeometryTypeStrings[static_cast<std::size_t>(type2)];
           benchmark::RegisterBenchmark(name.c_str(),
                                        BM_CONTACT_TEST_FUNC,
                                        DiscreteBenchmarkInfo(checker,
@@ -234,7 +238,7 @@ int main(int argc, char** argv)
                                    edge_size,
                                    tesseract_geometry::GeometryType::CONVEX_MESH)
           ->UseRealTime()
-          ->Unit(benchmark::TimeUnit::kMillisecond);
+          ->Unit(benchmark::TimeUnit::kNanosecond);
     }
     for (const auto& edge_size : edge_sizes)
     {
@@ -244,7 +248,7 @@ int main(int argc, char** argv)
       benchmark::RegisterBenchmark(
           name.c_str(), BM_LARGE_DATASET_MULTILINK_FUNC, clone, edge_size, tesseract_geometry::GeometryType::SPHERE)
           ->UseRealTime()
-          ->Unit(benchmark::TimeUnit::kMillisecond);
+          ->Unit(benchmark::TimeUnit::kNanosecond);
     }
     for (const auto& edge_size : edge_sizes)
     {
@@ -270,7 +274,7 @@ int main(int argc, char** argv)
                                    edge_size,
                                    tesseract_geometry::GeometryType::CONVEX_MESH)
           ->UseRealTime()
-          ->Unit(benchmark::TimeUnit::kMillisecond);
+          ->Unit(benchmark::TimeUnit::kNanosecond);
     }
     for (const auto& edge_size : edge_sizes)
     {
@@ -280,7 +284,7 @@ int main(int argc, char** argv)
       benchmark::RegisterBenchmark(
           name.c_str(), BM_LARGE_DATASET_SINGLELINK_FUNC, clone, edge_size, tesseract_geometry::GeometryType::SPHERE)
           ->UseRealTime()
-          ->Unit(benchmark::TimeUnit::kMillisecond);
+          ->Unit(benchmark::TimeUnit::kNanosecond);
     }
     for (const auto& edge_size : edge_sizes)
     {

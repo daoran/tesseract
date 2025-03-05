@@ -28,18 +28,18 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <ignition/msgs/scene.pb.h>
+#include <gz/msgs/scene.pb.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_visualization/ignition/entity_manager.h>
-#include <tesseract_scene_graph/graph.h>
-#include <tesseract_common/types.h>
+#include <tesseract_common/eigen_types.h>
+#include <tesseract_scene_graph/fwd.h>
 
 namespace tesseract_visualization
 {
 bool isMeshWithColor(const std::string& file_path);
 
-bool toMsg(ignition::msgs::Scene& scene_msg,
+bool toMsg(gz::msgs::Scene& scene_msg,
            EntityManager& entity_manager,
            const tesseract_scene_graph::SceneGraph& scene_graph,
            const tesseract_common::TransformMap& link_transforms);

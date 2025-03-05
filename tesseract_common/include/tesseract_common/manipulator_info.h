@@ -28,11 +28,12 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <vector>
 #include <variant>
 #include <Eigen/Geometry>
 #include <boost/serialization/base_object.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
+
+#include <tesseract_common/any_poly.h>
 
 namespace tesseract_common
 {
@@ -49,7 +50,7 @@ struct ManipulatorInfo
   ManipulatorInfo(std::string manipulator_,
                   std::string working_frame_,
                   std::string tcp_frame_,
-                  const Eigen::Isometry3d& tcp_offset_ = Eigen::Isometry3d::Identity());
+                  std::variant<std::string, Eigen::Isometry3d> tcp_offset_ = Eigen::Isometry3d::Identity());
 
   /** @brief Name of the manipulator group */
   std::string manipulator;
@@ -96,6 +97,11 @@ private:
   template <class Archive>
   void serialize(Archive& ar, const unsigned int version);  // NOLINT
 };
+
+using ManipulatorInfoAnyPoly = AnyWrapper<ManipulatorInfo>;
 }  // namespace tesseract_common
+
+BOOST_CLASS_EXPORT_KEY(tesseract_common::ManipulatorInfo)
+BOOST_CLASS_EXPORT_KEY(tesseract_common::ManipulatorInfoAnyPoly)
 
 #endif  // TESSERACT_COMMON_MANIPULATOR_INFO_H

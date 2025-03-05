@@ -5,6 +5,8 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_collision/bullet/bullet_discrete_bvh_manager.h>
 #include <tesseract_collision/bullet/convex_hull_utils.h>
+#include <tesseract_geometry/impl/box.h>
+#include <tesseract_common/resource_locator.h>
 
 using namespace tesseract_collision;
 using namespace tesseract_geometry;
@@ -56,17 +58,18 @@ int main(int /*argc*/, char** /*argv*/)
 
   // documentation:start:4: Add convex hull
   // Add second box to checker, but convert to convex hull mesh
+  tesseract_common::GeneralResourceLocator locator;
   CollisionShapePtr second_box;
 
-  tesseract_common::VectorVector3d mesh_vertices;
-  Eigen::VectorXi mesh_faces;
-  loadSimplePlyFile(std::string(TESSERACT_SUPPORT_DIR) + "/meshes/box_2m.ply", mesh_vertices, mesh_faces);
+  auto mesh_vertices = std::make_shared<tesseract_common::VectorVector3d>();
+  auto mesh_faces = std::make_shared<Eigen::VectorXi>();
+  loadSimplePlyFile(locator.locateResource("package://tesseract_support/meshes/box_2m.ply")->getFilePath(),
+                    *mesh_vertices,
+                    *mesh_faces,
+                    true);
 
-  // This is required because convex hull cannot have multiple faces on the same plane.
-  auto ch_verticies = std::make_shared<tesseract_common::VectorVector3d>();
-  auto ch_faces = std::make_shared<Eigen::VectorXi>();
-  int ch_num_faces = createConvexHull(*ch_verticies, *ch_faces, mesh_vertices);
-  second_box = std::make_shared<ConvexMesh>(ch_verticies, ch_faces, ch_num_faces);
+  auto mesh = std::make_shared<tesseract_geometry::Mesh>(mesh_vertices, mesh_faces);
+  second_box = makeConvexMesh(*mesh);
   // documentation:end:4: Add convex hull
 
   // documentation:start:5: Add convex hull collision
@@ -107,7 +110,7 @@ int main(int /*argc*/, char** /*argv*/)
   checker.contactTest(result, request);
 
   ContactResultVector result_vector;
-  flattenMoveResults(std::move(result), result_vector);
+  result.flattenMoveResults(result_vector);
 
   CONSOLE_BRIDGE_logInform("Has collision: %s", toString(result_vector.empty()).c_str());
   CONSOLE_BRIDGE_logInform("Distance: %f", result_vector[0].distance);
@@ -130,13 +133,12 @@ int main(int /*argc*/, char** /*argv*/)
   // documentation:end:10: Set collision object transform
 
   // documentation:start:11: Perform collision check
-  result = ContactResultMap();
   result.clear();
   result_vector.clear();
 
   // Check for collision after moving object
   checker.contactTest(result, request);
-  flattenMoveResults(std::move(result), result_vector);
+  result.flattenMoveResults(result_vector);
   CONSOLE_BRIDGE_logInform("Has collision: %s", toString(result_vector.empty()).c_str());
   // documentation:end:11: Perform collision check
 
@@ -147,13 +149,12 @@ int main(int /*argc*/, char** /*argv*/)
 
   // documentation:start:13: Perform collision check
   CONSOLE_BRIDGE_logInform("Test object inside the contact distance");
-  result = ContactResultMap();
   result.clear();
   result_vector.clear();
 
   // Check for contact with new threshold
   checker.contactTest(result, request);
-  flattenMoveResults(std::move(result), result_vector);
+  result.flattenMoveResults(result_vector);
 
   CONSOLE_BRIDGE_logInform("Has collision: %s", toString(result_vector.empty()).c_str());
   CONSOLE_BRIDGE_logInform("Distance: %f", result_vector[0].distance);

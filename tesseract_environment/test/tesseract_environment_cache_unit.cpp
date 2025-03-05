@@ -6,32 +6,34 @@ TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <tesseract_urdf/urdf_parser.h>
 #include <tesseract_common/resource_locator.h>
 #include <tesseract_common/utils.h>
+#include <tesseract_geometry/impl/box.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/environment.h>
 #include <tesseract_environment/environment_cache.h>
-#include <tesseract_support/tesseract_support_resource_locator.h>
+#include <tesseract_environment/commands/add_link_command.h>
+
+#include <tesseract_scene_graph/graph.h>
+#include <tesseract_scene_graph/link.h>
+
+#include <tesseract_srdf/srdf_model.h>
 
 using namespace tesseract_scene_graph;
 using namespace tesseract_srdf;
-using namespace tesseract_collision;
 using namespace tesseract_environment;
 
-SceneGraph::UPtr getSceneGraph()
+SceneGraph::Ptr getSceneGraph(const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/boxbot.urdf";
-
-  tesseract_common::TesseractSupportResourceLocator locator;
-  return tesseract_urdf::parseURDFFile(path, locator);
+  std::string path = "package://tesseract_support/urdf/boxbot.urdf";
+  return tesseract_urdf::parseURDFFile(locator.locateResource(path)->getFilePath(), locator);
 }
 
-SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph)
+SRDFModel::Ptr getSRDFModel(const SceneGraph& scene_graph, const tesseract_common::ResourceLocator& locator)
 {
-  std::string path = std::string(TESSERACT_SUPPORT_DIR) + "/urdf/boxbot.srdf";
-  tesseract_common::TesseractSupportResourceLocator locator;
+  std::string path = "package://tesseract_support/urdf/boxbot.srdf";
 
-  auto srdf = std::make_unique<SRDFModel>();
-  srdf->initFile(scene_graph, path, locator);
+  auto srdf = std::make_shared<SRDFModel>();
+  srdf->initFile(scene_graph, locator.locateResource(path)->getFilePath(), locator);
 
   return srdf;
 }
@@ -57,10 +59,11 @@ void addLink(Environment& env)
 
 TEST(TesseractEnvironmentCache, defaultEnvironmentCacheTest)  // NOLINT
 {
-  auto scene_graph = getSceneGraph();
+  tesseract_common::GeneralResourceLocator locator;
+  auto scene_graph = getSceneGraph(locator);
   EXPECT_TRUE(scene_graph != nullptr);
 
-  auto srdf = getSRDFModel(*scene_graph);
+  auto srdf = getSRDFModel(*scene_graph, locator);
   EXPECT_TRUE(srdf != nullptr);
 
   auto env = std::make_shared<Environment>();
@@ -90,6 +93,8 @@ TEST(TesseractEnvironmentCache, defaultEnvironmentCacheTest)  // NOLINT
     EXPECT_TRUE(cached_env != nullptr);
     EXPECT_EQ(cached_env->getRevision(), 4);
   }
+
+  cache.refreshCache();
 }
 
 int main(int argc, char** argv)

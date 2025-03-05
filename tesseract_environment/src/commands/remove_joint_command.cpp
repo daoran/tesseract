@@ -27,7 +27,6 @@
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/nvp.hpp>
-#include <memory>
 #include <string>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
@@ -36,6 +35,15 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 namespace tesseract_environment
 {
+RemoveJointCommand::RemoveJointCommand() : Command(CommandType::REMOVE_JOINT) {}
+
+RemoveJointCommand::RemoveJointCommand(std::string joint_name)
+  : Command(CommandType::REMOVE_JOINT), joint_name_(std::move(joint_name))
+{
+}
+
+const std::string& RemoveJointCommand::getJointName() const { return joint_name_; }
+
 bool RemoveJointCommand::operator==(const RemoveJointCommand& rhs) const
 {
   bool equal = true;

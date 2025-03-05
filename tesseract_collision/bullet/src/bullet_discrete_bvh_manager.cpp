@@ -40,6 +40,7 @@
  */
 
 #include <tesseract_collision/bullet/bullet_discrete_bvh_manager.h>
+#include <tesseract_common/contact_allowed_validator.h>
 
 extern btScalar gDbvtMargin;  // NOLINT
 
@@ -48,7 +49,8 @@ namespace tesseract_collision::tesseract_collision_bullet
 static const CollisionShapesConst EMPTY_COLLISION_SHAPES_CONST;
 static const tesseract_common::VectorIsometry3d EMPTY_COLLISION_SHAPES_TRANSFORMS;
 
-BulletDiscreteBVHManager::BulletDiscreteBVHManager(std::string name) : name_(std::move(name))
+BulletDiscreteBVHManager::BulletDiscreteBVHManager(std::string name, TesseractCollisionConfigurationInfo config_info)
+  : name_(std::move(name)), config_info_(std::move(config_info)), coll_config_(config_info_)
 {
   // Bullet adds a margin of 5cm to which is an extern variable, so we set it to zero.
   gDbvtMargin = 0;
@@ -80,7 +82,7 @@ std::string BulletDiscreteBVHManager::getName() const { return name_; }
 
 DiscreteContactManager::UPtr BulletDiscreteBVHManager::clone() const
 {
-  auto manager = std::make_unique<BulletDiscreteBVHManager>();
+  auto manager = std::make_unique<BulletDiscreteBVHManager>(name_, config_info_.clone());
 
   auto margin = static_cast<btScalar>(contact_test_data_.collision_margin_data.getMaxCollisionMargin());
 
@@ -99,7 +101,7 @@ DiscreteContactManager::UPtr BulletDiscreteBVHManager::clone() const
 
   manager->setActiveCollisionObjects(active_);
   manager->setCollisionMarginData(contact_test_data_.collision_margin_data);
-  manager->setIsContactAllowedFn(contact_test_data_.fn);
+  manager->setContactAllowedValidator(contact_test_data_.validator);
 
   return manager;
 }
@@ -271,8 +273,16 @@ const CollisionMarginData& BulletDiscreteBVHManager::getCollisionMarginData() co
 {
   return contact_test_data_.collision_margin_data;
 }
-void BulletDiscreteBVHManager::setIsContactAllowedFn(IsContactAllowedFn fn) { contact_test_data_.fn = fn; }
-IsContactAllowedFn BulletDiscreteBVHManager::getIsContactAllowedFn() const { return contact_test_data_.fn; }
+void BulletDiscreteBVHManager::setContactAllowedValidator(
+    std::shared_ptr<const tesseract_common::ContactAllowedValidator> validator)
+{
+  contact_test_data_.validator = std::move(validator);
+}
+std::shared_ptr<const tesseract_common::ContactAllowedValidator>
+BulletDiscreteBVHManager::getContactAllowedValidator() const
+{
+  return contact_test_data_.validator;
+}
 void BulletDiscreteBVHManager::contactTest(ContactResultMap& collisions, const ContactRequest& request)
 {
   contact_test_data_.res = &collisions;

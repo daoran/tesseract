@@ -28,12 +28,17 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
-#include <boost/serialization/access.hpp>
 #include <memory>
 #include <string>
+#include <boost/serialization/export.hpp>
 TESSERACT_COMMON_IGNORE_WARNINGS_POP
 
 #include <tesseract_environment/command.h>
+
+namespace boost::serialization
+{
+class access;
+}
 
 namespace tesseract_environment
 {
@@ -43,19 +48,14 @@ public:
   using Ptr = std::shared_ptr<SetActiveDiscreteContactManagerCommand>;
   using ConstPtr = std::shared_ptr<const SetActiveDiscreteContactManagerCommand>;
 
-  SetActiveDiscreteContactManagerCommand() : Command(CommandType::SET_ACTIVE_DISCRETE_CONTACT_MANAGER){};
+  SetActiveDiscreteContactManagerCommand();
 
   /**
    * @brief Set the active discrete contact manager
    * @param active_contact_manager Active contact manager name
    */
-  SetActiveDiscreteContactManagerCommand(std::string active_contact_manager)
-    : Command(CommandType::SET_ACTIVE_DISCRETE_CONTACT_MANAGER)
-    , active_contact_manager_(std::move(active_contact_manager))
-  {
-  }
-
-  const std::string& getName() const { return active_contact_manager_; }
+  SetActiveDiscreteContactManagerCommand(std::string active_contact_manager);
+  const std::string& getName() const;
 
   bool operator==(const SetActiveDiscreteContactManagerCommand& rhs) const;
   bool operator!=(const SetActiveDiscreteContactManagerCommand& rhs) const;
@@ -69,8 +69,5 @@ private:
 };
 }  // namespace tesseract_environment
 
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/tracking.hpp>
-BOOST_CLASS_EXPORT_KEY2(tesseract_environment::SetActiveDiscreteContactManagerCommand,
-                        "SetActiveDiscreteContactManagerCommand")
+BOOST_CLASS_EXPORT_KEY(tesseract_environment::SetActiveDiscreteContactManagerCommand)
 #endif  // TESSERACT_ENVIRONMENT_SET_ACTIVE_DISCRETE_CONTACT_MANAGER_COMMAND_H

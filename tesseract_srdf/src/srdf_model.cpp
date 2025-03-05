@@ -26,6 +26,7 @@
 
 #include <tesseract_common/macros.h>
 TESSERACT_COMMON_IGNORE_WARNINGS_PUSH
+#include <boost/serialization/access.hpp>
 #include <boost/serialization/array.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/nvp.hpp>
@@ -50,7 +51,11 @@ TESSERACT_COMMON_IGNORE_WARNINGS_POP
 #include <tesseract_srdf/utils.h>
 #include <tesseract_common/utils.h>
 #include <tesseract_common/yaml_utils.h>
+#include <tesseract_common/yaml_extenstions.h>
 #include <tesseract_common/eigen_serialization.h>
+#include <tesseract_common/resource_locator.h>
+#include <tesseract_common/collision_margin_data.h>
+#include <tesseract_scene_graph/graph.h>
 
 namespace tesseract_srdf
 {
@@ -91,8 +96,8 @@ void SRDFModel::initString(const tesseract_scene_graph::SceneGraph& scene_graph,
                            const tesseract_common::ResourceLocator& locator)
 {
   tinyxml2::XMLDocument xml_doc;
-  tinyxml2::XMLError status = xml_doc.Parse(xmlstring.c_str());
-  if (status != tinyxml2::XMLError::XML_SUCCESS)
+  int status = xml_doc.Parse(xmlstring.c_str());
+  if (status != tinyxml2::XML_SUCCESS)
     std::throw_with_nested(std::runtime_error("SRDF: Failed to create XMLDocument from xml string!"));
 
   clear();
@@ -102,7 +107,7 @@ void SRDFModel::initString(const tesseract_scene_graph::SceneGraph& scene_graph,
     std::throw_with_nested(std::runtime_error("SRDF: Missing 'robot' element in the xml file!"));
 
   if (srdf_xml == nullptr || std::strncmp(srdf_xml->Name(), "robot", 5) != 0)
-    std::throw_with_nested(std::runtime_error("SRDF: Missing 'robot' element in the xml file!"));
+    std::throw_with_nested(std::runtime_error("SRDF: Missing 'robot' element in the xml file!"));  // LCOV_EXCL_LINE
 
   // get the robot name
   status = tesseract_common::QueryStringAttributeRequired(srdf_xml, "name", name);
@@ -116,7 +121,7 @@ void SRDFModel::initString(const tesseract_scene_graph::SceneGraph& scene_graph,
   status = tesseract_common::QueryStringAttribute(srdf_xml, "version", version_string);
   if (status != tinyxml2::XML_NO_ATTRIBUTE && status != tinyxml2::XML_SUCCESS)
   {
-    std::throw_with_nested(std::runtime_error("SRDF: Failed to parse attribute 'version'!"));
+    std::throw_with_nested(std::runtime_error("SRDF: Failed to parse attribute 'version'!"));  // LCOV_EXCL_LINE
   }
   else if (status != tinyxml2::XML_NO_ATTRIBUTE)
   {
@@ -340,7 +345,7 @@ bool SRDFModel::saveToFile(const std::string& file_path) const
 
   if (!kinematics_information.kinematics_plugin_info.empty())
   {
-    tesseract_common::fs::path p(file_path);
+    std::filesystem::path p(file_path);
     std::ofstream fout(p.parent_path().append("kinematics_plugin_config.yaml").string());
     YAML::Node config;
     config[tesseract_common::KinematicsPluginInfo::CONFIG_KEY] = kinematics_information.kinematics_plugin_info;
@@ -352,7 +357,7 @@ bool SRDFModel::saveToFile(const std::string& file_path) const
 
   if (!contact_managers_plugin_info.empty())
   {
-    tesseract_common::fs::path p(file_path);
+    std::filesystem::path p(file_path);
     std::ofstream fout(p.parent_path().append("contact_managers_plugin_config.yaml").string());
     YAML::Node config;
     config[tesseract_common::ContactManagersPluginInfo::CONFIG_KEY] = contact_managers_plugin_info;
@@ -364,7 +369,7 @@ bool SRDFModel::saveToFile(const std::string& file_path) const
 
   if (!calibration_info.empty())
   {
-    tesseract_common::fs::path p(file_path);
+    std::filesystem::path p(file_path);
     std::ofstream fout(p.parent_path().append("calibration_config.yaml").string());
     YAML::Node config;
     config[tesseract_common::CalibrationInfo::CONFIG_KEY] = calibration_info;
@@ -403,11 +408,13 @@ bool SRDFModel::saveToFile(const std::string& file_path) const
   }
 
   doc.InsertFirstChild(xml_root);
-  tinyxml2::XMLError status = doc.SaveFile(file_path.c_str());
-  if (status != tinyxml2::XMLError::XML_SUCCESS)
+  int status = doc.SaveFile(file_path.c_str());
+  if (status != tinyxml2::XML_SUCCESS)
   {
+    // LCOV_EXCL_START
     CONSOLE_BRIDGE_logError("Failed to save SRDF XML File: %s", file_path.c_str());
     return false;
+    // LCOV_EXCL_STOP
   }
 
   return true;

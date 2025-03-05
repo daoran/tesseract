@@ -56,7 +56,8 @@ public:
   using UPtr = std::unique_ptr<BulletCastBVHManager>;
   using ConstUPtr = std::unique_ptr<const BulletCastBVHManager>;
 
-  BulletCastBVHManager(std::string name = "BulletCastBVHManager");
+  BulletCastBVHManager(std::string name = "BulletCastBVHManager",
+                       TesseractCollisionConfigurationInfo config_info = TesseractCollisionConfigurationInfo());
   ~BulletCastBVHManager() override;
   BulletCastBVHManager(const BulletCastBVHManager&) = delete;
   BulletCastBVHManager& operator=(const BulletCastBVHManager&) = delete;
@@ -124,9 +125,10 @@ public:
 
   const CollisionMarginData& getCollisionMarginData() const override final;
 
-  void setIsContactAllowedFn(IsContactAllowedFn fn) override final;
+  void
+  setContactAllowedValidator(std::shared_ptr<const tesseract_common::ContactAllowedValidator> validator) override final;
 
-  IsContactAllowedFn getIsContactAllowedFn() const override final;
+  std::shared_ptr<const tesseract_common::ContactAllowedValidator> getContactAllowedValidator() const override final;
 
   void contactTest(ContactResultMap& collisions, const ContactRequest& request) override final;
 
@@ -138,16 +140,24 @@ public:
 
 private:
   std::string name_;
-  std::vector<std::string> active_;            /**< @brief A list of the active collision objects */
-  std::vector<std::string> collision_objects_; /**< @brief A list of the collision objects */
-
-  std::unique_ptr<btCollisionDispatcher> dispatcher_; /**< @brief The bullet collision dispatcher used for getting
-                                                         object to object collison algorithm */
-  btDispatcherInfo dispatch_info_;              /**< @brief The bullet collision dispatcher configuration information */
-  TesseractCollisionConfiguration coll_config_; /**< @brief The bullet collision configuration */
-  std::unique_ptr<btBroadphaseInterface> broadphase_; /**< @brief The bullet broadphase interface */
-  Link2Cow link2cow_;                                 /**< @brief A map of collision objects being managed */
-  Link2Cow link2castcow_;                             /**< @brief A map of cast collision objects being managed. */
+  /** @brief A list of the active collision objects */
+  std::vector<std::string> active_;
+  /** @brief A list of the collision objects */
+  std::vector<std::string> collision_objects_;
+  /** @brief The bullet collision dispatcher used for getting object to object collison algorithm */
+  std::unique_ptr<btCollisionDispatcher> dispatcher_;
+  /** @brief The bullet collision dispatcher configuration information */
+  btDispatcherInfo dispatch_info_;
+  /** @brief The bullet collision configuration information */
+  TesseractCollisionConfigurationInfo config_info_;
+  /** @brief The bullet collision configuration */
+  TesseractCollisionConfiguration coll_config_;
+  /** @brief The bullet broadphase interface */
+  std::unique_ptr<btBroadphaseInterface> broadphase_;
+  /** @brief A map of collision objects being managed */
+  Link2Cow link2cow_;
+  /** @brief A map of cast collision objects being managed. */
+  Link2Cow link2castcow_;
 
   /**
    * @brief This is used when contactTest is called. It is also added as a user point to the collsion objects
